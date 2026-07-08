@@ -3,8 +3,8 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://sueryue.github.io/romestead-guides',
-  base: '/romestead-guides',
+  site: 'https://sueryue.github.io/Romestead',
+  base: '/Romestead',
   trailingSlash: 'ignore',
   i18n: {
     defaultLocale: 'en',

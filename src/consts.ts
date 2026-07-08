@@ -5,7 +5,7 @@ export const SITE = {
   name: 'Romestead',
   tagline: 'Build a Roman outpost from the wild.',
   // Canonical production domain (used for absolute URLs, canonical, OG, sitemap)
-  url: 'https://sueryue.github.io/romestead-guides',
+  url: 'https://sueryue.github.io/Romestead',
   description:
     'Romestead strategy guides, hero tier lists, beast partners and border-raid tactics for the Roman frontier colony survival game.',
   author: 'Romestead Studio',
