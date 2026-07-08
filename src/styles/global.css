@@ -134,27 +134,31 @@ body {
   display: flex;
 }
 
-/* Guard challenge overlay (abnormal frequency) */
+/* Guard challenge notice — NON-BLOCKING bottom toast.
+   It must never cover page content (was a full-screen overlay before,
+   which made pages look empty to real visitors). */
 #guard-overlay {
   position: fixed;
-  inset: 0;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
   z-index: 9999;
   display: none;
-  align-items: center;
-  justify-content: center;
-  background: oklch(0.18 0.02 60 / 0.92);
-  color: var(--parchment);
+  max-width: min(92vw, 440px);
+  pointer-events: none; /* never intercepts clicks on the page */
   text-align: center;
-  padding: 2rem;
+  padding: 0;
 }
 #guard-overlay.show {
-  display: flex;
+  display: block;
 }
 #guard-overlay .panel {
-  max-width: 420px;
   border: 1px solid var(--gold);
-  padding: 2rem;
-  background: oklch(0.24 0.02 60);
+  padding: 0.9rem 1.25rem;
+  background: oklch(0.24 0.02 60 / 0.96);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.35);
+  color: var(--parchment);
 }
 #guard-overlay h2 {
   font-family: 'Cinzel', Georgia, serif;
