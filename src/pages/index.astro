@@ -1,0 +1,16 @@
+---
+import { SITE } from '../consts';
+const url = SITE.url + '/en/';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0;url=${url}`} />
+    <link rel="canonical" href={url} />
+    <title>Romestead</title>
+  </head>
+  <body>
+    <p>Redirecting to <a href={url}>Romestead guides</a>…</p>
+  </body>
+</html>

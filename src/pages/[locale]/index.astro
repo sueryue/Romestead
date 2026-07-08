@@ -1,0 +1,146 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import LiveStats from '../../components/LiveStats.astro';
+import { getUi } from '../../i18n/ui';
+import { LOCALES, localize, pick, type Locale } from '../../i18n/utils';
+import { GUIDES } from '../../content/guides';
+import { HEROES } from '../../content/heroes';
+import { WORLD } from '../../content/world';
+import { STORE, SITE } from '../../consts';
+
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const ui = getUi(locale);
+const path = '/';
+const topHeroes = HEROES.filter((h) => h.tier === 'S');
+const intro = pick(WORLD.intro, locale);
+---
+
+<Base
+  locale={locale}
+  title={`${SITE.name} — ${ui['footer.tagline']}`}
+  description={SITE.description}
+  path={path}
+  jsonLd={{
+    '@type': 'VideoGame',
+    name: SITE.name,
+    description: SITE.description,
+    genre: 'Strategy',
+    gamePlatform: ['iOS', 'Android'],
+    inLanguage: locale,
+  }}
+>
+  <Header locale={locale} path={path} />
+
+  <main class="mx-auto max-w-6xl px-4">
+    <!-- HERO: asymmetric split + stone-tablet panel -->
+    <section class="grid items-center gap-8 py-12 md:grid-cols-2">
+      <div class="reveal-ready">
+        <p class="font-display text-sm uppercase tracking-[0.3em] text-gold-600">Roman Frontier Survival</p>
+        <h1 class="mt-3 font-display text-4xl font-black leading-tight text-roman-700 md:text-5xl">
+          {SITE.name}
+        </h1>
+        <p class="mt-4 max-w-md text-lg text-ink-700">{intro}</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a
+            href={STORE.googlePlay}
+            target="_blank"
+            rel="noopener"
+            data-i18n="cta.play"
+            class="w-full rounded bg-roman-600 px-5 py-2.5 text-center font-semibold text-parchment-50 transition-colors hover:bg-roman-500 sm:w-auto"
+          >
+            {ui['cta.play']}
+          </a>
+          <a
+            href={localize(locale, '/guides')}
+            data-i18n="cta.read"
+            class="w-full rounded border border-gold-600/50 px-5 py-2.5 text-center font-semibold text-roman-600 transition-colors hover:bg-gold-400/10 sm:w-auto"
+          >
+            {ui['cta.read']}
+          </a>
+        </div>
+        <div class="mt-6"><LiveStats locale={locale} /></div>
+      </div>
+
+      <!-- Stone tablet panel (memorable, not a template hero) -->
+      <aside class="reveal-ready rounded-lg border border-gold-600/40 bg-ink-800 p-6 text-parchment-100 shadow-xl">
+        <p class="font-display text-xs uppercase tracking-[0.3em] text-gold-400">Tablet of the Stead</p>
+        <dl class="mt-4 space-y-3 text-sm">
+          <div class="flex justify-between border-b border-parchment-100/10 pb-2">
+            <dt class="text-parchment-300">Est.</dt><dd class="font-display text-gold-400">MMXXVI</dd>
+          </div>
+          <div class="flex justify-between border-b border-parchment-100/10 pb-2">
+            <dt class="text-parchment-300">Theater</dt><dd>Valcra Valley</dd>
+          </div>
+          <div class="flex justify-between border-b border-parchment-100/10 pb-2">
+            <dt class="text-parchment-300">Heroes</dt><dd class="font-display text-gold-400">{HEROES.length}</dd>
+          </div>
+          <div class="flex justify-between border-b border-parchment-100/10 pb-2">
+            <dt class="text-parchment-300">Foes</dt><dd>4 Factions</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt class="text-parchment-300">Threat</dt><dd class="text-roman-500">Verge Wyrm</dd>
+          </div>
+        </dl>
+      </aside>
+    </section>
+
+    <!-- GUIDES GRID -->
+    <section class="py-10">
+      <h2 class="font-display text-2xl font-bold text-roman-700">{ui['nav.guides']}</h2>
+      <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {GUIDES.map((g) => (
+          <a
+            href={localize(locale, `/guides/${g.slug}`)}
+            class="reveal-ready group rounded-lg border border-gold-600/30 bg-parchment-50 p-5 shadow-sm transition-transform hover:-translate-y-1 hover:border-gold-500"
+          >
+            <div class="mb-3 inline-block rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">
+              {g.category}
+            </div>
+            <h3 class="font-display text-lg font-bold text-ink-800 group-hover:text-roman-600">
+              {pick(g.title, locale)}
+            </h3>
+            <p class="mt-2 text-sm text-ink-700/80">{pick(g.description, locale)}</p>
+            <p class="mt-3 text-xs text-ink-700/60">↻ {g.updated}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- TOP HEROES -->
+    <section class="py-10">
+      <div class="flex items-end justify-between">
+        <h2 class="font-display text-2xl font-bold text-roman-700">{ui['nav.heroes']} · S-Tier</h2>
+        <a href={localize(locale, '/heroes')} class="text-sm text-roman-600 hover:underline">{ui['cta.read']} →</a>
+      </div>
+      <div class="mt-6 grid gap-5 sm:grid-cols-3">
+        {topHeroes.map((h) => (
+          <a
+            href={localize(locale, `/heroes/${h.slug}`)}
+            class="reveal-ready rounded-lg border border-gold-600/30 bg-parchment-50 p-5 text-center shadow-sm transition-transform hover:-translate-y-1"
+          >
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-roman-600 font-display text-xl text-gold-400">⚔</div>
+            <h3 class="mt-3 font-display text-lg font-bold">{h.name}</h3>
+            <p class="text-xs text-ink-700/70">{pick(h.role, locale)} · {h.element}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- WORLD TEASER -->
+    <section class="py-10">
+      <div class="rounded-lg border border-gold-600/30 bg-ink-800 p-8 text-parchment-100">
+        <h2 class="font-display text-2xl font-bold text-gold-400">{ui['nav.world']}</h2>
+        <p class="mt-3 max-w-2xl text-parchment-200">{intro}</p>
+        <a href={localize(locale, '/world')} class="mt-4 inline-block text-gold-400 hover:underline">{ui['cta.read']} →</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer locale={locale} />
+</Base>

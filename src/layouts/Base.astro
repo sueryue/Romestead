@@ -1,0 +1,158 @@
+---
+import '../styles/global.css';
+import { SITE } from '../consts';
+import {
+  LOCALES,
+  INDEXED_LOCALES,
+  LOCALE_HREFLANG,
+  LOCALE_OG,
+  localize,
+  type Locale,
+} from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  path: string; // path WITHOUT locale prefix, e.g. '/guides/beginners-guide'
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, unknown>;
+  publishedTime?: string;
+}
+
+const {
+  locale,
+  title,
+  description,
+  path,
+  type = 'website',
+  jsonLd,
+  publishedTime,
+} = Astro.props;
+
+// Indexed locale (en) canonicalizes to itself; English-fallback
+// locales (fr/de/es/it) consolidate to the English URL to avoid
+// duplicate-content indexing ¡ª this pairs with the trimmed sitemap.
+const canonTarget = INDEXED_LOCALES.includes(locale)
+  ? localize(locale, path)
+  : localize('en', path);
+const canon = SITE.url + canonTarget;
+const ogImageAbs = SITE.url + SITE.ogImage;
+const geo = SITE.geo[locale] ?? SITE.geo.default;
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: SITE.url,
+  logo: SITE.url + '/favicon.svg',
+  sameAs: [],
+};
+const siteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  inLanguage: LOCALE_HREFLANG[locale],
+};
+const pageLd = jsonLd
+  ? { '@context': 'https://schema.org', ...jsonLd }
+  : null;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#2b2620" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={`${SITE.name}, strategy guide, hero tier list, beast partners, border raid, Roman survival game`} />
+    <link rel="canonical" href={canon} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- GEO optimization -->
+    <meta name="geo.region" content={geo.region} />
+    <meta name="geo.placename" content={geo.placename} />
+    <meta name="geo.position" content={geo.position} />
+    <meta name="ICBM" content={geo.position} />
+
+    <!-- hreflang alternates (per-locale URLs â†? SEO/GEO) -->
+    {LOCALES.map((l) => (
+      <link rel="alternate" hreflang={LOCALE_HREFLANG[l]} href={SITE.url + localize(l, path)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={SITE.url + localize('en', path)} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canon} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={LOCALE_OG[locale]} />
+    {LOCALES.filter((l) => l !== locale).map((l) => (
+      <meta property="og:locale:alternate" content={LOCALE_OG[l]} />
+    ))}
+    {type === 'article' && publishedTime && (
+      <meta property="article:published_time" content={publishedTime} />
+    )}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbs} />
+
+    <!-- Fonts: Cinzel (display) + Newsreader (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(siteLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+    {pageLd && <script type="application/ld+json" set:html={JSON.stringify(pageLd)} />}
+  </head>
+  <body>
+    <slot />
+
+    <!-- DevTools mask (shown only when devtools detected) -->
+    <div id="devtools-mask">
+      <div>
+        <p class="font-display text-2xl mb-2">âš?</p>
+        <p>Developer tools detected. Please close them to continue.</p>
+      </div>
+    </div>
+
+    <!-- Guard challenge overlay (abnormal frequency) -->
+    <div id="guard-overlay">
+      <div class="panel">
+        <h2 data-guard="title">Hold, traveler</h2>
+        <p data-guard="body">Unusual activity detected.</p>
+        <p class="mt-4 text-sm opacity-80">
+          <span data-guard="count">0</span>s
+        </p>
+      </div>
+    </div>
+
+    <!-- Client scripts: i18n dynamic switch, FingerprintJS guard, protect -->
+    <script>
+      import '../scripts/i18n-client.ts';
+      import '../scripts/guard.ts';
+      import '../scripts/protect.ts';
+    </script>
+  </body>
+</html>

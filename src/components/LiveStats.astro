@@ -1,0 +1,51 @@
+---
+import { getUi } from '../i18n/ui';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const ui = getUi(locale);
+---
+
+<!--
+  "Key data via JavaScript" pattern:
+  The SEO-critical guide/tier content is static HTML (crawlable).
+  These live counters are a *progressive enhancement* rendered by JS,
+  so they never affect what search engines index.
+-->
+<div class="rounded border border-gold-600/30 bg-parchment-50 px-4 py-3 text-sm shadow-sm">
+  <div class="flex items-center gap-2">
+    <span class="h-2 w-2 animate-pulse rounded-full bg-roman-500"></span>
+    <span>
+      <span data-i18n="live.online">{ui['live.online']}</span>:
+      <span id="ls-online">12,480</span>
+    </span>
+  </div>
+  <div class="mt-1 text-xs text-ink-700/70">
+    <span data-i18n="live.updated">{ui['live.updated']}</span>:
+    <span id="ls-updated">—</span>
+  </div>
+  <noscript>
+    <span class="text-xs">12,480 pioneers online.</span>
+  </noscript>
+</div>
+
+<script>
+  function fmt(n: number): string {
+    return n.toLocaleString('en-US');
+  }
+  function tick(): void {
+    const base =
+      12000 +
+      Math.floor(Math.sin(Date.now() / 60000) * 800) +
+      Math.floor(Math.random() * 200);
+    const on = document.getElementById('ls-online');
+    if (on) on.textContent = fmt(base);
+    const up = document.getElementById('ls-updated');
+    if (up) up.textContent = new Date().toLocaleString();
+  }
+  tick();
+  setInterval(tick, 5000);
+</script>

@@ -1,0 +1,96 @@
+---
+import { getUi } from '../i18n/ui';
+import { LOCALES, LOCALE_NAMES, localize, type Locale } from '../i18n/utils';
+import { STORE } from '../consts';
+
+interface Props {
+  locale: Locale;
+  path: string; // without locale prefix
+}
+const { locale, path } = Astro.props;
+const ui = getUi(locale);
+
+const links = [
+  { href: localize(locale, '/'), label: ui['nav.home'], match: '/' },
+  { href: localize(locale, '/guides'), label: ui['nav.guides'], match: '/guides' },
+  { href: localize(locale, '/heroes'), label: ui['nav.heroes'], match: '/heroes' },
+  { href: localize(locale, '/world'), label: ui['nav.world'], match: '/world' },
+];
+const isActive = (m: string) =>
+  m === '/' ? path === '/' || path === '' : path.startsWith(m);
+---
+
+<header class="sticky top-0 z-50 border-b border-gold-600/30 bg-parchment-100/90 pt-[env(safe-area-inset-top)] backdrop-blur">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4">
+    <a href={localize(locale, '/')} class="font-display text-base font-bold text-roman-600 no-copy sm:text-xl">
+      ⚜ {''}Romestead
+    </a>
+
+    <ul class="hidden items-center gap-6 md:flex">
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            data-i18n={l.match === '/' ? 'nav.home' : `nav.${l.match.replace('/', '')}`}
+            class={`text-sm tracking-wide transition-colors hover:text-roman-500 ${
+              isActive(l.match) ? 'text-roman-600 font-semibold' : 'text-ink-700'
+            }`}
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a
+        href={STORE.googlePlay}
+        target="_blank"
+        rel="noopener"
+        data-i18n="nav.download"
+        class="rounded bg-roman-600 px-2.5 py-1.5 text-xs font-semibold text-parchment-50 transition-colors hover:bg-roman-500 sm:px-3 sm:py-1.5 sm:text-sm"
+      >
+        {ui['nav.download']}
+      </a>
+
+      <label class="sr-only" for="lang-select">{ui['lang.label']}</label>
+      <select
+        id="lang-select"
+        aria-label={ui['lang.label']}
+        class="max-w-[7rem] rounded border border-gold-600/40 bg-parchment-50 px-1.5 py-1.5 text-xs text-ink-700 sm:px-2 sm:py-1.5 sm:text-sm"
+      >
+        {LOCALES.map((l) => (
+          <option value={localize(l, path)} data-locale={l} selected={l === locale}>
+            {LOCALE_NAMES[l]}
+          </option>
+        ))}
+      </select>
+    </div>
+  </nav>
+
+  <!-- Mobile nav -->
+  <ul class="flex items-center gap-4 overflow-x-auto px-4 pb-[calc(0.5rem+env(safe-area-inset-bottom))] text-sm md:hidden">
+    {links.map((l) => (
+      <li>
+        <a
+          href={l.href}
+          class={`inline-flex min-h-[44px] items-center ${isActive(l.match) ? 'text-roman-600 font-semibold' : 'text-ink-700'}`}
+        >
+          {l.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <script>
+    const sel = document.getElementById('lang-select');
+    sel?.addEventListener('change', () => {
+      const opt = sel.selectedOptions[0] as HTMLOptionElement | undefined;
+      const loc = opt?.dataset.locale;
+      const url = opt?.value;
+      // Instant in-place chrome switch via i18next, then load full content.
+      if (loc && (window as any).applyI18n) (window as any).applyI18n(loc);
+      if (url) setTimeout(() => (location.href = url), 120);
+    });
+  </script>
+</header>
