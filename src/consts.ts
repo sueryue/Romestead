@@ -26,14 +26,3 @@ export const STORE = {
   googlePlay: 'https://play.google.com/store/search?q=Romestead&c=apps',
   appStore: 'https://www.appstore.com/search?term=Romestead',
 } as const;
-
-// Guard / rate-limit tuning (client-side frequency detection)
-// Tuned to be near-silent for real visitors: only extreme, bot-like
-// request bursts (100+ page hits in 60s) will ever trip it, and even
-// then it only shows a small non-blocking notice — never hides content.
-export const GUARD = {
-  windowMs: 60_000, // rolling window
-  maxRequests: 100, // max page-interactions per window before flagged
-  cooldownMs: 15_000, // how long the notice stays
-  reportEndpoint: '/api/guard',
-} as const;

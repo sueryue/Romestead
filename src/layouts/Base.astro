@@ -129,30 +129,9 @@ const pageLd = jsonLd
   <body>
     <slot />
 
-    <!-- DevTools mask (shown only when devtools detected) -->
-    <div id="devtools-mask">
-      <div>
-        <p class="font-display text-2xl mb-2">âš?</p>
-        <p>Developer tools detected. Please close them to continue.</p>
-      </div>
-    </div>
-
-    <!-- Guard challenge overlay (abnormal frequency) -->
-    <div id="guard-overlay">
-      <div class="panel">
-        <h2 data-guard="title">Hold, traveler</h2>
-        <p data-guard="body">Unusual activity detected.</p>
-        <p class="mt-4 text-sm opacity-80">
-          <span data-guard="count">0</span>s
-        </p>
-      </div>
-    </div>
-
-    <!-- Client scripts: i18n dynamic switch, FingerprintJS guard, protect -->
+    <!-- Client scripts: i18n dynamic switch -->
     <script>
       import '../scripts/i18n-client.ts';
-      import '../scripts/guard.ts';
-      import '../scripts/protect.ts';
     </script>
   </body>
 </html>
