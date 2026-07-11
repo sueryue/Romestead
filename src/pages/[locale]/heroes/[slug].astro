@@ -76,6 +76,9 @@ const related = ENTRIES.filter((e) => e.slug !== slug).slice(0, 4).map((e) => ({
 
         <p class="mt-6 text-lg italic leading-relaxed text-ink-700">“{pick(entry.lead, locale)}”</p>
         <p class="mt-4 leading-relaxed text-ink-700">{pick(entry.bio, locale)}</p>
+        {entry.flavor && (
+          <Callout variant="info" title={entry.name} class="mt-4 clear-both">“{entry.flavor}”</Callout>
+        )}
         <Callout variant="tip" title={ui['hero.tip']} class="mt-4 clear-both">{pick(entry.tip, locale)}</Callout>
       </div>
     </article>

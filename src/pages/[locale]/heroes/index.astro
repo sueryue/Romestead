@@ -50,6 +50,7 @@ const bosses = entriesByKind('boss');
                   <div>
                     <h3 class="font-display text-lg font-bold">{g.name}</h3>
                     <p class="text-xs text-ink-700/70">{pick(g.role, locale)}</p>
+                    {g.meta && g.meta[0] && <span class="stat-pill mt-2 inline-block">{g.meta[0].value}</span>}
                   </div>
                 </div>
                 <p class="mt-3 text-sm italic text-ink-700/80">“{pick(g.lead, locale)}”</p>

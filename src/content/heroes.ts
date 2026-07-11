@@ -13,6 +13,8 @@ export interface LoreEntry {
   tip: L10n<string>; // gods: how to use · bosses: strategy
   // Compact "at a glance" stat rows (factual, language-neutral)
   meta?: { label: string; value: string }[];
+  // In-game flavor line (the god's own words) — English source
+  flavor?: string;
 }
 
 export const ENTRIES: LoreEntry[] = [
@@ -36,11 +38,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'La natura risponde a chi sa ascoltare.',
     },
     bio: {
-      en: 'Diana governs the hunt, the creatures of the wild, and the moon that lights the night. Offer foraged goods and game to win her favor — her blessings aid survival, tracking and the beasts you recruit.',
-      fr: 'Diane gouverne la chasse, les créatures sauvages et la lune qui éclaire la nuit. Offrez cueillette et gibier pour gagner sa faveur — ses bénédictions aident survie, pistage et bêtes recrutées.',
-      de: 'Diana herrscht über die Jagd, die Wesen der Wildnis und den Mond der Nacht. Biete gesammelte Güter und Wild, um ihre Gunst zu gewinnen — ihre Segnungen helfen bei Überleben, Spurenlesen und rekrutierten Bestien.',
-      es: 'Diana gobierna la caza, las criaturas salvajes y la luna que ilumina la noche. Ofrece recolección y caza para ganar su favor — sus bendiciones ayudan a sobrevivir, rastrear y a las bestias que reclutas.',
-      it: 'Diana governa la caccia, le creature selvagge e la luna che illumina la notte. Offri raccolto e selvaggina per ottenere il suo favore — le sue benedizioni aiutano sopravvivenza, tracciamento e le bestie che recluti.',
+      en: "Diana is the goddess of nature, hunters, wildlife and the Moon. Her worship unlocks buildings and feats centred on ranged weaponry, gathering and hunting — ideal for a settlement that lives off the land. Offer foraged goods and hunted game at her altar to earn her favor, and her blessing sharpens every arrow you loose.",
+      fr: "Diane est la déesse de la nature, des chasseurs, de la faune et de la Lune. Son culte débloque des bâtiments et des aptitudes centrés sur l'armement à distance, la cueillette et la chasse — parfaits pour une cité qui vit de la terre. Offrez-lui récoltes et gibier pour gagner sa faveur, et sa bénédiction aiguise chaque flèche.",
+      de: "Diana ist die Göttin der Natur, der Jäger, der Wildtiere und des Mondes. Ihr Kult schaltet Gebäude und Talente frei, die auf Fernkampf, Sammeln und Jagd ausgerichtet sind — ideal für eine Siedlung, die von der Erde lebt. Biete gesammelte Güter und Wild an ihrem Altar, um ihre Gunst zu gewinnen; ihr Segen schärft jeden Pfeil, den du abschießt.",
+      es: "Diana es la diosa de la naturaleza, los cazadores, la fauna y la Luna. Su culto desbloquea edificios y destrezas centrados en armas a distancia, recolección y caza — perfectos para un poblado que vive de la tierra. Ofrécele recolección y caza en su altar para ganar su favor, y su bendición afila cada flecha que disparas.",
+      it: "Diana è la dea della natura, dei cacciatori, della fauna e della Luna. Il suo culto sblocca edifici e talenti incentrati su armi a distanza, raccolta e caccia — perfetti per un insediamento che vive di ciò che la terra offre. Offrile raccolto e selvaggina al suo altare per ottenere il favore, e la sua benedizione affila ogni freccia che scocchi.",
     },
     tip: {
       en: 'Sacrifice foraged items and hunted game to please Diana early; her boons help you thrive between raids.',
@@ -48,10 +50,12 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Biete gesammelte Güter und Wild, um Diana früh zu gefallen; ihre Segnungen helfen zwischen den Raids.',
       es: 'Sacrifica recolección y caza para complacer a Diana pronto; sus dones ayudan entre incursiones.',
       it: 'Sacrifica raccolto e selvaggina per compiacere Diana presto; i suoi doni aiutano tra un raid e l’altro.',
-    },    meta: [
+    },
+    meta: [
       { label: 'Blessing', value: '+10% Ranged Attack Power' },
+      { label: 'Focus', value: 'Ranged weaponry, gathering & hunting' },
     ],
-
+    flavor: "You have survived so far by your own efforts. Admirable, but remember you are one mortal in a world that is not your friend. Respect it, but never submit to it and you may yet prevail.",
   },
   {
     slug: 'minerva',
@@ -72,11 +76,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Strategia prima della forza.',
     },
     bio: {
-      en: 'Minerva is the goddess of wisdom, justice and law. She grants no direct stat blessing — instead she guides you, offering advice and new tasks to complete. Her owl, the Guardian of Minerva, is the first boss you must overcome.',
-      fr: 'Minerve est la déesse de la sagesse, de la justice et de la loi. Elle n’accorde aucune bénédiction statistique directe — elle vous guide plutôt, vous offrant des conseils et de nouvelles tâches à accomplir. Sa chouette, le Gardien de Minerve, est le premier boss à vaincre.',
-      de: 'Minerva ist die Göttin der Weisheit, der Gerechtigkeit und des Gesetzes. Sie gewährt keinen direkten Stat-Segen — stattdessen führt sie dich, mit Rat und neuen Aufgaben. Ihre Eule, der Gardien der Minerva, ist der erste zu bezwingende Boss.',
-      es: 'Minerva es la diosa de la sabiduría, la justicia y la ley. No concede una bendición de estadísticas directa — en su lugar te guía, ofreciendo consejos y nuevas tareas. Su lechuza, el Guardián de Minerva, es el primer jefe que debes vencer.',
-      it: 'Minerva è la dea della sapienza, della giustizia e della legge. Non concede una benedizione statistica diretta — ti guida invece, offrendo consigli e nuove task. La sua gufo, il Guardiano di Minerva, è il primo boss da sconfiggere.',
+      en: "Minerva is the goddess of wisdom, justice and law. She grants no combat blessing of her own — instead she guides you, offering counsel and a steady stream of tasks that push Rome's restoration forward. Her owl, the Guardian of Minerva, is the first gate you must overcome; its defeat returns part of her memory and unlocks deeper crafting.",
+      fr: "Minerve est la déesse de la sagesse, de la justice et de la loi. Elle n'accorde aucune bénédiction de combat — elle vous guide plutôt, dispensant conseils et tâches qui font avancer la restauration de Rome. Sa chouette, le Gardien de Minerve, est la première porte à vaincre ; sa défaite rend une partie de sa mémoire et débloque l'artisanat avancé.",
+      de: "Minerva ist die Göttin der Weisheit, der Gerechtigkeit und des Gesetzes. Sie gewährt keinen eigenen Kampfsegen — stattdessen führt sie dich, mit Rat und einer Kette von Aufgaben, die Roms Wiederaufbau vorantreiben. Ihre Eule, der Wächter der Minerva, ist das erste zu bezwingende Tor; sein Sieg gibt Teile ihres Gedächtnisses zurück und schaltet tieferes Handwerk frei.",
+      es: "Minerva es la diosa de la sabiduría, la justicia y la ley. No concede bendición de combate — en su lugar te guía, ofreciendo consejos y tareas que impulsan la restauración de Roma. Su lechuza, el Guardián de Minerva, es la primera puerta que debes vencer; al derrotarla recupera parte de su memoria y desbloquea la elaboración avanzada.",
+      it: "Minerva è la dea della sapienza, della giustizia e della legge. Non concede alcuna benedizione di combattimento — ti guida invece, offrendo consigli e incarichi che fanno avanzare il restauro di Roma. La sua gufo, il Guardiano di Minerva, è la prima porta da sconfiggere; con la sua sconfitta riacquista parte della memoria e sblocca l'artigianato avanzato.",
     },
     tip: {
       en: 'Minerva gives no combat bonus herself — but her Guardian is the first boss; overcome it to open the path to later crafting.',
@@ -84,10 +88,12 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Minerva gewährt selbst keinen Kampfbonus — aber ihr Wächter ist der erste Boss; bezwinge ihn, um den Weg zum späteren Basteln zu öffnen.',
       es: 'Minerva no da bonus de combate — pero su Guardián es el primer jefe; véncelo para abrir el camino a la elaboración avanzada.',
       it: 'Minerva non concede bonus di combattimento — ma la sua Guardiana è il primo boss; sconfiggila per aprire la via alla lavorazione avanzata.',
-    },    meta: [
+    },
+    meta: [
       { label: 'Blessing', value: 'No direct stat bonus — guidance & tasks' },
+      { label: 'Focus', value: 'Guidance, quests & tasks (no direct stat)' },
     ],
-
+    flavor: "Your offering demonstrates insight and action, qualities that will serve you well. Always observe, think, and act with purpose. The gods always respond to devotion.",
   },
   {
     slug: 'ceres',
@@ -108,11 +114,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Pane prima delle bandiere.',
     },
     bio: {
-      en: 'Ceres governs fields and food. Restoring her stabilizes your food buffer so citizens never starve.',
-      fr: 'Cérès gouverne champs et nourriture. La restaurer stabilise votre buffer de nourriture pour que les citoyens ne meurent jamais de faim.',
-      de: 'Ceres herrscht über Felder und Nahrung. Ihre Wiederherstellung stabilisiert euren Nahrungspuffer, damit Bürger nie verhungern.',
-      es: 'Ceres gobierna campos y comida. Restaurarla estabiliza tu reserva de alimentos para que nadie pase hambre.',
-      it: 'Cerere governa campi e cibo. Ripristinarla stabilizza la scorta di cibo così i cittadini non patiscono la fame.',
+      en: "Ceres is the goddess of agriculture and fertility. Her worship unlocks buildings and feats centred on feeding your citizens — farms, granaries and the routines that keep a town from starving. Her blessing is the single largest health boost in the pantheon, making your people sturdier against the night.",
+      fr: "Cérès est la déesse de l'agriculture et de la fertilité. Son culte débloque des bâtiments et aptitudes centrés sur la nourriture de vos citoyens — fermes, greniers et routines qui évitent la famine. Sa bénédiction est la plus grande hausse de vie du panthéon, rendant votre peuple plus solide la nuit.",
+      de: "Ceres ist die Göttin des Ackerbaus und der Fruchtbarkeit. Ihr Kult schaltet Gebäude und Talente frei, die auf die Ernährung eurer Bürger ausgerichtet sind — Höfe, Speicher und Routinen gegen den Hunger. Ihr Segen ist der größte Lebens-Bonus des Pantheons und macht euer Volk widerstandsfähiger.",
+      es: "Ceres es la diosa de la agricultura y la fertilidad. Su culto desbloquea edificios y destrezas centrados en alimentar a tus ciudadanos — granjas, graneros y rutinas que evitan el hambre. Su bendición es el mayor aumento de vida del panteón, haciendo a tu gente más resistente.",
+      it: "Cerere è la dea dell'agricoltura e della fertilità. Il suo culto sblocca edifici e talenti incentrati sul nutrire i cittadini — fattorie, granai e routine che tengono lontana la fame. La sua benedizione è il maggior aumento di vita del pantheon, rendendo il popolo più robusto.",
     },
     tip: {
       en: 'Secure Ceres early if your town keeps running out of food.',
@@ -120,10 +126,12 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Sichert Ceres früh, wenn eure Stadt ständig Essen ausgeht.',
       es: 'Asegura a Ceres pronto si tu pueblo se queda sin comida.',
       it: 'Assicurati Cerere presto se la tua città resta spesso senza cibo.',
-    },    meta: [
+    },
+    meta: [
       { label: 'Blessing', value: '+25% Overall Health' },
+      { label: 'Focus', value: 'Food, farms & citizen sustenance' },
     ],
-
+    flavor: "Flourish with my blessings, child.",
   },
   {
     slug: 'mars',
@@ -144,11 +152,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'La lama che non si ottunde mai.',
     },
     bio: {
-      en: 'The patron of soldiers, Mars sharpens every edge and rewards aggressive play. His tech tree favors frontline assaults and rally bonuses.',
-      fr: 'Protecteur des soldats, Mars aiguise chaque lame et récompense l’agression. Son arbre penche pour assauts frontaliers et bonus de rally.',
-      de: 'Der Patron der Soldaten, Mars schärft jede Klinge und belohnt aggressives Spiel. Sein Techbaum begünstigt Frontalangriffe und Rally-Boni.',
-      es: 'Patrón de los soldados, Marte afila cada filo y premia el juego agresivo. Su árbol favorece asaltos frontales y bonos de rally.',
-      it: 'Patrono dei soldati, Marte affila ogni lama e premia il gioco aggressivo. Il suo albero favorisce assalti in prima linea e bonus di rally.',
+      en: "Mars is the god of war and soldiers. His worship unlocks buildings and feats built for the front line — town defenses and the melee weaponry that holds the line when the dead come calling. His blessing hardens every blade you swing.",
+      fr: "Mars est le dieu de la guerre et des soldats. Son culte débloque des bâtiments et aptitudes faits pour le front — défenses de ville et armes de mêlée qui tiennent la ligne quand les morts frappent. Sa bénédiction endurcit chaque lame.",
+      de: "Mars ist der Gott des Krieges und der Soldaten. Sein Kult schaltet Gebäude und Talente für die Front frei — Stadtverteidigung und Nahkampfwaffen, die die Linie halten, wenn die Toten kommen. Sein Segen härtet jede Klinge, die du schwingst.",
+      es: "Marte es el dios de la guerra y los soldados. Su culto desbloquea edificios y destrezas hechos para el frente — defensas urbanas y armas cuerpo a cuerpo que mantienen la línea cuando llegan los muertos. Su bendición endurece cada hoja que blandes.",
+      it: "Marte è il dio della guerra e dei soldati. Il suo culto sblocca edifici e talenti fatti per il fronte — difese cittadine e armi da mischia che tengono la linea quando arrivano i morti. La sua benedizione indurisce ogni lama che impugni.",
     },
     tip: {
       en: 'Stack Mars with your toughest frontline for a brutal assault bonus.',
@@ -156,10 +164,12 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Stapelt Mars mit eurer härtesten Frontline für einen brutalen Assault-Bonus.',
       es: 'Apila Marte con tu frente más dura para un bono de asalto brutal.',
       it: 'Impila Marte con la tua prima linea più solida per un bonus d’assalto brutale.',
-    },    meta: [
+    },
+    meta: [
       { label: 'Blessing', value: '+10% Melee Attack Power' },
+      { label: 'Focus', value: 'Town defenses & melee weaponry' },
     ],
-
+    flavor: "You are now the tip of the spear against Rome's enemies. Remember that win or lose, as long as you keep fighting you are never truly conquered. Roma invicta!",
   },
   {
     slug: 'mercury',
@@ -180,11 +190,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Piedi veloci, forzieri pieni.',
     },
     bio: {
-      en: 'Mercury speeds travel and trade. His favors improve logistics, cart speed and resource exchange — and unlock fast travel between linked altars.',
-      fr: 'Mercure accélère voyages et commerce. Ses faveurs améliorent logistique, vitesse des chariots et échange de ressources — et débloquent le voyage rapide entre autels liés.',
-      de: 'Mercur beschleunigt Reisen und Handel. Seine Gunst verbessert Logistik, Karrengeschwindigkeit und Ressourcentausch — und schaltet schnelles Reisen zwischen verlinkten Altären frei.',
-      es: 'Mercurio acelera viajes y comercio. Sus favores mejoran logística, velocidad de carros e intercambio de recursos — y desbloquean el viaje rápido entre altares enlazados.',
-      it: 'Mercurio accelera viaggi e commercio. I suoi favori migliorano logistica, velocità dei carri e scambio di risorse — e sbloccano il viaggio rapido tra altari collegati.',
+      en: "Mercury is the god of commerce, travellers and merchants. His worship unlocks buildings and feats around transportation, trade and magic — from faster carts to the spells that tip a fight. As Rome's roads once were its veins, his favor keeps your economy moving.",
+      fr: "Mercure est le dieu du commerce, des voyageurs et des marchands. Son culte débloque des bâtiments et aptitudes autour du transport, du négoce et de la magie — chars plus rapides et sorts qui font basculer un combat. Comme les routes furent le sang de Rome, sa faveur garde l'économie en mouvement.",
+      de: "Mercur ist der Gott des Handels, der Reisenden und der Kaufleute. Sein Kult schaltet Gebäude und Talente um Transport, Handel und Magie frei — von schnelleren Karren bis zu Kampfzaubern. Wie Roms Straßen einst ihre Adern waren, hält sein Segen die Wirtschaft in Bewegung.",
+      es: "Mercurio es el dios del comercio, los viajeros y los mercaderes. Su culto desbloquea edificios y destrezas en torno al transporte, el comercio y la magia — de carros más rápidos a hechizos que decantan una batalla. Como las rutas fueron la sangre de Roma, su favor mantiene la economía en marcha.",
+      it: "Mercurio è il dio del commercio, dei viaggiatori e dei mercanti. Il suo culto sblocca edifici e talenti attorno a trasporto, commercio e magia — da carri più veloci agli incantesimi che voltano una battaglia. Come le strade furono il sangue di Roma, il suo favore tiene l'economia in moto.",
     },
     tip: {
       en: 'Lean on Mercury when your base sprawls and hauls get long — he unlocks fast travel.',
@@ -192,10 +202,12 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Verlasst euch auf Mercury, wenn eure Basis wächst und die Transporte lang werden — er schaltet schnelles Reisen frei.',
       es: 'Apóyate en Mercurio cuando tu base se extiende y los traslados se alargan — desbloquea el viaje rápido.',
       it: 'Appoggiati a Mercurio quando la base si espande e i trasporti si allungano — sblocca il viaggio rapido.',
-    },    meta: [
+    },
+    meta: [
       { label: 'Blessing', value: '+10% Magic Attack Power' },
+      { label: 'Focus', value: 'Transportation, trade & magic' },
     ],
-
+    flavor: "An empire's veins are roads and the blood is trade and coin. Rome died, no heart beat. We've got to get that heart started again or Rome will stay dead.",
   },
   {
     slug: 'venus',
@@ -216,11 +228,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Un accampamento felice è un accampamento forte.',
     },
     bio: {
-      en: 'Venus blesses growth and contentment. Her favors raise citizen happiness and birth rate, keeping your settlement productive.',
-      fr: 'Vénus bénit la croissance et le contentement. Ses faveurs élèvent le bonheur et la natalité des citoyens, gardant votre colonie productive.',
-      de: 'Venus segnet Wachstum und Zufriedenheit. Ihre Gunst hebt Bürgerglück und Geburtenrate und hält die Siedlung produktiv.',
-      es: 'Venus bendice el crecimiento y el contento. Sus favores suben la felicidad y natalidad, manteniendo productiva la colonia.',
-      it: 'Venere benedice crescita e contentezza. I suoi favori alzano felicità e natalità, tenendo produttivo l’insediamento.',
+      en: "Venus is the goddess of love, beauty and prosperity. Her worship unlocks buildings and feats around town decoration and the happiness of your citizens — a contented people work harder, breed faster and stay. Her blessing lifts both health and energy across the settlement.",
+      fr: "Vénus est la déesse de l'amour, de la beauté et de la prospérité. Son culte débloque des bâtiments et aptitudes autour de la décoration et du bonheur des citoyens — un peuple content travaille plus, procrée plus et reste. Sa bénédiction élève santé et énergie dans la cité.",
+      de: "Venus ist die Göttin der Liebe, der Schönheit und des Wohlstands. Ihr Kult schaltet Gebäude und Talente um Stadtschmuck und Bürgerglück frei — zufriedene Menschen arbeiten mehr, mehren sich und bleiben. Ihr Segen hebt Gesundheit und Energie in der Siedlung.",
+      es: "Venus es la diosa del amor, la belleza y la prosperidad. Su culto desbloquea edificios y destrezas en torno a la decoración y la felicidad de tus ciudadanos — un pueblo contento trabaja más, se reproduce más y permanece. Su bendición eleva salud y energía en el poblado.",
+      it: "Venere è la dea dell'amore, della bellezza e della prosperità. Il suo culto sblocca edifici e talenti attorno alla decorazione e alla felicità dei cittadini — un popolo contento lavora di più, si moltiplica e resta. La sua benedizione innalza salute ed energia nell'insediamento.",
     },
     tip: {
       en: 'Build her altar early — steady happiness compounds into a larger workforce.',
@@ -228,10 +240,12 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Baut ihren Altar früh — stetige Zufriedenheit wächst zur größeren Belegschaft.',
       es: 'Alza su altar pronto — la felicidad estable se compone en más mano de obra.',
       it: 'Costruisci il suo altare presto — la felicità costante si compile in più forza lavoro.',
-    },    meta: [
+    },
+    meta: [
       { label: 'Blessing', value: '+10% Health, +10 Energy' },
+      { label: 'Focus', value: 'Town decoration & citizen happiness' },
     ],
-
+    flavor: "Save people from loneliness and they will thank you for it. Give them a life where they can desire more than a full belly and live rather than survive, they will love you for it.",
   },
   {
     slug: 'vulcan',
@@ -252,11 +266,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Ciò che il fuoco plasma, il nemico lo teme.',
     },
     bio: {
-      en: 'The divine smith, Vulcan accelerates crafting and improves gear quality. His tree unlocks advanced metallurgy and tool talents.',
-      fr: 'Le forgeron divin, Vulcain accélère l’artisanat et améliore la qualité de l’équipement. Son arbre débloque métallurgie et outils avancés.',
-      de: 'Der göttliche Schmied, Vulcan beschleunigt das Basteln und verbessert die Ausrüstung. Sein Baum schaltet fortgeschrittene Metallurgie und Werkzeug-Talente frei.',
-      es: 'El herrero divino, Vulcano acelera la elaboración y mejora la calidad del equipo. Su árbol desbloquea metalurgia y herramientas avanzadas.',
-      it: 'Il divino fabbro, Vulcano accelera l’artigianato e migliora la qualità dell’equipaggiamento. Il suo albero sblocca metallurgia e talenti da officina.',
+      en: "Vulcan is the god of blacksmiths, volcanoes and fire. His worship unlocks buildings and feats around fuel use, town defenses and resource gathering — the forge-work that arms a growing Rome. Long ago his priests tried to build a metal colossus, the Talos Prototype, to save the city; the attempt failed and the unfinished machine now guards the volcano's endgame.",
+      fr: "Vulcain est le dieu des forgerons, des volcans et du feu. Son culte débloque des bâtiments et aptitudes autour du combustible, des défenses et de la récolte de ressources — le travail de forge qui arme Rome. Jadis, ses prêtres tentèrent de bâtir un colosse de métal, le Talos Prototype, pour sauver la ville ; l'échec laissa la machine inachevée qui garde désormais la fin du volcan.",
+      de: "Vulcan ist der Gott der Schmiede, Vulkane und des Feuers. Sein Kult schaltet Gebäude und Talente um Brennstoff, Stadtverteidigung und Ressourcen frei — die Schmiedearbeit, die ein wachsendes Rom bewaffnet. Einst versuchten seine Priester einen metallenen Koloss, den Talos-Protyp, die Stadt zu retten; der Fehlschlag ließ die unvollendete Maschine die Vulkan-Endgame bewachen.",
+      es: "Vulcano es el dios de los herreros, los volcanes y el fuego. Su culto desbloquea edificios y destrezas en torno al combustible, las defensas y la recolección de recursos — la forja que arma una Roma en crecimiento. Ante sus sacerdotes intentaron construir un coloso de metal, el Talos Prototype, para salvar la ciudad; el intento falló y la máquina inacabada ahora custodia el final del volcán.",
+      it: "Vulcano è il dio dei fabbri, dei vulcani e del fuoco. Il suo culto sblocca edifici e talenti attorno a combustibile, difese cittadine e raccolta di risorse — il lavoro di fucina che arma una Roma che cresce. Un tempo i suoi sacerdoti tentarono di costruire un colosso di metallo, il Talos Prototype, per salvare la città; il tentativo fallì e la macchina incompiuta ora custodisce la fase finale del vulcano.",
     },
     tip: {
       en: 'Prioritize Vulcan for gear-heavy, boss-killing builds.',
@@ -264,13 +278,14 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Priorisiert Vulcan für Ausrüstungs-lastige, Boss-tötende Builds.',
       es: 'Prioriza Vulcano para builds pesados en equipo y mataboss.',
       it: 'Dai priorità a Vulcano per build pesanti di equipaggiamento e boss-killer.',
-    },    meta: [
+    },
+    meta: [
       { label: 'Blessing', value: '+10% Armor' },
+      { label: 'Focus', value: 'Fuel use, defenses & resource gathering' },
     ],
-
+    flavor: "I feel nothing, I see nothing. Even in the deepest bowels of Tartarus I could feel something. You are my only tether to the world, what has happened?",
   },
-
-  // ---------------- BOSSES (real, from official media + guides) ----------------
+// ---------------- BOSSES (real, from official media + guides) ----------------
   {
     slug: 'guardian-of-minerva',
     kind: 'boss',
