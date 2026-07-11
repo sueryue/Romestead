@@ -20,6 +20,7 @@ interface Props {
   jsonLd?: Record<string, unknown>;
   publishedTime?: string;
   breadcrumbs?: { label: string; href?: string }[];
+  ogImage?: string; // explicit path override (e.g. '/og/en/home.png'); default is SITE.ogImage
 }
 
 const {
@@ -31,6 +32,7 @@ const {
   jsonLd,
   publishedTime,
   breadcrumbs,
+  ogImage,
 } = Astro.props;
 
 const ui = getUi(locale);
@@ -47,7 +49,7 @@ const absUrl = (href?: string) => {
   const rel = raw.startsWith(base) ? raw.slice(base.length) || '/' : raw;
   return SITE.url + rel;
 };
-const ogImageAbs = SITE.url + SITE.ogImage;
+const ogImageAbs = SITE.url + (ogImage ?? SITE.ogImage);
 const geo = SITE.geo[locale] ?? SITE.geo.default;
 
 const orgLd = {

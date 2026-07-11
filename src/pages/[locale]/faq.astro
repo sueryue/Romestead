@@ -6,6 +6,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Toc from '../../components/Toc.astro';
 import { getUi } from '../../i18n/ui';
 import { LOCALES, link, pick, type Locale } from '../../i18n/utils';
+import { ogPath } from '../../lib/og';
 import { FAQ } from '../../content/faq';
 import { SITE } from '../../consts';
 
@@ -24,6 +25,7 @@ const toc = FAQ.map((f) => ({ id: f.id, label: pick(f.q, locale) }));
   description={pick(SITE.description, locale)}
   path={path}
   breadcrumbs={[{ label: SITE.name, href: link(locale, '/') }, { label: ui['faq.title'] }]}
+  ogImage={ogPath(locale, 'faq')}
   jsonLd={{
     '@type': 'FAQPage',
     mainEntity: FAQ.map((f) => ({

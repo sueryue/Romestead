@@ -6,6 +6,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import { getUi } from '../../i18n/ui';
 import { LOCALES, link, pick, media, type Locale } from '../../i18n/utils';
+import { ogPath } from '../../lib/og';
 import { WORLD } from '../../content/world';
 import { SITE } from '../../consts';
 
@@ -25,6 +26,7 @@ const intro = pick(WORLD.intro, locale);
   description={intro}
   path={path}
   breadcrumbs={[{ label: SITE.name, href: link(locale, '/') }, { label: ui['nav.world'] }]}
+  ogImage={ogPath(locale, 'world')}
 >
   <Header locale={locale} path={path} />
   <main class="mx-auto max-w-7xl px-4 py-12">

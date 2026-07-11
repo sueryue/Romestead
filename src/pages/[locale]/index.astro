@@ -7,6 +7,7 @@ import YouTube from '../../components/YouTube.astro';
 import Callout from '../../components/Callout.astro';
 import { getUi } from '../../i18n/ui';
 import { LOCALES, link, pick, media, type Locale } from '../../i18n/utils';
+import { ogPath } from '../../lib/og';
 import { GUIDES, getGuide } from '../../content/guides';
 import { ENTRIES, entriesByKind } from '../../content/heroes';
 import { WORLD } from '../../content/world';
@@ -35,6 +36,7 @@ const featuredVideos = [
   description={pick(SITE.description, locale)}
   path={path}
   breadcrumbs={[{ label: SITE.name, href: link(locale, '/') }]}
+  ogImage={ogPath(locale, 'home')}
   jsonLd={{
     '@type': 'VideoGame',
     name: SITE.name,

@@ -2,7 +2,6 @@ import type { APIRoute } from 'astro';
 import { SITE } from '../consts';
 import {
   LOCALES,
-  INDEXED_LOCALES,
   LOCALE_HREFLANG,
   localize,
 } from '../i18n/utils';
@@ -27,7 +26,7 @@ export const GET: APIRoute = () => {
   ];
 
   const urls: string[] = [];
-  for (const loc of INDEXED_LOCALES) {
+  for (const loc of LOCALES) {
     for (const p of paths) {
       // localize() → `/<loc><path>`; ensure trailing slash for directory build
       const u = (SITE.url + localize(loc, p)).replace(/\/?$/, '/');

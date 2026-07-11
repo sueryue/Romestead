@@ -33,10 +33,10 @@ export function isLocale(x: string): x is Locale {
 }
 
 /**
- * Locales with fully translated content. Only these are submitted to search
- * engines via the sitemap; the rest are English fallbacks and would otherwise
- * create near-duplicate URLs. Every language version is still reachable through
- * hreflang alternates emitted inside each indexed URL.
+ * Locales with fully translated content. The sitemap submits every locale
+ * (LOCALES) so search engines discover all hreflang variants; this constant
+ * is kept for cases where only the best-translated locales should be treated
+ * as canonical discovery roots.
  */
 export const INDEXED_LOCALES: Locale[] = ['en'];
 

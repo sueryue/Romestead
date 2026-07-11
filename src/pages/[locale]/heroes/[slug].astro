@@ -8,6 +8,7 @@ import Callout from '../../../components/Callout.astro';
 import RelatedCards from '../../../components/RelatedCards.astro';
 import { getUi } from '../../../i18n/ui';
 import { LOCALES, link, pick, media, type Locale } from '../../../i18n/utils';
+import { ogPath } from '../../../lib/og';
 import { ENTRIES, getEntry } from '../../../content/heroes';
 import { SITE } from '../../../consts';
 
@@ -41,6 +42,7 @@ const related = ENTRIES.filter((e) => e.slug !== slug).slice(0, 4).map((e) => ({
     { label: ui['nav.heroes'], href: link(locale, '/heroes') },
     { label: entry.name },
   ]}
+  ogImage={ogPath(locale, slug)}
   jsonLd={{
     '@type': isBoss ? 'Thing' : 'Person',
     name: entry.name,
