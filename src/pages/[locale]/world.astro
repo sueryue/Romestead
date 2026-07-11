@@ -30,7 +30,7 @@ const intro = pick(WORLD.intro, locale);
 
     <figure class="my-8 flex flex-col items-center">
       <div class="w-full max-w-[320px] rounded-lg border border-gold-600/40">
-        <img src="/og-image.png" alt="Crest of the Stead" width="320" height="168" class="h-auto w-full rounded-lg" />
+        <img src={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}og-image.png`} alt="Crest of the Stead" width="320" height="168" class="h-auto w-full rounded-lg" />
       </div>
       <figcaption class="mt-2 text-xs text-ink-700/60">Crest of the Stead</figcaption>
     </figure>
