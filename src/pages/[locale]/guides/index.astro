@@ -19,7 +19,7 @@ const path = '/guides';
 <Base
   locale={locale}
   title={`${ui['nav.guides']} — ${SITE.name}`}
-  description={SITE.description}
+  description={pick(SITE.description, locale)}
   path={path}
 >
   <Header locale={locale} path={path} />

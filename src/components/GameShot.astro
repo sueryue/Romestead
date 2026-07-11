@@ -10,7 +10,7 @@ interface Props {
   alt?: string;
   class?: string;
 }
-const { scene, locale, caption, alt = 'In-game screenshot of Romestead', class: cls = '' } = Astro.props;
+const { scene, locale, caption, alt = '', class: cls = '' } = Astro.props;
 
 const ui = getUi(locale);
 const label: Record<string, string> = {
@@ -63,17 +63,17 @@ const tierCol = (t: string) => (t === 'S' ? 'oklch(0.74 0.12 82)' : 'oklch(0.80 
             <g font-family="Cinzel, serif" font-size="15" fill="oklch(0.95 0.02 82)">
               <g transform="translate(24,23)">
                 <circle r="11" fill="oklch(0.70 0.02 250)" /><text x="0" y="5" text-anchor="middle" font-size="12">◆</text>
-                <text x="20" y="5" font-family="Newsreader, serif">1.2K Stone</text>
+                <text x="20" y="5" font-family="Newsreader, serif">1.2K {ui['shot.stone']}</text>
               </g>
               <g transform="translate(210,23)">
                 <circle r="11" fill="oklch(0.78 0.10 120)" /><text x="0" y="5" text-anchor="middle" font-size="13">🌾</text>
-                <text x="20" y="5" font-family="Newsreader, serif">8.4K Food</text>
+                <text x="20" y="5" font-family="Newsreader, serif">8.4K {ui['shot.food']}</text>
               </g>
               <g transform="translate(396,23)">
                 <rect x="-11" y="-11" width="22" height="22" rx="4" fill="oklch(0.66 0.16 300)" /><text x="0" y="5" text-anchor="middle" font-size="12">♦</text>
-                <text x="20" y="5" font-family="Newsreader, serif">340 Gems</text>
+                <text x="20" y="5" font-family="Newsreader, serif">340 {ui['shot.gems']}</text>
               </g>
-              <text x="776" y="5" text-anchor="end" font-family="Newsreader, serif" fill="oklch(0.74 0.12 82)">Day 1</text>
+              <text x="776" y="5" text-anchor="end" font-family="Newsreader, serif" fill="oklch(0.74 0.12 82)">{ui['shot.day1']}</text>
             </g>
             <!-- horizon -->
             <line x1="0" y1="320" x2="800" y2="320" stroke="oklch(0.66 0.12 78 / 0.5)" stroke-width="2" />
@@ -82,7 +82,7 @@ const tierCol = (t: string) => (t === 'S' ? 'oklch(0.74 0.12 82)' : 'oklch(0.80 
               <!-- Granary -->
               <rect x="120" y="240" width="120" height="80" rx="6" fill="oklch(0.84 0.04 78)" stroke="oklch(0.66 0.12 78)" stroke-width="2" />
               <path d="M110 240 L180 200 L250 240 Z" fill="oklch(0.50 0.18 27)" />
-              <text x="180" y="300" text-anchor="middle" font-family="Newsreader, serif" font-size="14" fill="oklch(0.32 0.02 60)">Granary</text>
+              <text x="180" y="300" text-anchor="middle" font-family="Newsreader, serif" font-size="14" fill="oklch(0.32 0.02 60)">{ui['shot.granary']}</text>
               <!-- Principia (center, larger) -->
               <rect x="330" y="210" width="150" height="110" rx="6" fill="oklch(0.90 0.03 80)" stroke="url(#goldgrad)" stroke-width="3" />
               <path d="M318 210 L405 158 L492 210 Z" fill="oklch(0.45 0.17 27)" />
@@ -92,13 +92,13 @@ const tierCol = (t: string) => (t === 'S' ? 'oklch(0.74 0.12 82)' : 'oklch(0.80 
               <!-- Wall -->
               <rect x="560" y="250" width="130" height="70" rx="4" fill="oklch(0.84 0.04 78)" stroke="oklch(0.66 0.12 78)" stroke-width="2" />
               <path d="M560 250 h130 v12 h-14 v-6 h-14 v6 h-14 v-6 h-14 v6 h-14 v-6 h-14 v6 h-14 v-6 h-14 v6 h-14 Z" fill="oklch(0.74 0.05 75)" />
-              <text x="625" y="312" text-anchor="middle" font-family="Newsreader, serif" font-size="14" fill="oklch(0.32 0.02 60)">Wall</text>
+              <text x="625" y="312" text-anchor="middle" font-family="Newsreader, serif" font-size="14" fill="oklch(0.32 0.02 60)">{ui['shot.wall']}</text>
             </g>
             <!-- governor avatar -->
             <g transform="translate(60,360)">
               <circle r="26" fill="oklch(0.50 0.18 27)" />
               <text x="0" y="7" text-anchor="middle" font-family="Cinzel, serif" font-size="20" fill="oklch(0.95 0.02 82)">G</text>
-              <text x="36" y="6" font-family="Newsreader, serif" font-size="14" fill="oklch(0.40 0.15 27)">Governor</text>
+              <text x="36" y="6" font-family="Newsreader, serif" font-size="14" fill="oklch(0.40 0.15 27)">{ui['shot.governor']}</text>
             </g>
           </g>
         )}
@@ -155,8 +155,8 @@ const tierCol = (t: string) => (t === 'S' ? 'oklch(0.74 0.12 82)' : 'oklch(0.80 
             <!-- flank arrows -->
             <path d="M40 250 Q120 210 250 230" fill="none" stroke="oklch(0.50 0.18 27)" stroke-width="3" marker-end="url(#ah)" />
             <path d="M760 250 Q680 210 550 230" fill="none" stroke="oklch(0.50 0.18 27)" stroke-width="3" />
-            <text x="140" y="200" font-family="Newsreader, serif" font-size="14" fill="oklch(0.40 0.15 27)">Flank ↗</text>
-            <text x="660" y="200" text-anchor="end" font-family="Newsreader, serif" font-size="14" fill="oklch(0.40 0.15 27)">↖ Flank</text>
+            <text x="140" y="200" font-family="Newsreader, serif" font-size="14" fill="oklch(0.40 0.15 27)">{ui['shot.flank']} ↗</text>
+            <text x="660" y="200" text-anchor="end" font-family="Newsreader, serif" font-size="14" fill="oklch(0.40 0.15 27)">↖ {ui['shot.flank']}</text>
             <defs>
               <marker id="ah" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
                 <path d="M0,0 L6,3 L0,6 Z" fill="oklch(0.50 0.18 27)" />
@@ -186,7 +186,7 @@ const tierCol = (t: string) => (t === 'S' ? 'oklch(0.74 0.12 82)' : 'oklch(0.80 
                 <text x="0" y="6" text-anchor="middle" font-family="Cinzel, serif" font-size="18" fill="oklch(0.24 0.02 60)">{roster[i].init}</text>
               </g>
             ))}
-            <text x="400" y="430" text-anchor="middle" font-family="Newsreader, serif" font-size="13" fill="oklch(0.32 0.02 60)">Tameable boss · screen-wide AoE</text>
+            <text x="400" y="430" text-anchor="middle" font-family="Newsreader, serif" font-size="13" fill="oklch(0.32 0.02 60)">{ui['shot.vergeWyrmNote']}</text>
           </g>
         )}
 
@@ -215,7 +215,7 @@ const tierCol = (t: string) => (t === 'S' ? 'oklch(0.74 0.12 82)' : 'oklch(0.80 
               <rect x="-46" y="-18" width="92" height="36" rx="8" fill="oklch(0.24 0.02 60 / 0.85)" />
               <text x="0" y="6" text-anchor="middle" font-family="Cinzel, serif" font-size="18" fill="oklch(0.74 0.12 82)">0:08</text>
             </g>
-            <text x="400" y="420" text-anchor="middle" font-family="Newsreader, serif" font-size="13" fill="oklch(0.32 0.02 60)">Rally bonus window · Drusus + Octavia</text>
+            <text x="400" y="420" text-anchor="middle" font-family="Newsreader, serif" font-size="13" fill="oklch(0.32 0.02 60)">{ui['shot.raidNote']}</text>
           </g>
         )}
 

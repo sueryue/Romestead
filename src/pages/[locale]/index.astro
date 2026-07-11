@@ -24,7 +24,7 @@ const intro = pick(WORLD.intro, locale);
 <Base
   locale={locale}
   title={`${SITE.name} — ${ui['footer.tagline']}`}
-  description={SITE.description}
+  description={pick(SITE.description, locale)}
   path={path}
   jsonLd={{
     '@type': 'VideoGame',
@@ -100,7 +100,7 @@ const intro = pick(WORLD.intro, locale);
             class="reveal-ready group rounded-lg border border-gold-600/30 bg-parchment-50 p-5 shadow-sm transition-transform hover:-translate-y-1 hover:border-gold-500"
           >
             <div class="mb-3 inline-block rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">
-              {g.category}
+              {ui['cat.' + g.category]}
             </div>
             <h3 class="font-display text-lg font-bold text-ink-800 group-hover:text-roman-600">
               {pick(g.title, locale)}
