@@ -1,0 +1,26 @@
+---
+interface Row {
+  label: string;
+  value: string;
+}
+interface Props {
+  title?: string;
+  rows?: Row[];
+  class?: string;
+}
+const { title, rows = [], class: cls = '' } = Astro.props;
+---
+<aside class={`infobox ${cls}`}>
+  {title && <p class="infobox__title">{title}</p>}
+  {rows.length > 0 && (
+    <dl>
+      {rows.map((r) => (
+        <>
+          <dt>{r.label}</dt>
+          <dd>{r.value}</dd>
+        </>
+      ))}
+    </dl>
+  )}
+  <slot />
+</aside>

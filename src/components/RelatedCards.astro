@@ -1,0 +1,30 @@
+---
+import { media } from '../i18n/utils';
+
+interface Item {
+  href: string;
+  title: string;
+  desc?: string;
+  image?: string;
+}
+interface Props {
+  items: Item[];
+  title?: string;
+  class?: string;
+}
+const { items, title, class: cls = '' } = Astro.props;
+---
+<section class={`related ${cls}`}>
+  {title && <h2 class="related__title">{title}</h2>}
+  <div class="related__grid">
+    {items.map((it) => (
+      <a href={it.href} class="related-card">
+        {it.image && <img src={media(it.image)} alt={it.title} loading="lazy" />}
+        <div>
+          <h3>{it.title}</h3>
+          {it.desc && <p>{it.desc}</p>}
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

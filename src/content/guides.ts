@@ -9,6 +9,7 @@ export interface Guide {
   updated: string;
   title: L10n<string>;
   description: L10n<string>;
+  tip?: L10n<string>;
   cover?: string; // path inside public/media, e.g. 'screens/woods-night.jpg'
   video?: { id: string; title: L10n<string> };
   gallery?: string[];
@@ -21,6 +22,13 @@ export const GUIDES: Guide[] = [
     slug: 'survive-night',
     category: 'survival',
     updated: '2026-07-10',
+    tip: {
+      en: 'Scout toward the map center before you settle — a spot near coal, water and several biome borders saves hundreds of trips later.',
+      fr: 'Explorez vers le centre de la carte avant de vous installer — un point près du charbon, de l’eau et de plusieurs biomes évite des centaines de trajets.',
+      de: 'Kundschafte zur Kartenmitte, bevor du dich niederlässt — ein Platz nahe Kohle, Wasser und mehreren Biom-Grenzen spart später hunderte Fahrten.',
+      es: 'Explora hacia el centro del mapa antes de asentarte — un punto cerca de carbón, agua y varios biomas ahorra cientos de viajes.',
+      it: 'Esplora verso il centro della mappa prima di stabilirti — un punto vicino a carbone, acqua e diversi biomi risparmia centinaia di viaggi.',
+    },
     title: {
       en: 'Survive the Fall: Your First Night',
       fr: 'Survivre à la Chute : votre première nuit',
@@ -73,6 +81,13 @@ export const GUIDES: Guide[] = [
     slug: 'build-town',
     category: 'building',
     updated: '2026-07-10',
+    tip: {
+      en: 'Two citizen perks are quietly dangerous: Gluttonous (more food) and Disloyal (50% slower expertise). Avoid them when recruiting.',
+      fr: 'Deux perks de citoyens sont sournoisement dangereux : Glouton (plus de nourriture) et Déloyal (expertise 50% plus lente). À éviter au recrutement.',
+      de: 'Zwei Bürger-Perks sind heimlich gefährlich: Gefräßig (mehr Essen) und Unloyale (50% langsamere Expertise). Beim Rekrutieren meiden.',
+      es: 'Dos perks de ciudadanos son peligrosos en silencio: Glotón (más comida) y Desleal (expertise 50% más lenta). Evítalos al reclutar.',
+      it: 'Due perk dei cittadini sono subdolamente pericolosi: Goloso (più cibo) e Disleale (expertise 50% più lenta). Evitali al reclutamento.',
+    },
     title: {
       en: 'Rebuild Civilization: Your First Settlement',
       fr: 'Rebâtir la civilisation : votre premier établissement',
@@ -125,6 +140,13 @@ export const GUIDES: Guide[] = [
     slug: 'haul-throw',
     category: 'mechanic',
     updated: '2026-07-09',
+    tip: {
+      en: 'Always carry a Tent — drop it outside a dungeon or boss and you respawn right at the entrance instead of trekking back.',
+      fr: 'Emportez toujours une Tente — posez-la devant un donjon ou boss et vous réapparaissez à l’entrée au lieu de revenir.',
+      de: 'Trag immer ein Zelt — stell es vor einem Dungeon oder Boss auf und du spawns direkt am Eingang statt zurückzulaufen.',
+      es: 'Lleva siempre una Tienda — déjala fuera de un dungeon o jefe y reapareces en la entrada en vez de volver.',
+      it: 'Porta sempre una Tendola — lasciala fuori da un dungeon o boss e rispawni all’ingresso invece di tornare.',
+    },
     title: {
       en: 'No Inventory: Pick Up, Carry, Throw',
       fr: 'Pas d’inventaire : ramassez, portez, lancez',
@@ -177,6 +199,13 @@ export const GUIDES: Guide[] = [
     slug: 'gods-favors',
     category: 'gods',
     updated: '2026-07-08',
+    tip: {
+      en: 'Favors can be reset later by drinking the Canteen of Youth from a level-2 merchant, so experiment early without fear.',
+      fr: 'Les faveurs peuvent être réinitialisées en buvant la Gourde de Jouvence d’un marchand niveau 2 — expérimentez tôt sans crainte.',
+      de: 'Favors lassen sich später mit dem Jugendkrug eines Händlers Stufe 2 zurücksetzen — experimentiere früh ohne Angst.',
+      es: 'Los favores se pueden reiniciar bebiendo la Cantimplora de la Juventud de un mercader nivel 2 — experimenta pronto sin miedo.',
+      it: 'I favori si possono resettare bevendo la Borraccia della Giovinezza di un mercante livello 2 — sperimenta presto senza paura.',
+    },
     title: {
       en: 'Choose Your Gods: Favors & Tech Trees',
       fr: 'Choisissez vos Dieux : faveurs et arbres technologiques',
@@ -229,6 +258,13 @@ export const GUIDES: Guide[] = [
     slug: 'dungeons-bosses',
     category: 'boss',
     updated: '2026-07-07',
+    tip: {
+      en: 'Gear up steadily: Leather → Copper → Bronze/Iron, then legendary. The Volcano biome is close to mandatory in solo play.',
+      fr: 'Montez en armure régulièrement : Cuir → Cuivre → Bronze/Fer, puis légendaire. Le Volcan est quasi obligatoire en solo.',
+      de: 'Bessere stetig deine Ausrüstung: Leder → Kupfer → Bronze/Eisen, dann legendär. Der Vulkan ist solo fast Pflicht.',
+      es: 'Mejora el equipo poco a poco: Cuero → Cobre → Bronce/Hierro, luego legendario. El Volcán es casi obligatorio en solitario.',
+      it: 'Migliora l’armatura costantemente: Cuoio → Rame → Bronzo/Ferro, poi leggendaria. Il Vulcano in solo è quasi obbligatorio.',
+    },
     title: {
       en: 'Dungeons & Bosses: Raid the Hidden Lairs',
       fr: 'Donjons & Boss : envahissez les repaires cachés',
@@ -281,6 +317,13 @@ export const GUIDES: Guide[] = [
     slug: 'co-op',
     category: 'coop',
     updated: '2026-07-06',
+    tip: {
+      en: 'Use SaveSync: the host can share the world save so anyone can take over as admin when the original host is offline.',
+      fr: 'Utilisez SaveSync : l’hôte peut partager la sauvegarde pour qu’un autre devienne admin quand il est hors ligne.',
+      de: 'Nutze SaveSync: Der Host kann die Welt-Save teilen, sodass jeder Admin wird, wenn der Host offline ist.',
+      es: 'Usa SaveSync: el anfitrión puede compartir la partida para que cualquiera sea admin cuando él esté desconectado.',
+      it: 'Usa SaveSync: l’host può condividere il salvataggio così chiunque diventa admin quando l’host originale è offline.',
+    },
     title: {
       en: 'Co-op for 1–8: Build Rome Together',
       fr: 'Co-op de 1 à 8 : construisez Rome ensemble',

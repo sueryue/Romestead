@@ -1,0 +1,46 @@
+---
+import { link, LOCALES, type Locale } from '../i18n/utils';
+import { GUIDES } from '../content/guides';
+import { getUi } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  path: string; // current path without locale, e.g. '/guides/survive-night'
+}
+const { locale, path } = Astro.props;
+const ui = getUi(locale);
+const isActive = (p: string) => (p === '/' ? path === '/' : path === p || path.startsWith(p + '/'));
+---
+<aside class="sidebar">
+  <div class="sidebar__group">
+    <p class="sidebar__heading">{ui['nav.guides']}</p>
+    <ul>
+      <li><a href={link(locale, '/guides')} class={isActive('/guides') ? 'is-active' : ''}>{ui['nav.guides']}</a></li>
+      {GUIDES.map((g) => (
+        <li>
+          <a href={link(locale, `/guides/${g.slug}`)} class={isActive(`/guides/${g.slug}`) ? 'is-active' : ''}>
+            {g.title[locale] ?? g.title.en}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="sidebar__group">
+    <p class="sidebar__heading">{ui['nav.heroes']}</p>
+    <ul>
+      <li><a href={link(locale, '/heroes')} class={isActive('/heroes') ? 'is-active' : ''}>{ui['nav.heroes']}</a></li>
+    </ul>
+  </div>
+  <div class="sidebar__group">
+    <p class="sidebar__heading">{ui['nav.world']}</p>
+    <ul>
+      <li><a href={link(locale, '/world')} class={isActive('/world') ? 'is-active' : ''}>{ui['nav.world']}</a></li>
+    </ul>
+  </div>
+  <div class="sidebar__group">
+    <p class="sidebar__heading">{ui['nav.faq']}</p>
+    <ul>
+      <li><a href={link(locale, '/faq')} class={isActive('/faq') ? 'is-active' : ''}>{ui['nav.faq']}</a></li>
+    </ul>
+  </div>
+</aside>

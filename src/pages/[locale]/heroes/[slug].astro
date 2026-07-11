@@ -2,6 +2,10 @@
 import Base from '../../../layouts/Base.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Infobox from '../../../components/Infobox.astro';
+import Callout from '../../../components/Callout.astro';
+import RelatedCards from '../../../components/RelatedCards.astro';
 import { getUi } from '../../../i18n/ui';
 import { LOCALES, link, pick, media, type Locale } from '../../../i18n/utils';
 import { ENTRIES, getEntry } from '../../../content/heroes';
@@ -18,6 +22,12 @@ const entry = getEntry(slug)!;
 const ui = getUi(locale);
 const path = `/heroes/${slug}`;
 const isBoss = entry.kind === 'boss';
+const related = ENTRIES.filter((e) => e.slug !== slug).slice(0, 4).map((e) => ({
+  href: link(locale, `/heroes/${e.slug}`),
+  title: e.name,
+  desc: pick(e.role, locale),
+  image: e.image,
+}));
 ---
 
 <Base
@@ -34,9 +44,15 @@ const isBoss = entry.kind === 'boss';
   }}
 >
   <Header locale={locale} path={path} />
-  <main class="mx-auto max-w-3xl px-4 py-12">
-    <a href={link(locale, '/heroes')} class="text-sm text-roman-600 hover:underline">← {ui['nav.heroes']}</a>
-    <article class="mt-4 reveal-ready overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm">
+  <main class="mx-auto max-w-5xl px-4 py-12">
+    <Breadcrumbs
+      items={[
+        { label: SITE.name, href: link(locale, '/') },
+        { label: ui['nav.heroes'], href: link(locale, '/heroes') },
+        { label: entry.name },
+      ]}
+    />
+    <article class="mt-6 reveal-ready overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm">
       {entry.image && (
         <img src={media(entry.image)} alt={entry.name} class="h-56 w-full object-cover" />
       )}
@@ -54,11 +70,17 @@ const isBoss = entry.kind === 'boss';
           </span>
         </div>
 
+        {entry.meta && entry.meta.length > 0 && (
+          <Infobox title={ui['atGlance']} rows={entry.meta} class="mt-6 lg:float-right lg:ml-6 lg:mt-2 lg:w-72" />
+        )}
+
         <p class="mt-6 text-lg italic leading-relaxed text-ink-700">“{pick(entry.lead, locale)}”</p>
         <p class="mt-4 leading-relaxed text-ink-700">{pick(entry.bio, locale)}</p>
-        <p class="mt-4 rounded bg-gold-400/10 p-3 text-sm text-ink-700">💡 <span data-i18n="hero.tip">{ui['hero.tip']}</span>: {pick(entry.tip, locale)}</p>
+        <Callout variant="tip" title={ui['hero.tip']} class="mt-4 clear-both">{pick(entry.tip, locale)}</Callout>
       </div>
     </article>
+
+    <RelatedCards items={related} title={ui['nav.heroes']} class="mt-12" />
   </main>
   <Footer locale={locale} />
 </Base>

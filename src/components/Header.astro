@@ -15,6 +15,7 @@ const links = [
   { href: link(locale, '/guides'), label: ui['nav.guides'], match: '/guides' },
   { href: link(locale, '/heroes'), label: ui['nav.heroes'], match: '/heroes' },
   { href: link(locale, '/world'), label: ui['nav.world'], match: '/world' },
+  { href: link(locale, '/faq'), label: ui['nav.faq'], match: '/faq' },
 ];
 const isActive = (m: string) =>
   m === '/' ? path === '/' || path === '' : path.startsWith(m);

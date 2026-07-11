@@ -1,0 +1,19 @@
+---
+interface Item {
+  id: string;
+  label: string;
+}
+interface Props {
+  items: Item[];
+  title?: string;
+}
+const { items, title = 'On this page' } = Astro.props;
+---
+<nav class="toc" aria-label="Table of contents">
+  <p class="toc__title">{title}</p>
+  <ul>
+    {items.map((i) => (
+      <li><a href={`#${i.id}`}>{i.label}</a></li>
+    ))}
+  </ul>
+</nav>

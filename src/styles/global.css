@@ -83,3 +83,332 @@ body {
   }
 }
 
+/* =========================================================
+   Guide-hub / wiki components
+   ========================================================= */
+
+/* --- Breadcrumbs --- */
+.breadcrumbs {
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+.breadcrumbs .sep {
+  margin: 0 0.5rem;
+  color: color-mix(in oklch, var(--gold) 70%, transparent);
+}
+.breadcrumbs a {
+  color: var(--roman);
+  text-decoration: none;
+}
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+.breadcrumbs .current {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* --- Callouts --- */
+.callout {
+  margin: 1.5rem 0;
+  padding: 0.9rem 1.1rem;
+  border-left: 4px solid var(--gold);
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: color-mix(in oklch, var(--gold) 12%, transparent);
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+.callout p { margin: 0; }
+.callout__title {
+  margin: 0 0 0.35rem !important;
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+.callout--tip { border-color: oklch(0.55 0.13 150); background: oklch(0.95 0.04 150); }
+.callout--info { border-color: oklch(0.55 0.12 230); background: oklch(0.96 0.03 230); }
+.callout--danger { border-color: var(--roman); background: color-mix(in oklch, var(--roman) 12%, transparent); }
+.callout--warning { border-color: oklch(0.70 0.14 75); background: oklch(0.96 0.05 80); }
+
+/* --- Infobox (at-a-glance stats) --- */
+.infobox {
+  margin: 0 0 1.5rem;
+  border: 1px solid color-mix(in oklch, var(--gold) 35%, transparent);
+  border-radius: 0.6rem;
+  background: color-mix(in oklch, var(--parchment-200) 60%, white);
+  overflow: hidden;
+}
+.infobox__title {
+  margin: 0 !important;
+  padding: 0.6rem 1rem;
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.infobox dl {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
+}
+.infobox dt {
+  font-weight: 700;
+  color: var(--roman);
+  font-size: 0.85rem;
+}
+.infobox dd {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+/* --- Table of contents (On this page) --- */
+.with-toc {
+  display: grid;
+  gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .with-toc { grid-template-columns: minmax(0, 1fr) 230px; align-items: start; }
+}
+.toc {
+  border: 1px solid color-mix(in oklch, var(--gold) 30%, transparent);
+  border-radius: 0.6rem;
+  padding: 1rem 1.1rem;
+  background: color-mix(in oklch, var(--parchment-100) 70%, white);
+  font-size: 0.9rem;
+}
+@media (min-width: 1024px) {
+  .toc { position: sticky; top: 6rem; }
+}
+.toc__title {
+  margin: 0 0 0.6rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--roman);
+}
+.toc ul { margin: 0; padding: 0; list-style: none; }
+.toc li { margin: 0.15rem 0; }
+.toc a {
+  color: var(--ink);
+  text-decoration: none;
+  display: block;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.3rem;
+  border-left: 2px solid transparent;
+}
+.toc a:hover {
+  background: color-mix(in oklch, var(--gold) 15%, transparent);
+  border-left-color: var(--gold);
+  color: var(--roman);
+}
+
+/* --- Related cards --- */
+.related { margin-top: 3rem; }
+.related__title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--roman);
+  margin-bottom: 1rem;
+}
+.related__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+.related-card {
+  display: block;
+  border: 1px solid color-mix(in oklch, var(--gold) 25%, transparent);
+  border-radius: 0.6rem;
+  overflow: hidden;
+  background: var(--parchment-50);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.related-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+.related-card img { width: 100%; height: 110px; object-fit: cover; }
+.related-card div { padding: 0.8rem 1rem; }
+.related-card h3 {
+  margin: 0 0 0.3rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1rem;
+  color: var(--roman);
+}
+.related-card p { margin: 0; font-size: 0.85rem; color: color-mix(in oklch, var(--ink) 80%, transparent); }
+
+/* --- Wiki sidebar nav --- */
+.sidebar {
+  border: 1px solid color-mix(in oklch, var(--gold) 25%, transparent);
+  border-radius: 0.6rem;
+  padding: 1rem 1.1rem;
+  background: color-mix(in oklch, var(--parchment-100) 70%, white);
+  font-size: 0.92rem;
+}
+@media (min-width: 1024px) {
+  .sidebar { position: sticky; top: 6rem; }
+}
+.sidebar__group { margin-bottom: 1.1rem; }
+.sidebar__group:last-child { margin-bottom: 0; }
+.sidebar__heading {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--roman);
+  margin-bottom: 0.4rem;
+}
+.sidebar ul { margin: 0; padding: 0; list-style: none; }
+.sidebar li { margin: 0.1rem 0; }
+.sidebar a {
+  display: block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.3rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+}
+.sidebar a:hover { background: color-mix(in oklch, var(--gold) 15%, transparent); color: var(--roman); }
+.sidebar a.is-active {
+  background: color-mix(in oklch, var(--roman) 12%, transparent);
+  border-left-color: var(--roman);
+  font-weight: 600;
+  color: var(--roman);
+}
+
+/* --- Category cards (homepage hub) --- */
+.category-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.category-card {
+  display: block;
+  padding: 1.4rem 1.2rem;
+  border: 1px solid color-mix(in oklch, var(--gold) 30%, transparent);
+  border-radius: 0.7rem;
+  background: linear-gradient(160deg, color-mix(in oklch, var(--parchment-100) 80%, white), color-mix(in oklch, var(--gold) 10%, white));
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px -12px color-mix(in oklch, var(--roman) 40%, transparent);
+}
+.category-card__icon {
+  font-size: 1.8rem;
+}
+.category-card h3 {
+  margin: 0.5rem 0 0.3rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--roman);
+}
+.category-card p { margin: 0; font-size: 0.88rem; color: color-mix(in oklch, var(--ink) 78%, transparent); }
+
+/* --- Quick reference (compact lists on homepage) --- */
+.quickref-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.quickref {
+  border: 1px solid color-mix(in oklch, var(--gold) 25%, transparent);
+  border-radius: 0.6rem;
+  padding: 1rem 1.1rem;
+  background: var(--parchment-50);
+}
+.quickref h3 {
+  margin: 0 0 0.6rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--roman);
+}
+.quickref ul { margin: 0; padding: 0; list-style: none; }
+.quickref li { padding: 0.25rem 0; border-bottom: 1px dashed color-mix(in oklch, var(--gold) 25%, transparent); }
+.quickref li:last-child { border-bottom: none; }
+.quickref a { color: var(--ink); text-decoration: none; }
+.quickref a:hover { color: var(--roman); text-decoration: underline; }
+.quickref .muted { color: color-mix(in oklch, var(--ink) 55%, transparent); font-size: 0.82rem; }
+
+/* --- Generic data table --- */
+.guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+.guide-table th,
+.guide-table td {
+  border: 1px solid color-mix(in oklch, var(--gold) 30%, transparent);
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+.guide-table thead th {
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+}
+.guide-table tbody tr:nth-child(even) { background: color-mix(in oklch, var(--parchment-200) 50%, white); }
+
+/* --- FAQ --- */
+.faq-item {
+  border: 1px solid color-mix(in oklch, var(--gold) 25%, transparent);
+  border-radius: 0.6rem;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  background: var(--parchment-50);
+}
+.faq-item h3 {
+  margin: 0 0 0.4rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1.1rem;
+  color: var(--roman);
+}
+.faq-item p { margin: 0; line-height: 1.65; }
+
+/* --- Stat pill (biome stage) --- */
+.stat-pill {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: color-mix(in oklch, var(--roman) 14%, transparent);
+  color: var(--roman);
+  vertical-align: middle;
+}
+
+/* --- Guide category filter --- */
+.guide-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.guide-filters button {
+  cursor: pointer;
+  border: 1px solid color-mix(in oklch, var(--gold) 35%, transparent);
+  background: var(--parchment-50);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+.guide-filters button:hover { border-color: var(--gold); color: var(--roman); }
+.guide-filters button.is-active { background: var(--roman); color: var(--parchment); border-color: var(--roman); }
+

@@ -2,6 +2,8 @@
 import Base from '../../../layouts/Base.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Sidebar from '../../../components/Sidebar.astro';
 import { getUi } from '../../../i18n/ui';
 import { LOCALES, link, pick, media, type Locale } from '../../../i18n/utils';
 import { GUIDES } from '../../../content/guides';
@@ -14,6 +16,7 @@ export function getStaticPaths() {
 const { locale } = Astro.params as { locale: Locale };
 const ui = getUi(locale);
 const path = '/guides';
+const categories = ['survival', 'building', 'mechanic', 'gods', 'boss', 'coop'] as const;
 ---
 
 <Base
@@ -23,30 +26,68 @@ const path = '/guides';
   path={path}
 >
   <Header locale={locale} path={path} />
-  <main class="mx-auto max-w-6xl px-4 py-12">
-    <h1 class="font-display text-3xl font-black text-roman-700">{ui['nav.guides']}</h1>
-    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {GUIDES.map((g) => (
-        <a
-          href={link(locale, `/guides/${g.slug}`)}
-          class="reveal-ready group overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm transition-transform hover:-translate-y-1 hover:border-gold-500"
-        >
-          {g.cover && (
-            <img src={media(g.cover)} alt={pick(g.title, locale)} loading="lazy" class="h-40 w-full object-cover" />
-          )}
-          <div class="p-5">
-            <div class="mb-3 inline-block rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">
-              {ui['cat.' + g.category]}
-            </div>
-            <h2 class="font-display text-lg font-bold text-ink-800 group-hover:text-roman-600">
-              {pick(g.title, locale)}
-            </h2>
-            <p class="mt-2 text-sm text-ink-700/80">{pick(g.description, locale)}</p>
-            <p class="mt-3 text-xs text-ink-700/60">↻ {g.updated}</p>
-          </div>
-        </a>
-      ))}
+  <main class="mx-auto max-w-7xl px-4 py-12">
+    <Breadcrumbs items={[{ label: SITE.name, href: link(locale, '/') }, { label: ui['nav.guides'] }]} />
+    <div class="mt-6 lg:grid lg:grid-cols-[220px_1fr] lg:gap-8">
+      <aside class="hidden lg:block">
+        <Sidebar locale={locale} path={path} />
+      </aside>
+      <div>
+        <h1 class="font-display text-3xl font-black text-roman-700">{ui['nav.guides']}</h1>
+        <p class="mt-3 text-lg text-ink-700">{pick(SITE.description, locale)}</p>
+
+        <div class="guide-filters mt-8" data-filter>
+          <button type="button" data-cat="all" class="is-active">{ui['all']}</button>
+          {categories.map((c) => (
+            <button type="button" data-cat={c}>{ui['cat.' + c]}</button>
+          ))}
+        </div>
+
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-grid>
+          {GUIDES.map((g) => (
+            <a
+              href={link(locale, `/guides/${g.slug}`)}
+              data-cat={g.category}
+              class="guide-card reveal-ready group overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm transition-transform hover:-translate-y-1 hover:border-gold-500"
+            >
+              {g.cover && (
+                <img src={media(g.cover)} alt={pick(g.title, locale)} loading="lazy" class="h-40 w-full object-cover" />
+              )}
+              <div class="p-5">
+                <div class="mb-3 inline-block rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">
+                  {ui['cat.' + g.category]}
+                </div>
+                <h2 class="font-display text-lg font-bold text-ink-800 group-hover:text-roman-600">
+                  {pick(g.title, locale)}
+                </h2>
+                <p class="mt-2 text-sm text-ink-700/80">{pick(g.description, locale)}</p>
+                <p class="mt-3 text-xs text-ink-700/60">↻ {g.updated}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   </main>
   <Footer locale={locale} />
+
+  <script is:inline>
+    (function () {
+      var root = document.querySelector('[data-filter]');
+      var grid = document.querySelector('[data-grid]');
+      if (!root || !grid) return;
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('[data-cat]'));
+      root.addEventListener('click', function (e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        var cat = btn.getAttribute('data-cat');
+        root.querySelectorAll('button').forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        cards.forEach(function (c) {
+          var show = cat === 'all' || c.getAttribute('data-cat') === cat;
+          c.style.display = show ? '' : 'none';
+        });
+      });
+    })();
+  </script>
 </Base>
