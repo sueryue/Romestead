@@ -64,6 +64,7 @@ const pageLd = jsonLd
 <!doctype html>
 <html lang={locale}>
   <head>
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#2b2620" />
@@ -132,6 +133,29 @@ const pageLd = jsonLd
     <!-- Client scripts: i18n dynamic switch -->
     <script>
       import '../scripts/i18n-client.ts';
+    </script>
+
+    <!-- Reveal-on-scroll: add .is-visible when .reveal-ready enters viewport.
+         Inline (not bundled) so content can never be left permanently hidden. -->
+    <script is:inline>
+      (function () {
+        var els = document.querySelectorAll('.reveal-ready');
+        function revealAll() {
+          for (var i = 0; i < els.length; i++) els[i].classList.add('is-visible');
+        }
+        if (!('IntersectionObserver' in window)) { revealAll(); return; }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              io.unobserve(e.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+        els.forEach(function (el) { io.observe(el); });
+        // Safety net: guarantee content is visible even if observer misbehaves
+        setTimeout(revealAll, 2500);
+      })();
     </script>
   </body>
 </html>
