@@ -372,6 +372,127 @@ export const GUIDES: Guide[] = [
       ],
     },
   },
+  {
+    slug: 'professions',
+    category: 'mechanic',
+    updated: '2026-07-11',
+    title: {
+      en: 'Choose Your Path: Professions & Citizens',
+      fr: 'Choisissez votre voie : professions et citoyens',
+      de: 'Wähle deinen Weg: Berufe & Bürger',
+      es: 'Elige tu camino: profesiones y ciudadanos',
+      it: 'Scegli la tua strada: professioni e cittadini',
+    },
+    description: {
+      en: 'Eight starting professions, each with a small skill edge. Plus how to recruit and keep citizens fed, housed and loyal.',
+      fr: 'Huit professions de départ, chacune avec un léger bonus de compétence. Et comment recruter et garder les citoyens nourris, logés et loyaux.',
+      de: 'Acht Startberufe, jeder mit kleinem Skill-Vorteil. Plus: Bürger rekrutieren und satt, untergebracht und loyal halten.',
+      es: 'Ocho profesiones iniciales, cada una con una pequeña ventaja de habilidad. Y cómo reclutar y mantener ciudadanos alimentados, alojados y leales.',
+      it: 'Otto professioni iniziali, ciascuna con un piccolo vantaggio di abilità. E come reclutare e mantenere i cittadini nutriti, alloggiati e leali.',
+    },
+    tip: {
+      en: 'Profession skill bonuses are small (about 1.5–5%) — your playstyle matters far more than your starting pick.',
+    },
+    cover: 'screens/construct-sites.jpg',
+    sections: {
+      en: [
+        { h: 'Eight professions', p: ['At character creation you pick one of eight professions. Each grants a small starting bonus to a matching skill:', 'Swords +5 Swords · Spears +5 Spears · Throwing +5 Throwing · Shields +5 Shields · Construction +5 Construction · Mining +5 Mining · Woodcutting +5 Woodcutting · Scrolls +5 Scrolls.', 'These edges are minor (about 1.5–5%) and skills keep growing by using the right weapon or tool, so your profession never locks you out of anything.'] },
+        { h: 'Recruiting citizens', p: ['Survivors are scattered in camps, outposts, ruins and cages across the world. Free a build slot first, then recruit them into your town.', 'The Lumberyard and Leatherworker each house 1 citizen; an Insula houses 3. Plan housing before you recruit.'] },
+        { h: 'Keep them fed and loyal', p: ['Citizens need a place to eat and sleep — fail either and they leave. Build Food Storage and keep it stocked so they stay happy and productive.', 'Watch Loyalty, Hunger, Happiness and Food Cost: an underfed, unhappy citizen takes a stat penalty, while loyalty grants bonuses.'] },
+      ],
+    },
+  },
+  {
+    slug: 'armor-gear',
+    category: 'building',
+    updated: '2026-07-11',
+    title: {
+      en: 'Gear Up: Armor Tiers & Suffixes',
+      fr: 'Équipez-vous : niveaux d’armure et suffixes',
+      de: 'Ausrüsten: Rüstungs-Stufen & Suffixe',
+      es: 'Equípate: niveles de armadura y sufijos',
+      it: 'Attrezzati: livelli di armatura e suffissi',
+    },
+    description: {
+      en: 'From Civilian rags to Legendary plate. How armor tiers progress and the random suffixes that make every piece unique.',
+      fr: 'Des haillons civils à la plaque Légendaire. Comment progressent les niveaux et les suffixes aléatoires qui rendent chaque pièce unique.',
+      de: 'Von Zivil-Lumpen zu Legendärer Platte. Wie Rüstungs-Stufen fortschreiten und die zufälligen Suffixe jede Piece einzigartig machen.',
+      es: 'De los harapos civiles a la placa Legendaria. Cómo avanzan los niveles de armadura y los sufijos aleatorios que hacen única cada pieza.',
+      it: 'Dagli stracci civili alla piastra Leggendaria. Come avanzano i livelli e i suffissi casuali che rendono unica ogni pezzo.',
+    },
+    tip: {
+      en: 'Suffixes are rolled when the Blacksmith or Leatherworker finishes a piece — a "Legendary" roll adds +2% Energy Regen and resistances.',
+    },
+    cover: 'screens/desert-town.png',
+    sections: {
+      en: [
+        { h: 'Tier progression', p: ['Armor is made by the Blacksmith or Leatherworker; some pieces need recipe scrolls found in the world.', 'Tiers run Civilian (starter) → Leather (+3 Armor, Leatherworker Lv.1) → Copper → Bronze → Iron → Legendary (expertise 20+). Higher tiers mean more Armor and better survival.'] },
+        { h: 'Random suffixes', p: ['When a crafter finishes a piece, it may gain extra stats and a named suffix:', 'Anti-Hex (+5 Magic Armor, -2% Energy Regen) · Bulwark (+10% Knockback Resist, -2% Energy Regen) · Harden (+1 Armor, -1% Energy Regen) · Pristine (+5% Melee Dmg, +2% resistances) · Masterwork (+1% Energy Regen, +1% resistances) · Legendary (+2% Energy Regen, +2% resistances).'] },
+      ],
+    },
+  },
+  {
+    slug: 'bosses',
+    category: 'boss',
+    updated: '2026-07-11',
+    title: {
+      en: 'Bosses: How to Find & Defeat Them',
+      fr: 'Boss : comment les trouver et les vaincre',
+      de: 'Bosse: So findest und besiegst du sie',
+      es: 'Jefes: cómo encontrarlos y derrotarlos',
+      it: 'Boss: come trovarli e sconfiggerli',
+    },
+    description: {
+      en: 'Five brutal bosses gate your progression. Where to find each, how they are summoned, and what they drop.',
+      fr: 'Cinq boss brutaux bloquent votre progression. Où trouver chacun, comment les invoquer et ce qu’ils lâchent.',
+      de: 'Fünf brute Bosse sperren deinen Fortschritt. Wo jeder zu finden ist, wie man sie beschwört und was sie droppen.',
+      es: 'Cinco jefes brutales bloquean tu progreso. Dónde encontrar cada uno, cómo invocarlos y qué sueltan.',
+      it: 'Cinque boss brutali bloccano la progressione. Dove trovare ciascuno, come evocarli e cosa lasciano.',
+    },
+    tip: {
+      en: 'Most bosses must be faced several times to collect every drop — build a farm route, not a one-shot plan.',
+    },
+    cover: 'screens/owl-1.jpg',
+    sections: {
+      en: [
+        { h: 'The five bosses', p: ['Romestead currently features five bosses, each found in a specific way — some roam the world, others must be summoned by destroying an object in a set location.', 'Defeating them grants random rewards (armor, accessories, weapons, materials); you usually fight the same boss several times to get everything.'] },
+        { h: 'Guardian of Minerva', p: ['Minerva’s owl, the first hard gate. It lurks in a ruin in a random direction from the map center (Plains). With its defeat Minerva returns part of her memory and aids you further.'] },
+        { h: 'Cyclops — The Eye', p: ['Found in the Desert. Defeating it drops the Logistics Tent, which automates your production lines — a pivotal mid-game unlock.'] },
+        { h: 'Pyzifax', p: ['The desert satyr warlord who has taken up arms against Rome. Track down his base in the Desert to draw him out.'] },
+        { h: 'Great Phoenix of Arabia & Talos Prototype', p: ['Both dwell in the Volcano endgame. The Phoenix is reborn in its crater; the Talos Prototype is Vulcan’s unfinished metal colossus. Come heavily prepared.'] },
+      ],
+    },
+  },
+  {
+    slug: 'gods',
+    category: 'gods',
+    updated: '2026-07-11',
+    title: {
+      en: 'The Seven Gods: Worship & Blessings',
+      fr: 'Les sept dieux : culte et bénédictions',
+      de: 'Die sieben Götter: Verehrung & Segnungen',
+      es: 'Los siete dioses: culto y bendiciones',
+      it: 'I sette dei: culto e benedizioni',
+    },
+    description: {
+      en: 'Diana, Minerva, Ceres, Mars, Mercury, Venus and Vulcan. What each god grants and how worship powers your town.',
+      fr: 'Diana, Minerva, Cérès, Mars, Mercure, Vénus et Vulcain. Ce que chaque dieu accorde et comment le culte anime votre ville.',
+      de: 'Diana, Minerva, Ceres, Mars, Merkur, Venus und Vulcan. Was jeder Gott gewährt und wie Verehrung deine Stadt stärkt.',
+      es: 'Diana, Minerva, Ceres, Marte, Mercurio, Venus y Vulcano. Lo que otorga cada dios y cómo el culto impulsa tu ciudad.',
+      it: 'Diana, Minerva, Cerere, Marte, Mercurio, Venere e Vulcano. Ciò che concede ogni dio e come il culto potenzia la città.',
+    },
+    tip: {
+      en: 'Each god’s Blessing is a permanent stat boost — stack them via the Altar to tailor your build.',
+    },
+    cover: 'screens/town-nice.jpg',
+    sections: {
+      en: [
+        { h: 'Worship through the Altar', p: ['Offerings at the Altar earn Worship Points and unlock buildings and feats tied to each deity. Minerva directs you with tasks; the rest grant Blessings.', 'Each Blessing is a permanent boost — choose gods that match your playstyle (ranged, melee, magic, defense, health, economy).'] },
+        { h: 'The pantheon', p: ['Diana — nature, hunting, the Moon: +10% Ranged Attack Power.', 'Ceres — agriculture, fertility: +25% Overall Health.', 'Mars — war, soldiers: +10% Melee Attack Power.', 'Mercury — commerce, travel: +10% Magic Attack Power.', 'Venus — love, beauty, prosperity: +10% Health, +10 Energy.', 'Vulcan — forge, fire: +10% Armor.'] },
+        { h: 'Minerva’s role', p: ['Minerva (wisdom, justice, law) gives no direct stat blessing but guides you with advice and tasks; her owl, the Guardian of Minerva, is the first boss you must overcome.'] },
+      ],
+    },
+  },
 ];
 
 export function getGuide(slug: string): Guide | undefined {

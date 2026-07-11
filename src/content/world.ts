@@ -27,6 +27,14 @@ export const WORLD = {
         es: 'Tranquilo de día; los primeros Caídos se mueven de noche.',
         it: 'Tranquillo di giorno; i primi Caduti si agitano di notte.',
       },
+      resources: ['Wood', 'Stone', 'Coal', 'Plant Fiber', 'Flint', 'Clay', 'Berries', 'Water'],
+      creatures: ['Fallen husks', 'Wildlife (deer, rabbits)'],
+      notes: {
+        en: [
+          'You always spawn at the center of the map, inside a Plains tile.',
+          'The Guardian of Minerva’s nest sits in a ruin, in a random direction from the center.',
+        ],
+      },
     },
     {
       name: { en: 'Forest', fr: 'Forêts', de: 'Wald', es: 'Bosques', it: 'Foreste' },
@@ -45,6 +53,14 @@ export const WORLD = {
         de: 'Härtere nächtliche Begegnungen und streunende Bestien.',
         es: 'Encuentros nocturnos más duros y bestias errantes.',
         it: 'Incontri notturni più duri e bestie vaganti.',
+      },
+      resources: ['Wood', 'Resin', 'Mushrooms', 'Herbs', 'Bones', 'Clay'],
+      creatures: ['Wolves', 'Bears', 'Boars', 'Bark-back'],
+      notes: {
+        en: [
+          'The Lumberyard can only be built on Forest tiles — keep a forest foothold.',
+          'Some buildings gain bonuses or behave differently on Forest tiles; buildable space is tight.',
+        ],
       },
     },
     {
@@ -65,6 +81,14 @@ export const WORLD = {
         es: 'Calor, tormentas de arena y saqueadores agresivos.',
         it: 'Caldo, tempeste di sabbia e razziatori aggressivi.',
       },
+      resources: ['Sand', 'Clay', 'Copper Ore', 'Aureus (gold)', 'Stone', 'Sulphur'],
+      creatures: ['Desert Satyrs', 'Scorpions', 'Pyzifax’s raiders'],
+      notes: {
+        en: [
+          'The Desert appears in roughly the same area every world — the first major difficulty spike.',
+          'Resources are scarce and some buildings have limited or no function on Desert tiles.',
+        ],
+      },
     },
     {
       name: { en: 'Volcano', fr: 'Volcan', de: 'Vulkan', es: 'Volcán', it: 'Vulcano' },
@@ -83,6 +107,14 @@ export const WORLD = {
         de: 'Der Phönix, der Vulkan-Tentakel und Magmaströme.',
         es: 'El Fénix, el Tentáculo Volcánico y ríos de magma.',
         it: 'La Fenice, il Tentacolo Vulcanico e fiumi di magma.',
+      },
+      resources: ['Obsidian', 'Sulphur', 'Coal', 'Ore', 'Lava Rock'],
+      creatures: ['Fire Elementals', 'Talos Prototype', 'Great Phoenix of Arabia', 'Volcano Tendril'],
+      notes: {
+        en: [
+          'Extremely hostile: new hazards and construction challenges at a much higher level.',
+          'Do not approach unprepared — bring serious gear, food buffs and Worship bonuses.',
+        ],
       },
     },
     {
@@ -103,6 +135,23 @@ export const WORLD = {
         es: 'Peligros mezclados de todos los demás biomas.',
         it: 'Pericoli misti da tutti gli altri biomi.',
       },
+      resources: ['Clay', 'Water', 'Reeds', 'Mushrooms', 'Bones'],
+      creatures: ['Wraiths', 'Bog wildlife'],
+      notes: {
+        en: [
+          'Still unfinished: two areas joined by a river, mixing resources and creatures from other biomes.',
+          'High Wraith spawn rate makes it dangerous despite the familiar loot.',
+        ],
+      },
     },
-  ] as { name: L10n<string>; stage?: L10n<string>; desc: L10n<string>; image?: string; threats?: L10n<string> }[],
+  ] as {
+    name: L10n<string>;
+    stage?: L10n<string>;
+    desc: L10n<string>;
+    image?: string;
+    threats?: L10n<string>;
+    resources?: string[];
+    creatures?: string[];
+    notes?: L10n<string[]>;
+  }[],
 };

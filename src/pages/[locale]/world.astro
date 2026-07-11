@@ -55,6 +55,33 @@ const intro = pick(WORLD.intro, locale);
                       ⚔ {pick(b.threats, locale)}
                     </p>
                   )}
+                  {b.resources && b.resources.length > 0 && (
+                    <div class="mt-3">
+                      <p class="text-[11px] font-bold uppercase tracking-wide text-ink-500">{ui['world.resources']}</p>
+                      <div class="mt-1 flex flex-wrap gap-1.5">
+                        {b.resources.map((r) => (
+                          <span class="rounded-full bg-gold-600/15 px-2 py-0.5 text-[11px] font-medium text-gold-700">{r}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {b.creatures && b.creatures.length > 0 && (
+                    <div class="mt-3">
+                      <p class="text-[11px] font-bold uppercase tracking-wide text-ink-500">{ui['world.creatures']}</p>
+                      <div class="mt-1 flex flex-wrap gap-1.5">
+                        {b.creatures.map((c) => (
+                          <span class="rounded-full bg-roman-600/12 px-2 py-0.5 text-[11px] font-medium text-roman-600">{c}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {b.notes && (
+                    <ul class="mt-3 space-y-1 text-xs text-ink-600/90">
+                      {pick(b.notes, locale).map((n) => (
+                        <li class="flex gap-1.5"><span class="text-gold-600">•</span><span>{n}</span></li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             ))}
