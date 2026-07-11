@@ -51,11 +51,11 @@ export const FAQ: FaqItem[] = [
       it: 'Come funziona la progressione?',
     },
     a: {
-      en: 'Your Altar is the main progression gate. Offer items to the gods to earn Worship Points and permanent buffs. The first hard gate is the Guardian of Minerva — a giant owl; defeat it and offer its Eye at the Altar to unlock new crafting.',
-      fr: 'L’Autel est la porte de progression. Offrez des objets aux dieux pour gagner des Points de Culte et des buffs permanents. La première porte dure est le Gardien de Minerve — une chouette géante ; vainquez-la et offrez son Œil pour débloquer l’artisanat.',
-      de: 'Dein Altar ist das Haupt-Tor. Biete den Göttern Gegenstände an, um Kult-Punkte und dauerhafte Buffs zu erhalten. Das erste harte Tor ist der Wächter der Minerva — eine Rieseneule; besiege sie und opfere ihr Auge, um das Basteln freizuschalten.',
-      es: 'El Altar es la puerta principal. Ofrece objetos a los dioses para ganar Puntos de Culto y buffs permanentes. La primera puerta dura es el Guardián de Minerva — una lechuza gigante; véncela y ofrece su Ojo para desbloquear la elaboración.',
-      it: 'L’Altare è la porta principale. Offri oggetti agli dèi per ottenere Punti di Culto e buff permanenti. La prima porta dura è la Guardiana di Minerva — un gufo gigante; sconfiggila e offri il suo Occhio per sbloccare la lavorazione.',
+      en: 'Your Altar is the main progression gate. Offer items to the gods to earn Worship Points and permanent buffs. The first hard gate is the Guardian of Minerva — a giant owl; defeat it to unlock new crafting.',
+      fr: 'L’Autel est la porte de progression. Offrez des objets aux dieux pour gagner des Points de Culte et des buffs permanents. La première porte dure est le Gardien de Minerve — une chouette géante ; vainquez-la pour débloquer l’artisanat.',
+      de: 'Dein Altar ist das Haupt-Tor. Biete den Göttern Gegenstände an, um Kult-Punkte und dauerhafte Buffs zu erhalten. Das erste harte Tor ist der Wächter der Minerva — eine Rieseneule; besiege sie, um das Basteln freizuschalten.',
+      es: 'El Altar es la puerta principal. Ofrece objetos a los dioses para ganar Puntos de Culto y buffs permanentes. La primera puerta dura es el Guardián de Minerva — una lechuza gigante; véncela para desbloquear la elaboración.',
+      it: 'L’Altare è la porta principale. Offri oggetti agli dèi per ottenere Punti di Culto e buff permanenti. La prima porta dura è la Guardiana di Minerva — un gufo gigante; sconfiggila per sbloccare la lavorazione.',
     },
   },
   {

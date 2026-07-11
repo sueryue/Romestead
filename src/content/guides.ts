@@ -273,11 +273,11 @@ export const GUIDES: Guide[] = [
       it: 'Dungeon e Boss: razzia i covi nascosti',
     },
     description: {
-      en: 'Gather your party and descend. Loot, puzzles and brutal bosses like the Cyclops, Owl, Phoenix and Pyzifax await.',
-      fr: 'Rassemblez votre groupe et descendez. Butin, énigmes et boss brutaux comme le Cyclope, la Chouette, le Phénix et Pyzifax vous attendent.',
-      de: 'Versammelt eure Gruppe und steigt hinab. Beute, Rätsel und brutale Bosse wie Zyklop, Eule, Phönix und Pyzifax warten.',
-      es: 'Reúne a tu grupo y desciende. Botín, acertijos y jefes brutales como el Cíclope, el Búho, el Fénix y Pyzifax aguardan.',
-      it: 'Raduna il gruppo e scendi. Bottino, enigmi e boss brutali come Ciclope, Gufo, Fenice e Pyzifax ti attendono.',
+      en: 'Gather your party and descend. Loot, puzzles and brutal bosses like the Cyclops, Guardian of Minerva, Great Phoenix of Arabia and Pyzifax await.',
+      fr: 'Rassemblez votre groupe et descendez. Butin, énigmes et boss brutaux comme le Cyclope, le Gardien de Minerve, la Grande Phénix d’Arabie et Pyzifax vous attendent.',
+      de: 'Versammelt eure Gruppe und steigt hinab. Beute, Rätsel und brutale Bosse wie Zyklop, Gardien der Minerva, der Große Phönix von Arabien und Pyzifax warten.',
+      es: 'Reúne a tu grupo y desciende. Botín, acertijos y jefes brutales como el Cíclope, el Guardián de Minerva, la Gran Fénix de Arabia y Pyzifax aguardan.',
+      it: 'Raduna il gruppo e scendi. Bottino, enigmi e boss brutali come Ciclope, Guardiano di Minerva, la Grande Fenice d’Arabia e Pyzifax ti attendono.',
     },
     cover: 'screens/dungeon.jpg',
     video: {
@@ -288,27 +288,27 @@ export const GUIDES: Guide[] = [
     sections: {
       en: [
         { h: 'Find the hidden locations', p: ['Challenging bosses lurk in dungeons filled with tough enemies and trap-laden puzzles.', 'Explore the wilds and unique biomes to uncover their lairs.'] },
-        { h: 'Bring your build', p: ['Every boss demands a different approach. Use your party’s unique builds and buffs to succeed.', 'The Cyclops, Owl Sentinel, Phoenix, Volcano Tendril and Pyzifax each reward different tactics.'] },
+        { h: 'Bring your build', p: ['Every boss demands a different approach. Use your party’s unique builds and buffs to succeed.', 'The Cyclops, Guardian of Minerva, Great Phoenix of Arabia, Talos Prototype and Pyzifax each reward different tactics.'] },
         { h: 'Loot and learn', p: ['Clear a dungeon and you walk out with gear, recipes and the confidence to go deeper.', 'Practice runs teach attack patterns better than any guide.'] },
       ],
       fr: [
         { h: 'Trouvez les lieux cachés', p: ['Des boss redoutables se cachent dans des donjons pleins d’ennemis coriaces et de puzzles piégés.', 'Explorez les lieux sauvages et les biomes uniques pour découvrir leurs repaires.'] },
-        { h: 'Amenez votre build', p: ['Chaque boss exige une approche différente. Utilisez les builds uniques de votre groupe et vos buffs.', 'Le Cyclope, la Chouette, le Phénix, le Résurgence volcanique et Pyzifax récompensent chacun d’autres tactiques.'] },
+        { h: 'Amenez votre build', p: ['Chaque boss exige une approche différente. Utilisez les builds uniques de votre groupe et vos buffs.', 'Le Cyclope, le Gardien de Minerve, la Grande Phénix d’Arabie, le Talos Prototype et Pyzifax récompensent chacun d’autres tactiques.'] },
         { h: 'Butin et leçon', p: ['Videz un donjon et ressortez avec équipement, recettes et la confiance d’aller plus loin.', 'Les runs d’entraînement enseignent les patterns mieux que tout guide.'] },
       ],
       de: [
         { h: 'Finde die versteckten Orte', p: ['Gefährliche Bosse lauern in Dungeons voller harter Feinde und fallengespickter Rätsel.', 'Erkundet die Wildnis und einzigartige Biome, um ihre Lair zu finden.'] },
-        { h: 'Bring deinen Build', p: ['Jeder Boss verlangt einen anderen Ansatz. Nutzt die einzigartigen Builds und Buffs eurer Gruppe.', 'Zyklop, Eulen-Wächter, Phönix, Vulkan-Tentakel und Pyzifax belohnen je eigene Taktiken.'] },
+        { h: 'Bring deinen Build', p: ['Jeder Boss verlangt einen anderen Ansatz. Nutzt die einzigartigen Builds und Buffs eurer Gruppe.', 'Zyklop, Gardien der Minerva, der Große Phönix von Arabien, der Talos Prototype und Pyzifax belohnen je eigene Taktiken.'] },
         { h: 'Beute und Lehre', p: ['Räumt ein Dungeon und geht mit Ausrüstung, Rezepten und der Zuversicht, tiefer zu gehen.', 'Übungsläufe lehren Angriffsmuster besser als jeder Guide.'] },
       ],
       es: [
         { h: 'Encuentra los lugares ocultos', p: ['Jefes desafiantes acechan en mazmorras llenas de enemigos duros y acertijos con trampas.', 'Explora la naturaleza y biomas únicos para descubrir sus guaridas.'] },
-        { h: 'Trae tu build', p: ['Cada jefe exige un enfoque distinto. Usa los builds únicos de tu grupo y tus buffs.', 'El Cíclope, el Centinela Búho, el Fénix, el Tentáculo Volcánico y Pyzifax premian distintas tácticas.'] },
+        { h: 'Trae tu build', p: ['Cada jefe exige un enfoque distinto. Usa los builds únicos de tu grupo y tus buffs.', 'El Cíclope, el Guardián de Minerva, la Gran Fénix de Arabia, el Talos Prototype y Pyzifax premian distintas tácticas.'] },
         { h: 'Botín y aprendizaje', p: ['Limpia una mazmorra y sales con equipo, recetas y la confianza para ir más hondo.', 'Las corridas de práctica enseñan patrones mejor que cualquier guía.'] },
       ],
       it: [
         { h: 'Trova i luoghi nascosti', p: ['Boss temibili si nascondono in dungeon pieni di nemici duri e rompicapi trappolati.', 'Esplora i luoghi selvaggi e i biomi unici per scoprirne i covi.'] },
-        { h: 'Porta il tuo build', p: ['Ogni boss richiede un approccio diverso. Usa i build unici del gruppo e i tuoi buff.', 'Ciclope, Sentinella Gufo, Fenice, Tentacolo Vulcanico e Pyzifax premiano ciascuno tattiche diverse.'] },
+        { h: 'Porta il tuo build', p: ['Ogni boss richiede un approccio diverso. Usa i build unici del gruppo e i tuoi buff.', 'Ciclope, Guardiano di Minerva, la Grande Fenice d’Arabia, il Talos Prototype e Pyzifax premiano ciascuno tattiche diverse.'] },
         { h: 'Bottino e lezione', p: ['Svuota un dungeon e ne esci con equipaggiamento, ricette e la sicurezza di scendere più a fondo.', 'Le corse di prova insegnano gli schemi meglio di qualsiasi guida.'] },
       ],
     },

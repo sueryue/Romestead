@@ -48,7 +48,10 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Biete gesammelte Güter und Wild, um Diana früh zu gefallen; ihre Segnungen helfen zwischen den Raids.',
       es: 'Sacrifica recolección y caza para complacer a Diana pronto; sus dones ayudan entre incursiones.',
       it: 'Sacrifica raccolto e selvaggina per compiacere Diana presto; i suoi doni aiutano tra un raid e l’altro.',
-    },
+    },    meta: [
+      { label: 'Blessing', value: '+10% Ranged Attack Power' },
+    ],
+
   },
   {
     slug: 'minerva',
@@ -69,19 +72,22 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Strategia prima della forza.',
     },
     bio: {
-      en: 'Minerva is the patron of wisdom and craft. She is often the first god players invest in — honoring her unlocks the altar’s deeper technology tree and the progression that gates later crafting.',
-      fr: 'Minerve est la patronne de la sagesse et de l’artisanat. C’est souvent la première déesse investie — l’honorer débloque l’arbre technologique profond de l’autel et la progression qui verrouille l’artisanat avancé.',
-      de: 'Minerva ist die Patronin von Weisheit und Handwerk. Sie ist oft der erste Gott, in den man investiert — ihre Ehrung schaltet den tieferen Technologiezweig des Altars und die Progression frei, die späteres Basteln freischaltet.',
-      es: 'Minerva es la patrona de la sabiduría y el arte. Suelve ser la primera diosa en la que se invierte — honrarla desbloquea el árbol tecnológico profundo del altar y la progresión que limita la elaboración avanzada.',
-      it: 'Minerva è la patrona di sapienza e artigianato. È spesso la prima dea in cui si investe — onorarla sblocca il ramo tecnologico profondo dell’altare e la progressione che blocca la lavorazione avanzata.',
+      en: 'Minerva is the goddess of wisdom, justice and law. She grants no direct stat blessing — instead she guides you, offering advice and new tasks to complete. Her owl, the Guardian of Minerva, is the first boss you must overcome.',
+      fr: 'Minerve est la déesse de la sagesse, de la justice et de la loi. Elle n’accorde aucune bénédiction statistique directe — elle vous guide plutôt, vous offrant des conseils et de nouvelles tâches à accomplir. Sa chouette, le Gardien de Minerve, est le premier boss à vaincre.',
+      de: 'Minerva ist die Göttin der Weisheit, der Gerechtigkeit und des Gesetzes. Sie gewährt keinen direkten Stat-Segen — stattdessen führt sie dich, mit Rat und neuen Aufgaben. Ihre Eule, der Gardien der Minerva, ist der erste zu bezwingende Boss.',
+      es: 'Minerva es la diosa de la sabiduría, la justicia y la ley. No concede una bendición de estadísticas directa — en su lugar te guía, ofreciendo consejos y nuevas tareas. Su lechuza, el Guardián de Minerva, es el primer jefe que debes vencer.',
+      it: 'Minerva è la dea della sapienza, della giustizia e della legge. Non concede una benedizione statistica diretta — ti guida invece, offrendo consigli e nuove task. La sua gufo, il Guardiano di Minerva, è il primo boss da sconfiggere.',
     },
     tip: {
-      en: 'Many players favor Minerva first: defeating her Guardian opens the altar tree that gates later crafting.',
-      fr: 'Beaucoup privilégient Minerve en premier : vaincre son Gardien ouvre l’arbre de l’autel qui verrouille l’artisanat.',
-      de: 'Viele setzen zuerst auf Minerva: Ihr Wächter freizuschalten öffnet den Altar-Baum, der späteres Basteln freischaltet.',
-      es: 'Muchos prefieren Minerva primero: vencer a su Guardián abre el árbol del altar que limita la elaboración.',
-      it: 'Molti scelgono prima Minerva: sconfiggere la sua Guardiana apre l’albero dell’altare che blocca la lavorazione avanzata.',
-    },
+      en: 'Minerva gives no combat bonus herself — but her Guardian is the first boss; overcome it to open the path to later crafting.',
+      fr: 'Minerve n’accorde aucun bonus de combat — mais son Gardien est le premier boss ; vainquez-le pour ouvrir la voie à l’artisanat avancé.',
+      de: 'Minerva gewährt selbst keinen Kampfbonus — aber ihr Wächter ist der erste Boss; bezwinge ihn, um den Weg zum späteren Basteln zu öffnen.',
+      es: 'Minerva no da bonus de combate — pero su Guardián es el primer jefe; véncelo para abrir el camino a la elaboración avanzada.',
+      it: 'Minerva non concede bonus di combattimento — ma la sua Guardiana è il primo boss; sconfiggila per aprire la via alla lavorazione avanzata.',
+    },    meta: [
+      { label: 'Blessing', value: 'No direct stat bonus — guidance & tasks' },
+    ],
+
   },
   {
     slug: 'ceres',
@@ -114,7 +120,10 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Sichert Ceres früh, wenn eure Stadt ständig Essen ausgeht.',
       es: 'Asegura a Ceres pronto si tu pueblo se queda sin comida.',
       it: 'Assicurati Cerere presto se la tua città resta spesso senza cibo.',
-    },
+    },    meta: [
+      { label: 'Blessing', value: '+25% Overall Health' },
+    ],
+
   },
   {
     slug: 'mars',
@@ -147,7 +156,10 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Stapelt Mars mit eurer härtesten Frontline für einen brutalen Assault-Bonus.',
       es: 'Apila Marte con tu frente más dura para un bono de asalto brutal.',
       it: 'Impila Marte con la tua prima linea più solida per un bonus d’assalto brutale.',
-    },
+    },    meta: [
+      { label: 'Blessing', value: '+10% Melee Attack Power' },
+    ],
+
   },
   {
     slug: 'mercury',
@@ -180,7 +192,10 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Verlasst euch auf Mercury, wenn eure Basis wächst und die Transporte lang werden — er schaltet schnelles Reisen frei.',
       es: 'Apóyate en Mercurio cuando tu base se extiende y los traslados se alargan — desbloquea el viaje rápido.',
       it: 'Appoggiati a Mercurio quando la base si espande e i trasporti si allungano — sblocca il viaggio rapido.',
-    },
+    },    meta: [
+      { label: 'Blessing', value: '+10% Magic Attack Power' },
+    ],
+
   },
   {
     slug: 'venus',
@@ -213,7 +228,10 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Baut ihren Altar früh — stetige Zufriedenheit wächst zur größeren Belegschaft.',
       es: 'Alza su altar pronto — la felicidad estable se compone en más mano de obra.',
       it: 'Costruisci il suo altare presto — la felicità costante si compile in più forza lavoro.',
-    },
+    },    meta: [
+      { label: 'Blessing', value: '+10% Health, +10 Energy' },
+    ],
+
   },
   {
     slug: 'vulcan',
@@ -246,12 +264,15 @@ export const ENTRIES: LoreEntry[] = [
       de: 'Priorisiert Vulcan für Ausrüstungs-lastige, Boss-tötende Builds.',
       es: 'Prioriza Vulcano para builds pesados en equipo y mataboss.',
       it: 'Dai priorità a Vulcano per build pesanti di equipaggiamento e boss-killer.',
-    },
+    },    meta: [
+      { label: 'Blessing', value: '+10% Armor' },
+    ],
+
   },
 
   // ---------------- BOSSES (real, from official media + guides) ----------------
   {
-    slug: 'owl',
+    slug: 'guardian-of-minerva',
     kind: 'boss',
     name: 'Guardian of Minerva',
     role: {
@@ -270,11 +291,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Ali silenti, artigli letali.',
     },
     bio: {
-      en: 'A colossal owl and the first hard gate of the campaign. No amount of base-building bypasses it — defeat it, then offer its Eye at the Altar to unlock new crafting recipes and push deeper into the game.',
-      fr: 'Une chouette colossale et la première porte difficile de la campagne. Aucune construction ne contourne ça — vainquez-la, puis offrez son Œil à l’Autel pour débloquer de nouvelles recettes.',
-      de: 'Eine kolossale Eule und das erste harte Tor der Kampagne. Kein Basenbau umgeht es — besiege sie und opfere ihr Auge am Altar, um neue Rezepte freizuschalten.',
-      es: 'Una lechuza colosal y la primera puerta dura de la campaña. Ninguna construcción la esquiva — véncela y ofrece su Ojo en el Altar para desbloquear recetas.',
-      it: 'Un gufo colossale e la prima porta dura della campagna. Nessuna costruzione la aggira — sconfiggila e offri il suo Occhio all’Altare per sbloccare nuove ricette.',
+      en: 'A colossal owl and the first hard gate of the campaign — the physical manifestation of Minerva’s wisdom, acting without purpose until defeated. The divine flame reveals its ruin on your map. No base-building bypasses it: defeat it to restore Minerva’s memory and unlock new crafting recipes.',
+      fr: 'Une chouette colossale et la première porte difficile de la campagne — la manifestation physique de la sagesse de Minerve, agissant sans but tant qu’elle n’est pas vaincue. La flamme divine révèle sa ruine sur la carte. Aucune construction ne contourne ça : vainquez-la pour restaurer la mémoire de Minerve et débloquer de nouvelles recettes.',
+      de: 'Eine kolossale Eule und das erste harte Tor der Kampagne — die physische Manifestation von Minervas Weisheit, die zwecklos handelt, bis sie besiegt wird. Die göttliche Flamme enthüllt ihre Ruine auf der Karte. Kein Basenbau umgeht es: Besiege sie, um Minervas Gedächtnis wiederherzustellen und neue Rezepte freizuschalten.',
+      es: 'Una lechuza colosal y la primera puerta dura de la campaña — la manifestación física de la sabiduría de Minerva, que actúa sin propósito hasta ser vencida. La llama divina revela su ruina en el mapa. Ninguna construcción la esquiva: véncela para restaurar la memoria de Minerva y desbloquear recetas.',
+      it: 'Un gufo colossale e la prima porta dura della campagna — la manifestazione fisica della saggezza di Minerva, che agisce senza scopo finché non viene sconfitta. La fiamma divina rivela la sua rovina sulla mappa. Nessuna costruzione la aggira: sconfiggila per ripristinare la memoria di Minerva e sbloccare nuove ricette.',
     },
     tip: {
       en: 'Do not attempt it in starter gear. Upgrade to at least Copper armor and stock health potions from the merchant first.',
@@ -328,9 +349,9 @@ export const ENTRIES: LoreEntry[] = [
     ],
   },
   {
-    slug: 'phoenix',
+    slug: 'great-phoenix-of-arabia',
     kind: 'boss',
-    name: 'Phoenix',
+    name: 'Great Phoenix of Arabia',
     role: {
       en: 'Volcanic Boss',
       fr: 'Boss Volcanique',
@@ -363,39 +384,42 @@ export const ENTRIES: LoreEntry[] = [
     meta: [{ label: 'Biome', value: 'Volcano' }],
   },
   {
-    slug: 'volcano-tendril',
+    slug: 'talos-prototype',
     kind: 'boss',
-    name: 'Volcano Tendril',
+    name: 'Talos Prototype',
     role: {
-      en: 'Volcano Boss',
-      fr: 'Boss du Volcan',
-      de: 'Vulkan-Boss',
-      es: 'Jefe del Volcán',
-      it: 'Boss del Vulcano',
+      en: 'Volcano Boss — Temple of Vulcan',
+      fr: 'Boss du Volcan — Temple de Vulcain',
+      de: 'Vulkan-Boss — Tempel des Vulcan',
+      es: 'Jefe del Volcán — Templo de Vulcano',
+      it: 'Boss Vulcanico — Tempio di Vulcano',
     },
     image: 'screens/volcanic-tendril.jpg',
     lead: {
-      en: 'The mountain’s reaching hand.',
-      fr: 'La main tendue de la montagne.',
-      de: 'Die greifende Hand des Berges.',
-      es: 'La mano que se extiende de la montaña.',
-      it: 'La mano che si protende dalla montagna.',
+      en: 'Vulcan’s unfinished colossus.',
+      fr: 'Le colosse inachevé de Vulcain.',
+      de: 'Vulcans unvollendeter Koloss.',
+      es: 'El coloso inacabado de Vulcano.',
+      it: 'Il colosso incompiuto di Vulcano.',
     },
     bio: {
-      en: 'A colossal appendage that tears from the volcano itself, sweeping the arena with molten strikes. Avoid the telegraphed sweep, then hit the exposed core for heavy damage.',
-      fr: 'Un appendice colossal qui jaillit du volcan même, balayant l’arène de frappes en fusion. Évitez le balayage télégraphié, puis frappez le cœur exposé.',
-      de: 'Ein kolossaler Anhängsel, das sich aus dem Vulkan selbst reißt und die Arena mit glühenden Schlägen fegt. Weicht dem angedeuteten Feger aus, dann trefft den freigelegten Kern.',
-      es: 'Un apéndice colosal que se desgarra del volcán, barriendo la arena con golpes fundidos. Evita el barrido telegrafiado, luego golpea el núcleo expuesto.',
-      it: 'Un appendice colossale che si squarcia dal vulcano stesso, spazzando l’arena con colpi fusi. Evita la spazzata telegrafata, poi colpisci il nucleo esposto.',
+      en: 'A mechanical guardian built by Vulcan and his worshippers in a failed attempt to save Rome. The divine flame reveals the Temple of Vulcan on your map. This hulking automaton guards the volcano endgame — bring heavy firepower and don’t fight it alone.',
+      fr: 'Un gardien mécanique construit par Vulcain et ses fidèles lors d’une tentative avortée de sauver Rome. La flamme divine révèle le Temple de Vulcain sur la carte. Cet automate massif garde la fin du jeu du volcan — amenez une forte puissance de feu et ne le combattez pas seul.',
+      de: 'Ein mechanischer Wächter, den Vulcan und seine Anhänger in einem gescheiterten Versuch bauten, Rom zu retten. Die göttliche Flamme enthüllt den Tempel des Vulcan auf der Karte. Dieser massive Automat bewacht das Vulkan-Endgame — bringe schwere Feuerkraft und kämpfe nicht allein.',
+      es: 'Un guardián mecánico construido por Vulcano y sus fieles en un intento fallido por salvar Roma. La llama divina revela el Templo de Vulcano en el mapa. Este autómata enorme custodia el final del volcán — lleva mucho poder de fuego y no lo enfrentes solo.',
+      it: 'Un guardiano meccanico costruito da Vulcano e i suoi fedeli in un tentativo fallito di salvare Roma. La fiamma divina rivela il Tempio di Vulcano sulla mappa. Questo automa massiccio sorveglia la fase finale del vulcano — porta grande potenza di fuoco e non affrontarlo da solo.',
     },
     tip: {
-      en: 'Avoid the telegraphed sweep, then hit the exposed core for heavy damage.',
-      fr: 'Évitez le balayage télégraphié, puis frappez le cœur exposé pour de lourds dégâts.',
-      de: 'Weicht dem angedeuteten Feger aus, dann trefft den freigelegten Kern für schweren Schaden.',
-      es: 'Evita el barrido telegrafiado, luego golpea el núcleo expuesto para gran daño.',
-      it: 'Evita la spazzata telegrafata, poi colpisci il nucleo esposto per danni pesanti.',
+      en: 'A slow, armored automaton: flank it, target its joints, and keep healing ready for the long fight.',
+      fr: 'Un automate lent et blindé : encerclez-le, visez ses articulations et gardez des soins prêts pour le long combat.',
+      de: 'Ein langsamer, gepanzerter Automat: Flanke ihn, ziele auf seine Gelenke und habe Heilung für den langen Kampf bereit.',
+      es: 'Un autómata lento y blindado: flanquéalo, apunta a sus articulaciones y ten curación lista para la larga batalla.',
+      it: 'Un automa lento e corazzato: attaccalo sui fianchi, mira alle giunture e tieni la cura pronta per il lungo scontro.',
     },
-    meta: [{ label: 'Biome', value: 'Volcano' }],
+    meta: [
+      { label: 'Biome', value: 'Volcano' },
+      { label: 'Location', value: 'Temple of Vulcan' },
+    ],
   },
   {
     slug: 'pyzifax',
@@ -417,11 +441,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Antico e vorace.',
     },
     bio: {
-      en: 'A primeval worm-thing that lurks in the deepest dungeons, devouring light and hope alike. Bait its charge, then flank the exposed side while it recovers.',
-      fr: 'Une chose-ver antique qui rôde dans les donjons les plus profonds, dévorant lumière et espoir. Provoquez sa charge, puis flanquez le flanc exposé.',
-      de: 'Ein urtümliches Wurmwesen, das in den tiefsten Dungeons lauert und Licht wie Hoffnung verschlingt. Ködert seinen Ansturm, dann flankt die freigelegte Seite.',
-      es: 'Una cosa-gusano primigenia que acecha en las mazmorras más profundas, devorando luz y esperanza. Provoca su embestida, luego flanquea el costado expuesto.',
-      it: 'Un essere-verme primordiale che si nasconde nei dungeon più profondi, divorando luce e speranza. Provoca la sua carica, poi attaccane il fianco esposto mentre recupera.',
+      en: 'A terrifying entity that commands the desert satyrs who have taken up arms against Rome. Track down its base in the Desert to draw it out and break the rebellion. Defeating it yields random gear, accessories, weapons and materials.',
+      fr: 'Une entité terrifiante qui commande les satyres du désert ayant pris les armes contre Rome. Traquez sa base dans le Désert pour le faire sortir et briser la rébellion. Le vaincre donne au hasard équipement, accessoires, armes et matériaux.',
+      de: 'Ein furchterregendes Wesen, das die Wüsten-Satyrn befehligt, die gegen Rom die Waffen erhoben haben. Spüre seine Basis in der Wüste auf, um ihn hervorzulocken und den Aufstand zu brechen. Sein Sieg gibt zufällige Ausrüstung, Accessoires, Waffen und Materialien.',
+      es: 'Una entidad terrorífica que manda a los sátiros del desierto que tomaron las armas contra Roma. Rastrea su base en el Desierto para sacarlo y romper la rebelión. Vencerlo da equipo, accesorios, armas y materiales al azar.',
+      it: 'Un’entità terrorizzante che comanda i satiri del deserto che hanno preso le armi contro Roma. Rintraccia la sua base nel Deserto per stanarlo e spezzare la ribellione. Sconfiggerlo dà equipaggiamento, accessori, armi e materiali casuali.',
     },
     tip: {
       en: 'Bait its charge, then flank the exposed side while it recovers.',
@@ -430,7 +454,7 @@ export const ENTRIES: LoreEntry[] = [
       es: 'Provoca su embestida, luego flanquea el costado expuesto mientras recupera.',
       it: 'Provoca la sua carica, poi attaccane il fianco esposto mentre recupera.',
     },
-    meta: [{ label: 'Location', value: 'Deep Dungeons' }],
+    meta: [{ label: 'Biome', value: 'Desert' }],
   },
 ];
 
