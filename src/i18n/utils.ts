@@ -46,6 +46,21 @@ export function localize(locale: Locale, path = ''): string {
   return `/${locale}${clean}`;
 }
 
+/**
+ * Prepend the Astro `base` path (e.g. `/Romestead`) so in-site links resolve
+ * correctly when the site is published under a sub-path on GitHub Pages.
+ * Without this, `/en/guides` is treated as root-relative and 404s.
+ */
+export function withBase(p: string): string {
+  const base = import.meta.env.BASE_URL || '';
+  return base.replace(/\/?$/, '/') + p.replace(/^\//, '');
+}
+
+/** Localized, base-aware href for in-site `<a href>` / `<option value>`. */
+export function link(locale: Locale, path = ''): string {
+  return withBase(localize(locale, path));
+}
+
 /** Strip the leading /<locale> segment from a pathname. */
 export function stripLocale(pathname: string): string {
   const seg = pathname.split('/')[1];

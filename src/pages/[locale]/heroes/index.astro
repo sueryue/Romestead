@@ -3,7 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { getUi } from '../../../i18n/ui';
-import { LOCALES, localize, pick, type Locale } from '../../../i18n/utils';
+import { LOCALES, link, pick, type Locale } from '../../../i18n/utils';
 import { HEROES } from '../../../content/heroes';
 import { SITE } from '../../../consts';
 
@@ -39,7 +39,7 @@ const tiers = ['S', 'A', 'B', 'C'] as const;
           <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {row.map((h) => (
               <a
-                href={localize(locale, `/heroes/${h.slug}`)}
+                href={link(locale, `/heroes/${h.slug}`)}
                 class="reveal-ready rounded-lg border border-gold-600/30 bg-parchment-50 p-4 shadow-sm transition-transform hover:-translate-y-1"
               >
                 <div class="flex items-center gap-3">

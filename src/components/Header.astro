@@ -1,6 +1,6 @@
 ---
 import { getUi } from '../i18n/ui';
-import { LOCALES, LOCALE_NAMES, localize, type Locale } from '../i18n/utils';
+import { LOCALES, LOCALE_NAMES, link, type Locale } from '../i18n/utils';
 import { STORE } from '../consts';
 
 interface Props {
@@ -11,10 +11,10 @@ const { locale, path } = Astro.props;
 const ui = getUi(locale);
 
 const links = [
-  { href: localize(locale, '/'), label: ui['nav.home'], match: '/' },
-  { href: localize(locale, '/guides'), label: ui['nav.guides'], match: '/guides' },
-  { href: localize(locale, '/heroes'), label: ui['nav.heroes'], match: '/heroes' },
-  { href: localize(locale, '/world'), label: ui['nav.world'], match: '/world' },
+  { href: link(locale, '/'), label: ui['nav.home'], match: '/' },
+  { href: link(locale, '/guides'), label: ui['nav.guides'], match: '/guides' },
+  { href: link(locale, '/heroes'), label: ui['nav.heroes'], match: '/heroes' },
+  { href: link(locale, '/world'), label: ui['nav.world'], match: '/world' },
 ];
 const isActive = (m: string) =>
   m === '/' ? path === '/' || path === '' : path.startsWith(m);
@@ -22,7 +22,7 @@ const isActive = (m: string) =>
 
 <header class="sticky top-0 z-50 border-b border-gold-600/30 bg-parchment-100/90 pt-[env(safe-area-inset-top)] backdrop-blur">
   <nav class="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4">
-    <a href={localize(locale, '/')} class="font-display text-base font-bold text-roman-600 sm:text-xl">
+    <a href={link(locale, '/')} class="font-display text-base font-bold text-roman-600 sm:text-xl">
       ⚜ {''}Romestead
     </a>
 
@@ -60,7 +60,7 @@ const isActive = (m: string) =>
         class="max-w-[7rem] rounded border border-gold-600/40 bg-parchment-50 px-1.5 py-1.5 text-xs text-ink-700 sm:px-2 sm:py-1.5 sm:text-sm"
       >
         {LOCALES.map((l) => (
-          <option value={localize(l, path)} data-locale={l} selected={l === locale}>
+          <option value={link(l, path)} data-locale={l} selected={l === locale}>
             {LOCALE_NAMES[l]}
           </option>
         ))}

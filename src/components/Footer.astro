@@ -1,6 +1,6 @@
 ---
 import { getUi } from '../i18n/ui';
-import { localize, type Locale } from '../i18n/utils';
+import { link, type Locale } from '../i18n/utils';
 import { SITE } from '../consts';
 
 interface Props {
@@ -21,9 +21,9 @@ const year = new Date().getFullYear();
         </p>
       </div>
       <nav class="flex flex-col gap-2 text-sm">
-        <a href={localize(locale, '/guides')} class="hover:text-gold-400" data-i18n="nav.guides">{ui['nav.guides']}</a>
-        <a href={localize(locale, '/heroes')} class="hover:text-gold-400" data-i18n="nav.heroes">{ui['nav.heroes']}</a>
-        <a href={localize(locale, '/world')} class="hover:text-gold-400" data-i18n="nav.world">{ui['nav.world']}</a>
+        <a href={link(locale, '/guides')} class="hover:text-gold-400" data-i18n="nav.guides">{ui['nav.guides']}</a>
+        <a href={link(locale, '/heroes')} class="hover:text-gold-400" data-i18n="nav.heroes">{ui['nav.heroes']}</a>
+        <a href={link(locale, '/world')} class="hover:text-gold-400" data-i18n="nav.world">{ui['nav.world']}</a>
       </nav>
     </div>
     <p class="mt-8 text-xs text-parchment-300/70" data-i18n="footer.built">{ui['footer.built']}</p>
