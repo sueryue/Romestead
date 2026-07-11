@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../i18n/utils';
 import { pick } from '../i18n/utils';
+import { getUi } from '../i18n/ui';
 
 interface Props {
   scene: 'base' | 'hero-roster' | 'formation' | 'beast' | 'raid';
@@ -11,12 +12,13 @@ interface Props {
 }
 const { scene, locale, caption, alt = 'In-game screenshot of Romestead', class: cls = '' } = Astro.props;
 
+const ui = getUi(locale);
 const label: Record<string, string> = {
-  base: 'The Stead',
-  'hero-roster': 'Hero Roster',
-  formation: 'Legion Formation',
-  beast: 'Beast Encounter',
-  raid: 'Border Raid',
+  base: ui['scene.base'],
+  'hero-roster': ui['scene.heroRoster'],
+  formation: ui['scene.formation'],
+  beast: ui['scene.beast'],
+  raid: ui['scene.raid'],
 };
 
 // Hero roster data for the roster scene

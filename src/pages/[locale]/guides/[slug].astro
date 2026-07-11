@@ -24,20 +24,20 @@ const sections = pick(guide.sections, locale);
 type Shot = { scene: 'base' | 'hero-roster' | 'formation' | 'beast' | 'raid'; caption: Record<Locale, string> };
 const SHOTS: Record<string, Shot[]> = {
   'beginners-guide': [
-    { scene: 'base', caption: { en: 'Your Stead on Day 1 — raise the Principia first, then the Granary.' } },
-    { scene: 'beast', caption: { en: 'A Verge Hound tamed from the Greywood edge scouts the fog far faster.' } },
+    { scene: 'base', caption: { en: 'Your Stead on Day 1 — raise the Principia first, then the Granary.', fr: 'Votre Stead au jour 1 — élevez la Principia en premier, puis la Grange.', de: 'Eure Stead an Tag 1 — errichtet zuerst die Principia, dann die Speicher.', es: 'Tu Stead en el día 1 — levanta la Principia primero, luego el Granero.', it: 'La tua Stead al giorno 1 — innalza prima la Principia, poi il Granaio.' } },
+    { scene: 'beast', caption: { en: 'A Verge Hound tamed from the Greywood edge scouts the fog far faster.', fr: 'Un Verge Hound apprivoisé de la lisière de The Greywood explore le brouillard bien plus vite.', de: 'Ein von The Greywood-Rand gezähmter Verge Hound erkundet Nebel viel schneller.', es: 'Un Verge Hound domesticado del borde de The Greywood explora la niebla mucho más rápido.', it: 'Un Verge Hound addomesticato dal limite di The Greywood esplora la nebbia molto più velocemente.' } },
   ],
   'hero-tier-list': [
-    { scene: 'hero-roster', caption: { en: 'The hero roster — gold S badges mark the top commanders.' } },
-    { scene: 'formation', caption: { en: 'Pair Aurelia’s shield wall with a flanking cavalry for clean wins.' } },
+    { scene: 'hero-roster', caption: { en: 'The hero roster — gold S badges mark the top commanders.', fr: 'Le roster des héros — les badges S dorés marquent les meilleurs commandants.', de: 'Die Helden-Liste — goldene S-Abzeichen markieren die Top-Kommandanten.', es: 'El roster de héroes — los distintivos S dorados marcan los mejores comandantes.', it: 'Il roster degli eroi — i distintivi S dorati contrassegnano i migliori comandanti.' } },
+    { scene: 'formation', caption: { en: 'Pair Aurelia’s shield wall with a flanking cavalry for clean wins.', fr: 'Mariez le mur de boucliers d’Aurelia avec une cavalerie de flanc pour des victoires nettes.', de: 'Kombiniert Aurelias Schildmauer mit flankierender Kavallerie für saubere Siege.', es: 'Empareja el muro de escudos de Aurelia con caballería de flanco para victorias limpias.', it: 'Abbina la barriera di scudi di Aurelia con cavalleria di fianco per vittorie nette.' } },
   ],
   'beast-tier-list': [
-    { scene: 'beast', caption: { en: 'The Verge Wyrm — a tameable raid boss with a screen-wide AoE.' } },
-    { scene: 'hero-roster', caption: { en: 'Build a balanced pack around your strongest beast.' } },
+    { scene: 'beast', caption: { en: 'The Verge Wyrm — a tameable raid boss with a screen-wide AoE.', fr: 'La Verge Wyrm — un raid boss apprivoisable avec un AoE plein écran.', de: 'Die Verge Wyrm — ein zähmbarer Raid-Boss mit bildschirmweitem AoE.', es: 'La Verge Wyrm — un jefe de raid domesticable con un AoE a pantalla completa.', it: 'La Verge Wyrm — un raid boss addomesticabile con un AoE su tutto lo schermo.' } },
+    { scene: 'hero-roster', caption: { en: 'Build a balanced pack around your strongest beast.', fr: 'Construisez un pack équilibré autour de votre plus forte bête.', de: 'Baut ein ausgewogenes Rudel um eure stärkste Bestie.', es: 'Construye una piara equilibrada en torno a tu bestia más fuerte.', it: 'Costruisci un branco bilanciato attorno alla tua bestia più forte.' } },
   ],
   'border-raid-event': [
-    { scene: 'raid', caption: { en: 'Launch the rally as the trap lands — the 8s bonus window is everything.' } },
-    { scene: 'beast', caption: { en: 'Bring a Stag for sustain and your strongest Wyrm for the nuke.' } },
+    { scene: 'raid', caption: { en: 'Launch the rally as the trap lands — the 8s bonus window is everything.', fr: 'Lancez le rally quand le trap atterrit — la fenêtre de bonus de 8s est tout.', de: 'Startet das Rally, wenn die Falle landet — das 8s-Bonusfenster ist alles.', es: 'Lanza el rally cuando cae la trampa — la ventana de bonificación de 8s es todo.', it: 'Lancia il rally quando la trappola atterra — la finestra bonus di 8s è tutto.' } },
+    { scene: 'beast', caption: { en: 'Bring a Stag for sustain and your strongest Wyrm for the nuke.', fr: 'Amenez un Stag pour le sustain et votre plus fort Wyrm pour le nuke.', de: 'Nehmt einen Stag für Sustain und euren stärksten Wyrm für den Nuke mit.', es: 'Lleva un Stag para el sustain y tu Wyrm más fuerte para el nuke.', it: 'Porta uno Stag per il sustain e il tuo Wyrm più forte per il nuke.' } },
   ],
 };
 const shots = SHOTS[slug] ?? [];
@@ -64,7 +64,7 @@ const shots = SHOTS[slug] ?? [];
   <main class="mx-auto max-w-3xl px-4 py-12">
     <a href={link(locale, '/guides')} class="text-sm text-roman-600 hover:underline">← {ui['nav.guides']}</a>
     <article class="mt-4">
-      <p class="font-display text-xs uppercase tracking-[0.3em] text-gold-600">{guide.category}</p>
+      <p class="font-display text-xs uppercase tracking-[0.3em] text-gold-600">{ui['cat.' + guide.category]}</p>
       <h1 class="mt-2 font-display text-3xl font-black text-roman-700">{pick(guide.title, locale)}</h1>
       <p class="mt-3 text-lg text-ink-700">{pick(guide.description, locale)}</p>
 

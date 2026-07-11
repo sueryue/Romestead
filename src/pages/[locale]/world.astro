@@ -36,7 +36,7 @@ const intro = pick(WORLD.intro, locale);
     </figure>
 
     <section class="mt-8">
-      <h2 class="font-display text-2xl font-bold text-roman-700">Regions</h2>
+      <h2 class="font-display text-2xl font-bold text-roman-700" data-i18n="world.regions">{ui['world.regions']}</h2>
       <div class="mt-4 grid gap-4 sm:grid-cols-2">
         {WORLD.regions.map((r) => (
           <div class="reveal-ready rounded-lg border border-gold-600/30 bg-parchment-50 p-5 shadow-sm">
@@ -48,7 +48,7 @@ const intro = pick(WORLD.intro, locale);
     </section>
 
     <section class="mt-10">
-      <h2 class="font-display text-2xl font-bold text-roman-700">Factions & Counters</h2>
+      <h2 class="font-display text-2xl font-bold text-roman-700" data-i18n="world.factions">{ui['world.factions']}</h2>
       <div class="mt-4 space-y-4">
         {WORLD.factions.map((f) => (
           <div class="reveal-ready rounded-lg border border-gold-600/30 bg-parchment-50 p-5 shadow-sm">

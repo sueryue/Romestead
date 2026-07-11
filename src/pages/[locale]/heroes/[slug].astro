@@ -50,11 +50,11 @@ const path = `/heroes/${slug}`;
 
       <dl class="mt-6 grid grid-cols-2 gap-4 text-sm">
         <div class="rounded border border-gold-600/20 p-3">
-          <dt class="text-ink-700/60">Element</dt>
+          <dt class="text-ink-700/60" data-i18n="hero.element">{ui['hero.element']}</dt>
           <dd class="font-display text-roman-600">{hero.element}</dd>
         </div>
         <div class="rounded border border-gold-600/20 p-3">
-          <dt class="text-ink-700/60">Best Beast</dt>
+          <dt class="text-ink-700/60" data-i18n="hero.bestBeast">{ui['hero.bestBeast']}</dt>
           <dd class="font-display text-roman-600">{pick(hero.bestBeast, locale)}</dd>
         </div>
       </dl>
