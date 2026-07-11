@@ -1,0 +1,19 @@
+---
+interface Props {
+  id: string;
+  title?: string;
+  class?: string;
+}
+const { id, title = 'Romestead', class: cls = '' } = Astro.props;
+---
+
+<div class={`relative aspect-video w-full overflow-hidden rounded-xl border border-gold-600/30 bg-ink-800 ${cls}`}>
+  <iframe
+    class="absolute inset-0 h-full w-full"
+    src={`https://www.youtube-nocookie.com/embed/${id}`}
+    title={title}
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</div>

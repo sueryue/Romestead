@@ -7,7 +7,7 @@ import {
   localize,
 } from '../i18n/utils';
 import { GUIDES } from '../content/guides';
-import { HEROES } from '../content/heroes';
+import { ENTRIES } from '../content/heroes';
 
 export const prerender = true;
 
@@ -22,7 +22,7 @@ export const GET: APIRoute = () => {
     '/guides',
     ...GUIDES.map((g) => `/guides/${g.slug}`),
     '/heroes',
-    ...HEROES.map((h) => `/heroes/${h.slug}`),
+    ...ENTRIES.map((e) => `/heroes/${e.slug}`),
     '/world',
   ];
 

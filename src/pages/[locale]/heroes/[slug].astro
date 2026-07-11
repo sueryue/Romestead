@@ -3,64 +3,61 @@ import Base from '../../../layouts/Base.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { getUi } from '../../../i18n/ui';
-import { LOCALES, link, pick, type Locale } from '../../../i18n/utils';
-import { HEROES, getHero } from '../../../content/heroes';
+import { LOCALES, link, pick, media, type Locale } from '../../../i18n/utils';
+import { ENTRIES, getEntry } from '../../../content/heroes';
 import { SITE } from '../../../consts';
 
 export function getStaticPaths() {
   return LOCALES.flatMap((locale) =>
-    HEROES.map((h) => ({ params: { locale, slug: h.slug } }))
+    ENTRIES.map((e) => ({ params: { locale, slug: e.slug } }))
   );
 }
 
 const { locale, slug } = Astro.params as { locale: Locale; slug: string };
-const hero = getHero(slug)!;
+const entry = getEntry(slug)!;
 const ui = getUi(locale);
 const path = `/heroes/${slug}`;
+const isBoss = entry.kind === 'boss';
 ---
 
 <Base
   locale={locale}
-  title={`${hero.name} — ${SITE.name}`}
-  description={pick(hero.bio, locale)}
+  title={`${entry.name} — ${SITE.name}`}
+  description={pick(entry.bio, locale)}
   path={path}
   type="article"
   jsonLd={{
-    '@type': 'Person',
-    name: hero.name,
-    jobTitle: pick(hero.role, locale),
-    description: pick(hero.bio, locale),
+    '@type': isBoss ? 'Thing' : 'Person',
+    name: entry.name,
+    description: pick(entry.bio, locale),
     inLanguage: locale,
   }}
 >
   <Header locale={locale} path={path} />
   <main class="mx-auto max-w-3xl px-4 py-12">
     <a href={link(locale, '/heroes')} class="text-sm text-roman-600 hover:underline">← {ui['nav.heroes']}</a>
-    <article class="mt-4 reveal-ready rounded-lg border border-gold-600/30 bg-parchment-50 p-8 shadow-sm">
-      <div class="flex items-center gap-4">
-        <div class="flex h-16 w-16 items-center justify-center rounded-full bg-roman-600 font-display text-2xl text-gold-400">⚔</div>
-        <div>
-          <h1 class="font-display text-3xl font-black text-roman-700">{hero.name}</h1>
-          <p class="text-sm text-ink-700/70">{pick(hero.role, locale)}</p>
+    <article class="mt-4 reveal-ready overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm">
+      {entry.image && (
+        <img src={media(entry.image)} alt={entry.name} class="h-56 w-full object-cover" />
+      )}
+      <div class="p-8">
+        <div class="flex items-center gap-4">
+          {!entry.image && (
+            <div class="flex h-16 w-16 items-center justify-center rounded-full bg-roman-600 font-display text-2xl text-gold-400">⚜</div>
+          )}
+          <div>
+            <h1 class="font-display text-3xl font-black text-roman-700">{entry.name}</h1>
+            <p class="text-sm text-ink-700/70">{pick(entry.role, locale)}</p>
+          </div>
+          <span class={`ml-auto rounded px-3 py-1 text-xs font-semibold text-parchment-50 ${isBoss ? 'bg-ink-800' : 'bg-gold-600'}`}>
+            {isBoss ? ui['heroes.bosses'] : ui['heroes.gods']}
+          </span>
         </div>
-        <span class={`ml-auto rounded px-3 py-1 text-lg font-bold text-parchment-50 ${
-          hero.tier === 'S' ? 'bg-roman-600' : hero.tier === 'A' ? 'bg-gold-600' : 'bg-ink-700'
-        }`}>{hero.tier}</span>
+
+        <p class="mt-6 text-lg italic leading-relaxed text-ink-700">“{pick(entry.lead, locale)}”</p>
+        <p class="mt-4 leading-relaxed text-ink-700">{pick(entry.bio, locale)}</p>
+        <p class="mt-4 rounded bg-gold-400/10 p-3 text-sm text-ink-700">💡 <span data-i18n="hero.tip">{ui['hero.tip']}</span>: {pick(entry.tip, locale)}</p>
       </div>
-
-      <dl class="mt-6 grid grid-cols-2 gap-4 text-sm">
-        <div class="rounded border border-gold-600/20 p-3">
-          <dt class="text-ink-700/60" data-i18n="hero.element">{ui['hero.element']}</dt>
-          <dd class="font-display text-roman-600">{hero.element}</dd>
-        </div>
-        <div class="rounded border border-gold-600/20 p-3">
-          <dt class="text-ink-700/60" data-i18n="hero.bestBeast">{ui['hero.bestBeast']}</dt>
-          <dd class="font-display text-roman-600">{pick(hero.bestBeast, locale)}</dd>
-        </div>
-      </dl>
-
-      <p class="mt-6 text-lg leading-relaxed text-ink-700">{pick(hero.bio, locale)}</p>
-      <p class="mt-4 rounded bg-gold-400/10 p-3 text-sm italic text-ink-700">💡 {pick(hero.tip, locale)}</p>
     </article>
   </main>
   <Footer locale={locale} />

@@ -1,0 +1,17 @@
+---
+import { media } from '../i18n/utils';
+
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  class?: string;
+}
+const { src, alt, caption, class: cls = '' } = Astro.props;
+const url = src.startsWith('http') ? src : media(src);
+---
+
+<figure class={`overflow-hidden rounded-xl border border-gold-600/20 ${cls}`}>
+  <img src={url} alt={alt} loading="lazy" class="w-full object-cover" />
+  {caption && <figcaption class="border-t border-gold-600/10 px-3 py-2 text-xs text-ink-700/70">{caption}</figcaption>}
+</figure>

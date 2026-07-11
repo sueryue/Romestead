@@ -61,6 +61,11 @@ export function link(locale: Locale, path = ''): string {
   return withBase(localize(locale, path));
 }
 
+/** Resolve a path inside the site's media folder (public/media). */
+export function media(p: string): string {
+  return withBase('media/' + p.replace(/^\//, ''));
+}
+
 /** Strip the leading /<locale> segment from a pathname. */
 export function stripLocale(pathname: string): string {
   const seg = pathname.split('/')[1];

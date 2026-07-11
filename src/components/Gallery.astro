@@ -1,0 +1,23 @@
+---
+import Figure from './Figure.astro';
+import type { L10n } from '../i18n/utils';
+import { pick, type Locale } from '../i18n/utils';
+
+interface Item {
+  src: string;
+  alt: L10n<string>;
+  caption?: L10n<string>;
+}
+interface Props {
+  items: Item[];
+  locale: Locale;
+  class?: string;
+}
+const { items, locale, class: cls = '' } = Astro.props;
+---
+
+<div class={`grid gap-4 sm:grid-cols-2 lg:grid-cols-3 ${cls}`}>
+  {items.map((it) => (
+    <Figure src={it.src} alt={pick(it.alt, locale)} caption={it.caption ? pick(it.caption, locale) : undefined} />
+  ))}
+</div>

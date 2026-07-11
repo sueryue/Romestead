@@ -6,23 +6,23 @@ import type { L10n } from './i18n/utils';
 export const SITE = {
   name: 'Romestead',
   tagline: {
-    en: 'Build a Roman outpost from the wild.',
-    fr: 'Bâtissez un avant-poste romain à partir de la nature sauvage.',
-    de: 'Errichtet einen römischen Außenposten aus der Wildnis.',
-    es: 'Construye un puesto avanzado romano desde la naturaleza salvaje.',
-    it: 'Costruisci un avamposto romano dalle terre selvagge.',
+    en: 'Rome has fallen. Rebuild it together.',
+    fr: 'Rome est tombée. Rebâtissez-la ensemble.',
+    de: 'Rom ist gefallen. Baut es gemeinsam wieder auf.',
+    es: 'Roma ha caído. Reconstruye junto a otros.',
+    it: 'Roma è caduta. Ricostruiscila insieme.',
   } as L10n<string>,
   // Canonical production domain (used for absolute URLs, canonical, OG, sitemap)
   url: 'https://sueryue.github.io/Romestead',
   description: {
-    en: 'Romestead strategy guides, hero tier lists, beast partners and border-raid tactics for the Roman frontier colony survival game.',
-    fr: 'Guides stratégiques Romestead, classements de héros, compagnons bêtes et tactiques de raid frontalier pour le jeu de survie de colonie frontière romaine.',
-    de: 'Romestead-Strategie-Guides, Helden-Tier-Listen, Bestien-Partner und Grenzüberfall-Taktiken für das römische Grenzkolonie-Überlebensspiel.',
-    es: 'Guías de estrategia de Romestead, listas de héroes, compañeros bestia y tácticas de raid fronterizo para el juego de supervivencia de colonia frontalera romana.',
-    it: 'Guide strategiche di Romestead, tier list degli eroi, compagni bestia e tattiche di raid di frontiera per il gioco di sopravvivenza della colonia di confine romana.',
+    en: 'Romestead guides, co-op survival tips, base-building walkthroughs, Roman gods, dungeons and boss strategies for the 1–8 player action-adventure survival game.',
+    fr: 'Guides Romestead, astuces de survie co-op, tutoriels de construction, dieux romains, donjons et stratégies de boss pour le jeu de survie action-aventure à 1–8 joueurs.',
+    de: 'Romestead-Guides, Ko-op-Überlebenstipps, Basisbau-Walkthroughs, römische Götter, Dungeons und Boss-Strategien für das Action-Adventure-Überlebensspiel für 1–8 Spieler.',
+    es: 'Guías de Romestead, trucos de supervivencia co-op, tutoriales de construcción, dioses romanos, mazmorras y estrategias de jefes para el juego de supervivencia de acción y aventura para 1–8 jugadores.',
+    it: 'Guide di Romestead, consigli di sopravvivenza co-op, walkthrough di costruzione, dèi romani, dungeon e strategie boss per il gioco di sopravvivenza action-adventure per 1–8 giocatori.',
   } as L10n<string>,
   author: 'Romestead Studio',
-  ogImage: '/og-image.png',
+  ogImage: '/media/screens/town-nice.jpg',
   // GEO: default region + localized regions for hreflang/geo meta
   geo: {
     default: { region: 'GLOBAL', placename: 'Global', position: '0;0' },
@@ -33,9 +33,9 @@ export const SITE = {
   },
 } as const;
 
-// Store links — edit once here to update everywhere.
-// Using store *search* URLs by default; swap for your real product URLs.
+// Store / community links — edit once here to update everywhere.
 export const STORE = {
-  googlePlay: 'https://play.google.com/store/search?q=Romestead&c=apps',
-  appStore: 'https://www.appstore.com/search?term=Romestead',
+  steam: 'https://store.steampowered.com/app/1805320',
+  youtube: 'https://www.youtube.com/@BeartwigsOfficial',
+  discord: 'https://discord.gg/BDgRY2WFDS',
 } as const;

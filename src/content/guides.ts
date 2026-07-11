@@ -1,465 +1,331 @@
 import type { Locale } from '../i18n/utils';
 import type { L10n } from '../i18n/utils';
 
-export type GuideCategory = 'beginner' | 'tier' | 'event';
+export type GuideCategory = 'survival' | 'building' | 'mechanic' | 'gods' | 'boss' | 'coop';
 
 export interface Guide {
   slug: string;
   category: GuideCategory;
-  updated: string; // ISO date
+  updated: string;
   title: L10n<string>;
   description: L10n<string>;
-  // Body as ordered sections: each section = { h2, paragraphs[] }
-  sections: L10n<{ h: string; p: string[] }[]>;
+  cover?: string; // path inside public/media, e.g. 'screens/woods-night.jpg'
+  video?: { id: string; title: L10n<string> };
+  gallery?: string[];
+  // Body as ordered sections; each section may carry an inline screenshot.
+  sections: L10n<{ h: string; p: string[]; media?: string }[]>;
 }
 
 export const GUIDES: Guide[] = [
   {
-    slug: 'beginners-guide',
-    category: 'beginner',
-    updated: '2026-06-20',
+    slug: 'survive-night',
+    category: 'survival',
+    updated: '2026-07-10',
     title: {
-      en: 'Beginner’s Guide to Romestead (2026)',
-      fr: 'Guide de débutant pour Romestead (2026)',
-      de: 'Anfänger-Guide für Romestead (2026)',
-      es: 'Guía para principiantes de Romestead (2026)',
-      it: 'Guida per principianti di Romestead (2026)',
+      en: 'Survive the Fall: Your First Night',
+      fr: 'Survivre à la Chute : votre première nuit',
+      de: 'Überlebe den Fall: Deine erste Nacht',
+      es: 'Sobrevive a la Caída: tu primera noche',
+      it: 'Sopravvivi alla Caduta: la tua prima notte',
     },
     description: {
-      en: 'Seven days to a standing stead — where to build, whom to recruit, and the mistakes that erase new governors.',
-      fr: 'Sept jours pour bâtir une stronghold — où construire, qui recruter et les erreurs qui perdent les nouveaux gouverneurs.',
-      de: 'Sieben Tage bis zur stehenden Festung — wo bauen, wen rekrutieren und welche Fehler neue Gouverneure das Leben kosten.',
-      es: 'Siete días para levantar una stead — dónde construir, a quién reclutar y los errores que borran a los gobernadores nuevos.',
-      it: 'Sette giorni per erigere una stead — dove costruire, chi reclutare e gli errori che cancellano i nuovi governatori.',
+      en: 'Rome has fallen and the husks hunt at night. Light your torches, raise a wall, and live to see dawn.',
+      fr: 'Rome est tombée et les carcasses chassent la nuit. Allumez vos torches, élevez un mur et vivez jusqu’à l’aube.',
+      de: 'Rom ist gefallen und die Hüllen jagen nachts. Entzünde deine Fackeln, errichte eine Mauer und erlebe den Morgen.',
+      es: 'Roma ha caído y las cáscaras cazan de noche. Enciende tus antorchas, levanta un muro y vive hasta el amanecer.',
+      it: 'Roma è caduta e gli involucri danno la caccia di notte. Accendi le torce, erigi un muro e vivi fino all’alba.',
     },
+    cover: 'screens/woods-night.jpg',
+    video: {
+      id: 'JAnaIQkwYOo',
+      title: { en: 'Romestead — Official Launch Trailer', fr: 'Romestead — Bande-annonce de lancement', de: 'Romestead — Launch-Trailer', es: 'Romestead — Tráiler de lanzamiento', it: 'Romestead — Trailer di lancio ufficiale' },
+    },
+    gallery: ['screens/woods-night.jpg', 'screens/forest-combat.jpg', 'screens/town-start.png'],
     sections: {
       en: [
-        {
-          h: 'Day 1 — Claim the Stead',
-          p: [
-            'Land at The Stead and raise the Principia first; it unlocks every other building and sets your daily command point cap.',
-            'Spend your first 200 stone on the Granary, not the wall. A fed garrison outlasts a pretty one.',
-          ],
-        },
-        {
-          h: 'Day 2–3 — Secure the Verge',
-          p: [
-            'Send scouts into The Verge for farmland. Crops convert to the food buffer that powers all training.',
-            'Recruit one Infantry commander (Titus or Lucia) before any cavalry — infantry holds the line while you learn.',
-          ],
-        },
-        {
-          h: 'Day 4–5 — First Beast',
-          p: [
-            'Tame a Verge Hound from The Greywood edge. It scouts fog faster than any hero and survives ambushes.',
-            'Do not over-invest in a single beast; the Verge Wyrm raid will demand a balanced pack.',
-          ],
-        },
-        {
-          h: 'Day 6–7 — The Border Raid',
-          p: [
-            'Join a border raid rally. Even a support march earns you Veyn shards used for the first S-tier pull.',
-            'Save gems for the Founders banner, not hourly speed-ups. Patience compounds.',
-          ],
-        },
+        { h: 'Light the dark', p: ['When night falls the reanimated citizens of Rome — the Fallen — leave their husks and hunt by sound and movement.', 'Torches and braziers push them back; keep a ring of fire around your camp and craft a torch before dusk.'] },
+        { h: 'Build a wall, not a palace', p: ['Your first structure should be defensible, not pretty. A simple palisade funnels the horde into choke points.', 'Wood is everywhere in the early wilds — harvest it before you worry about stone.'] },
+        { h: 'Craft, then fight', p: ['A sharpened spear or axe turns a frightened refugee into a survivor; prioritize a weapon bench early.', 'Fallen husks are slow — kite them around obstacles and let your wall finish the job.'] },
       ],
       fr: [
-        {
-          h: 'Jour 1 — Revendiquez la Stead',
-          p: [
-            'Débarquez à The Stead et élevez la Principia en premier ; elle débloque tous les autres bâtiments et fixe votre plafond quotidien de points de commandement.',
-            'Dépensez vos 200 premières pierres dans la Grange, pas dans le mur. Une garnison nourrie tient plus longtemps qu’une garnison jolie.',
-          ],
-        },
-        {
-          h: 'Jours 2–3 — Sécurisez la Verge',
-          p: [
-            'Envoyez des éclaireurs dans The Verge à la recherche de terres cultivables. Les récoltes alimentent le buffer de nourriture qui alimente tout l’entraînement.',
-            'Recrutez un commandant d’infanterie (Titus ou Lucia) avant toute cavalerie — l’infanterie tient la ligne pendant que vous apprenez.',
-          ],
-        },
-        {
-          h: 'Jours 4–5 — Première bête',
-          p: [
-            'Apprivoisez un Verge Hound depuis la lisière de The Greywood. Il explore le brouillard plus vite que n’importe quel héros et survit aux embuscades.',
-            'N’investissez pas trop dans une seule bête ; la raid de la Verge Wyrm exigera un pack équilibré.',
-          ],
-        },
-        {
-          h: 'Jours 6–7 — La Border Raid',
-          p: [
-            'Rejoignez un rally de border raid. Même une marche de soutien vous rapporte des éclats de Veyn, utilisés pour le premier tirage S-tier.',
-            'Économisez vos gemmes pour la bannière des Founders, pas pour les boosts horaires. La patience compose.',
-          ],
-        },
+        { h: 'Éclairez l’obscurité', p: ['Quand la nuit tombe, les citoyens réanimés de Rome — les Déchus — quittent leurs dépouilles et chassent au son et au mouvement.', 'Torches et braseros les repoussent ; gardez un cercle de feu autour du camp et forgez une torche avant le crépuscule.'] },
+        { h: 'Élevez un mur, pas un palais', p: ['Votre première structure doit se défendre, pas être belle. Une palissade simple canalise la horde vers des points de blocage.', 'Le bois abonde dans les premiers lieux sauvages — récoltez-le avant de vous soucier de la pierre.'] },
+        { h: 'Forgez, puis combattez', p: ['Une lance ou une hache aiguisée transforme un réfugié effrayé en survivant ; priorisez un établi d’armes tôt.', 'Les carcasses déchues sont lentes — attirez-les autour d’obstacles et laissez votre mur finir le travail.'] },
       ],
       de: [
-        {
-          h: 'Tag 1 — Ergreift die Stead',
-          p: [
-            'Landet in The Stead und errichtet zuerst die Principia; sie schaltet alle anderen Gebäude frei und legt euer tägliches Limit an Befehlspunkten fest.',
-            'Gibt eure ersten 200 Stein in die Speicher (Granary), nicht in die Mauer aus. Eine versorgte Garnison hält länger als eine hübsche.',
-          ],
-        },
-        {
-          h: 'Tag 2–3 — Sichert die Verge',
-          p: [
-            'Schickt Kundschafter in The Verge auf der Suche nach Ackerland. Ernten füllen den Nahrungspuffer, der alles Training antreibt.',
-            'Rekrutiert einen Infanterie-Kommandanten (Titus oder Lucia), bevor ihr Kavallerie nehmt — die Infanterie hält die Linie, während ihr lernt.',
-          ],
-        },
-        {
-          h: 'Tag 4–5 — Erste Bestie',
-          p: [
-            'Zähmt einen Verge Hound am Rand von The Greywood. Er erkundet Nebel schneller als jeder Held und überlebt Hinterhalte.',
-            'Investiert nicht zu viel in eine einzelne Bestie; der Verge-Wyrm-Raid verlangt ein ausgewogenes Rudel.',
-          ],
-        },
-        {
-          h: 'Tag 6–7 — Die Border Raid',
-          p: [
-            'Schließt euch einem Grenzraid-Rally an. Selbst ein Unterstützungsmarsch bringt euch Veyn-Scherben, die für den ersten S-Tier-Zug genutzt werden.',
-            'Spart Edelsteine für das Founders-Banner, nicht für stündliche Beschleunigungen. Geduld zahlt sich aus.',
-          ],
-        },
+        { h: 'Erhelle die Dunkelheit', p: ['Wenn die Nacht fällt, verlassen die reanimierten Bürger Roms — die Gefallenen — ihre Hüllen und jagen nach Laut und Bewegung.', 'Fackeln und Feuerschalen drängen sie zurück; haltet einen Feuerring ums Lager und schmiedet vor der Dämmerung eine Fackel.'] },
+        { h: 'Baue eine Mauer, keinen Palast', p: ['Deine erste Struktur soll verteidigbar sein, nicht hübsch. Ein einfacher Palisadenzaun lenkt die Horde in Engpässe.', 'Holz gibt es überall in der frühen Wildnis — erntet es, bevor ihr euch um Stein sorgt.'] },
+        { h: 'Schmiede, dann kämpfe', p: ['Ein geschärfter Speer oder Beil macht aus einem verängstigten Flüchtling einen Überlebenden; baut früh eine Waffenbank.', 'Gefallene Hüllen sind langsam — zirkelt sie um Hindernisse und lasst eure Mauer den Rest erledigen.'] },
       ],
       es: [
-        {
-          h: 'Día 1 — Reclama la Stead',
-          p: [
-            'Llega a The Stead y levanta la Principia primero; desbloquea todos los demás edificios y fija tu tope diario de puntos de mando.',
-            'Gasta tus primeras 200 piedras en el Granero, no en el muro. Una guarnición bien alimentada aguanta más que una bonita.',
-          ],
-        },
-        {
-          h: 'Día 2–3 — Asegura la Verge',
-          p: [
-            'Envía exploradores a The Verge en busca de tierras de cultivo. Las cosechas alimentan la reserva de comida que impulsa todo el entrenamiento.',
-            'Recluta un comandante de infantería (Titus o Lucia) antes que ninguna caballería — la infantería sostiene la línea mientras aprendes.',
-          ],
-        },
-        {
-          h: 'Día 4–5 — Primera bestia',
-          p: [
-            'Domesticar un Verge Hound desde el borde de The Greywood. Explora la niebla más rápido que cualquier héroe y sobrevive a las emboscadas.',
-            'No inviertas demasiado en una sola bestia; la incursión de la Verge Wyrm exigirá una piara equilibrada.',
-          ],
-        },
-        {
-          h: 'Día 6–7 — La Border Raid',
-          p: [
-            'Únete a un rally de incursión fronteriza. Incluso una marcha de apoyo te da esquirlas de Veyn, útiles para el primer gachapon S-tier.',
-            'Ahorra gemas para el estandarte de los Founders, no para aceleraciones por hora. La paciencia compone.',
-          ],
-        },
+        { h: 'Ilumina la oscuridad', p: ['Cuando cae la noche, los ciudadanos reanimados de Roma — los Caídos — dejan sus cáscaras y cazan por sonido y movimiento.', 'Antorchas y braseros los repelen; mantén un anillo de fuego y forja una antorcha antes del anochecer.'] },
+        { h: 'Levanta un muro, no un palacio', p: ['Tu primera estructura debe defenderse, no ser bonita. Una empalizada simple canaliza la horda hacia puntos de estrangulamiento.', 'La madera abunda en la primera naturaleza — recógela antes de preocuparte por la piedra.'] },
+        { h: 'Forja, luego lucha', p: ['Una lanza o hacha afilada convierte a un refugiado aterrorizado en superviviente; prioriza una banca de armas pronto.', 'Las cáscaras caídas son lentas — atráelas por obstáculos y deja que tu muro termine el trabajo.'] },
       ],
       it: [
-        {
-          h: 'Giorno 1 — Rivendica la Stead',
-          p: [
-            'Approda a The Stead e innalza prima la Principia; sblocca tutti gli altri edifici e fissa il tuo limite giornaliero di punti comando.',
-            'Spendi le prime 200 pietre nel Granaio, non nel muro. Una guarnigione sfamata resiste più a lungo di una bella.',
-          ],
-        },
-        {
-          h: 'Giorni 2–3 — Metti in sicurezza la Verge',
-          p: [
-            'Manda esploratori in The Verge alla ricerca di terreni coltivabili. I raccolti alimentano il buffer di cibo che alimenta ogni addestramento.',
-            'Recluta un comandante di fanteria (Titus o Lucia) prima di qualsiasi cavalleria — la fanteria regge la linea mentre impari.',
-          ],
-        },
-        {
-          h: 'Giorni 4–5 — Prima bestia',
-          p: [
-            'Addomestica un Verge Hound dal limite di The Greywood. Esplora la nebbia più velocemente di qualsiasi eroe e sopravvive alle imboscate.',
-            'Non investire troppo in una singola bestia; la raid della Verge Wyrm richiederà un branco bilanciato.',
-          ],
-        },
-        {
-          h: 'Giorni 6–7 — La Border Raid',
-          p: [
-            'Unisciti a un rally di incursione di confine. Anche una marcia di supporto ti frutta frammenti di Veyn, utili per la prima estrazione S-tier.',
-            'Risparmia le gemme per il vessillo dei Founders, non per i bonus orari. La pazienza dà i suoi frutti.',
-          ],
-        },
+        { h: 'Illumina il buio', p: ['Quando cala la notte, i cittadini rianimati di Roma — i Caduti — lasciano i loro involucri e cacciano per suono e movimento.', 'Torce e bracieri li respingono; mantieni un cerchio di fuoco attorno all’accampamento e forgia una torcia prima del crepuscolo.'] },
+        { h: 'Ergi un muro, non un palazzo', p: ['La tua prima struttura deve difendersi, non essere bella. Una semplice palizzata incanala l’orda nei punti di strozzatura.', 'Il legno abbonda nei primi luoghi selvaggi — raccoglilo prima di preoccuparti della pietra.'] },
+        { h: 'Forgia, poi combatti', p: ['Una lancia o un’ascia affilata trasforma un rifugiato spaventato in un sopravvissuto; costruisci presto un banco da lavoro per armi.', 'Gli involucri caduti sono lenti — attirali tra ostacoli e lascia che il tuo muro finisca il lavoro.'] },
       ],
     },
   },
   {
-    slug: 'hero-tier-list',
-    category: 'tier',
-    updated: '2026-07-01',
+    slug: 'build-town',
+    category: 'building',
+    updated: '2026-07-10',
     title: {
-      en: 'Hero Tier List (2026)',
-      fr: 'Classement des héros (2026)',
-      de: 'Helden-Tier-Liste (2026)',
-      es: 'Ranking de héroes (2026)',
-      it: 'Tier list degli eroi (2026)',
+      en: 'Rebuild Civilization: Your First Settlement',
+      fr: 'Rebâtir la civilisation : votre premier établissement',
+      de: 'Zivilisation neu aufbauen: Deine erste Siedlung',
+      es: 'Reconstruye la civilización: tu primer asentamiento',
+      it: 'Ricostruisci la civiltà: il tuo primo insediamento',
     },
     description: {
-      en: 'Every commander ranked S–D with element, role and the pairing that unlocks their kit.',
-      fr: 'Chaque commandant classé S–D avec élément, rôle et le duo qui débloque son kit.',
-      de: 'Jeder Kommandant von S–D eingestuft, mit Element, Rolle und der Kombination, die sein Kit freischaltet.',
-      es: 'Cada comandante rankeado S–D con elemento, rol y la combinación que desbloquea su kit.',
-      it: 'Ogni comandante classificato da S a D con elemento, ruolo e l’abbinamento che sblocca il suo kit.',
+      en: 'From a lonely stead to a thriving colony — Blacksmiths, Farmsteads, happy citizens and the logistics that feed them.',
+      fr: 'D’un stead solitaire à une colonie florissante — Forgerons, Fermes, citoyens heureux et la logistique qui les nourrit.',
+      de: 'Von einer einsamen Stead zu einer blühenden Kolonie — Schmiede, Farmen, zufriedene Bürger und die Logistik, die sie ernährt.',
+      es: 'De un stead solitario a una colonia próspera — Herreros, Granjas, ciudadanos felices y la logística que los alimenta.',
+      it: 'Da una stead solitaria a una colonia fiorente — Fabbro, Fattoria, cittadini felici e la logistica che li nutre.',
     },
+    cover: 'screens/community.jpg',
+    video: {
+      id: 'ALzGWccYmt0',
+      title: { en: 'Community Town Showcase #1 — a 160-hour player city', fr: 'Community Town Showcase #1 — une ville de 160 h', de: 'Community Town Showcase #1 — eine 160-Stunden-Stadt', es: 'Community Town Showcase #1 — una ciudad de 160 h', it: 'Community Town Showcase #1 — una città di 160 ore' },
+    },
+    gallery: ['screens/town-nice.jpg', 'screens/construct-sites.jpg', 'screens/desert-town.png'],
     sections: {
       en: [
-        {
-          h: 'S-Tier',
-          p: [
-            'Aurelia (Infantry, Light) — the anchor of any front line; her shield wall scales with garrison size.',
-            'Drusus (Cavalry, Fire) — best rally leader for border raids; pairs with Octavia for burn-stacking.',
-            'Octavia (Marksman, Shadow) — single-target delete button; weakest vs. spread formations.',
-          ],
-        },
-        {
-          h: 'A-Tier',
-          p: [
-            'Titus (Infantry, Earth) — budget Aurelia, excellent early game and faction-boss tank.',
-            'Cornelia (Marksman, Wind) — AoE clear for beast hunts; edges Octavia on swarm content.',
-            'Maximus (Cavalry, Light) — durable flanker that hard-counters Frost Confederacy cavalry.',
-          ],
-        },
+        { h: 'Core buildings', p: ['Establish a Blacksmith, Leatherworker and Farmstead to unlock the basics of crafting, gear and food.', 'Each artisan you recruit opens new recipes — gather folks from all walks of life.'] },
+        { h: 'Keep citizens happy and fed', p: ['Hungry or unhappy citizens stop working. Build homes and decorations to raise happiness, and protect your food buffer.', 'A content town automates itself; a starving one collapses.'] },
+        { h: 'Expand and colonize', p: ['Once stable, send colonists to new areas of the world to secure resources and treasure.', 'Advanced buildings and logistics chains let you automate production lines.'] },
       ],
       fr: [
-        {
-          h: 'Tier S',
-          p: [
-            'Aurelia (Infanterie, Lumière) — l’ancre de toute ligne de front ; son mur de boucliers scale avec la taille de la garnison.',
-            'Drusus (Cavalerie, Feu) — meilleur meneur de rally pour les border raids ; se marie avec Octavia pour empiler les brûlures.',
-            'Octavia (Tireuse d’élite, Ombre) — bouton supprimer à cible unique ; la plus faible contre les formations étalées.',
-          ],
-        },
-        {
-          h: 'Tier A',
-          p: [
-            'Titus (Infanterie, Terre) — Aurelia low-cost, excellent en early game et tanque de boss de faction.',
-            'Cornelia (Tireuse d’élite, Vent) — clear AoE pour les chasses de bêtes ; dépasse Octavia sur le contenu swarm.',
-            'Maximus (Cavalerie, Lumière) — flanqueur durable qui hard-counter la cavalerie de la Frost Confederacy.',
-          ],
-        },
+        { h: 'Bâtiments essentiels', p: ['Établissez un Forgeron, un Travailleur du cuir et une Ferme pour débloquer l’artisanat, l’équipement et la nourriture.', 'Chaque artisan recruté ouvre de nouvelles recettes — rassemblez des gens de tous horizons.'] },
+        { h: 'Gardez les citoyens heureux et nourris', p: ['Les citoyens affamés ou malheureux cessent de travailler. Construisez maisons et décorations pour la félicité, et protégez votre buffer de nourriture.', 'Une ville contente s’automatise ; une ville affamée s’effondre.'] },
+        { h: 'Étendez et colonisez', p: ['Une fois stable, envoyez des colons vers de nouvelles zones du monde pour sécuriser ressources et trésors.', 'Bâtiments avancés et chaînes logistiques automatisent vos lignes de production.'] },
       ],
       de: [
-        {
-          h: 'Tier S',
-          p: [
-            'Aurelia (Infanterie, Licht) — der Anker jeder Frontlinie; ihre Schildmauer skaliert mit der Garnisonsgröße.',
-            'Drusus (Kavallerie, Feuer) — bester Rally-Anführer für Grenzraids; kombiniert mit Octavia für Brennstapel.',
-            'Octavia (Schützin, Schatten) — Löschtaste für Einzelziele; am schwächsten gegen verteilte Formationen.',
-          ],
-        },
-        {
-          h: 'Tier A',
-          p: [
-            'Titus (Infanterie, Erde) — günstige Aurelia, exzellent im frühen Spiel und als Fraktionsboss-Tank.',
-            'Cornelia (Schützin, Wind) — AoE-Säuberung für Bestienjagden; schlägt Octavia bei Schwarm-Inhalten.',
-            'Maximus (Kavallerie, Licht) — robuster Flanker, der die Kavallerie der Frost Confederacy hart kontert.',
-          ],
-        },
+        { h: 'Kerngebäude', p: ['Errichte einen Schmied, einen Gerber und eine Farm, um das Basteln, Ausrüstung und Nahrung freizuschalten.', 'Jeder rekrutierte Handwerker öffnet neue Rezepte — holt Leute aus allen Lebenslagen.'] },
+        { h: 'Bürger satt und zufrieden halten', p: ['Hungrige oder unglückliche Bürger hören auf zu arbeiten. Baut Häuser und Dekorationen für die Zufriedenheit und schützt euren Nahrungspuffer.', 'Eine zufriedene Stadt automatisiert sich selbst; eine hungernde bricht zusammen.'] },
+        { h: 'Erweitern und kolonisieren', p: ['Sobald stabil, schickt Kolonisten in neue Weltgegenden, um Ressourcen und Schätze zu sichern.', 'Fortgeschrittene Gebäude und Logistikketten automatisieren eure Produktionslinien.'] },
       ],
       es: [
-        {
-          h: 'Tier S',
-          p: [
-            'Aurelia (Infantería, Luz) — el ancla de cualquier línea frontal; su muro de escudos escala con el tamaño de la guarnición.',
-            'Drusus (Caballería, Fuego) — el mejor líder de rally para incursiones fronterizas; combina con Octavia para apilar quemaduras.',
-            'Octavia (Francotiradora, Sombra) — botón de borrar de objetivo único; la más débil contra formaciones dispersas.',
-          ],
-        },
-        {
-          h: 'Tier A',
-          p: [
-            'Titus (Infantería, Tierra) — Aurelia de presupuesto, excelente en early game y tanque de jefe de facción.',
-            'Cornelia (Francotiradora, Viento) — limpieza AoE para cacerías de bestias; supera a Octavia en contenido swarm.',
-            'Maximus (Caballería, Luz) — flanqueador resistente que hace hard-counter a la caballería de la Frost Confederacy.',
-          ],
-        },
+        { h: 'Edificios básicos', p: ['Establece un Herrero, un Trabajador del cuero y una Granja para desbloquear la elaboración, el equipo y la comida.', 'Cada artesano que reclutas abre nuevas recetas — reúne gente de todos los ámbitos.'] },
+        { h: 'Mantén ciudadanos felices y alimentados', p: ['Los ciudadanos hambrientos o infelices dejan de trabajar. Construye hogares y decoraciones para la felicidad, y protege tu reserva de comida.', 'Una ciudad contenta se automatiza; una hambrienta colapsa.'] },
+        { h: 'Expande y coloniza', p: ['Una vez estable, envía colonos a nuevas zonas del mundo para asegurar recursos y tesoros.', 'Edificios avanzados y cadenas logísticas automatizan tus líneas de producción.'] },
       ],
       it: [
-        {
-          h: 'Tier S',
-          p: [
-            'Aurelia (Fanteria, Luce) — l’ancora di ogni linea del fronte; la sua barriera di scudi scala con la dimensione della guarnigione.',
-            'Drusus (Cavalleria, Fuoco) — il miglior leader di rally per le incursioni di confine; si abbina a Octavia per impilare bruciature.',
-            'Octavia (Cecchina, Ombra) — pulsante di eliminazione a bersaglio singolo; la più debole contro le formazioni sparse.',
-          ],
-        },
-        {
-          h: 'Tier A',
-          p: [
-            'Titus (Fanteria, Terra) — l’Aurelia economica, eccellente nelle fasi iniziali e come tank contro i boss di fazione.',
-            'Cornelia (Cecchina, Vento) — pulizia AoE per le cacce alle bestie; batte Octavia sui contenuti swarm.',
-            'Maximus (Cavalleria, Luce) — incursore resistente che hard-countera la cavalleria della Frost Confederacy.',
-          ],
-        },
+        { h: 'Edifici essenziali', p: ['Costruisci un Fabbro, un Conciatore e una Fattoria per sbloccare artigianato, equipaggiamento e cibo.', 'Ogni artigiano reclutato apre nuove ricette — raduna persone di ogni estrazione.'] },
+        { h: 'Cittadini felici e sazi', p: ['Cittadini affamati o infelici smettono di lavorare. Costruisci case e decorazioni per l’allegria e proteggi la scorta di cibo.', 'Una città contenta si automatizza; una affamata collassa.'] },
+        { h: 'Espandi e colonizza', p: ['Una volta stabili, invia coloni in nuove zone del mondo per assicurare risorse e tesori.', 'Edifici avanzati e catene logistiche automatizzano le linee di produzione.'] },
       ],
     },
   },
   {
-    slug: 'beast-tier-list',
-    category: 'tier',
-    updated: '2026-06-28',
+    slug: 'haul-throw',
+    category: 'mechanic',
+    updated: '2026-07-09',
     title: {
-      en: 'Beast Partners Tier List (2026)',
-      fr: 'Classement des partenaires bêtes (2026)',
-      de: 'Tier-Liste der Bestien-Partner (2026)',
-      es: 'Ranking de bestias compañeras (2026)',
-      it: 'Tier list dei compagni bestia (2026)',
+      en: 'No Inventory: Pick Up, Carry, Throw',
+      fr: 'Pas d’inventaire : ramassez, portez, lancez',
+      de: 'Kein Inventar: Aufheben, Tragen, Werfen',
+      es: 'Sin inventario: recoge, carga, lanza',
+      it: 'Nessin inventario: raccogli, trasporta, lancia',
     },
     description: {
-      en: 'From the Verge Hound to the Verge Wyrm — which beast to invest in and why.',
-      fr: 'Du Verge Hound à la Verge Wyrm — quelle bête investir et pourquoi.',
-      de: 'Vom Verge Hound bis zur Verge Wyrm — in welche Bestie ihr investieren solltet und warum.',
-      es: 'Del Verge Hound a la Verge Wyrm — qué bestia invertir y por qué.',
-      it: 'Dal Verge Hound alla Verge Wyrm — in quale bestia investire e perché.',
+      en: 'Romestead’s signature twist — there is no inventory. Grab rocks and lumber by hand, and yes, throw them at enemies.',
+      fr: 'La touche signature de Romestead — pas d’inventaire. Saisissez pierres et bois à la main, et oui, jetez-les sur les ennemis.',
+      de: 'Romesteads Markenzeichen — es gibt kein Inventar. Greift Steine und Holz von Hand, und ja, werft sie auf Feinde.',
+      es: 'El giro característico de Romestead — no hay inventario. Agarra piedras y madera a mano, y sí, lánzalas a los enemigos.',
+      it: 'La caratteristica di Romestead — non c’è inventario. Prendi pietre e legna a mano, e sì, lanciarle ai nemici.',
     },
+    cover: 'screens/ui.jpg',
+    video: {
+      id: 'i3mv0HHyHIg',
+      title: { en: 'Romestead — Official Demo Trailer', fr: 'Romestead — Bande-annonce de la démo', de: 'Romestead — Demo-Trailer', es: 'Romestead — Tráiler de la demo', it: 'Romestead — Trailer della demo ufficiale' },
+    },
+    gallery: ['screens/ui.jpg', 'screens/shot3.jpg', 'screens/construct-sites.jpg'],
     sections: {
       en: [
-        {
-          h: 'Top Picks',
-          p: [
-            'Verge Hound — unmatched scout speed and ambush survival; every account wants one.',
-            'Greywood Stag — healing aura that turns attrition raids into free wins.',
-            'Verge Wyrm — the raid boss itself, tameable at late game for a screen-wide AoE.',
-          ],
-        },
+        { h: 'Hands, not menus', p: ['Forget inventory management. Walk up to a rock or log, pick it up, and carry it where it is needed.', 'Every resource stays a physical object in the world, keeping you in the action.'] },
+        { h: 'Throw rocks in their face', p: ['An enemy closing in? Heft that stone and lob it — a well-placed throw staggers husks and buys space.', 'Thrown lumber can block a path or become a quick barricade.'] },
+        { h: 'Logistics by footsteps', p: ['Early hauling is you on foot; later, advanced buildings and carts automate the flow of materials.', 'Plan your layout so workshops sit close to their inputs.'] },
       ],
       fr: [
-        {
-          h: 'Meilleurs choix',
-          p: [
-            'Verge Hound — vitesse de scout imbattable et survie en embuscade ; chaque compte en veut un.',
-            'Greywood Stag — aura de soin qui transforme les raids d’usure en victoires gratuites.',
-            'Verge Wyrm — le raid boss lui-même, apprivoisable en late game pour un AoE plein écran.',
-          ],
-        },
+        { h: 'Les mains, pas les menus', p: ['Oubliez la gestion d’inventaire. Approchez une pierre ou une bûche, ramassez-la et portez-la où elle sert.', 'Chaque ressource reste un objet physique dans le monde, vous gardant dans l’action.'] },
+        { h: 'Jetez des pierres en pleine face', p: ['Un ennemi approche ? Soulevez la pierre et lancez-la — un jet bien placé étourdit les carcasses et donne de l’espace.', 'Le bois lancé bloque un chemin ou devient une barricade rapide.'] },
+        { h: 'Logistique à pas de porte', p: ['Le transport commence à pied ; plus tard, bâtiments avancés et chariots automatisent le flux de matériaux.', 'Placez vos ateliers près de leurs entrées pour gagner du temps.'] },
       ],
       de: [
-        {
-          h: 'Top-Wahl',
-          p: [
-            'Verge Hound — unübertroffene Spähergeschwindigkeit und Hinterhalt-Überleben; jeder Account will einen.',
-            'Greywood Stag — Heil-Aura, die Abnutzungsraids in Gratis-Siege verwandelt.',
-            'Verge Wyrm — der Raid-Boss selbst, spät im Spiel zähmbar für ein bildschirmweites AoE.',
-          ],
-        },
+        { h: 'Hände, keine Menüs', p: ['Vergiss Inventarverwaltung. Geh zu einem Stein oder Balken, heb ihn auf und trag ihn dorthin, wo er gebraucht wird.', 'Jede Ressource bleibt ein physisches Objekt in der Welt und hält dich im Geschehen.'] },
+        { h: 'Wirf Steine ins Gesicht', p: ['Ein Feind rückt näher? Heb den Stein und schleudere ihn — ein guter Wurf betäubt Hüllen und verschafft Raum.', 'Geworfenes Holz blockiert einen Pfad oder wird zur schnellen Barrikade.'] },
+        { h: 'Logistik zu Fuß', p: ['Das frühe Schleppen geht zu Fuß; später automatisieren Gebäude und Karren den Materialfluss.', 'Plant euer Layout, sodass Werkstätten nahe ihrer Zulieferer stehen.'] },
       ],
       es: [
-        {
-          h: 'Mejores elecciones',
-          p: [
-            'Verge Hound — velocidad de exploración inigualable y supervivencia en emboscadas; toda cuenta quiere uno.',
-            'Greywood Stag — aura de sanación que convierte las incursiones de desgaste en victorias gratis.',
-            'Verge Wyrm — el jefe de la raid en sí, domesticable a final de partida para un AoE a pantalla completa.',
-          ],
-        },
+        { h: 'Manos, no menús', p: ['Olvida gestionar inventario. Acércate a una piedra o tronco, recógelo y llévalo adonde hace falta.', 'Cada recurso sigue siendo un objeto físico en el mundo, manteniéndote en la acción.'] },
+        { h: 'Lanza piedras a la cara', p: ['¿Un enemigo se acerca? Empuja esa piedra y lánzala — un tiro bien puesto aturde las cáscaras y da espacio.', 'La madera lanzada bloquea un camino o se vuelve una barricada rápida.'] },
+        { h: 'Logística a paso', p: ['El transporte empieza a pie; más tarde, edificios y carros automatizan el flujo de materiales.', 'Diseña el trazado para que los talleres estén cerca de sus insumos.'] },
       ],
       it: [
-        {
-          h: 'Scelte top',
-          p: [
-            'Verge Hound — velocità di esplorazione ineguagliabile e sopravvivenza alle imboscate; ogni account ne vuole uno.',
-            'Greywood Stag — aura curativa che trasforma le raid di logoramento in vittorie gratuite.',
-            'Verge Wyrm — il raid boss stesso, addomesticabile nel late game per un AoE su tutto lo schermo.',
-          ],
-        },
+        { h: 'Mani, non menu', p: ['Dimentica la gestione dell’inventario. Avvicinati a una pietra o a un tronco, raccoglilo e trasportalo dove serve.', 'Ogni risorsa resta un oggetto fisico nel mondo, tenendoti nell’azione.'] },
+        { h: 'Lancia pietre in faccia', p: ['Un nemico si avvicina? Solleva la pietra e scagliala — un lancio azzeccato stordisce gli involucri e compra spazio.', 'Il legno lanciato blocca un sentiero o diventa una barriera rapida.'] },
+        { h: 'Logistica a piedi', p: ['All’inizio trasporti a piedi; poi edifici avanzati e carri automatizzano il flusso dei materiali.', 'Disponi la disposizione in modo che le officine stiano vicino ai loro input.'] },
       ],
     },
   },
   {
-    slug: 'border-raid-event',
-    category: 'event',
-    updated: '2026-07-05',
+    slug: 'gods-favors',
+    category: 'gods',
+    updated: '2026-07-08',
     title: {
-      en: 'Border Raid: Maximize Your Damage (2026)',
-      fr: 'Border Raid : maximiser vos dégâts (2026)',
-      de: 'Border Raid: Maximiere deinen Schaden (2026)',
-      es: 'Border Raid: maximiza tu daño (2026)',
-      it: 'Border Raid: massimizza i tuoi danni (2026)',
+      en: 'Choose Your Gods: Favors & Tech Trees',
+      fr: 'Choisissez vos Dieux : faveurs et arbres technologiques',
+      de: 'Wähle deine Götter: Gunst & Techbäume',
+      es: 'Elige a tus Dioses: favores y árboles tecnológicos',
+      it: 'Scegli i tuoi Dei: favori e alberi tecnologici',
     },
     description: {
-      en: 'The math behind rally damage, trap timing and the beast pack that tops the leaderboard.',
-      fr: 'Les maths derrière les dégâts de rally, le timing du trap et le pack de bêtes qui domine le leaderboard.',
-      de: 'Die Mathematik hinter Rally-Schaden, Fallen-Timing und dem Bestien-Rudel, das die Bestenliste anführt.',
-      es: 'Las matemáticas tras el daño del rally, el timing de la trampa y la piara de bestias que lidera la tabla.',
-      it: 'La matematica dietro il danno del rally, il tempismo della trappola e il branco di bestie che guida la classifica.',
+      en: 'The pantheon lost its worshippers and its power. Offer, sacrifice, and decide together which gods return to glory.',
+      fr: 'Le panthéon a perdu ses fidèles et son pouvoir. Offrez, sacrifiez et décidez ensemble quels dieux reviennent à la gloire.',
+      de: 'Der Pantheon verlor seine Anhänger und seine Macht. Opfert, bringt dar und entscheidet gemeinsam, welche Götter zurückkehren.',
+      es: 'El panteón perdió a sus fieles y su poder. Ofrece, sacrifica y decidid juntos qué dioses vuelven a la gloria.',
+      it: 'Il pantheon ha perso i suoi fedeli e il suo potere. Offri, sacrifica e decidete insieme quali dei tornano alla gloria.',
     },
+    cover: 'screens/altar.jpg',
+    video: {
+      id: '2nO5gRyMz68',
+      title: { en: 'Romestead Dev Update: Controller, Steam Deck & new biome', fr: 'Romestead Dev Update', de: 'Romestead Dev-Update', es: 'Romestead Dev Update', it: 'Romestead Dev Update' },
+    },
+    gallery: ['screens/altar.jpg', 'screens/volcano-poi.png', 'screens/phoenix-fight.jpg'],
     sections: {
       en: [
-        {
-          h: 'Rally Timing',
-          p: [
-            'Launch the rally exactly when the Bear Trap is placed; the bonus window is 8 seconds.',
-            'Stack Drusus + Octavia in the lead march — burn then execute scales with remaining HP.',
-          ],
-        },
-        {
-          h: 'Beast Pack',
-          p: [
-            'One Greywood Stag for sustain, two Verge Hounds for scouting the spawn, and your strongest Wyrm for the nuke.',
-          ],
-        },
+        { h: 'The fallen pantheon', p: ['After Rome fell, the gods faded with their followers. Restoring them is the heart of your progression.', 'Each god grants a distinct set of buffs once honored.'] },
+        { h: 'Offerings & sacrifices', p: ['Perform offerings and sacrifices to earn favor. What you give shapes what you get back.', 'Coordinate with friends — in co-op the whole party benefits from restored gods.'] },
+        { h: 'Unlock technology', p: ['Every god carries its own branch of technology and talents to unlock as you rise.', 'Pick gods that match your playstyle: war, harvest, craft or trade.'] },
       ],
       fr: [
-        {
-          h: 'Timing du rally',
-          p: [
-            'Lancez le rally exactement quand le Bear Trap est posé ; la fenêtre de bonus dure 8 secondes.',
-            'Empilez Drusus + Octavia dans la marche de tête — brûlure puis exécution scale avec les PV restants.',
-          ],
-        },
-        {
-          h: 'Pack de bêtes',
-          p: [
-            'Un Greywood Stag pour le sustain, deux Verge Hounds pour scout le spawn, et votre plus fort Wyrm pour le nuke.',
-          ],
-        },
+        { h: 'Le panthéon déchu', p: ['Après la chute de Rome, les dieux ont pâli avec leurs fidèles. Les restaurer est le cœur de votre progression.', 'Chaque dieu accorde un ensemble distinct de buffs une fois honoré.'] },
+        { h: 'Offrandes et sacrifices', p: ['Effectuez des offrandes et sacrifices pour gagner de la faveur. Ce que vous donnez façonne ce que vous recevez.', 'Coordonnez avec vos amis — en co-op, tout le groupe profite des dieux restaurés.'] },
+        { h: 'Débloquez la technologie', p: ['Chaque dieu porte sa propre branche technologique et ses talents à débloquer en progressant.', 'Choisissez des dieux selon votre style : guerre, récolte, artisanat ou commerce.'] },
       ],
       de: [
-        {
-          h: 'Rally-Timing',
-          p: [
-            'Startet das Rally genau, wenn die Bear Trap platziert wird; das Bonusfenster beträgt 8 Sekunden.',
-            'Stapelt Drusus + Octavia im Führungsmarsch — Brennen, dann Execute skaliert mit verbleibendem HP.',
-          ],
-        },
-        {
-          h: 'Bestien-Rudel',
-          p: [
-            'Ein Greywood Stag für Sustain, zwei Verge Hounds zum Erkunden des Spawns und euer stärkster Wyrm für den Nuke.',
-          ],
-        },
+        { h: 'Der gefallene Pantheon', p: ['Nach Roms Fall verblassten die Götter mit ihren Anhängern. Ihre Wiederherstellung ist das Herz eures Fortschritts.', 'Jeder Gott gewährt einen eigenen Satz Buffs, sobald er geehrt wird.'] },
+        { h: 'Opfer & Darbringungen', p: ['Bringt Opfer und Gaben, um Gunst zu erwerben. Was ihr gebt, formt, was ihr zurückerhaltet.', 'Koordiniert euch mit Freunden — im Ko-op profitiert die ganze Gruppe von wiederhergestellten Göttern.'] },
+        { h: 'Technologie freischalten', p: ['Jeder Gott trägt seinen eigenen Technologiezweig und Talente, die ihr mit dem Aufstieg freischaltet.', 'Wählt Götter passend zu eurem Stil: Krieg, Ernte, Handwerk oder Handel.'] },
       ],
       es: [
-        {
-          h: 'Timing del rally',
-          p: [
-            'Lanza el rally justo cuando se coloca el Bear Trap; la ventana de bonificación son 8 segundos.',
-            'Apila Drusus + Octavia en la marcha principal — quemadura y luego ejecución escalan con el HP restante.',
-          ],
-        },
-        {
-          h: 'Piara de bestias',
-          p: [
-            'Un Greywood Stag para el sustain, dos Verge Hounds para explorar el spawn y tu Wyrm más fuerte para el nuke.',
-          ],
-        },
+        { h: 'El panteón caído', p: ['Tras la caída de Roma, los dioses se apagaron con sus fieles. Restaurarlos es el corazón de tu progresión.', 'Cada dios otorga un conjunto distinto de buffs una vez honrado.'] },
+        { h: 'Ofrendas y sacrificios', p: ['Realiza ofrendas y sacrificios para ganar favor. Lo que das moldea lo que recibes.', 'Coordina con amigos — en co-op todo el grupo beneficia de los dioses restaurados.'] },
+        { h: 'Desbloquea tecnología', p: ['Cada dios trae su propia rama tecnológica y talentos por desbloquear al avanzar.', 'Elige dioses según tu estilo: guerra, cosecha, artesanía o comercio.'] },
       ],
       it: [
-        {
-          h: 'Tempismo del rally',
-          p: [
-            'Lancia il rally esattamente quando viene piazzata la Bear Trap; la finestra bonus dura 8 secondi.',
-            'Impila Drusus + Octavia nella marcia di testa — bruciatura poi esecuzione scala con gli HP rimanenti.',
-          ],
-        },
-        {
-          h: 'Branco di bestie',
-          p: [
-            'Un Greywood Stag per il sustain, due Verge Hounds per esplorare lo spawn e il tuo Wyrm più forte per il nuke.',
-          ],
-        },
+        { h: 'Il pantheon caduto', p: ['Dopo la caduta di Roma, i dei sfumarono con i loro fedeli. Ripristinarli è il cuore della tua progressione.', 'Ogni dio concede un proprio insieme di buff una volta onorato.'] },
+        { h: 'Offerte e sacrifici', p: ['Compie offerte e sacrifici per ottenere favore. Ciò che doni plasma ciò che ricevi.', 'Coordinati con gli amici — in co-op tutto il gruppo trae beneficio dai dei ripristinati.'] },
+        { h: 'Sblocca la tecnologia', p: ['Ogni dio porta il proprio ramo tecnologico e talenti da sbloccare salendo di livello.', 'Scegli dei adatti al tuo stile: guerra, raccolto, artigianato o commercio.'] },
+      ],
+    },
+  },
+  {
+    slug: 'dungeons-bosses',
+    category: 'boss',
+    updated: '2026-07-07',
+    title: {
+      en: 'Dungeons & Bosses: Raid the Hidden Lairs',
+      fr: 'Donjons & Boss : envahissez les repaires cachés',
+      de: 'Dungeons & Bosse: Überfall die versteckten Lair',
+      es: 'Mazmorras y Jefes: asalta las guaridas ocultas',
+      it: 'Dungeon e Boss: razzia i covi nascosti',
+    },
+    description: {
+      en: 'Gather your party and descend. Loot, puzzles and brutal bosses like the Cyclops, Owl, Phoenix and Pyzifax await.',
+      fr: 'Rassemblez votre groupe et descendez. Butin, énigmes et boss brutaux comme le Cyclope, la Chouette, le Phénix et Pyzifax vous attendent.',
+      de: 'Versammelt eure Gruppe und steigt hinab. Beute, Rätsel und brutale Bosse wie Zyklop, Eule, Phönix und Pyzifax warten.',
+      es: 'Reúne a tu grupo y desciende. Botín, acertijos y jefes brutales como el Cíclope, el Búho, el Fénix y Pyzifax aguardan.',
+      it: 'Raduna il gruppo e scendi. Bottino, enigmi e boss brutali come Ciclope, Gufo, Fenice e Pyzifax ti attendono.',
+    },
+    cover: 'screens/dungeon.jpg',
+    video: {
+      id: 'qH0l3VLKIIA',
+      title: { en: 'Romestead — Official Announcement Trailer', fr: 'Romestead — Bande-annonce de présentation', de: 'Romestead — Ankündigungs-Trailer', es: 'Romestead — Tráiler de presentación', it: 'Romestead — Trailer di annuncio ufficiale' },
+    },
+    gallery: ['screens/dungeon.jpg', 'screens/fight-cyclops.png', 'screens/owl-fight.jpg', 'screens/phoenix-fight.jpg', 'screens/volcano-poi.png', 'screens/fight-pyzifax.png'],
+    sections: {
+      en: [
+        { h: 'Find the hidden locations', p: ['Challenging bosses lurk in dungeons filled with tough enemies and trap-laden puzzles.', 'Explore the wilds and unique biomes to uncover their lairs.'] },
+        { h: 'Bring your build', p: ['Every boss demands a different approach. Use your party’s unique builds and buffs to succeed.', 'The Cyclops, Owl Sentinel, Phoenix, Volcano Tendril and Pyzifax each reward different tactics.'] },
+        { h: 'Loot and learn', p: ['Clear a dungeon and you walk out with gear, recipes and the confidence to go deeper.', 'Practice runs teach attack patterns better than any guide.'] },
+      ],
+      fr: [
+        { h: 'Trouvez les lieux cachés', p: ['Des boss redoutables se cachent dans des donjons pleins d’ennemis coriaces et de puzzles piégés.', 'Explorez les lieux sauvages et les biomes uniques pour découvrir leurs repaires.'] },
+        { h: 'Amenez votre build', p: ['Chaque boss exige une approche différente. Utilisez les builds uniques de votre groupe et vos buffs.', 'Le Cyclope, la Chouette, le Phénix, le Résurgence volcanique et Pyzifax récompensent chacun d’autres tactiques.'] },
+        { h: 'Butin et leçon', p: ['Videz un donjon et ressortez avec équipement, recettes et la confiance d’aller plus loin.', 'Les runs d’entraînement enseignent les patterns mieux que tout guide.'] },
+      ],
+      de: [
+        { h: 'Finde die versteckten Orte', p: ['Gefährliche Bosse lauern in Dungeons voller harter Feinde und fallengespickter Rätsel.', 'Erkundet die Wildnis und einzigartige Biome, um ihre Lair zu finden.'] },
+        { h: 'Bring deinen Build', p: ['Jeder Boss verlangt einen anderen Ansatz. Nutzt die einzigartigen Builds und Buffs eurer Gruppe.', 'Zyklop, Eulen-Wächter, Phönix, Vulkan-Tentakel und Pyzifax belohnen je eigene Taktiken.'] },
+        { h: 'Beute und Lehre', p: ['Räumt ein Dungeon und geht mit Ausrüstung, Rezepten und der Zuversicht, tiefer zu gehen.', 'Übungsläufe lehren Angriffsmuster besser als jeder Guide.'] },
+      ],
+      es: [
+        { h: 'Encuentra los lugares ocultos', p: ['Jefes desafiantes acechan en mazmorras llenas de enemigos duros y acertijos con trampas.', 'Explora la naturaleza y biomas únicos para descubrir sus guaridas.'] },
+        { h: 'Trae tu build', p: ['Cada jefe exige un enfoque distinto. Usa los builds únicos de tu grupo y tus buffs.', 'El Cíclope, el Centinela Búho, el Fénix, el Tentáculo Volcánico y Pyzifax premian distintas tácticas.'] },
+        { h: 'Botín y aprendizaje', p: ['Limpia una mazmorra y sales con equipo, recetas y la confianza para ir más hondo.', 'Las corridas de práctica enseñan patrones mejor que cualquier guía.'] },
+      ],
+      it: [
+        { h: 'Trova i luoghi nascosti', p: ['Boss temibili si nascondono in dungeon pieni di nemici duri e rompicapi trappolati.', 'Esplora i luoghi selvaggi e i biomi unici per scoprirne i covi.'] },
+        { h: 'Porta il tuo build', p: ['Ogni boss richiede un approccio diverso. Usa i build unici del gruppo e i tuoi buff.', 'Ciclope, Sentinella Gufo, Fenice, Tentacolo Vulcanico e Pyzifax premiano ciascuno tattiche diverse.'] },
+        { h: 'Bottino e lezione', p: ['Svuota un dungeon e ne esci con equipaggiamento, ricette e la sicurezza di scendere più a fondo.', 'Le corse di prova insegnano gli schemi meglio di qualsiasi guida.'] },
+      ],
+    },
+  },
+  {
+    slug: 'co-op',
+    category: 'coop',
+    updated: '2026-07-06',
+    title: {
+      en: 'Co-op for 1–8: Build Rome Together',
+      fr: 'Co-op de 1 à 8 : construisez Rome ensemble',
+      de: 'Ko-op für 1–8: Bau Rom gemeinsam',
+      es: 'Co-op de 1 a 8: construid Roma juntos',
+      it: 'Co-op per 1–8: costruite Roma insieme',
+    },
+    description: {
+      en: 'Romestead is built for company. Play solo or squad up with up to seven friends in shared survival.',
+      fr: 'Romestead est fait pour la compagnie. Jouez seul ou en escouade avec jusqu’à sept amis en survie partagée.',
+      de: 'Romestead ist für Gesellschaft gemacht. Spiel allein oder schließt euch mit bis zu sieben Freunden im kooperativen Überleben zusammen.',
+      es: 'Romestead está hecho para compañía. Juega solo o en escuadra con hasta siete amigos en supervivencia compartida.',
+      it: 'Romestead è fatto per la compagnia. Gioca da solo o in squadra con fino a sette amici in sopravvivenza condivisa.',
+    },
+    cover: 'screens/community.jpg',
+    video: {
+      id: 'ALzGWccYmt0',
+      title: { en: 'Community Town Showcase #1 — a 160-hour player city', fr: 'Community Town Showcase #1 — une ville de 160 h', de: 'Community Town Showcase #1 — eine 160-Stunden-Stadt', es: 'Community Town Showcase #1 — una ciudad de 160 h', it: 'Community Town Showcase #1 — una città di 160 ore' },
+    },
+    gallery: ['screens/community.jpg', 'screens/town-nice.jpg', 'screens/forest-raid.png'],
+    sections: {
+      en: [
+        { h: 'Play with friends', p: ['Drop into a friend’s world or host your own — progress, build and survive as a crew.', 'Shared towns mean shared logistics; divide the labor and thrive.'] },
+        { h: 'Divide and conquer', p: ['One player scouts while another farms; a third builds while a fourth fights the night.', 'Coordinated parties clear dungeons that overwhelm a lone governor.'] },
+        { h: 'Community builds', p: ['Players have raised astonishing cities across hundreds of hours — the wilds are yours to shape.', 'Trade, specialize and celebrate each other’s architectures.'] },
+      ],
+      fr: [
+        { h: 'Jouez avec des amis', p: ['Rejoignez le monde d’un ami ou hébergez le vôtre — progressez, construisez et survivez en équipe.', 'Les villes partagées partagent la logistique ; divisez le travail et prospérez.'] },
+        { h: 'Divisez pour régner', p: ['Un joueur explore pendant qu’un autre cultive ; un troisième construit pendant qu’un quatrième affronte la nuit.', 'Les groupes coordonnés vident des donjons qui écraseraient un gouverneur seul.'] },
+        { h: 'Constructions communautaires', p: ['Des joueurs ont élevé des cités stupéfiantes en des centaines d’heures — les lieux sauvages sont à vous de façonner.', 'Échangez, spécialisez-vous et célébrez les architectures les uns des autres.'] },
+      ],
+      de: [
+        { h: 'Spiel mit Freunden', p: ['Spring in die Welt eines Freundes oder hoste deine eigene — fortschreiten, bauen und überleben als Crew.', 'Geteilte Städte bedeuten geteilte Logistik; teilt die Arbeit und gedeiht.'] },
+        { h: 'Teile und herrsche', p: ['Ein Spieler kundschaftet, während ein anderer farmt; ein dritter baut, während ein vierter die Nacht bekämpft.', 'Koordinierte Gruppen räumen Dungeons ab, die einen einzelnen Gouverneur überfordern.'] },
+        { h: 'Gemeinschaftsbauten', p: ['Spieler haben über hunderte Stunden erstaunliche Städte errichtet — die Wildnis gehört euch.', 'Handelt, spezialisiert euch und feiert eure Architekturen.'] },
+      ],
+      es: [
+        { h: 'Juega con amigos', p: ['Entra al mundo de un amigo o aloja el tuyo — progresa, construye y sobrevive en equipo.', 'Las ciudades compartidas comparten logística; divide el trabajo y prospera.'] },
+        { h: 'Divide y vencerás', p: ['Un jugador explora mientras otro cultiva; un tercero construye mientras un cuarto enfrenta la noche.', 'Las partidas coordinadas limpian mazmorras que abruman a un gobernador solo.'] },
+        { h: 'Construcciones comunitarias', p: ['Jugadores han alzado ciudades asombrosas en cientos de horas — la naturaleza es tuya para moldear.', 'Intercambia, especialízate y celebra las arquitecturas de los demás.'] },
+      ],
+      it: [
+        { h: 'Gioca con gli amici', p: ['Entra nel mondo di un amico o ospita il tuo — progredisci, costruisci e sopravvivi in squadra.', 'Città condivise significano logistica condivisa; dividi il lavoro e prospera.'] },
+        { h: 'Dividi e conquista', p: ['Un giocatore esplora mentre un altro coltiva; un terzo costruisce mentre un quarto affronta la notte.', 'Gruppi coordinati ripuliscono dungeon che sopraffanno un governatore solitario.'] },
+        { h: 'Costruzioni della community', p: ['Giocatori hanno eretto città stupefacenti in centinaia di ore — la natura selvaggia è tua da plasmare.', 'Scambia, specializzati e celebra le architetture degli altri.'] },
       ],
     },
   },
@@ -467,8 +333,4 @@ export const GUIDES: Guide[] = [
 
 export function getGuide(slug: string): Guide | undefined {
   return GUIDES.find((g) => g.slug === slug);
-}
-
-export function guidesByLocale(locale: Locale): Guide[] {
-  return GUIDES;
 }
