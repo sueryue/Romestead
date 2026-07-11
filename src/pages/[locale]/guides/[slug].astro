@@ -35,6 +35,11 @@ function slugify(str: string): string {
 }
 
 const toc = sections.map((s) => ({ id: slugify(s.h), label: s.h }));
+const crumbs = [
+  { label: SITE.name, href: link(locale, '/') },
+  { label: ui['nav.guides'], href: link(locale, '/guides') },
+  { label: pick(guide.title, locale) },
+];
 const related = GUIDES.filter((g) => g.slug !== slug).slice(0, 3).map((g) => ({
   href: link(locale, `/guides/${g.slug}`),
   title: pick(g.title, locale),
@@ -55,6 +60,7 @@ const galleryItems = (guide.gallery ?? []).map((src) => ({
   path={path}
   type="article"
   publishedTime={guide.updated}
+  breadcrumbs={crumbs}
   jsonLd={{
     '@type': 'Article',
     headline: pick(guide.title, locale),
@@ -67,13 +73,7 @@ const galleryItems = (guide.gallery ?? []).map((src) => ({
 >
   <Header locale={locale} path={path} />
   <main class="mx-auto max-w-6xl px-4 py-12">
-    <Breadcrumbs
-      items={[
-        { label: SITE.name, href: link(locale, '/') },
-        { label: ui['nav.guides'], href: link(locale, '/guides') },
-        { label: pick(guide.title, locale) },
-      ]}
-    />
+    <Breadcrumbs items={crumbs} />
     <div class="with-toc mt-6">
       <article class="reveal-ready">
         <p class="font-display text-xs uppercase tracking-[0.3em] text-gold-600">{ui['cat.' + guide.category]}</p>

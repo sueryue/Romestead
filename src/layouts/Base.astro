@@ -1,10 +1,9 @@
 ---
 import '../styles/global.css';
-import { SITE } from '../consts';
+import { SITE, STORE } from '../consts';
 import { getUi } from '../i18n/ui';
 import {
   LOCALES,
-  INDEXED_LOCALES,
   LOCALE_HREFLANG,
   LOCALE_OG,
   localize,
@@ -20,6 +19,7 @@ interface Props {
   type?: 'website' | 'article';
   jsonLd?: Record<string, unknown>;
   publishedTime?: string;
+  breadcrumbs?: { label: string; href?: string }[];
 }
 
 const {
@@ -30,17 +30,23 @@ const {
   type = 'website',
   jsonLd,
   publishedTime,
+  breadcrumbs,
 } = Astro.props;
 
 const ui = getUi(locale);
 
-// Indexed locale (en) canonicalizes to itself; English-fallback
-// locales (fr/de/es/it) consolidate to the English URL to avoid
-// duplicate-content indexing ¡ª this pairs with the trimmed sitemap.
-const canonTarget = INDEXED_LOCALES.includes(locale)
-  ? localize(locale, path)
-  : localize('en', path);
+// Each locale self-canonicalizes (never cross-language canonical). Non-indexed
+// locales (fr/de/es/it) still emit their own canonical + hreflang alternates and
+// are discovered via hreflang from the indexed English URL ¡ª this avoids the
+// cross-language canonical penalty while keeping the sitemap trimmed to en.
+const canonTarget = localize(locale, path);
 const canon = SITE.url + canonTarget;
+const base = import.meta.env.BASE_URL || '';
+const absUrl = (href?: string) => {
+  const raw = href ?? canonTarget; // last crumb (no href) ¡ú current page URL
+  const rel = raw.startsWith(base) ? raw.slice(base.length) || '/' : raw;
+  return SITE.url + rel;
+};
 const ogImageAbs = SITE.url + SITE.ogImage;
 const geo = SITE.geo[locale] ?? SITE.geo.default;
 
@@ -50,7 +56,7 @@ const orgLd = {
   name: SITE.name,
   url: SITE.url,
   logo: SITE.url + '/favicon.svg',
-  sameAs: [],
+  sameAs: [STORE.steam, STORE.discord, STORE.youtube],
 };
 const siteLd = {
   '@context': 'https://schema.org',
@@ -62,6 +68,20 @@ const siteLd = {
 };
 const pageLd = jsonLd
   ? { '@context': 'https://schema.org', ...jsonLd }
+  : null;
+
+// Breadcrumb trail (GEO/SEO): mirrors the visible <Breadcrumbs> nav.
+const breadcrumbLd = breadcrumbs && breadcrumbs.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.label,
+        item: absUrl(c.href),
+      })),
+    }
   : null;
 ---
 
@@ -112,6 +132,7 @@ const pageLd = jsonLd
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@BeartwigsOfficial" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbs} />
@@ -129,6 +150,7 @@ const pageLd = jsonLd
     <!-- Structured data -->
     <script type="application/ld+json" set:html={JSON.stringify(siteLd)} />
     <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+    {breadcrumbLd && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />}
     {pageLd && <script type="application/ld+json" set:html={JSON.stringify(pageLd)} />}
   </head>
   <body>

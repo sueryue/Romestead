@@ -34,6 +34,7 @@ const featuredVideos = [
   title={`${SITE.name} — ${ui['footer.tagline']}`}
   description={pick(SITE.description, locale)}
   path={path}
+  breadcrumbs={[{ label: SITE.name, href: link(locale, '/') }]}
   jsonLd={{
     '@type': 'VideoGame',
     name: SITE.name,

@@ -36,6 +36,11 @@ const related = ENTRIES.filter((e) => e.slug !== slug).slice(0, 4).map((e) => ({
   description={pick(entry.bio, locale)}
   path={path}
   type="article"
+  breadcrumbs={[
+    { label: SITE.name, href: link(locale, '/') },
+    { label: ui['nav.heroes'], href: link(locale, '/heroes') },
+    { label: entry.name },
+  ]}
   jsonLd={{
     '@type': isBoss ? 'Thing' : 'Person',
     name: entry.name,

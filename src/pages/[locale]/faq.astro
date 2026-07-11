@@ -23,6 +23,15 @@ const toc = FAQ.map((f) => ({ id: f.id, label: pick(f.q, locale) }));
   title={`${ui['faq.title']} — ${SITE.name}`}
   description={pick(SITE.description, locale)}
   path={path}
+  breadcrumbs={[{ label: SITE.name, href: link(locale, '/') }, { label: ui['faq.title'] }]}
+  jsonLd={{
+    '@type': 'FAQPage',
+    mainEntity: FAQ.map((f) => ({
+      '@type': 'Question',
+      name: pick(f.q, locale),
+      acceptedAnswer: { '@type': 'Answer', text: pick(f.a, locale) },
+    })),
+  }}
 >
   <Header locale={locale} path={path} />
   <main class="mx-auto max-w-6xl px-4 py-12">
