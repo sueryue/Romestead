@@ -40,24 +40,55 @@ const bosses = entriesByKind('boss');
         <h1 class="font-display text-3xl font-black text-roman-700">{ui['nav.heroes']}</h1>
         <p class="mt-3 text-lg text-ink-700">{pick(SITE.description, locale)}</p>
 
+        <!-- Collection tracker: checkable checklist with progress -->
+        <section class="tracker" aria-label={ui['tracker.title']}>
+          <div class="tracker__head">
+            <h2 class="tracker__title">{ui['tracker.title']}</h2>
+            <span class="tracker__you">{ui['tracker.you']}</span>
+          </div>
+          <div class="tracker__bars">
+            <div class="tracker__bar">
+              <div class="tracker__bar-top">
+                <span>{ui['tracker.bosses']}</span>
+                <span class="tracker__count" id="track-boss-count">0 / {bosses.length}</span>
+              </div>
+              <div class="tracker__track"><div class="tracker__fill tracker__fill--boss" id="track-boss-fill"></div></div>
+            </div>
+            <div class="tracker__bar">
+              <div class="tracker__bar-top">
+                <span>{ui['tracker.gods']}</span>
+                <span class="tracker__count" id="track-god-count">0 / {gods.length}</span>
+              </div>
+              <div class="tracker__track"><div class="tracker__fill tracker__fill--god" id="track-god-fill"></div></div>
+            </div>
+          </div>
+          <button type="button" class="tracker__reset" id="tracker-reset">{ui['tracker.reset']}</button>
+        </section>
+
         <section class="mt-8">
           <h2 class="font-display text-xl font-bold" data-i18n="heroes.gods">{ui['heroes.gods']}</h2>
           <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {gods.map((g) => (
-              <a
-                href={link(locale, `/heroes/${g.slug}`)}
-                class="reveal-ready rounded-lg border border-gold-600/30 bg-parchment-50 p-4 shadow-sm transition-transform hover:-translate-y-1"
-              >
-                <div class="flex items-center gap-3">
-                  <div class="flex h-11 w-11 items-center justify-center rounded-full bg-roman-600 font-display text-gold-400">⚜</div>
-                  <div>
-                    <h3 class="font-display text-lg font-bold">{g.name}</h3>
-                    <p class="text-xs text-ink-700/70">{pick(g.role, locale)}</p>
-                    {g.meta && g.meta[0] && <span class="stat-pill mt-2 inline-block">{g.meta[0].value}</span>}
+              <div class="hero-card reveal-ready">
+                <a href={link(locale, `/heroes/${g.slug}`)} class="hero-card__link">
+                  <div class="flex items-center gap-3">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-full bg-roman-600 font-display text-gold-400">⚜</div>
+                    <div>
+                      <h3 class="font-display text-lg font-bold">{g.name}</h3>
+                      <p class="text-xs text-ink-700/70">{pick(g.role, locale)}</p>
+                      {g.meta && g.meta[0] && <span class="stat-pill mt-2 inline-block">{g.meta[0].value}</span>}
+                    </div>
                   </div>
-                </div>
-                <p class="mt-3 text-sm italic text-ink-700/80">“{pick(g.lead, locale)}”</p>
-              </a>
+                  <p class="mt-3 text-sm italic text-ink-700/80">“{pick(g.lead, locale)}”</p>
+                </a>
+                <button
+                  type="button"
+                  class="track-check"
+                  data-kind="god"
+                  data-slug={g.slug}
+                  aria-label={`${ui['tracker.gods']}: ${g.name}`}
+                ></button>
+              </div>
             ))}
           </div>
         </section>
@@ -66,21 +97,27 @@ const bosses = entriesByKind('boss');
           <h2 class="font-display text-xl font-bold" data-i18n="heroes.bosses">{ui['heroes.bosses']}</h2>
           <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {bosses.map((b) => (
-              <a
-                href={link(locale, `/heroes/${b.slug}`)}
-                class="reveal-ready group overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm transition-transform hover:-translate-y-1"
-              >
-                {b.image && (
-                  <img src={media(b.image)} alt={b.name} loading="lazy" class="h-40 w-full object-cover" />
-                )}
-                <div class="p-4">
-                  <div class="flex items-center gap-2">
-                    <h3 class="font-display text-lg font-bold text-ink-800 group-hover:text-roman-600">{b.name}</h3>
-                    {b.meta && b.meta[0] && <span class="stat-pill">{b.meta[0].value}</span>}
+              <div class="hero-card reveal-ready group">
+                <a href={link(locale, `/heroes/${b.slug}`)} class="hero-card__link">
+                  {b.image && (
+                    <img src={media(b.image)} alt={b.name} loading="lazy" class="hero-card__img" />
+                  )}
+                  <div class="p-4">
+                    <div class="flex items-center gap-2">
+                      <h3 class="font-display text-lg font-bold text-ink-800 group-hover:text-roman-600">{b.name}</h3>
+                      {b.meta && b.meta[0] && <span class="stat-pill">{b.meta[0].value}</span>}
+                    </div>
+                    <p class="mt-1 text-xs text-ink-700/70">{pick(b.role, locale)}</p>
                   </div>
-                  <p class="mt-1 text-xs text-ink-700/70">{pick(b.role, locale)}</p>
-                </div>
-              </a>
+                </a>
+                <button
+                  type="button"
+                  class="track-check"
+                  data-kind="boss"
+                  data-slug={b.slug}
+                  aria-label={`${ui['tracker.bosses']}: ${b.name}`}
+                ></button>
+              </div>
             ))}
           </div>
         </section>
@@ -88,4 +125,68 @@ const bosses = entriesByKind('boss');
     </div>
   </main>
   <Footer locale={locale} />
+
+  <script is:inline define:vars={{ TOTALS: { boss: bosses.length, god: gods.length } }}>
+    (function () {
+      var KEY = 'romestead-collection';
+      // kind 'boss' -> 'bosses', 'god' -> 'gods' (NB: 'god' + 'es' = 'godes', wrong)
+      var KEYMAP = { boss: 'bosses', god: 'gods' };
+      function load() {
+        try {
+          var d = JSON.parse(localStorage.getItem(KEY) || '{}');
+          if (d && typeof d === 'object') return d;
+        } catch (e) {}
+        return {};
+      }
+      function save(d) {
+        try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+      }
+      var bars = { boss: document.getElementById('track-boss-fill'), god: document.getElementById('track-god-fill') };
+      var counts = { boss: document.getElementById('track-boss-count'), god: document.getElementById('track-god-count') };
+      var checks = Array.prototype.slice.call(document.querySelectorAll('.track-check'));
+
+      function render() {
+        var d = load();
+        ['boss', 'god'].forEach(function (k) {
+          var set = d[KEYMAP[k]] || [];
+          var n = set.length;
+          var t = TOTALS[k] || 0;
+          if (bars[k]) bars[k].style.width = (t ? Math.round((n / t) * 100) : 0) + '%';
+          if (counts[k]) counts[k].textContent = n + ' / ' + t + (n === t && t > 0 ? ' ✓' : '');
+        });
+        checks.forEach(function (c) {
+          var k = c.getAttribute('data-kind');
+          var s = c.getAttribute('data-slug');
+          var on = ((load()[KEYMAP[k]]) || []).indexOf(s) !== -1;
+          c.classList.toggle('is-checked', on);
+          c.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      }
+
+      checks.forEach(function (c) {
+        c.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var k = c.getAttribute('data-kind');
+          var s = c.getAttribute('data-slug');
+          var d = load();
+          var arr = d[KEYMAP[k]] || [];
+          var i = arr.indexOf(s);
+          if (i === -1) arr.push(s);
+          else arr.splice(i, 1);
+          d[KEYMAP[k]] = arr;
+          save(d);
+          render();
+        });
+      });
+
+      var reset = document.getElementById('tracker-reset');
+      if (reset) reset.addEventListener('click', function () {
+        save({ bosses: [], gods: [] });
+        render();
+      });
+
+      render();
+    })();
+  </script>
 </Base>

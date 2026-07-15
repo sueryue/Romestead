@@ -1,0 +1,266 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import { getUi } from '../../i18n/ui';
+import { LOCALES, link, pick, type Locale } from '../../i18n/utils';
+import { entriesByKind } from '../../content/heroes';
+import { SITE } from '../../consts';
+
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const ui = getUi(locale);
+const path = '/map';
+const gods = entriesByKind('god');
+const bosses = entriesByKind('boss');
+
+// --- Illustrative map geometry ---------------------------------------------
+// NOTE: the game scatters bosses in random directions from the map center and
+// publishes NO fixed coordinates. These positions are illustrative only — the
+// biome each boss sits in IS real (taken from its lore `meta`), but the x/y
+// placement is a stylised layout, not in-game data. Gods are not geo-located
+// at all, so they are shown as a decorative "constellation" along the top.
+const regions = [
+  { key: 'forest',  x: 40,  y: 70,  w: 260, h: 200, label: { en: 'Forest',  fr: 'Forêts',  de: 'Wald',     es: 'Bosques', it: 'Foreste' } },
+  { key: 'volcano', x: 680, y: 70,  w: 280, h: 200, label: { en: 'Volcano', fr: 'Volcan',  de: 'Vulkan',   es: 'Volcán',  it: 'Vulcano' } },
+  { key: 'plains',  x: 40,  y: 330, w: 280, h: 210, label: { en: 'Plains',  fr: 'Plaines', de: 'Ebenen',   es: 'Llanuras', it: 'Pianure' } },
+  { key: 'swamp',   x: 350, y: 190, w: 300, h: 180, label: { en: 'Swamp',   fr: 'Marécage', de: 'Sumpf',    es: 'Pantano', it: 'Palude' } },
+  { key: 'desert',  x: 680, y: 330, w: 280, h: 210, label: { en: 'Desert',  fr: 'Désert',  de: 'Wüste',    es: 'Desierto', it: 'Deserto' } },
+];
+
+// Boss pins — placed inside their REAL biome region (biome from lore meta).
+const biomeOf = (e: { meta?: { label: string; value: string }[] }) =>
+  e.meta?.find((m) => m.label === 'Biome')?.value ?? '';
+
+const bossPins: Record<string, { x: number; y: number }> = {
+  'guardian-of-minerva': { x: 175, y: 445 },
+  cyclops: { x: 770, y: 475 },
+  pyzifax: { x: 865, y: 385 },
+  'great-phoenix-of-arabia': { x: 815, y: 150 },
+  'talos-prototype': { x: 745, y: 100 },
+};
+const bossMarkers = bosses.map((e) => ({ entry: e, biome: biomeOf(e), ...bossPins[e.slug] }));
+
+// God pins — decorative constellation along the top "sky" band (illustrative).
+const godPins: Record<string, { x: number; y: number }> = {
+  diana: { x: 120, y: 38 },
+  minerva: { x: 250, y: 18 },
+  ceres: { x: 380, y: 36 },
+  mars: { x: 510, y: 16 },
+  mercury: { x: 640, y: 36 },
+  venus: { x: 770, y: 18 },
+  vulcan: { x: 880, y: 38 },
+};
+const godMarkers = gods.map((e) => ({ entry: e, ...godPins[e.slug] }));
+
+// 5-point star path centred on (0,0), outer r=15 — used for god markers.
+const STAR = 'M0,-15 L4.4,-5.2 L14.3,-4.6 L6.8,2.8 L8.8,13.2 L0,7.5 L-8.8,13.2 L-6.8,2.8 L-14.3,-4.6 L-4.4,-5.2 Z';
+---
+
+<Base
+  locale={locale}
+  title={`${ui['map.title']} — ${SITE.name}`}
+  description={ui['map.intro']}
+  path={path}
+  breadcrumbs={[{ label: SITE.name, href: link(locale, '/') }, { label: ui['map.title'] }]}
+>
+  <Header locale={locale} path={path} />
+  <main class="mx-auto max-w-7xl px-4 py-12">
+    <Breadcrumbs items={[{ label: SITE.name, href: link(locale, '/') }, { label: ui['map.title'] }]} />
+    <div class="mt-6 lg:grid lg:grid-cols-[220px_1fr] lg:gap-8">
+      <aside class="hidden lg:block">
+        <Sidebar locale={locale} path={path} />
+      </aside>
+      <div>
+        <h1 class="font-display text-3xl font-black text-roman-700">{ui['map.title']}</h1>
+        <p class="mt-3 max-w-2xl text-lg text-ink-700">{ui['map.intro']}</p>
+
+        <!-- Layer controls -->
+        <div class="map-controls">
+          <span class="map-controls__label">{ui['map.layers']}</span>
+          <div class="map-layers">
+            <button type="button" class="map-layer map-layer--boss is-active" data-layer="boss">
+              <span class="dot"></span>{ui['map.layer.bosses']}
+            </button>
+            <button type="button" class="map-layer map-layer--god is-active" data-layer="god">
+              <span class="dot"></span>{ui['map.layer.gods']}
+            </button>
+            <button type="button" class="map-layer map-layer--fast is-active" data-layer="fast">
+              <span class="dot"></span>{ui['map.layer.fast']}
+            </button>
+            <button type="button" class="map-layer-all" id="map-all">{ui['map.layer.all']}</button>
+          </div>
+          <div class="map-legend" aria-hidden="true">
+            <span><i class="lg-boss"></i>{ui['map.boss']}</span>
+            <span><i class="lg-god"></i>{ui['map.god']}</span>
+            <span><i class="lg-fast"></i>{ui['map.fast']}</span>
+          </div>
+        </div>
+
+        <div class="map-layout">
+          <!-- Map canvas -->
+          <div class="map-canvas">
+            <svg
+              id="map-svg"
+              class="map-svg"
+              viewBox="0 0 1000 600"
+              preserveAspectRatio="xMidYMid meet"
+              role="group"
+              aria-label={ui['map.title']}
+            >
+              <!-- Biome regions -->
+              {regions.map((r) => (
+                <g class={`map-region map-region--${r.key}`}>
+                  <rect x={r.x} y={r.y} width={r.w} height={r.h} rx="16" />
+                  <text class="map-region__label" x={r.x + r.w / 2} y={r.y + 26}>
+                    {pick(r.label, locale)}
+                  </text>
+                </g>
+              ))}
+
+              <!-- Boss markers (inside their real biome region) -->
+              {bossMarkers.map((m) => (
+                <g
+                  class="map-pin map-pin--boss"
+                  data-layer="boss"
+                  data-kind="boss"
+                  data-slug={m.entry.slug}
+                  data-name={m.entry.name}
+                  data-biome={m.biome}
+                  data-lead={pick(m.entry.lead, locale)}
+                  data-href={link(locale, `/heroes/${m.entry.slug}`)}
+                  transform={`translate(${m.x},${m.y})`}
+                  tabindex="0"
+                  role="button"
+                  aria-label={`${m.entry.name} — ${m.biome}`}
+                >
+                  <circle class="map-pin__hit" r="22" />
+                  <circle class="map-pin__shape" r="15" />
+                  <text class="map-pin__glyph" y="1">B</text>
+                  <text class="map-pin__label" y="34">{m.entry.name}</text>
+                </g>
+              ))}
+
+              <!-- God markers (decorative constellation, illustrative) -->
+              {godMarkers.map((m) => (
+                <g
+                  class="map-pin map-pin--god"
+                  data-layer="god"
+                  data-kind="god"
+                  data-slug={m.entry.slug}
+                  data-name={m.entry.name}
+                  data-lead={pick(m.entry.lead, locale)}
+                  data-href={link(locale, `/heroes/${m.entry.slug}`)}
+                  transform={`translate(${m.x},${m.y})`}
+                  tabindex="0"
+                  role="button"
+                  aria-label={m.entry.name}
+                >
+                  <circle class="map-pin__hit" r="20" />
+                  <path class="map-pin__shape" d={STAR} />
+                  <text class="map-pin__label" y="-24">{m.entry.name}</text>
+                </g>
+              ))}
+            </svg>
+
+            <p class="map-note">{ui['map.note']}</p>
+
+            <div class="map-fast-empty" id="map-fast-empty" hidden>
+              {ui['map.fast.none']}
+            </div>
+          </div>
+
+          <!-- Details panel -->
+          <aside class="map-info" id="map-info" aria-live="polite">
+            <p class="map-info__empty">{ui['map.select']}</p>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer locale={locale} />
+
+  <script is:inline define:vars={{ UI: ui }}>
+    (function () {
+      var svg = document.getElementById('map-svg');
+      if (!svg) return;
+      var info = document.getElementById('map-info');
+      var fastEmpty = document.getElementById('map-fast-empty');
+      var LS_KEY = 'romestead-map-layers';
+      var layers = { boss: true, god: true, fast: true };
+      try {
+        var saved = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
+        if (saved && typeof saved === 'object') layers = saved;
+      } catch (e) {}
+
+      function esc(s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      function applyLayers() {
+        svg.querySelectorAll('.map-pin').forEach(function (p) {
+          var l = p.getAttribute('data-layer');
+          p.classList.toggle('is-hidden', !layers[l]);
+        });
+        document.querySelectorAll('.map-layer').forEach(function (b) {
+          var l = b.getAttribute('data-layer');
+          b.classList.toggle('is-active', !!layers[l]);
+        });
+        if (fastEmpty) fastEmpty.hidden = !layers.fast;
+      }
+
+      document.querySelectorAll('.map-layer').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var l = b.getAttribute('data-layer');
+          layers[l] = !layers[l];
+          try { localStorage.setItem(LS_KEY, JSON.stringify(layers)); } catch (e) {}
+          applyLayers();
+        });
+      });
+
+      var allBtn = document.getElementById('map-all');
+      if (allBtn) allBtn.addEventListener('click', function () {
+        layers = { boss: true, god: true, fast: true };
+        try { localStorage.setItem(LS_KEY, JSON.stringify(layers)); } catch (e) {}
+        applyLayers();
+      });
+
+      function selectPin(pin) {
+        svg.querySelectorAll('.map-pin.is-selected').forEach(function (p) {
+          p.classList.remove('is-selected');
+        });
+        pin.classList.add('is-selected');
+        var d = pin.dataset;
+        var typeLabel = d.kind === 'boss' ? UI['map.boss'] : UI['map.god'];
+        var html = '';
+        html += '<span class="map-info__type map-info__type--' + d.kind + '">' + esc(typeLabel) + '</span>';
+        html += '<h3 class="map-info__name">' + esc(d.name) + '</h3>';
+        if (d.biome) html += '<p class="map-info__meta">' + esc(UI['map.biome']) + ': ' + esc(d.biome) + '</p>';
+        if (d.lead) html += '<p class="map-info__lead">&ldquo;' + esc(d.lead) + '&rdquo;</p>';
+        html += '<a class="map-info__link" href="' + esc(d.href) + '">' + esc(UI['map.details']) + ' &rarr;</a>';
+        info.innerHTML = html;
+      }
+
+      svg.addEventListener('click', function (e) {
+        var pin = e.target.closest('.map-pin');
+        if (pin) selectPin(pin);
+      });
+      svg.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        var pin = e.target.closest('.map-pin');
+        if (!pin) return;
+        e.preventDefault();
+        selectPin(pin);
+      });
+
+      applyLayers();
+    })();
+  </script>
+</Base>

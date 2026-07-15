@@ -13,10 +13,13 @@ interface Props {
 const { locale, path } = Astro.props;
 const ui = getUi(locale);
 
+// Logical order: Home → Guides (dropdown) → World → Map → Heroes → FAQ.
+// Home + Guides are rendered explicitly (Home as a link, Guides as a dropdown);
+// topLinks holds the remaining sections in their logical order.
 const topLinks = [
-  { href: link(locale, '/'), label: ui['nav.home'], match: '/' },
-  { href: link(locale, '/heroes'), label: ui['nav.heroes'], match: '/heroes' },
   { href: link(locale, '/world'), label: ui['nav.world'], match: '/world' },
+  { href: link(locale, '/map'), label: ui['nav.map'], match: '/map' },
+  { href: link(locale, '/heroes'), label: ui['nav.heroes'], match: '/heroes' },
   { href: link(locale, '/faq'), label: ui['nav.faq'], match: '/faq' },
 ];
 const isActive = (m: string) =>
@@ -85,21 +88,19 @@ const globeIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
       ⚜ Romestead
     </a>
 
-    <!-- Desktop nav: flat links + Guides dropdown -->
+    <!-- Desktop nav: Home · Guides dropdown · World · Map · Heroes · FAQ -->
     <ul class="hidden flex-1 items-center justify-center gap-8 md:flex">
-      {topLinks.map((l) => (
-        <li>
-          <a
-            href={l.href}
-            data-i18n={`nav.${l.match.replace('/', '')}`}
-            class={`text-sm tracking-wide transition-colors hover:text-roman-500 ${
-              isActive(l.match) ? 'text-roman-600 font-semibold' : 'text-ink-700'
-            }`}
-          >
-            {l.label}
-          </a>
-        </li>
-      ))}
+      <li>
+        <a
+          href={link(locale, '/')}
+          data-i18n="nav.home"
+          class={`text-sm tracking-wide transition-colors hover:text-roman-500 ${
+            isActive('/') ? 'text-roman-600 font-semibold' : 'text-ink-700'
+          }`}
+        >
+          {ui['nav.home']}
+        </a>
+      </li>
       <li class="relative rh-hover">
         <button
           type="button"
@@ -136,6 +137,19 @@ const globeIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
           </a>
         </div>
       </li>
+      {topLinks.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            data-i18n={`nav.${l.match.replace('/', '')}`}
+            class={`text-sm tracking-wide transition-colors hover:text-roman-500 ${
+              isActive(l.match) ? 'text-roman-600 font-semibold' : 'text-ink-700'
+            }`}
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
     </ul>
 
     <!-- Desktop search -->
@@ -208,8 +222,25 @@ const globeIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
     </div>
   </div>
 
-  <!-- Mobile nav row -->
+  <!-- Mobile nav row: Home · Guides · World · Map · Heroes · FAQ -->
   <ul class="flex items-center gap-5 overflow-x-auto px-4 pb-[calc(0.5rem+env(safe-area-inset-bottom))] text-sm md:hidden">
+    <li>
+      <a
+        href={link(locale, '/')}
+        class={`inline-flex min-h-[44px] items-center ${isActive('/') ? 'text-roman-600 font-semibold' : 'text-ink-700'}`}
+      >
+        {ui['nav.home']}
+      </a>
+    </li>
+    <li>
+      <button
+        type="button"
+        data-rh-toggle="m-guides"
+        aria-expanded="false"
+        class="inline-flex min-h-[44px] items-center gap-1 font-semibold text-roman-600"
+        set:html={`${ui['nav.guides']}${chevronIcon}`}
+      ></button>
+    </li>
     {topLinks.map((l) => (
       <li>
         <a
@@ -220,15 +251,6 @@ const globeIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
         </a>
       </li>
     ))}
-    <li>
-      <button
-        type="button"
-        data-rh-toggle="m-guides"
-        aria-expanded="false"
-        class="inline-flex min-h-[44px] items-center gap-1 font-semibold text-roman-600"
-        set:html={`${ui['nav.guides']}${chevronIcon}`}
-      ></button>
-    </li>
   </ul>
 
   <!-- Mobile Guides panel -->

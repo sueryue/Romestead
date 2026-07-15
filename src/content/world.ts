@@ -12,6 +12,7 @@ export const WORLD = {
     {
       name: { en: 'Plains', fr: 'Plaines', de: 'Ebenen', es: 'Llanuras', it: 'Pianure' },
       stage: { en: 'Starting area', fr: 'Zone de départ', de: 'Startgebiet', es: 'Zona inicial', it: 'Area iniziale' },
+      difficulty: 'easy',
       image: 'screens/town-start.png',
       desc: {
         en: 'Your starting biome. Essential resources, tutorial content and the first villagers are all here. Scout toward the center of the map before you settle — a central spot near coal, water and several biome borders saves hundreds of trips later.',
@@ -39,6 +40,7 @@ export const WORLD = {
     {
       name: { en: 'Forest', fr: 'Forêts', de: 'Wald', es: 'Bosques', it: 'Foreste' },
       stage: { en: 'Early expansion', fr: 'Expansion précoce', de: 'Frühe Expansion', es: 'Expansión temprana', it: 'Espansione iniziale' },
+      difficulty: 'medium',
       image: 'screens/woods-night.jpg',
       desc: {
         en: 'Denser and more claustrophobic than the Plains, rich in lumber, beasts and hidden ruins. The Lumberyard can only be built here, so keep a forest foothold or risk a late-game wood famine.',
@@ -66,6 +68,7 @@ export const WORLD = {
     {
       name: { en: 'Desert', fr: 'Désert', de: 'Wüste', es: 'Desierto', it: 'Deserto' },
       stage: { en: 'Difficulty spike', fr: 'Saut de difficulté', de: 'Schwierigkeitssprung', es: 'Salto de dificultad', it: 'Salto di difficoltà' },
+      difficulty: 'hard',
       image: 'screens/desert.jpg',
       desc: {
         en: 'A noticeable difficulty spike. Resources thin out and most enemies are aggressive on sight. Home of the Cyclops — defeating it drops the Logistics Tent that automates your production lines.',
@@ -93,6 +96,7 @@ export const WORLD = {
     {
       name: { en: 'Volcano', fr: 'Volcan', de: 'Vulkan', es: 'Volcán', it: 'Vulcano' },
       stage: { en: 'Endgame (Early Access)', fr: 'Fin de partie (Accès Anticipé)', de: 'Endgame (Early Access)', es: 'Final (Acceso Anticipado)', it: 'Endgame (Early Access)' },
+      difficulty: 'hard',
       image: 'screens/volcano-poi.png',
       desc: {
         en: 'The current endgame of Early Access. Extremely hostile NPCs that demand serious preparation — especially solo. The Great Phoenix of Arabia is reborn in its crater, and the Talos Prototype guards the Temple of Vulcan.',
@@ -120,6 +124,7 @@ export const WORLD = {
     {
       name: { en: 'Swamp', fr: 'Marécage', de: 'Sumpf', es: 'Pantano', it: 'Palude' },
       stage: { en: 'Coming post-EA', fr: 'Après l’EA', de: 'Nach dem EA', es: 'Tras el EA', it: 'Dopo l’EA' },
+      difficulty: 'medium',
       image: 'screens/owl-1.jpg',
       desc: {
         en: 'Divided into two areas connected by a river. Resources and enemies overlap with other biomes, making it a transitional, unpredictable region rich in hidden loot.',
@@ -147,6 +152,7 @@ export const WORLD = {
   ] as {
     name: L10n<string>;
     stage?: L10n<string>;
+    difficulty?: 'easy' | 'medium' | 'hard';
     desc: L10n<string>;
     image?: string;
     threats?: L10n<string>;

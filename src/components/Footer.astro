@@ -1,7 +1,7 @@
 ---
 import { getUi } from '../i18n/ui';
 import { link, type Locale } from '../i18n/utils';
-import { SITE } from '../consts';
+import { SITE, STORE } from '../consts';
 
 interface Props {
   locale: Locale;
@@ -26,6 +26,18 @@ const year = new Date().getFullYear();
         <a href={link(locale, '/world')} class="hover:text-gold-400" data-i18n="nav.world">{ui['nav.world']}</a>
       </nav>
     </div>
+
+    <div class="footer__community">
+      <div class="footer__community-text">
+        <p class="footer__community-title">⚔ {ui['footer.community.title']}</p>
+        <p class="footer__community-desc">{ui['footer.community.desc']}</p>
+        <p class="footer__community-note">{ui['footer.community.note']}</p>
+      </div>
+      <a href={STORE.discord} class="footer__community-cta" target="_blank" rel="noopener noreferrer">
+        💬 {ui['footer.community.cta']} ↗
+      </a>
+    </div>
+
     <p class="mt-8 text-xs text-parchment-300/70" data-i18n="footer.built">{ui['footer.built']}</p>
     <p class="mt-1 text-xs text-parchment-300/70">© {year} {SITE.author}. <span data-i18n="footer.rights">{ui['footer.rights']}</span></p>
   </div>

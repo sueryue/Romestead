@@ -39,13 +39,13 @@ const ui = getUi(locale);
 
 // Each locale self-canonicalizes (never cross-language canonical). Non-indexed
 // locales (fr/de/es/it) still emit their own canonical + hreflang alternates and
-// are discovered via hreflang from the indexed English URL ¡ª this avoids the
+// are discovered via hreflang from the indexed English URL â€” this avoids the
 // cross-language canonical penalty while keeping the sitemap trimmed to en.
 const canonTarget = localize(locale, path);
 const canon = SITE.url + canonTarget;
 const base = import.meta.env.BASE_URL || '';
 const absUrl = (href?: string) => {
-  const raw = href ?? canonTarget; // last crumb (no href) ¡ú current page URL
+  const raw = href ?? canonTarget; // last crumb (no href) â†’ current page URL
   const rel = raw.startsWith(base) ? raw.slice(base.length) || '/' : raw;
   return SITE.url + rel;
 };
@@ -109,7 +109,7 @@ const breadcrumbLd = breadcrumbs && breadcrumbs.length > 0
     <meta name="geo.position" content={geo.position} />
     <meta name="ICBM" content={geo.position} />
 
-    <!-- hreflang alternates (per-locale URLs â†? SEO/GEO) -->
+    <!-- hreflang alternates (per-locale URLs éˆ«? SEO/GEO) -->
     {LOCALES.map((l) => (
       <link rel="alternate" hreflang={LOCALE_HREFLANG[l]} href={SITE.url + localize(l, path)} />
     ))}

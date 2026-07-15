@@ -4,10 +4,12 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Sidebar from '../../../components/Sidebar.astro';
+import PageToc from '../../../components/PageToc.astro';
 import { getUi } from '../../../i18n/ui';
-import { LOCALES, link, pick, media, type Locale } from '../../../i18n/utils';
+import { LOCALES, link, pick, media, type Locale, type L10n } from '../../../i18n/utils';
 import { ogPath } from '../../../lib/og';
-import { GUIDES } from '../../../content/guides';
+import { GUIDES, getGuide } from '../../../content/guides';
+import { WORLD } from '../../../content/world';
 import { SITE } from '../../../consts';
 
 export function getStaticPaths() {
@@ -18,58 +20,560 @@ const { locale } = Astro.params as { locale: Locale };
 const ui = getUi(locale);
 const path = '/guides';
 const categories = ['survival', 'building', 'mechanic', 'gods', 'boss', 'coop'] as const;
+const featured = getGuide('survive-night')!;
+const topTips = GUIDES
+  .filter((g) => ['survive-night', 'build-town', 'haul-throw'].includes(g.slug))
+  .sort((a, b) => (b.mustRead ? 1 : 0) - (a.mustRead ? 1 : 0));
+
+const godsGuides = GUIDES.filter((g) => g.category === 'gods');
+const bossGuides = GUIDES.filter((g) => g.category === 'boss');
+const mechGuides = GUIDES.filter((g) => g.category === 'mechanic');
+const biomes = WORLD.biomes;
+
+interface FaqEntry { guide: string; q: L10n<string>; a: L10n<string>; }
+const FAQ: FaqEntry[] = [
+  {
+    guide: 'survive-night',
+    q: {
+      en: 'How do I survive my first night?',
+      fr: 'Comment survivre à ma première nuit ?',
+      de: 'Wie überlebe ich meine erste Nacht?',
+      es: '¿Cómo sobrevivo mi primera noche?',
+      it: 'Come sopravvivo alla prima notte?',
+    },
+    a: {
+      en: 'Light a ring of torches, raise a quick palisade, and craft a spear before dusk. Kite the slow Fallen around your wall instead of fighting head-on.',
+      fr: 'Allumez un cercle de torches, élevez une palissade rapide et forgez une lance avant la nuit. Attirez les Déchus lents autour de votre mur plutôt que de les affronter.',
+      de: 'Zünde einen Feuerring, errichte schnell eine Palisade und schmiede vor der Dämmerung einen Speer. Umkreise die langsamen Gefallenen an deiner Mauer, statt frontal zu kämpfen.',
+      es: 'Enciende un anillo de antorchas, levanta una empalizada rápida y forja una lanza antes del anochecer. Atrae a los Caídos lentos alrededor de tu muro en vez de enfrentarlos.',
+      it: 'Accendi un cerchio di torce, erigi una palizzata veloce e forgia una lancia prima del crepuscolo. Attira gli Involucri lenti attorno al muro invece di affrontarli.',
+    },
+  },
+  {
+    guide: 'gods-favors',
+    q: {
+      en: 'How do gods and blessings work?',
+      fr: 'Comment fonctionnent les dieux et les bénédictions ?',
+      de: 'Wie funktionieren Götter und Segen?',
+      es: '¿Cómo funcionan los dioses y las bendiciones?',
+      it: 'Come funzionano dei e benedizioni?',
+    },
+    a: {
+      en: 'Restore a fallen god by making offerings at their altar. Each restored god grants a permanent stat blessing and unlocks its own tech branch.',
+      fr: 'Restaurez un dieu déchu en faisant des offrandes sur son autel. Chaque dieu restauré accorde une bénédiction de stats permanente et débloque sa branche tech.',
+      de: 'Stelle einen gefallenen Gott wieder her, indem du an seinem Altar Opfer bringst. Jeder wiederhergestellte Gott gewährt einen dauerhaften Statussen und schaltet seinen Tech-Zweig frei.',
+      es: 'Restaura un dios caído haciendo ofrendas en su altar. Cada dios restaurado otorga una bendición de estadísticas permanente y desbloquea su rama tecnológica.',
+      it: 'Ripristina un dio caduto facendo offerte sul suo altare. Ogni dio ripristinato concede una benedizione di statistiche permanente e sblocca il suo ramo tecnologico.',
+    },
+  },
+  {
+    guide: 'bosses',
+    q: {
+      en: 'How do I unlock auto-production (Logistics Tent)?',
+      fr: 'Comment débloquer la production auto (Tente de Logistique) ?',
+      de: 'Wie schalte ich Auto-Produktion (Logistik-Zelt) frei?',
+      es: '¿Cómo desbloqueo la producción automática (Tienda de Logística)?',
+      it: 'Come sblocco la produzione automatica (Tendola Logistica)?',
+    },
+    a: {
+      en: 'Defeat the Cyclops in the Desert biome — it drops the Logistics Tent that automates your production lines.',
+      fr: 'Vainquez le Cyclope dans le biome Désert — il laisse tomber la Tente de Logistique qui automatise vos chaînes de production.',
+      de: 'Besiege den Zyklopen im Wüsten-Biom — er lässt das Logistik-Zelt fallen, das deine Produktionsketten automatisiert.',
+      es: 'Derrota al Cíclope en el bioma Desierto — suelta la Tienda de Logística que automatiza tus líneas de producción.',
+      it: 'Sconfiggi il Ciclope nel bioma Deserto — fa cadere la Tendola Logistica che automatizza le tue linee di produzione.',
+    },
+  },
+  {
+    guide: 'build-town',
+    q: {
+      en: 'Which citizen perks should I avoid?',
+      fr: 'Quels perks de citoyens éviter ?',
+      de: 'Welche Bürger-Perks meiden?',
+      es: '¿Qué perks de ciudadanos debo evitar?',
+      it: 'Quali perk dei cittadini evitare?',
+    },
+    a: {
+      en: 'Gluttonous and Disloyal are quietly dangerous: Disloyal slows expertise gain by 50%. Skip them when recruiting.',
+      fr: 'Glouton et Déloyal sont sournoisement dangereux : Déloyal ralentit l’expertise de 50 %. À éviter au recrutement.',
+      de: 'Gefräßig und Unloyale sind heimlich gefährlich: Unloyale verlangsamt Expertise um 50 %. Beim Rekrutieren meiden.',
+      es: 'Glotón y Desleal son peligrosos en silencio: Desleal ralentiza la expertise un 50 %. Evítalos al reclutar.',
+      it: 'Glotone e Disleale sono pericolosi in silenzio: Disleale rallenta l’expertise del 50 %. Evitali quando recluti.',
+    },
+  },
+  {
+    guide: 'survive-night',
+    q: {
+      en: 'Where should I build my first town?',
+      fr: 'Où construire ma première ville ?',
+      de: 'Wo baue ich meine erste Stadt?',
+      es: '¿Dónde construyo mi primera ciudad?',
+      it: 'Dove costruisco la prima città?',
+    },
+    a: {
+      en: 'Scout toward the map center before you settle — a spot near coal, water and several biome borders saves hundreds of trips later.',
+      fr: 'Explorez vers le centre de la carte avant de vous installer — un point près du charbon, de l’eau et de plusieurs biomes évite des centaines de trajets.',
+      de: 'Kundschafte zur Kartenmitte, bevor du dich niederlässt — ein Platz nahe Kohle, Wasser und mehreren Biom-Grenzen spart später hunderte Fahrten.',
+      es: 'Explora hacia el centro del mapa antes de asentarte — un punto cerca de carbón, agua y varios biomas ahorra cientos de viajes.',
+      it: 'Esplora verso il centro della mappa prima di stabilirti — un punto vicino a carbone, acqua e diversi biomi risparmia centinaia di viaggi.',
+    },
+  },
+  {
+    guide: 'coop',
+    q: {
+      en: 'How does co-op play work?',
+      fr: 'Comment fonctionne le co-op ?',
+      de: 'Wie funktioniert Ko-op?',
+      es: '¿Cómo funciona el co-op?',
+      it: 'Come funziona il co-op?',
+    },
+    a: {
+      en: 'Join a friend’s world or host your own. Shared towns mean shared logistics — split roles (explore, farm, build, defend) to clear dungeons a solo governor can’t.',
+      fr: 'Rejoignez le monde d’un ami ou hébergez le vôtre. Les villes partagées partagent la logistique — répartissez les rôles (explorer, cultiver, construire, défendre) pour nettoyer des donjons impossibles en solo.',
+      de: 'Tritt der Welt eines Freundes bei oder hoste deine eigene. Geteilte Städte teilen die Logistik — teilt Rollen (erkunden, farmen, bauen, verteidigen), um Dungeons zu räumen, die ein Solo-Gouverneur nicht schafft.',
+      es: 'Únete al mundo de un amigo o aloja el tuyo. Las ciudades compartidas comparten logística — reparte roles (explorar, farmear, construir, defender) para limpiar mazmorras que un gobernador en solitario no puede.',
+      it: 'Unisciti al mondo di un amico o ospita il tuo. Le città condivise condividono la logistica — dividi i ruoli (esplora, coltiva, costruisci, difendi) per ripulire dungeon che un governatore solo non può.',
+    },
+  },
+];
+
+const toc = [
+  { id: 'gods', label: ui['encyclopedia.gods'] },
+  { id: 'bosses', label: ui['encyclopedia.bosses'] },
+  { id: 'world', label: ui['encyclopedia.world'] },
+  { id: 'mechanics', label: ui['encyclopedia.mechanics'] },
+  { id: 'faq', label: ui['faq.title'] },
+  { id: 'pitfalls', label: ui['mistakes'] },
+  { id: 'all-guides', label: ui['allGuides'] },
+];
 ---
 
 <Base
   locale={locale}
-  title={`${ui['nav.guides']} — ${SITE.name}`}
-  description={pick(SITE.description, locale)}
+  title={`${ui['encyclopedia.title']} — ${SITE.name}`}
+  description={ui['encyclopedia.intro']}
   path={path}
-  breadcrumbs={[{ label: SITE.name, href: link(locale, '/') }, { label: ui['nav.guides'] }]}
+  breadcrumbs={[{ label: SITE.name, href: link(locale, '/') }, { label: ui['encyclopedia.title'] }]}
   ogImage={ogPath(locale, 'guides')}
 >
   <Header locale={locale} path={path} />
   <main class="mx-auto max-w-7xl px-4 py-12">
-    <Breadcrumbs items={[{ label: SITE.name, href: link(locale, '/') }, { label: ui['nav.guides'] }]} />
-    <div class="mt-6 lg:grid lg:grid-cols-[220px_1fr] lg:gap-8">
+    <Breadcrumbs items={[{ label: SITE.name, href: link(locale, '/') }, { label: ui['encyclopedia.title'] }]} />
+    <div class="mt-6 lg:grid lg:grid-cols-[220px_minmax(0,1fr)] xl:grid-cols-[220px_minmax(0,1fr)_240px] xl:gap-8">
       <aside class="hidden lg:block">
         <Sidebar locale={locale} path={path} />
       </aside>
-      <div>
-        <h1 class="font-display text-3xl font-black text-roman-700">{ui['nav.guides']}</h1>
-        <p class="mt-3 text-lg text-ink-700">{pick(SITE.description, locale)}</p>
 
-        <div class="guide-filters mt-8" data-filter>
-          <button type="button" data-cat="all" class="is-active">{ui['all']}</button>
-          {categories.map((c) => (
-            <button type="button" data-cat={c}>{ui['cat.' + c]}</button>
-          ))}
-        </div>
+      <div class="min-w-0">
+        <h1 class="font-display text-3xl font-black text-roman-700">{ui['encyclopedia.title']}</h1>
+        <p class="mt-3 text-lg text-ink-700">{ui['encyclopedia.intro']}</p>
 
-        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-grid>
-          {GUIDES.map((g) => (
-            <a
-              href={link(locale, `/guides/${g.slug}`)}
-              data-cat={g.category}
-              class="guide-card reveal-ready group overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm transition-transform hover:-translate-y-1 hover:border-gold-500"
-            >
-              {g.cover && (
-                <img src={media(g.cover)} alt={pick(g.title, locale)} loading="lazy" class="h-40 w-full object-cover" />
+        <!-- BEGINNER'S ROADMAP -->
+        <section id="start" class="enc-section scroll-mt-28">
+          <div class="beginner-path overflow-hidden rounded-xl border border-gold-600/30 bg-parchment-50 shadow-sm">
+            <div class="grid md:grid-cols-2">
+              {featured.cover && (
+                <img src={media(featured.cover)} alt={pick(featured.title, locale)} class="h-56 w-full object-cover md:h-full" />
               )}
-              <div class="p-5">
-                <div class="mb-3 inline-block rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">
-                  {ui['cat.' + g.category]}
+              <div class="flex flex-col justify-center p-8">
+                <div class="mb-3 inline-block w-fit rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">
+                  ★ {ui['beginner.path']}
                 </div>
-                <h2 class="font-display text-lg font-bold text-ink-800 group-hover:text-roman-600">
-                  {pick(g.title, locale)}
-                </h2>
-                <p class="mt-2 text-sm text-ink-700/80">{pick(g.description, locale)}</p>
-                <p class="mt-3 text-xs text-ink-700/60">↻ {g.updated}</p>
+                <h2 class="font-display text-2xl font-bold text-roman-700">{pick(featured.title, locale)}</h2>
+                <p class="mt-3 text-ink-700">{pick(featured.description, locale)}</p>
+                <a href={link(locale, `/guides/${featured.slug}`)} class="mt-5 w-fit rounded bg-roman-600 px-5 py-2.5 text-center font-semibold text-parchment-50 transition-colors hover:bg-roman-500">
+                  {ui['cta.read']} →
+                </a>
               </div>
-            </a>
-          ))}
-        </div>
+            </div>
+            <div class="border-t border-gold-600/20 bg-parchment-100/60 px-8 py-6">
+              <p class="mb-4 font-display text-sm font-bold uppercase tracking-wide text-roman-600">{ui['beginner.quickstart']}</p>
+              <ol class="roadmap">
+                {pick(featured.sections, locale).map((s, i) => (
+                  <li class="roadmap__step">
+                    <span class="roadmap__num">{i + 1}</span>
+                    <a href={link(locale, `/guides/${featured.slug}`)} class="roadmap__link">
+                      <span class="roadmap__h">{s.h}</span>
+                      <span class="roadmap__p">{s.p[0]}</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <!-- GODS & BLESSINGS -->
+        <section id="gods" class="enc-section scroll-mt-28">
+          <h2 class="enc-section__h">{ui['encyclopedia.gods']}</h2>
+          <p class="enc-section__intro">{ui['encyclopedia.gods.intro']}</p>
+
+          <figure class="diagram">
+            <svg class="flow" viewBox="0 0 680 200" role="img" aria-label="Altar to Blessing flow">
+              <defs>
+                <marker id="ar-gods" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L8,3 L0,6 Z" class="flow-arrow" />
+                </marker>
+              </defs>
+              <line x1="150" y1="100" x2="186" y2="100" class="flow-edge" marker-end="url(#ar-gods)" />
+              <line x1="320" y1="100" x2="356" y2="100" class="flow-edge" marker-end="url(#ar-gods)" />
+              <line x1="490" y1="100" x2="526" y2="100" class="flow-edge" marker-end="url(#ar-gods)" />
+              <g class="flow-node">
+                <rect x="20" y="70" width="130" height="60" rx="10" />
+                <text class="flow-label" x="85" y="100" text-anchor="middle" dominant-baseline="middle">Altar</text>
+              </g>
+              <g class="flow-node">
+                <rect x="190" y="70" width="130" height="60" rx="10" />
+                <text class="flow-label" x="255" y="100" text-anchor="middle" dominant-baseline="middle">Offerings</text>
+              </g>
+              <g class="flow-node">
+                <rect x="360" y="70" width="130" height="60" rx="10" />
+                <text class="flow-label" x="425" y="94" text-anchor="middle">Worship</text>
+                <text class="flow-label" x="425" y="112" text-anchor="middle">Points</text>
+              </g>
+              <g class="flow-node flow-node--accent">
+                <rect x="530" y="70" width="130" height="60" rx="10" />
+                <text class="flow-label" x="595" y="94" text-anchor="middle">Blessing</text>
+                <text class="flow-sub" x="595" y="112" text-anchor="middle">(permanent)</text>
+              </g>
+            </svg>
+            <figcaption class="diagram__cap">{ui['encyclopedia.diagram']} · Altar → Offerings → Worship Points → Blessing</figcaption>
+          </figure>
+
+          <div class="accordion">
+            {godsGuides.map((g, i) => (
+              <details class="acc-item" open={i === 0 ? true : undefined}>
+                <summary>{pick(g.title, locale)}</summary>
+                <div class="acc-item__body">
+                  <p class="text-ink-700">{pick(g.description, locale)}</p>
+                  <a href={link(locale, `/guides/${g.slug}`)} class="acc-item__more">{ui['encyclopedia.readmore']} →</a>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <!-- BOSSES & FOES -->
+        <section id="bosses" class="enc-section scroll-mt-28">
+          <h2 class="enc-section__h">{ui['encyclopedia.bosses']}</h2>
+          <p class="enc-section__intro">{ui['encyclopedia.bosses.intro']}</p>
+
+          <figure class="diagram">
+            <svg class="flow" viewBox="0 0 480 580" role="img" aria-label="Boss encounter loop">
+              <defs>
+                <marker id="ar-boss" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L8,3 L0,6 Z" class="flow-arrow" />
+                </marker>
+              </defs>
+              <line x1="240" y1="74" x2="240" y2="98" class="flow-edge" marker-end="url(#ar-boss)" />
+              <path d="M240,100 L105,114" class="flow-edge" marker-end="url(#ar-boss)" />
+              <path d="M240,100 L375,114" class="flow-edge" marker-end="url(#ar-boss)" />
+              <path d="M105,170 L240,194" class="flow-edge" marker-end="url(#ar-boss)" />
+              <path d="M375,170 L240,194" class="flow-edge" marker-end="url(#ar-boss)" />
+              <line x1="240" y1="250" x2="240" y2="274" class="flow-edge" marker-end="url(#ar-boss)" />
+              <line x1="240" y1="330" x2="240" y2="354" class="flow-edge" marker-end="url(#ar-boss)" />
+              <line x1="240" y1="410" x2="240" y2="434" class="flow-edge" marker-end="url(#ar-boss)" />
+              <line x1="240" y1="490" x2="240" y2="514" class="flow-edge" marker-end="url(#ar-boss)" />
+              <path d="M155,543 C40,543 40,47 155,47" class="flow-edge" marker-end="url(#ar-boss)" />
+
+              <g class="flow-node">
+                <rect x="155" y="20" width="170" height="54" rx="10" />
+                <text class="flow-label" x="240" y="47" text-anchor="middle" dominant-baseline="middle">Roam the World</text>
+              </g>
+              <g class="flow-node">
+                <rect x="20" y="116" width="170" height="54" rx="10" />
+                <text class="flow-label" x="105" y="143" text-anchor="middle" dominant-baseline="middle">Find Hidden Lair</text>
+              </g>
+              <g class="flow-node">
+                <rect x="290" y="116" width="170" height="54" rx="10" />
+                <text class="flow-label" x="375" y="143" text-anchor="middle" dominant-baseline="middle">Destroy Summon Objects</text>
+              </g>
+              <g class="flow-node flow-node--accent">
+                <rect x="155" y="196" width="170" height="54" rx="10" />
+                <text class="flow-label" x="240" y="223" text-anchor="middle" dominant-baseline="middle">Boss Appears</text>
+              </g>
+              <g class="flow-node">
+                <rect x="155" y="276" width="170" height="54" rx="10" />
+                <text class="flow-label" x="240" y="303" text-anchor="middle" dominant-baseline="middle">Build Loadout</text>
+              </g>
+              <g class="flow-node">
+                <rect x="155" y="356" width="170" height="54" rx="10" />
+                <text class="flow-label" x="240" y="383" text-anchor="middle" dominant-baseline="middle">Defeat Boss</text>
+              </g>
+              <g class="flow-node">
+                <rect x="155" y="436" width="170" height="54" rx="10" />
+                <text class="flow-label" x="240" y="463" text-anchor="middle" dominant-baseline="middle">Loot Drops</text>
+              </g>
+              <g class="flow-node flow-node--accent">
+                <rect x="155" y="516" width="170" height="54" rx="10" />
+                <text class="flow-label" x="240" y="543" text-anchor="middle" dominant-baseline="middle">Farm Repeats</text>
+              </g>
+            </svg>
+            <figcaption class="diagram__cap">{ui['encyclopedia.diagram']} · Roam → lair / summon → defeat → loot → repeat</figcaption>
+          </figure>
+
+          <div class="accordion">
+            {bossGuides.map((g) => (
+              <details class="acc-item">
+                <summary>{pick(g.title, locale)}</summary>
+                <div class="acc-item__body">
+                  <p class="text-ink-700">{pick(g.description, locale)}</p>
+                  <a href={link(locale, `/guides/${g.slug}`)} class="acc-item__more">{ui['encyclopedia.readmore']} →</a>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <!-- WORLD & BIOMES -->
+        <section id="world" class="enc-section scroll-mt-28">
+          <h2 class="enc-section__h">{ui['encyclopedia.world']}</h2>
+          <p class="enc-section__intro">{ui['encyclopedia.world.intro']}</p>
+          <div class="accordion">
+            {biomes.map((b) => (
+              <details class="acc-item">
+                <summary>
+                  <span>{b.name[locale] ?? b.name.en}</span>
+                  {b.difficulty && <span class={`biome-tag biome-tag--${b.difficulty}`}>{ui['world.difficulty.' + b.difficulty]}</span>}
+                </summary>
+                <div class="acc-item__body">
+                  {b.stage && <p class="text-sm font-semibold text-roman-600">{b.stage[locale] ?? b.stage.en}</p>}
+                  <p class="mt-1 text-ink-700">{b.desc[locale] ?? b.desc.en}</p>
+                  {b.resources && (
+                    <p class="mt-2 text-sm text-ink-700/80"><span class="font-semibold">▸ {ui['world.resources']}:</span> {b.resources.join(', ')}</p>
+                  )}
+                  {b.creatures && (
+                    <p class="mt-1 text-sm text-ink-700/80"><span class="font-semibold">▸ {ui['world.creatures']}:</span> {b.creatures.join(', ')}</p>
+                  )}
+                  <p class="mt-3 flex flex-wrap gap-3">
+                    <a href={link(locale, '/world')} class="acc-item__more">{ui['nav.world']} →</a>
+                    <a href={link(locale, '/map')} class="acc-item__more">{ui['nav.map']} →</a>
+                  </p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <!-- CORE MECHANICS -->
+        <section id="mechanics" class="enc-section scroll-mt-28">
+          <h2 class="enc-section__h">{ui['encyclopedia.mechanics']}</h2>
+          <p class="enc-section__intro">{ui['encyclopedia.mechanics.intro']}</p>
+
+          <figure class="diagram">
+            <svg class="flow" viewBox="0 0 480 180" role="img" aria-label="Haul and throw loop">
+              <defs>
+                <marker id="ar-haul" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L8,3 L0,6 Z" class="flow-arrow" />
+                </marker>
+              </defs>
+              <line x1="150" y1="87" x2="178" y2="87" class="flow-edge" marker-end="url(#ar-haul)" />
+              <path d="M310,87 L348,49" class="flow-edge" marker-end="url(#ar-haul)" />
+              <path d="M310,87 L348,125" class="flow-edge" marker-end="url(#ar-haul)" />
+              <g class="flow-node">
+                <rect x="20" y="60" width="130" height="54" rx="10" />
+                <text class="flow-label" x="85" y="87" text-anchor="middle" dominant-baseline="middle">Pick Up</text>
+              </g>
+              <g class="flow-node">
+                <rect x="180" y="60" width="130" height="54" rx="10" />
+                <text class="flow-label" x="245" y="87" text-anchor="middle" dominant-baseline="middle">Carry</text>
+              </g>
+              <g class="flow-node flow-node--accent">
+                <rect x="350" y="22" width="120" height="54" rx="10" />
+                <text class="flow-label" x="410" y="49" text-anchor="middle" dominant-baseline="middle">Throw / Stun</text>
+              </g>
+              <g class="flow-node">
+                <rect x="350" y="98" width="120" height="54" rx="10" />
+                <text class="flow-label" x="410" y="125" text-anchor="middle" dominant-baseline="middle">Deposit</text>
+              </g>
+            </svg>
+            <figcaption class="diagram__cap">{ui['encyclopedia.diagram']} · Pick up → carry → throw to stun or deposit</figcaption>
+          </figure>
+
+          <figure class="diagram">
+            <svg class="flow" viewBox="0 0 680 140" role="img" aria-label="Profession skill growth">
+              <defs>
+                <marker id="ar-prof" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L8,3 L0,6 Z" class="flow-arrow" />
+                </marker>
+              </defs>
+              <line x1="170" y1="67" x2="188" y2="67" class="flow-edge" marker-end="url(#ar-prof)" />
+              <line x1="340" y1="67" x2="358" y2="67" class="flow-edge" marker-end="url(#ar-prof)" />
+              <line x1="510" y1="67" x2="528" y2="67" class="flow-edge" marker-end="url(#ar-prof)" />
+              <g class="flow-node">
+                <rect x="20" y="40" width="150" height="54" rx="10" />
+                <text class="flow-label" x="95" y="61" text-anchor="middle">Assign</text>
+                <text class="flow-label" x="95" y="79" text-anchor="middle">Profession</text>
+              </g>
+              <g class="flow-node flow-node--accent">
+                <rect x="190" y="40" width="150" height="54" rx="10" />
+                <text class="flow-label" x="265" y="61" text-anchor="middle">+5 to</text>
+                <text class="flow-label" x="265" y="79" text-anchor="middle">Skill</text>
+              </g>
+              <g class="flow-node">
+                <rect x="360" y="40" width="150" height="54" rx="10" />
+                <text class="flow-label" x="435" y="61" text-anchor="middle">Grows by</text>
+                <text class="flow-label" x="435" y="79" text-anchor="middle">Use</text>
+              </g>
+              <g class="flow-node">
+                <rect x="530" y="40" width="150" height="54" rx="10" />
+                <text class="flow-label" x="605" y="61" text-anchor="middle">Higher</text>
+                <text class="flow-label" x="605" y="79" text-anchor="middle">Tier</text>
+              </g>
+            </svg>
+            <figcaption class="diagram__cap">{ui['encyclopedia.diagram']} · Assign profession → +5 skill → grows by use → higher tier</figcaption>
+          </figure>
+
+          <figure class="diagram">
+            <svg class="flow" viewBox="0 0 300 470" role="img" aria-label="Armor tier ladder">
+              <defs>
+                <marker id="ar-armor" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L8,3 L0,6 Z" class="flow-arrow" />
+                </marker>
+              </defs>
+              <line x1="150" y1="368" x2="150" y2="296" class="flow-edge" marker-end="url(#ar-armor)" />
+              <line x1="150" y1="292" x2="150" y2="220" class="flow-edge" marker-end="url(#ar-armor)" />
+              <line x1="150" y1="216" x2="150" y2="144" class="flow-edge" marker-end="url(#ar-armor)" />
+              <line x1="150" y1="140" x2="150" y2="68" class="flow-edge" marker-end="url(#ar-armor)" />
+              <line x1="150" y1="64" x2="150" y2="12" class="flow-edge" marker-end="url(#ar-armor)" />
+              <g class="flow-node flow-node--accent">
+                <rect x="50" y="10" width="200" height="50" rx="10" />
+                <text class="flow-label" x="150" y="35" text-anchor="middle" dominant-baseline="middle">Legendary</text>
+              </g>
+              <g class="flow-node">
+                <rect x="50" y="86" width="200" height="50" rx="10" />
+                <text class="flow-label" x="150" y="111" text-anchor="middle" dominant-baseline="middle">Iron</text>
+              </g>
+              <g class="flow-node">
+                <rect x="50" y="162" width="200" height="50" rx="10" />
+                <text class="flow-label" x="150" y="187" text-anchor="middle" dominant-baseline="middle">Bronze</text>
+              </g>
+              <g class="flow-node">
+                <rect x="50" y="238" width="200" height="50" rx="10" />
+                <text class="flow-label" x="150" y="263" text-anchor="middle" dominant-baseline="middle">Copper</text>
+              </g>
+              <g class="flow-node">
+                <rect x="50" y="314" width="200" height="50" rx="10" />
+                <text class="flow-label" x="150" y="339" text-anchor="middle" dominant-baseline="middle">Leather (+3)</text>
+              </g>
+              <g class="flow-node">
+                <rect x="50" y="390" width="200" height="50" rx="10" />
+                <text class="flow-label" x="150" y="415" text-anchor="middle" dominant-baseline="middle">Civilian</text>
+              </g>
+            </svg>
+            <figcaption class="diagram__cap">{ui['encyclopedia.diagram']} · Civilian → Leather → Copper → Bronze → Iron → Legendary</figcaption>
+          </figure>
+
+          <div class="accordion">
+            {mechGuides.map((g) => (
+              <details class="acc-item">
+                <summary>{pick(g.title, locale)}</summary>
+                <div class="acc-item__body">
+                  <p class="text-ink-700">{pick(g.description, locale)}</p>
+                  <a href={link(locale, `/guides/${g.slug}`)} class="acc-item__more">{ui['encyclopedia.readmore']} →</a>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="enc-section scroll-mt-28">
+          <h2 class="enc-section__h">{ui['faq.title']}</h2>
+          <p class="enc-section__intro">{ui['faq.intro']}</p>
+          <div class="accordion">
+            {FAQ.map((f) => (
+              <details class="acc-item">
+                <summary>{pick(f.q, locale)}</summary>
+                <div class="acc-item__body">
+                  <p class="text-ink-700">{pick(f.a, locale)}</p>
+                  <a href={link(locale, `/guides/${f.guide}`)} class="acc-item__more">{ui['encyclopedia.readmore']} →</a>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <!-- PITFALLS -->
+        <section id="pitfalls" class="enc-section scroll-mt-28">
+          <div class="flex items-end justify-between gap-4">
+            <h2 class="enc-section__h">{ui['mistakes']}</h2>
+            <span class="text-sm text-ink-600">{ui['mistakes.hint']}</span>
+          </div>
+          <ol class="pitfall-timeline mt-6">
+            {topTips.map((g, i) => {
+              const sec = pick(g.sections, locale)[0];
+              const img = g.cover ?? (g.gallery && g.gallery[0]) ?? '';
+              return (
+                <li class="pitfall-wrap">
+                  <details class="pitfall" name="pitfalls" open={i === 0 ? true : undefined}>
+                    <summary class="pitfall__summary">
+                      <span class="pitfall__node">{i + 1}</span>
+                      <span class="pitfall__head">
+                        <span class="pitfall__title">{g.tip ? pick(g.tip, locale) : pick(g.title, locale)}</span>
+                        {g.mustRead && <span class="pitfall__badge">{ui['mustread']}</span>}
+                      </span>
+                      <span class="pitfall__chev" aria-hidden="true">▾</span>
+                    </summary>
+                    <div class="pitfall__body">
+                      <img src={media(img)} alt={pick(g.title, locale)} class="pitfall__media" loading="lazy" />
+                      <div class="pitfall__text">
+                        {sec && (
+                          <>
+                            <h3 class="pitfall__subh">{sec.h}</h3>
+                            {sec.p.map((para) => <p>{para}</p>)}
+                          </>
+                        )}
+                        <a href={link(locale, `/guides/${g.slug}`)} class="pitfall__more">{ui['cta.read']} →</a>
+                      </div>
+                    </div>
+                  </details>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+
+        <!-- ALL GUIDES -->
+        <section id="all-guides" class="enc-section scroll-mt-28">
+          <h2 class="enc-section__h">{ui['allGuides']}</h2>
+          <div class="guide-filters mt-4" data-filter>
+            <button type="button" data-cat="all" class="is-active">{ui['all']}</button>
+            {categories.map((c) => (
+              <button type="button" data-cat={c}>{ui['cat.' + c]}</button>
+            ))}
+          </div>
+
+          <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-grid>
+            {GUIDES.map((g) => (
+              <a
+                href={link(locale, `/guides/${g.slug}`)}
+                data-cat={g.category}
+                class="guide-card reveal-ready group overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm transition-transform hover:-translate-y-1 hover:border-gold-500"
+              >
+                {g.cover && (
+                  <img src={media(g.cover)} alt={pick(g.title, locale)} loading="lazy" class="h-40 w-full object-cover" />
+                )}
+                <div class="p-5">
+                  <div class="mb-3 inline-block rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">
+                    {ui['cat.' + g.category]}
+                  </div>
+                  <h3 class="font-display text-lg font-bold text-ink-800 group-hover:text-roman-600">
+                    {pick(g.title, locale)}
+                  </h3>
+                  <p class="mt-2 text-sm text-ink-700/80">{pick(g.description, locale)}</p>
+                  <p class="mt-3 text-xs text-ink-700/60">↻ {g.updated}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
       </div>
+
+      <aside class="hidden xl:block">
+        <div class="page-toc-wrap">
+          <PageToc items={toc} locale={locale} />
+        </div>
+      </aside>
     </div>
   </main>
   <Footer locale={locale} />

@@ -1,0 +1,48 @@
+---
+import { getUi } from '../i18n/ui';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  items: { id: string; label: string }[];
+  locale: Locale;
+}
+const { items, locale } = Astro.props;
+const ui = getUi(locale);
+---
+<nav class="page-toc" aria-label={ui['toc']}>
+  <p class="page-toc__title">{ui['toc']}</p>
+  <ul class="page-toc__list">
+    {items.map((it) => (
+      <li>
+        <a href={`#${it.id}`} class="page-toc__link" data-toc-link={it.id}>{it.label}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script is:inline>
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.page-toc__link'));
+    if (!links.length) return;
+    var map = {};
+    links.forEach(function (l) { map[l.getAttribute('href').slice(1)] = l; });
+    var targets = Object.keys(map)
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+    function setActive(id) {
+      links.forEach(function (l) {
+        l.classList.toggle('is-active', l.getAttribute('href').slice(1) === id);
+      });
+    }
+    if (!('IntersectionObserver' in window)) {
+      links[0] && links[0].classList.add('is-active');
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) setActive(e.target.id);
+      });
+    }, { rootMargin: '-18% 0px -72% 0px', threshold: 0 });
+    targets.forEach(function (t) { io.observe(t); });
+  })();
+</script>
