@@ -695,6 +695,121 @@ export const GUIDES: Guide[] = [
       ],
     },
   },
+  {
+    slug: 'guardian-minerva',
+    category: 'boss',
+    updated: '2026-07-15',
+    title: {
+      en: 'Guardian of Minerva — Boss Fight',
+    },
+    description: {
+      en: 'The owl boss at spawn. Mark it with a campfire, break the egg, and burn it down with a coal-trap ring.',
+    },
+    tip: {
+      en: 'Ring the nest with coal traps and walk in circles — you dodge the dive and lightning while the traps do the work. More traps = faster kill.',
+    },
+    cover: 'screens/owl-fight.jpg',
+    sections: {
+      en: [
+        { h: 'Before the fight', p: ['Accept the quest at your spawn. Lighting a campfire beneath Minerva’s statue marks the owl’s location on the map; you can also just follow its shadow to find it.', 'A bird call warns you when it’s about to appear.'] },
+        { h: 'Start the fight', p: ['Break the egg to begin the boss fight.', 'Ring the nest with coal traps, then walk in circles — the traps burn it down. Keep moving and don’t get too close, so you dodge both the dive and the lightning it drops.', 'The more traps you lay, the faster it dies. Auto-scorpion crossbows also work, but they need repairing.'] },
+        { h: 'Reward', p: ['Drops the quest material Guardian’s Eye. Beating the Guardian of Minerva also yields the Logistics Tent blueprint.'] },
+      ],
+    },
+  },
+  {
+    slug: 'pyzifax',
+    category: 'boss',
+    updated: '2026-07-15',
+    title: {
+      en: 'Pyzifax — Boss Fight',
+    },
+    description: {
+      en: 'The desert satyr warlord. Shield the bullet-hell, refresh your tent, and circle-strafe through three phases.',
+    },
+    tip: {
+      en: 'Drop a Camp Tent at the gate before engaging so you respawn right there. Let the catapult smash its own wall while you plink satyrs through it.',
+    },
+    cover: 'screens/desert-town.png',
+    sections: {
+      en: [
+        { h: 'Prep', p: ['Bring ranged options (scrolls etc.), a shield to block the bullet-hell, and an antidote.', 'Drop a Camp Tent at the door beforehand to refresh your respawn point.'] },
+        { h: 'The approach', p: ['Stand at the wall’s edge then run off, letting the catapult smash the wall itself.', 'The satyrs by the catapult can be ignored once killed; your scorpion crossbows and tent still clear them through the wall at range.', 'Three captured villagers spawn in the city — take any with traits you want.'] },
+        { h: 'Phases', p: ['Phase 1: circle-strafe to dodge, clear the adds, and strike after the boss jumps down.', 'Phase 2: dodge the bullet-hell at the edge; for the long-line dashes, dodge one, face-tank two, or just block with your shield.', 'Phase 3: an upgraded Phase 1 with higher damage — same plan, hit it after it lands.'] },
+        { h: 'Reward', p: ['Drops the Logistics Tent blueprint, which unlocks automation.'] },
+      ],
+    },
+  },
+  {
+    slug: 'cyclops',
+    category: 'boss',
+    updated: '2026-07-15',
+    title: {
+      en: 'Cyclops — Boss Fight',
+    },
+    description: {
+      en: 'The desert boss behind the high-temple. Breach the walls with explosive jars and bomb the eye across five phases.',
+    },
+    tip: {
+      en: 'Clay golems self-detonate near you, but killing one resets that timer — lure a golem to the wall, then kill it so the blast opens the way.',
+    },
+    cover: 'screens/fight-cyclops.png',
+    sections: {
+      en: [
+        { h: 'Find the temple', p: ['A campfire under the Cyclops statue marks the satyr high-temple on the map.', 'Left key: keep running to dodge the laser and falling rocks; use explosive jars to blow the stone wall. Right key: dash through the bullet-hell and kill clay golems for explosive jars to breach the wall.'] },
+        { h: 'Clay golem trick', p: ['Clay golems self-detonate after lingering near you; killing one resets that timer. Lure a golem close to the wall, then kill it so the blast opens the way.'] },
+        { h: 'Phases', p: ['Phase 1: dodge the bullet-hell, clear adds, bomb the eye with explosive jars.', 'Phase 2: dodge the laser and the raised hand; hit the other hand.', 'Phase 3: pound the eyeball — a good moment to top up your buffs.', 'Phase 4: same as Phase 1, keep bombing the eye.', 'Phase 5: you must empty one hand’s HP before the two hands clap shut. Early damage is low; it ramps up the longer the fight lasts.'] },
+        { h: 'Reward', p: ['Drops the quest material Granite Fang.'] },
+      ],
+    },
+  },
+  {
+    slug: 'phoenix-arabia',
+    category: 'boss',
+    updated: '2026-07-15',
+    title: {
+      en: 'Great Phoenix of Arabia — Boss Fight',
+    },
+    description: {
+      en: 'The Volcano-phoenix main quest. Stay behind it through both phases and keep the pressure on.',
+    },
+    tip: {
+      en: 'Always position behind the phoenix — its fire breath and the Phase-2 falling rocks are front-facing. Behind it, you’re safe to free-hit.',
+    },
+    cover: 'screens/phoenix-fight.jpg',
+    sections: {
+      en: [
+        { h: 'How to start', p: ['After you’ve built in the Volcano, an NPC arrives with the Desert Phoenix quest. Accepting it marks the burned shrines on your map.'] },
+        { h: 'Phases', p: ['Phase 1: it breathes fire — stay behind it and keep hitting.', 'Below half health it enters Phase 2 with falling rocks; still, stay behind it and strike.'] },
+        { h: 'Reward', p: ['Drops the Phoenix Ash Sample.'] },
+      ],
+    },
+  },
+  {
+    slug: 'talos-prototype',
+    category: 'boss',
+    updated: '2026-07-15',
+    title: {
+      en: 'Talos Prototype — Boss Fight',
+    },
+    description: {
+      en: 'The mechanical boss. Free Vulcan first, then break the chest plates and hammer the blue-glowing notches.',
+    },
+    tip: {
+      en: 'The one-eyed add heals the boss — kill it the moment it rises. Use a bronze cart (not wooden) to deliver Vulcan’s build materials or it gets smashed en route.',
+    },
+    cover: 'screens/dungeon.jpg',
+    sections: {
+      en: [
+        { h: 'Free Vulcan first', p: ['Bring a ranged weapon and swap to an iron pickaxe. A campfire under the statue marks Vulcan’s temple.', 'Find the four stone steles, insert iron rods, and break the jars that appear after pulling the four levers to free Vulcan. Talk to Vulcan at your altar back home — you’ll learn you need materials to build a clay pit (sometimes a quarry or forge instead).', 'For a clay pit, load a cart with 6 wood, 10 stone, 3 clay, place it before the temple and pull the lever to open the door. Use a bronze cart — a wooden one gets destroyed en route.'] },
+        { h: 'Phase 1', p: ['The chest has four notches; break the iron plates and hit the blue-glowing notch. Damage scales with your pickaxe. The green-glowing floor drops away, then random adds rise. The one-eyed add heals the boss — kill it fast. Destroy the side mechanisms with ranged attacks.'] },
+        { h: 'Phase 2', p: ['A few adds rise first, then four lasers fire from each side. Walk only between the beams, hide behind stones or pillars, and clear the mechanisms at range. A villager is sent up.'] },
+        { h: 'Phase 3', p: ['Pull the lever on one side of the lasers and destroy the rising mechanism-bow on the other; you can heal behind a pillar.'] },
+        { h: 'Phase 4', p: ['An upgraded Phase 1 — more lasers and more adds. Same tactic: hammer the blue-glowing notches.'] },
+        { h: 'Reward', p: ['Drops the Core Container; offering it completes all main quests up to this point.'] },
+      ],
+    },
+  },
 ];
 
 export function getGuide(slug: string): Guide | undefined {
