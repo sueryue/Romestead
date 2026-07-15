@@ -517,3 +517,208 @@ body {
   font-size: 0.9rem;
 }
 
+
+/* =========================================================
+   Beginner's Roadmap + Common First-Run Mistakes timeline
+   ========================================================= */
+
+/* --- Beginner's Roadmap: mini 3-step strip under featured guide --- */
+.roadmap {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+.roadmap__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+.roadmap__num {
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--roman);
+  color: var(--parchment);
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 16px -8px color-mix(in oklch, var(--roman) 60%, transparent);
+}
+.roadmap__link {
+  text-decoration: none;
+  color: inherit;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  display: block;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+.roadmap__link:hover {
+  background: color-mix(in oklch, var(--gold) 14%, transparent);
+  transform: translateX(2px);
+}
+.roadmap__h {
+  display: block;
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--roman);
+}
+.roadmap__p {
+  display: block;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: color-mix(in oklch, var(--ink) 80%, transparent);
+}
+
+/* --- Common First-Run Mistakes: interactive vertical timeline --- */
+.pitfall-timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pitfall-wrap {
+  position: relative;
+  padding-left: 3.2rem;
+  margin-bottom: 1rem;
+}
+/* Vertical connecting rail behind the step nodes */
+.pitfall-wrap::before {
+  content: '';
+  position: absolute;
+  left: 1.15rem;
+  top: 0.5rem;
+  bottom: -1rem;
+  width: 2px;
+  background: color-mix(in oklch, var(--gold) 45%, transparent);
+}
+.pitfall-wrap:last-child { margin-bottom: 0; }
+.pitfall-wrap:last-child::before { display: none; }
+
+.pitfall {
+  border: 1px solid color-mix(in oklch, var(--gold) 28%, transparent);
+  border-radius: 0.7rem;
+  background: var(--parchment-50);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.pitfall[open] {
+  border-color: var(--gold);
+  box-shadow: 0 14px 34px -20px color-mix(in oklch, var(--roman) 50%, transparent);
+}
+.pitfall__summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+}
+.pitfall__summary::-webkit-details-marker { display: none; }
+
+/* Step node sitting on the rail */
+.pitfall__node {
+  position: absolute;
+  left: 0.35rem;
+  top: 0.95rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--parchment-50);
+  border: 2px solid var(--gold);
+  color: var(--roman);
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  z-index: 1;
+}
+.pitfall__head {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  min-width: 0;
+}
+.pitfall__title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--ink);
+}
+/* "Must-read" pitfall badge — the user's requested 必读 marker */
+.pitfall__badge {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.16rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--roman);
+  box-shadow: 0 4px 12px -6px color-mix(in oklch, var(--roman) 70%, transparent);
+}
+.pitfall__badge::before { content: '⚑'; font-size: 0.8rem; line-height: 1; }
+.pitfall__chev {
+  flex: none;
+  color: var(--roman);
+  font-size: 1.1rem;
+  transition: transform 0.25s ease;
+  transform: rotate(0deg);
+}
+.pitfall[open] .pitfall__chev { transform: rotate(180deg); }
+
+.pitfall__body {
+  display: grid;
+  gap: 1rem;
+  padding: 0 1.1rem 1.2rem;
+}
+@media (min-width: 640px) {
+  .pitfall__body { grid-template-columns: 200px 1fr; align-items: start; }
+}
+.pitfall__media {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 1px solid color-mix(in oklch, var(--gold) 25%, transparent);
+}
+.pitfall__text p {
+  margin: 0 0 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: color-mix(in oklch, var(--ink) 90%, transparent);
+}
+.pitfall__subh {
+  margin: 0 0 0.5rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--roman);
+}
+.pitfall__more {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-weight: 600;
+  color: var(--roman);
+  text-decoration: none;
+}
+.pitfall__more:hover { text-decoration: underline; }
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .roadmap__link,
+  .pitfall,
+  .pitfall__chev { transition: none; }
+}
+

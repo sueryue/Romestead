@@ -10,6 +10,7 @@ export interface Guide {
   title: L10n<string>;
   description: L10n<string>;
   tip?: L10n<string>;
+  mustRead?: boolean; // flag a guide as a critical "must-read" pitfall on the homepage
   cover?: string; // path inside public/media, e.g. 'screens/woods-night.jpg'
   video?: { id: string; title: L10n<string> };
   gallery?: string[];
@@ -80,6 +81,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'build-town',
     category: 'building',
+    mustRead: true,
     updated: '2026-07-10',
     tip: {
       en: 'Two citizen perks are quietly dangerous: Gluttonous (more food) and Disloyal (50% slower expertise). Avoid them when recruiting.',
@@ -139,6 +141,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'haul-throw',
     category: 'mechanic',
+    mustRead: true,
     updated: '2026-07-09',
     tip: {
       en: 'Always carry a Tent — drop it outside a dungeon or boss and you respawn right at the entrance instead of trekking back.',
