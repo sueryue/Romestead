@@ -412,3 +412,108 @@ body {
 .guide-filters button:hover { border-color: var(--gold); color: var(--roman); }
 .guide-filters button.is-active { background: var(--roman); color: var(--parchment); border-color: var(--roman); }
 
+
+/* =========================================================
+   Site header — sticky chrome, search & dropdown menus
+   ========================================================= */
+.site-header { transition: box-shadow 0.25s ease, background-color 0.25s ease; }
+.site-header.is-scrolled {
+  box-shadow: 0 10px 30px -16px rgba(43, 38, 32, 0.45);
+  background-color: color-mix(in oklch, var(--parchment-100) 96%, transparent);
+}
+
+/* Shared slide-down reveal for dropdown/search panels */
+.rh-panel {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  z-index: 60;
+}
+.rh-panel.is-open { opacity: 1; visibility: visible; transform: none; }
+
+/* Guides dropdown trigger chevron */
+.rh-trigger svg { transition: transform 0.2s ease; }
+.rh-trigger[aria-expanded='true'] svg { transform: rotate(180deg); }
+
+/* Category label inside Guides dropdown */
+.rh-cat {
+  margin: 0 0 0.3rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--roman);
+}
+.rh-guide-link {
+  display: block;
+  padding: 0.28rem 0.5rem;
+  border-radius: 0.4rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.rh-guide-link:hover {
+  background: color-mix(in oklch, var(--gold) 15%, transparent);
+  color: var(--roman);
+}
+
+/* Search results dropdown */
+.rh-search__panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  left: auto;
+  min-width: 20rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  border: 1px solid color-mix(in oklch, var(--gold) 35%, transparent);
+  border-radius: 0.7rem;
+  background: var(--parchment-50);
+  box-shadow: 0 18px 40px -18px rgba(43, 38, 32, 0.5);
+  padding: 0.4rem;
+}
+.rh-search__panel--full { left: 0; right: 0; min-width: 0; }
+.rh-result {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+.rh-result:hover,
+.rh-result.is-active { background: color-mix(in oklch, var(--gold) 16%, transparent); }
+.rh-result__type {
+  flex: none;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.18rem 0.45rem;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--roman);
+}
+.rh-type--god { background: oklch(0.55 0.13 305); }
+.rh-type--boss { background: oklch(0.50 0.18 27); }
+.rh-type--biome { background: oklch(0.55 0.12 150); }
+.rh-type--guide { background: oklch(0.70 0.12 78); }
+.rh-result__body { display: flex; flex-direction: column; min-width: 0; }
+.rh-result__title { font-weight: 600; color: var(--roman); font-size: 0.92rem; }
+.rh-result__sub {
+  font-size: 0.78rem;
+  color: color-mix(in oklch, var(--ink) 75%, transparent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rh-empty {
+  padding: 0.8rem 1rem;
+  color: color-mix(in oklch, var(--ink) 70%, transparent);
+  font-size: 0.9rem;
+}
+

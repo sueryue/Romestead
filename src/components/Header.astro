@@ -1,7 +1,10 @@
 ---
 import { getUi } from '../i18n/ui';
-import { LOCALES, LOCALE_NAMES, link, type Locale } from '../i18n/utils';
+import { LOCALES, LOCALE_NAMES, link, pick, type Locale } from '../i18n/utils';
 import { STORE } from '../consts';
+import { ENTRIES } from '../content/heroes';
+import { WORLD } from '../content/world';
+import { GUIDES } from '../content/guides';
 
 interface Props {
   locale: Locale;
@@ -10,29 +13,85 @@ interface Props {
 const { locale, path } = Astro.props;
 const ui = getUi(locale);
 
-const links = [
+const topLinks = [
   { href: link(locale, '/'), label: ui['nav.home'], match: '/' },
-  { href: link(locale, '/guides'), label: ui['nav.guides'], match: '/guides' },
   { href: link(locale, '/heroes'), label: ui['nav.heroes'], match: '/heroes' },
   { href: link(locale, '/world'), label: ui['nav.world'], match: '/world' },
   { href: link(locale, '/faq'), label: ui['nav.faq'], match: '/faq' },
 ];
 const isActive = (m: string) =>
   m === '/' ? path === '/' || path === '' : path.startsWith(m);
+
+// Curated guide menu — data-driven from the real guide slugs.
+const guideGroups = ([
+  ['survival', 'cat.survival'],
+  ['building', 'cat.building'],
+  ['mechanic', 'cat.mechanic'],
+  ['gods', 'cat.gods'],
+  ['boss', 'cat.boss'],
+  ['coop', 'cat.coop'],
+] as const).map(([cat, labelKey]) => ({
+  labelKey,
+  label: ui[labelKey],
+  items: GUIDES.filter((g) => g.category === cat).map((g) => ({
+    title: pick(g.title, locale),
+    url: link(locale, '/guides/' + g.slug),
+  })),
+})).filter((g) => g.items.length);
+
+// Build-time, per-locale client search index (gods, bosses, biomes, guides).
+type SearchItem = { type: 'god' | 'boss' | 'biome' | 'guide'; title: string; sub: string; url: string; hay: string };
+const searchIndex: SearchItem[] = [
+  ...ENTRIES.map((e) => ({
+    type: (e.kind === 'god' ? 'god' : 'boss') as SearchItem['type'],
+    title: e.name,
+    sub: pick(e.role, locale),
+    url: link(locale, '/heroes/' + e.slug),
+    hay: [e.name, pick(e.role, locale), e.slug].join(' ').toLowerCase(),
+  })),
+  ...WORLD.biomes.map((b) => ({
+    type: 'biome' as SearchItem['type'],
+    title: pick(b.name, locale),
+    sub: b.stage ? pick(b.stage, locale) : '',
+    url: link(locale, '/world'),
+    hay: [b.name.en, pick(b.name, locale), (b.stage?.en ?? '')].join(' ').toLowerCase(),
+  })),
+  ...GUIDES.map((g) => ({
+    type: 'guide' as SearchItem['type'],
+    title: pick(g.title, locale),
+    sub: pick(g.description, locale),
+    url: link(locale, '/guides/' + g.slug),
+    hay: [g.title.en, pick(g.title, locale), g.slug, g.category].join(' ').toLowerCase(),
+  })),
+];
+const searchIndexJson = JSON.stringify(searchIndex).replace(/</g, '\\u003c');
+const searchLabels = {
+  god: ui['search.gods'],
+  boss: ui['search.bosses'],
+  biome: ui['search.biomes'],
+  guide: ui['search.guides'],
+  empty: ui['search.empty'],
+};
+const searchLabelsJson = JSON.stringify(searchLabels).replace(/</g, '\\u003c');
+
+const searchIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="h-4 w-4"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>`;
+const chevronIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5"><path d="m6 9 6 6 6-6"/></svg>`;
+const globeIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>`;
 ---
 
-<header class="sticky top-0 z-50 border-b border-gold-600/30 bg-parchment-100/90 pt-[env(safe-area-inset-top)] backdrop-blur">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4">
+<header class="site-header sticky top-0 z-50 relative border-b border-gold-600/30 bg-parchment-100/90 pt-[env(safe-area-inset-top)] backdrop-blur">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-4">
     <a href={link(locale, '/')} class="font-display text-base font-bold text-roman-600 sm:text-xl">
-      ⚜ {''}Romestead
+      ⚜ Romestead
     </a>
 
-    <ul class="hidden items-center gap-10 md:flex">
-      {links.map((l) => (
+    <!-- Desktop nav: flat links + Guides dropdown -->
+    <ul class="hidden flex-1 items-center justify-center gap-8 md:flex">
+      {topLinks.map((l) => (
         <li>
           <a
             href={l.href}
-            data-i18n={l.match === '/' ? 'nav.home' : `nav.${l.match.replace('/', '')}`}
+            data-i18n={`nav.${l.match.replace('/', '')}`}
             class={`text-sm tracking-wide transition-colors hover:text-roman-500 ${
               isActive(l.match) ? 'text-roman-600 font-semibold' : 'text-ink-700'
             }`}
@@ -41,9 +100,68 @@ const isActive = (m: string) =>
           </a>
         </li>
       ))}
+      <li class="relative rh-hover">
+        <button
+          type="button"
+          data-rh-toggle="guides-desktop"
+          data-i18n="nav.guides"
+          aria-haspopup="true"
+          aria-expanded="false"
+          class="rh-trigger inline-flex items-center gap-1 text-sm tracking-wide text-ink-700 transition-colors hover:text-roman-500"
+          set:html={`${ui['nav.guides']}${chevronIcon}`}
+        >
+        </button>
+        <div
+          id="guides-desktop"
+          class="rh-panel absolute left-0 top-full mt-3 w-80 rounded-xl border border-gold-600/30 bg-parchment-50 p-3 shadow-xl"
+        >
+          <div class="grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
+            {guideGroups.map((group) => (
+              <div>
+                <p class="rh-cat" data-i18n={group.labelKey}>{group.label}</p>
+                <ul>
+                  {group.items.map((i) => (
+                    <li><a href={i.url} class="rh-guide-link">{i.title}</a></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <a
+            href={link(locale, '/guides')}
+            data-i18n="allGuides"
+            class="mt-2 block rounded-lg bg-gold-600/10 px-3 py-2 text-center text-sm font-semibold text-roman-600 transition-colors hover:bg-gold-600/20"
+          >
+            {ui['allGuides']}
+          </a>
+        </div>
+      </li>
     </ul>
 
+    <!-- Desktop search -->
+    <div class="rh-search relative hidden md:block">
+      <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-700/60" set:html={searchIcon}></span>
+      <input
+        type="search"
+        class="rh-search-input w-44 rounded-full border border-gold-600/40 bg-parchment-50 py-1.5 pl-9 pr-3 text-sm text-ink-700 placeholder:text-ink-700/50 focus:border-gold-500 focus:outline-none lg:w-56"
+        placeholder={ui['search.placeholder']}
+        aria-label={ui['search.label']}
+        autocomplete="off"
+      />
+      <div class="rh-search__panel rh-panel"></div>
+    </div>
+
+    <!-- Right cluster: mobile search toggle, download, language switcher -->
     <div class="flex items-center gap-2 sm:gap-3">
+      <button
+        type="button"
+        class="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-full border border-gold-600/40 text-ink-700 transition-colors hover:text-roman-500"
+        data-rh-toggle="m-search"
+        aria-label={ui['search.label']}
+        aria-expanded="false"
+        set:html={searchIcon}
+      ></button>
+
       <a
         href={STORE.steam}
         target="_blank"
@@ -54,24 +172,45 @@ const isActive = (m: string) =>
         {ui['nav.download']}
       </a>
 
-      <label class="sr-only" for="lang-select">{ui['lang.label']}</label>
-      <select
-        id="lang-select"
-        aria-label={ui['lang.label']}
-        class="max-w-[7rem] rounded border border-gold-600/40 bg-parchment-50 px-1.5 py-1.5 text-xs text-ink-700 sm:px-2 sm:py-1.5 sm:text-sm"
-      >
-        {LOCALES.map((l) => (
-          <option value={link(l, path)} data-locale={l} selected={l === locale}>
-            {LOCALE_NAMES[l]}
-          </option>
-        ))}
-      </select>
+      <div class="rh-lang flex items-center gap-1.5">
+        <span class="text-gold-600" aria-hidden="true" set:html={globeIcon}></span>
+        <label class="sr-only" for="lang-select">{ui['lang.label']}</label>
+        <select
+          id="lang-select"
+          aria-label={ui['lang.label']}
+          class="max-w-[8rem] rounded-full border-2 border-gold-600/60 bg-parchment-50 px-2 py-1.5 text-xs font-semibold text-ink-700 shadow-sm transition-colors hover:border-gold-500 focus:border-gold-500 sm:px-2.5 sm:text-sm"
+        >
+          {LOCALES.map((l) => (
+            <option value={link(l, path)} data-locale={l} selected={l === locale}>
+              {LOCALE_NAMES[l]}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   </nav>
 
-  <!-- Mobile nav -->
-  <ul class="flex items-center gap-6 overflow-x-auto px-4 pb-[calc(0.5rem+env(safe-area-inset-bottom))] text-sm md:hidden">
-    {links.map((l) => (
+  <!-- Mobile search bar (toggle) -->
+  <div
+    id="m-search"
+    class="rh-panel md:hidden absolute left-0 right-0 top-full border-b border-gold-600/30 bg-parchment-100/95 px-4 py-3 backdrop-blur"
+  >
+    <div class="rh-search relative">
+      <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-700/60" set:html={searchIcon}></span>
+      <input
+        type="search"
+        class="rh-search-input w-full rounded-full border border-gold-600/40 bg-parchment-50 py-2 pl-9 pr-3 text-sm text-ink-700 placeholder:text-ink-700/50 focus:border-gold-500 focus:outline-none"
+        placeholder={ui['search.placeholder']}
+        aria-label={ui['search.label']}
+        autocomplete="off"
+      />
+      <div class="rh-search__panel rh-panel rh-search__panel--full"></div>
+    </div>
+  </div>
+
+  <!-- Mobile nav row -->
+  <ul class="flex items-center gap-5 overflow-x-auto px-4 pb-[calc(0.5rem+env(safe-area-inset-bottom))] text-sm md:hidden">
+    {topLinks.map((l) => (
       <li>
         <a
           href={l.href}
@@ -81,17 +220,181 @@ const isActive = (m: string) =>
         </a>
       </li>
     ))}
+    <li>
+      <button
+        type="button"
+        data-rh-toggle="m-guides"
+        aria-expanded="false"
+        class="inline-flex min-h-[44px] items-center gap-1 font-semibold text-roman-600"
+        set:html={`${ui['nav.guides']}${chevronIcon}`}
+      ></button>
+    </li>
   </ul>
 
+  <!-- Mobile Guides panel -->
+  <div
+    id="m-guides"
+    class="rh-panel md:hidden absolute left-0 right-0 top-full border-b border-gold-600/30 bg-parchment-50 shadow-xl"
+  >
+    <div class="grid grid-cols-1 gap-x-6 gap-y-1 p-4">
+      {guideGroups.map((group) => (
+        <div>
+          <p class="rh-cat" data-i18n={group.labelKey}>{group.label}</p>
+          <ul>
+            {group.items.map((i) => (
+              <li><a href={i.url} class="rh-guide-link">{i.title}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <a
+      href={link(locale, '/guides')}
+      data-i18n="allGuides"
+      class="block border-t border-gold-600/20 px-4 py-3 text-center font-semibold text-roman-600"
+    >
+      {ui['allGuides']}
+    </a>
+  </div>
+
+  <script type="application/json" id="rh-search-index" is:inline set:html={searchIndexJson}></script>
+  <script type="application/json" id="rh-search-labels" is:inline set:html={searchLabelsJson}></script>
+
   <script>
+    // ---- Language switcher ----
     const sel = document.getElementById('lang-select');
     sel?.addEventListener('change', () => {
       const opt = sel.selectedOptions[0] as HTMLOptionElement | undefined;
       const loc = opt?.dataset.locale;
       const url = opt?.value;
-      // Instant in-place chrome switch via i18next, then load full content.
       if (loc && (window as any).applyI18n) (window as any).applyI18n(loc);
       if (url) setTimeout(() => (location.href = url), 120);
     });
+
+    // ---- Build-time search index ----
+    const indexEl = document.getElementById('rh-search-index');
+    const labelsEl = document.getElementById('rh-search-labels');
+    let SEARCH: any[] = [];
+    let LABELS: Record<string, string> = {};
+    try { SEARCH = JSON.parse(indexEl?.textContent || '[]'); } catch {}
+    try { LABELS = JSON.parse(labelsEl?.textContent || '{}'); } catch {}
+
+    function escapeHtml(s: unknown): string {
+      return String(s).replace(/[&<>"']/g, (c) =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string)
+      );
+    }
+
+    function renderResults(panel: HTMLElement, q: string) {
+      if (!q) { panel.innerHTML = ''; panel.classList.remove('is-open'); return; }
+      const matches = SEARCH.filter((it) => it.hay.includes(q)).slice(0, 8);
+      if (!matches.length) {
+        panel.innerHTML = `<p class="rh-empty">${escapeHtml(LABELS.empty || 'No matches')}</p>`;
+        panel.classList.add('is-open');
+        return;
+      }
+      panel.innerHTML = matches.map((it, i) => `
+        <a class="rh-result${i === 0 ? ' is-active' : ''}" href="${it.url}" data-idx="${i}">
+          <span class="rh-result__type rh-type--${it.type}">${escapeHtml(LABELS[it.type] || it.type)}</span>
+          <span class="rh-result__body">
+            <span class="rh-result__title">${escapeHtml(it.title)}</span>
+            <span class="rh-result__sub">${escapeHtml(it.sub)}</span>
+          </span>
+        </a>`).join('');
+      panel.classList.add('is-open');
+    }
+
+    document.querySelectorAll('.rh-search').forEach((container) => {
+      const input = container.querySelector('.rh-search-input') as HTMLInputElement | null;
+      const panel = container.querySelector('.rh-search__panel') as HTMLElement | null;
+      if (!input || !panel) return;
+      input.addEventListener('input', () => renderResults(panel, input.value.trim().toLowerCase()));
+      input.addEventListener('focus', () => {
+        if (input.value.trim()) renderResults(panel, input.value.trim().toLowerCase());
+      });
+      container.addEventListener('keydown', (e) => {
+        const items = Array.from(panel.querySelectorAll('.rh-result')) as HTMLElement[];
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          if (!items.length) return;
+          e.preventDefault();
+          let idx = items.findIndex((i) => i.classList.contains('is-active'));
+          items.forEach((i) => i.classList.remove('is-active'));
+          if (e.key === 'ArrowDown') idx = (idx + 1) % items.length;
+          else idx = (idx - 1 + items.length) % items.length;
+          if (idx < 0) idx = 0;
+          items[idx].classList.add('is-active');
+          items[idx].scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'Enter') {
+          const active = panel.querySelector('.rh-result.is-active') as HTMLElement | null;
+          if (active) { e.preventDefault(); window.location.href = active.getAttribute('href') || ''; }
+        } else if (e.key === 'Escape') {
+          panel.classList.remove('is-open');
+          input.blur();
+        }
+      });
+    });
+
+    // ---- Dropdown toggles (Guides desktop/mobile, mobile search) ----
+    document.querySelectorAll('[data-rh-toggle]').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.getAttribute('data-rh-toggle');
+        const panel = id ? document.getElementById(id) : null;
+        if (!panel) return;
+        const open = panel.classList.toggle('is-open');
+        if (btn.getAttribute('aria-expanded') !== null) {
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        if (id === 'm-search') {
+          const inp = panel.querySelector('input') as HTMLInputElement | null;
+          if (inp) setTimeout(() => inp.focus(), 60);
+        }
+      });
+    });
+
+    // ---- Desktop Guides hover open ----
+    const hoverLi = document.querySelector('.rh-hover');
+    if (hoverLi) {
+      const panel = hoverLi.querySelector('.rh-panel') as HTMLElement | null;
+      const trigger = hoverLi.querySelector('[data-rh-toggle]') as HTMLElement | null;
+      let closeTimer: number | undefined;
+      hoverLi.addEventListener('mouseenter', () => {
+        clearTimeout(closeTimer);
+        if (panel) panel.classList.add('is-open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      });
+      hoverLi.addEventListener('mouseleave', () => {
+        closeTimer = window.setTimeout(() => {
+          if (panel) panel.classList.remove('is-open');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }, 140);
+      });
+    }
+
+    // ---- Outside click closes panels ----
+    document.addEventListener('click', (e) => {
+      const t = e.target as HTMLElement;
+      if (!t.closest?.('.rh-search')) {
+        document.querySelectorAll('.rh-search__panel.is-open').forEach((p) => p.classList.remove('is-open'));
+      }
+      if (!t.closest?.('[data-rh-toggle]') && !t.closest?.('.rh-panel')) {
+        document.querySelectorAll('[data-rh-toggle]').forEach((btn) => {
+          const id = btn.getAttribute('data-rh-toggle');
+          const panel = id ? document.getElementById(id) : null;
+          if (panel && panel.classList.contains('is-open')) {
+            panel.classList.remove('is-open');
+            if (btn.getAttribute('aria-expanded') !== null) btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    });
+
+    // ---- Header scroll shadow ----
+    const header = document.querySelector('.site-header');
+    if (header) {
+      const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 4);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
   </script>
 </header>
