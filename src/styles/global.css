@@ -462,6 +462,9 @@ body {
   letter-spacing: 0.06em;
   color: var(--roman);
 }
+/* Let grid cells shrink so long titles wrap inside their track instead of
+   overflowing into the neighbouring column (was causing text overlap). */
+.rh-panel .grid > div { min-width: 0; }
 .rh-guide-link {
   display: block;
   padding: 0.28rem 0.5rem;
@@ -469,7 +472,8 @@ body {
   color: var(--ink);
   text-decoration: none;
   font-size: 0.9rem;
-  white-space: nowrap;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
 }
 .rh-guide-link:hover {
   background: color-mix(in oklch, var(--gold) 15%, transparent);
