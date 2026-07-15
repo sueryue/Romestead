@@ -580,6 +580,121 @@ export const GUIDES: Guide[] = [
       ],
     },
   },
+  {
+    slug: 'city-tips',
+    category: 'building',
+    updated: '2026-07-15',
+    title: {
+      en: '10 City-Building Tips for a Strong Start',
+    },
+    description: {
+      en: 'Hard-won lessons from a veteran playthrough — where to settle, which citizen traits to avoid, roads, tents, logistics and more.',
+    },
+    tip: {
+      en: 'The Canteen of Youth (bought from a tier-2 merchant) resets every spent Favor point — experiment with god builds early, then respec for free.',
+    },
+    cover: 'screens/town-nice.jpg',
+    sections: {
+      en: [
+        { h: 'Don’t build at the spawn — explore first', p: ['Restarting was my biggest time-sink. I dropped my town right at spawn, then found there was no coal nearby, the water was far from the mill, and the desert and volcano were ages away — every haul meant a long trek.', 'Spend your opening minutes pushing toward the map center. Look for a spot spanning several biomes at once; ideally near the border of Plains, Desert and Volcano, so resource runs stay short. You can build trade outposts to shuttle resources later, but that is very late tech — a bad starting spot drags you down long before then.'] },
+        { h: 'Check citizen traits — avoid two in particular', p: ['Your town grows by recruiting survivors from across the world, but not every citizen is worth it.', 'Gluttonous raises that citizen’s food use — brutal when food is already tight early. Disloyal cuts rapport gain by 50%; since expertise is tied to rapport and you need +20 expertise for legendary gear, a disloyal citizen crawls there. Worse, each citizen’s profession levels are counted separately — switch their job and you start over. So if you sunk hours leveling a blacksmith only to find they’re Disloyal, that’s a tragedy. Always read traits before recruiting.'] },
+        { h: 'Favor points reset — experiment early', p: ['Don’t agonize over which Favor path to invest. The Canteen of Youth (bought from a tier-2 merchant) resets every spent Favor point so you can redistribute.', 'That also makes leveling merchants worth it early: once upgraded they sell health potions, and the game gives you no way to craft basic potions yourself — you can only buy them or find them in dungeons and camps.', 'So try dual-crossbow, melee, magic or whatever; once you find your style, respec properly.'] },
+        { h: 'Hit everything — hidden chests are everywhere', p: ['Many high-quality accessories and rare items sit in hidden chests tucked where you’d walk right past them:', 'inside fallen logs · inside dungeon enemy-respawn points · in camp tents · in bushes.', 'The trick: wail on anything that looks slightly off. If there’s a chest, the game plays a special sound cue. After a while you’ll find chests in the most unexpected places.'] },
+        { h: 'Keep upgrading gear — solo players can’t skip this', p: ['I finished the game in solo mode, and frankly the difficulty isn’t built for lone wolves — fall behind on gear and you’ll get beaten constantly.', 'Gear path: Leather → Copper → Bronze, and late-game you can craft stronger armor from endgame materials like Flame Scales. Once a citizen’s expertise passes 20 you can make Legendary gear, each piece carrying an extra special effect. Solo players attempting the Volcano biome essentially need it.'] },
+        { h: 'Lay roads early — it’s free and saves hours', p: ['Paving costs no materials and is fast, yet it slashes travel time across the map — another thing I regret not doing sooner.', 'In the Favor tree, take the Pathfinder skill: paving one tile also auto-completes the adjacent tile, doubling efficiency. Since Favor resets later anyway, grab Pathfinder, build your road network, then respec into combat. No downside.'] },
+        { h: 'The Camp Tent is your best friend', p: ['Made at the Leatherworker, the Camp Tent lets you drop a respawn point anywhere on the map.', 'Best use: before entering a dungeon or fighting a boss, plant a tent just outside the entrance. Die, and you respawn right there instead of trudging back from town. This habit saves enormous backtracking — always carry one when exploring.'] },
+        { h: 'Build satellite towns — unlock altar teleport', p: ['Almost everything in Romestead is about saving time, and the tier-2 Altar’s teleport is a centerpiece. At tier 2 you can blink between two Altars instead of walking.', 'To unlock it, upgrade the Altar to tier 2 via the Carpenter’s upgrade bench, then sacrifice heavily to Mercury to unlock teleport. You’ll then build a new town, new Altar and new Carpenter workshop elsewhere and tier that Altar up too — fiddly, but once it clicks it’s worth it. Plan one or two satellite towns mid-game and pair them with teleport to collapse map travel time.'] },
+        { h: 'Food buffs matter — plan your food line early', p: ['I kept dying until I noticed I was still eating dead-rat berries. Romestead’s food system has real buffs — high-tier food grants sizable combat bonuses.', 'Take Isicia Marina: it restores health and grants Nature and Poison resistance for 15 minutes. But its recipe needs date palm, honey, fish sauce and exotic crab meat — so you’ll want a date-palm farm, beehives and a pottery Dolium for fish sauce. The chain is complex; pick one hero food and start building its farm line now.'] },
+        { h: 'Defeat the Cyclops for the Logistics Tent', p: ['The single biggest quality-of-life unlock is the Logistics Tent, dropped after beating the Desert’s Cyclops boss.', 'It lets you chain buildings so resources flow between them automatically — no more manual hauling.', 'A basic food-automation example: wheat farm → auto to water mill (flour) → auto to bakery (bread) → auto into food storage, all while you explore and the town runs itself. The same logic applies to stone, olive oil (sells well to merchants) and any production line. Once logistics is running, you’re free to explore and hunt bosses.'] },
+      ],
+    },
+  },
+  {
+    slug: 'base-locations',
+    category: 'building',
+    updated: '2026-07-15',
+    title: {
+      en: 'Where to Build: Base Locations by Biome',
+    },
+    description: {
+      en: 'How to pick your first stead and relocate across Plains, Desert and Volcano — clay, water, altars and what each biome demands.',
+    },
+    tip: {
+      en: 'At a terrain border, look for clay plus at least a 4×2 stretch of water. Set your Town Center, Altar and Granary near the clay to finish the settle task fast.',
+    },
+    cover: 'screens/construct-sites.jpg',
+    sections: {
+      en: [
+        { h: 'Plains / Forest — your first home', p: ['At a Plains-Forest border, find a spot with clay and at least a 4×2 of water.', 'You need the water for the Water Mill to automate bread; without it, just settle near clay by the boss and use it later as a teleport waypoint. In a small map, solo play makes gathering easier.', 'Build the Materials Warehouse and Lumberyard, raise the Altar to tier 2 and unlock Mercury’s altar teleport. In build mode, click the Altar and spend 5 stone from the warehouse to upgrade.', 'Near the clay, place your Town Center, Altar and Granary to complete the settle task. Build a Carpenter workshop; make a Camp Tent (Diana’s) at the Leatherworker — you respawn there on death or reload, but the tent can’t be removed or the respawn point is lost.', 'Leatherworker villagers can craft flint javelin heads and tan leather for XP. Build a Forge, swap to copper axe and pick; toss wood and coal to light a fire and throw in copper ore to smelt copper ingots. Equip the Forge’s copper set or the Leatherworker’s plumed set — you’ll need Bronze in the desert to fight the desert boss. Craft a few wooden carts and barrels to carry, stock the Granary with food, and head to the desert.'] },
+        { h: 'Desert — push to Bronze', p: ['Again at a terrain border, find clay and a 4×2 of water.', 'Build the Materials Warehouse and Lumberyard, upgrade the Altar to tier 2, and you can teleport back and forth between your desert and plains homes.', 'Bring your plains villagers over via teleport; refresh your respawn with a Camp Tent.', 'Build a Forge, craft Bronze axe, pick and set, and prepare for the boss. A tier-2 smith can smelt bronze ingots (copper + tin); tin is also mined in the quarry. The bronze set is only green rarity, but it beats the blue plumed set.'] },
+        { h: 'Volcano — endgame stronghold', p: ['At a border, find clay, a 4×2 of water and volcanic ash.', 'In Settings → Display, uncheck camera auto-zoom and lower the zoom value so you can plan calmly without ambush.', 'The Volcano is enemy-dense — wall it off before moving villagers in. Even inside walls, enemies can spawn on open ground, so build tightly, pave roads, and leave no large empty patches.', 'Unlock Vulcan’s Volcano Furnace; the fuel-needing Bakery, Forge, Pottery and Brick Kiln all belong on the volcano. Use empty houses as storerooms with chests for materials and gear, and a Leatherworker-made leather sleeping bag for fast nights.'] },
+      ],
+    },
+  },
+  {
+    slug: 'world-seeds',
+    category: 'survival',
+    updated: '2026-07-15',
+    title: {
+      en: 'Recommended World Seeds',
+    },
+    description: {
+      en: 'Romestead’s map is seed-generated. One community-favorite small-world seed and why it pays off.',
+    },
+    tip: {
+      en: 'A good seed saves hours — but any seed works; treat this as a head-start, not a requirement.',
+    },
+    cover: 'screens/forest-combat.jpg',
+    sections: {
+      en: [
+        { h: 'How seeds work', p: ['Romestead generates its map from a world seed, and a good one spares you a lot of trouble.', 'You can pick the world size when creating a game — Small is recommended for easier resource runs in solo play.'] },
+        { h: 'Seed 945359837 (Small)', p: ['Spawn comes with two neat, square ponds that fit four water mills.', 'The only downside is clay sits a bit far — just hand-haul it early, no big deal.', 'The whole spawn is solid: the Desert and Volcano also have great build spots. One Desert location is naturally walled on most sides, so you only need to wall two faces to seal the town. (Community-sourced; your mileage may vary.)'] },
+      ],
+    },
+  },
+  {
+    slug: 'fortifications',
+    category: 'building',
+    updated: '2026-07-15',
+    title: {
+      en: 'Fortify Your Town: Walls That Hold',
+    },
+    description: {
+      en: 'A layered defense that stays safe even at 10× spawn rates — indestructible flowerbeds, walls, traps and gate tricks.',
+    },
+    tip: {
+      en: 'Outermost ring = flowerbed (only you can remove it; enemies ignore it). Inner ring = normal wall for defense value + citizen buffs.',
+    },
+    cover: 'screens/construct-sites.jpg',
+    sections: {
+      en: [
+        { h: 'Layered walls', p: ['The outermost layer should be a flowerbed. Currently only the player can remove it, it’s immune to fire and water, and monsters won’t attack it — a permanent shell.', 'Inside that, use normal walls. They raise your town defense value, buff your citizens, and block leaping or ranged enemies from getting in.', 'One caveat: a self-destruct enemy dying right against the flowerbed can splash the wall behind it — minor, not fatal.'] },
+        { h: 'Gate and enemy handling', p: ['For the gate, wall it with wood and stone and just move one block when you pass through.', 'You can hit enemies through your walls with swords or spears — very convenient. Optionally ring the outside with a coal-trap layer if you like.', 'Clay golems may drag the stones off your gate (they won’t break it); just restore them afterward.'] },
+        { h: 'It scales', p: ['This setup held even with spawn rates at 10× — safe to rely on.'] },
+      ],
+    },
+  },
+  {
+    slug: 'holy-javelin',
+    category: 'mechanic',
+    updated: '2026-07-15',
+    title: {
+      en: 'How to Get the Holy Javelin',
+    },
+    description: {
+      en: 'A three-part legendary weapon. Where each part drops, the enemies to farm, and how to forge it.',
+    },
+    tip: {
+      en: 'Every part is a 1% drop from a specific enemy’s largest variant — farm satyr raids for the shaft, hunt big green satyrs for the pole, and run Cyclops raids for the head.',
+    },
+    cover: 'screens/fight-cyclops.png',
+    sections: {
+      en: [
+        { h: 'The three parts', p: ['The Holy Javelin is a very strong weapon, but its parts come from specific enemies.', 'Shaft — drops (1%) from the largest yellow satyr. These appear in satyr raids; a few rounds usually drops one, ten raids almost guarantees it.', 'Pole — drops (1%) from the largest green satyr. Green satyrs spawn in Plains and Forest, not in raids (raids bring yellow ones) — roam the Plains and Forest for the biggest green satyrs. Slightly tougher.', 'Head — the hardest, drops (1%) from the fire elemental: the gear-shaped, fire-breathing enemy in the Volcano that drops an Element Core. Farm Cyclops raids; each raid has only a few (sometimes none). If it won’t drop, buy a raid map and try a fresh map.'] },
+        { h: 'Forging it', p: ['You need a tier-2 Forge and Smithing skill at level 7. The tier-2 Forge is unlocked at the Altar through the relevant deity.', 'Raid maps: the Carpenter places a Strategy Table, then crafts the map on it.'] },
+      ],
+    },
+  },
 ];
 
 export function getGuide(slug: string): Guide | undefined {
