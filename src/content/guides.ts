@@ -38,11 +38,11 @@ export const GUIDES: Guide[] = [
       it: 'Sopravvivi alla Caduta: la tua prima notte',
     },
     description: {
-      en: 'Rome has fallen and the husks hunt at night. Light your torches, raise a wall, and live to see dawn.',
-      fr: 'Rome est tombée et les carcasses chassent la nuit. Allumez vos torches, élevez un mur et vivez jusqu’à l’aube.',
-      de: 'Rom ist gefallen und die Hüllen jagen nachts. Entzünde deine Fackeln, errichte eine Mauer und erlebe den Morgen.',
-      es: 'Roma ha caído y las cáscaras cazan de noche. Enciende tus antorchas, levanta un muro y vive hasta el amanecer.',
-      it: 'Roma è caduta e gli involucri danno la caccia di notte. Accendi le torce, erigi un muro e vivi fino all’alba.',
+      en: 'Survive night one: torches, a wall, and dawn.',
+      fr: 'Survis la première nuit : torches, un mur, l’aube.',
+      de: 'Überlebe Nacht eins: Fackeln, eine Mauer, der Morgen.',
+      es: 'Sobrevive la primera noche: antorchas, un muro, el alba.',
+      it: 'Sopravvivi la prima notte: torce, un muro, l’alba.',
     },
     cover: 'screens/woods-night.jpg',
     video: {
@@ -98,11 +98,11 @@ export const GUIDES: Guide[] = [
       it: 'Ricostruisci la civiltà: il tuo primo insediamento',
     },
     description: {
-      en: 'From a lonely stead to a thriving colony — Blacksmiths, Farmsteads, happy citizens and the logistics that feed them.',
-      fr: 'D’un stead solitaire à une colonie florissante — Forgerons, Fermes, citoyens heureux et la logistique qui les nourrit.',
-      de: 'Von einer einsamen Stead zu einer blühenden Kolonie — Schmiede, Farmen, zufriedene Bürger und die Logistik, die sie ernährt.',
-      es: 'De un stead solitario a una colonia próspera — Herreros, Granjas, ciudadanos felices y la logística que los alimenta.',
-      it: 'Da una stead solitaria a una colonia fiorente — Fabbro, Fattoria, cittadini felici e la logistica che li nutre.',
+      en: 'Build your first colony: buildings, citizens, logistics.',
+      fr: 'Bâtis ta colonie : bâtiments, citoyens, logistique.',
+      de: 'Baue deine Kolonie: Gebäude, Bürger, Logistik.',
+      es: 'Construye tu colonia: edificios, ciudadanos, logística.',
+      it: 'Costruisci la colonia: edifici, cittadini, logistica.',
     },
     cover: 'screens/community.jpg',
     video: {
@@ -158,11 +158,11 @@ export const GUIDES: Guide[] = [
       it: 'Nessin inventario: raccogli, trasporta, lancia',
     },
     description: {
-      en: 'Romestead’s signature twist — there is no inventory. Grab rocks and lumber by hand, and yes, throw them at enemies.',
-      fr: 'La touche signature de Romestead — pas d’inventaire. Saisissez pierres et bois à la main, et oui, jetez-les sur les ennemis.',
+      en: 'No inventory. Carry resources by hand and throw them.',
+      fr: 'Pas d’inventaire. Porte les ressources à la main et lance-les.',
       de: 'Romesteads Markenzeichen — es gibt kein Inventar. Greift Steine und Holz von Hand, und ja, werft sie auf Feinde.',
-      es: 'El giro característico de Romestead — no hay inventario. Agarra piedras y madera a mano, y sí, lánzalas a los enemigos.',
-      it: 'La caratteristica di Romestead — non c’è inventario. Prendi pietre e legna a mano, e sì, lanciarle ai nemici.',
+      es: 'Sin inventario. Lleva recursos a mano y lánzalos.',
+      it: 'Nessun inventario. Trasporta risorse a mano e lanciarle.',
     },
     cover: 'screens/ui.jpg',
     video: {
@@ -217,11 +217,11 @@ export const GUIDES: Guide[] = [
       it: 'Scegli i tuoi Dei: favori e alberi tecnologici',
     },
     description: {
-      en: 'The pantheon lost its worshippers and its power. Offer, sacrifice, and decide together which gods return to glory.',
-      fr: 'Le panthéon a perdu ses fidèles et son pouvoir. Offrez, sacrifiez et décidez ensemble quels dieux reviennent à la gloire.',
-      de: 'Der Pantheon verlor seine Anhänger und seine Macht. Opfert, bringt dar und entscheidet gemeinsam, welche Götter zurückkehren.',
-      es: 'El panteón perdió a sus fieles y su poder. Ofrece, sacrifica y decidid juntos qué dioses vuelven a la gloria.',
-      it: 'Il pantheon ha perso i suoi fedeli e il suo potere. Offri, sacrifica e decidete insieme quali dei tornano alla gloria.',
+      en: 'Restore the gods through offerings and sacrifices.',
+      fr: 'Restaure les dieux par offrandes et sacrifices.',
+      de: 'Stelle die Götter durch Opfer und Gaben wieder her.',
+      es: 'Restaura a los dioses con ofrendas y sacrificios.',
+      it: 'Ripristina gli dei con offerte e sacrifici.',
     },
     cover: 'screens/altar.jpg',
     video: {
@@ -276,11 +276,11 @@ export const GUIDES: Guide[] = [
       it: 'Dungeon e Boss: razzia i covi nascosti',
     },
     description: {
-      en: 'Gather your party and descend. Loot, puzzles and brutal bosses like the Cyclops, Guardian of Minerva, Great Phoenix of Arabia and Pyzifax await.',
-      fr: 'Rassemblez votre groupe et descendez. Butin, énigmes et boss brutaux comme le Cyclope, le Gardien de Minerve, la Grande Phénix d’Arabie et Pyzifax vous attendent.',
-      de: 'Versammelt eure Gruppe und steigt hinab. Beute, Rätsel und brutale Bosse wie Zyklop, Gardien der Minerva, der Große Phönix von Arabien und Pyzifax warten.',
-      es: 'Reúne a tu grupo y desciende. Botín, acertijos y jefes brutales como el Cíclope, el Guardián de Minerva, la Gran Fénix de Arabia y Pyzifax aguardan.',
-      it: 'Raduna il gruppo e scendi. Bottino, enigmi e boss brutali come Ciclope, Guardiano di Minerva, la Grande Fenice d’Arabia e Pyzifax ti attendono.',
+      en: 'Raid hidden lairs for loot, puzzles, and bosses.',
+      fr: 'Exploite les repaires cachés: butin, énigmes et boss.',
+      de: 'Überfalle versteckte Lair: Beute, Rätsel und Bosse.',
+      es: 'Asalta las guaridas ocultas: botín, acertijos y jefes.',
+      it: 'Razzia i covi nascosti: bottino, enigmi e boss.',
     },
     cover: 'screens/dungeon.jpg',
     video: {
@@ -335,11 +335,11 @@ export const GUIDES: Guide[] = [
       it: 'Co-op per 1–8: costruite Roma insieme',
     },
     description: {
-      en: 'Romestead is built for company. Play solo or squad up with up to seven friends in shared survival.',
-      fr: 'Romestead est fait pour la compagnie. Jouez seul ou en escouade avec jusqu’à sept amis en survie partagée.',
-      de: 'Romestead ist für Gesellschaft gemacht. Spiel allein oder schließt euch mit bis zu sieben Freunden im kooperativen Überleben zusammen.',
-      es: 'Romestead está hecho para compañía. Juega solo o en escuadra con hasta siete amigos en supervivencia compartida.',
-      it: 'Romestead è fatto per la compagnia. Gioca da solo o in squadra con fino a sette amici in sopravvivenza condivisa.',
+      en: 'Play solo or squad up with up to 7 friends.',
+      fr: 'Joue seul ou en escouade avec jusqu’à 7 amis.',
+      de: 'Spiel allein oder mit bis zu 7 Freunden im Ko-op.',
+      es: 'Juega solo o en escuadra con hasta 7 amigos.',
+      it: 'Gioca da solo o in squadra con fino a 7 amici.',
     },
     cover: 'screens/community.jpg',
     video: {
@@ -387,11 +387,11 @@ export const GUIDES: Guide[] = [
       it: 'Scegli la tua strada: professioni e cittadini',
     },
     description: {
-      en: 'Eight starting professions, each with a small skill edge. Plus how to recruit and keep citizens fed, housed and loyal.',
-      fr: 'Huit professions de départ, chacune avec un léger bonus de compétence. Et comment recruter et garder les citoyens nourris, logés et loyaux.',
-      de: 'Acht Startberufe, jeder mit kleinem Skill-Vorteil. Plus: Bürger rekrutieren und satt, untergebracht und loyal halten.',
-      es: 'Ocho profesiones iniciales, cada una con una pequeña ventaja de habilidad. Y cómo reclutar y mantener ciudadanos alimentados, alojados y leales.',
-      it: 'Otto professioni iniziali, ciascuna con un piccolo vantaggio di abilità. E come reclutare e mantenere i cittadini nutriti, alloggiati e leali.',
+      en: 'Pick a profession, then recruit and keep citizens.',
+      fr: 'Choisi une profession, puis recrute et garde tes citoyens.',
+      de: 'Wähle einen Beruf, dann rekrutiere und halte Bürger.',
+      es: 'Elige una profesión, luego recluta y mantén ciudadanos.',
+      it: 'Scegli una professione, poi recluta e mantieni i cittadini.',
     },
     tip: {
       en: 'Profession skill bonuses are small (about 1.5–5%) — your playstyle matters far more than your starting pick.',
@@ -437,11 +437,11 @@ export const GUIDES: Guide[] = [
       it: 'Attrezzati: livelli di armatura e suffissi',
     },
     description: {
-      en: 'From Civilian rags to Legendary plate. How armor tiers progress and the random suffixes that make every piece unique.',
-      fr: 'Des haillons civils à la plaque Légendaire. Comment progressent les niveaux et les suffixes aléatoires qui rendent chaque pièce unique.',
-      de: 'Von Zivil-Lumpen zu Legendärer Platte. Wie Rüstungs-Stufen fortschreiten und die zufälligen Suffixe jede Piece einzigartig machen.',
-      es: 'De los harapos civiles a la placa Legendaria. Cómo avanzan los niveles de armadura y los sufijos aleatorios que hacen única cada pieza.',
-      it: 'Dagli stracci civili alla piastra Leggendaria. Come avanzano i livelli e i suffissi casuali che rendono unica ogni pezzo.',
+      en: 'Armor tiers and the random suffixes that make each piece unique.',
+      fr: 'Niveaux d’armure et suffixes aléatoires uniques.',
+      de: 'Rüstungs-Stufen und zufällige Suffixe, einzigartig.',
+      es: 'Niveles de armadura y sufijos aleatorios únicos.',
+      it: 'Livelli di armatura e suffissi casuali unici.',
     },
     tip: {
       en: 'Suffixes are rolled when the Blacksmith or Leatherworker finishes a piece — a "Legendary" roll adds +2% Energy Regen and resistances.',
@@ -482,11 +482,11 @@ export const GUIDES: Guide[] = [
       it: 'Boss: come trovarli e sconfiggerli',
     },
     description: {
-      en: 'Five brutal bosses gate your progression. Where to find each, how they are summoned, and what they drop.',
-      fr: 'Cinq boss brutaux bloquent votre progression. Où trouver chacun, comment les invoquer et ce qu’ils lâchent.',
-      de: 'Fünf brute Bosse sperren deinen Fortschritt. Wo jeder zu finden ist, wie man sie beschwört und was sie droppen.',
-      es: 'Cinco jefes brutales bloquean tu progreso. Dónde encontrar cada uno, cómo invocarlos y qué sueltan.',
-      it: 'Cinque boss brutali bloccano la progressione. Dove trovare ciascuno, come evocarli e cosa lasciano.',
+      en: 'Find, summon and defeat the five bosses and their drops.',
+      fr: 'Trouve, invoque et vaincs les cinq boss et leurs drops.',
+      de: 'Finde, beschwöre und besiege die fünf Bosse und Drops.',
+      es: 'Encuentra, invoca y derrota a los cinco jefes y sus drops.',
+      it: 'Trova, evoca e sconfiggi i cinque boss e i loro drop.',
     },
     tip: {
       en: 'Most bosses must be faced several times to collect every drop — build a farm route, not a one-shot plan.',
@@ -542,11 +542,11 @@ export const GUIDES: Guide[] = [
       it: 'I sette dei: culto e benedizioni',
     },
     description: {
-      en: 'Diana, Minerva, Ceres, Mars, Mercury, Venus and Vulcan. What each god grants and how worship powers your town.',
-      fr: 'Diana, Minerva, Cérès, Mars, Mercure, Vénus et Vulcain. Ce que chaque dieu accorde et comment le culte anime votre ville.',
-      de: 'Diana, Minerva, Ceres, Mars, Merkur, Venus und Vulcan. Was jeder Gott gewährt und wie Verehrung deine Stadt stärkt.',
-      es: 'Diana, Minerva, Ceres, Marte, Mercurio, Venus y Vulcano. Lo que otorga cada dios y cómo el culto impulsa tu ciudad.',
-      it: 'Diana, Minerva, Cerere, Marte, Mercurio, Venere e Vulcano. Ciò che concede ogni dio e come il culto potenzia la città.',
+      en: 'The seven gods and the blessings each one grants.',
+      fr: 'Les sept dieux et les bénédictions qu’ils accordent.',
+      de: 'Die sieben Götter und die Segen, die jeder gewährt.',
+      es: 'Los siete dioses y las bendiciones que otorga cada uno.',
+      it: 'I sette dei e le benedizioni che ciascuno concede.',
     },
     tip: {
       en: 'Each god’s Blessing is a permanent stat boost — stack them via the Altar to tailor your build.',
@@ -588,7 +588,7 @@ export const GUIDES: Guide[] = [
       en: '10 City-Building Tips for a Strong Start',
     },
     description: {
-      en: 'Hard-won lessons from a veteran playthrough — where to settle, which citizen traits to avoid, roads, tents, logistics and more.',
+      en: 'Veteran tips: settle smart, avoid bad traits, automate.',
     },
     tip: {
       en: 'The Canteen of Youth (bought from a tier-2 merchant) resets every spent Favor point — experiment with god builds early, then respec for free.',
@@ -617,7 +617,7 @@ export const GUIDES: Guide[] = [
       en: 'Where to Build: Base Locations by Biome',
     },
     description: {
-      en: 'How to pick your first stead and relocate across Plains, Desert and Volcano — clay, water, altars and what each biome demands.',
+      en: 'Pick and relocate your base across the biomes.',
     },
     tip: {
       en: 'At a terrain border, look for clay plus at least a 4×2 stretch of water. Set your Town Center, Altar and Granary near the clay to finish the settle task fast.',
@@ -639,7 +639,7 @@ export const GUIDES: Guide[] = [
       en: 'Recommended World Seeds',
     },
     description: {
-      en: 'Romestead’s map is seed-generated. One community-favorite small-world seed and why it pays off.',
+      en: 'A community-favorite seed that saves hours of hauling.',
     },
     tip: {
       en: 'A good seed saves hours — but any seed works; treat this as a head-start, not a requirement.',
@@ -660,7 +660,7 @@ export const GUIDES: Guide[] = [
       en: 'Fortify Your Town: Walls That Hold',
     },
     description: {
-      en: 'A layered defense that stays safe even at 10× spawn rates — indestructible flowerbeds, walls, traps and gate tricks.',
+      en: 'Layered walls and traps that hold at 10× spawns.',
     },
     tip: {
       en: 'Outermost ring = flowerbed (only you can remove it; enemies ignore it). Inner ring = normal wall for defense value + citizen buffs.',
@@ -682,7 +682,7 @@ export const GUIDES: Guide[] = [
       en: 'How to Get the Holy Javelin',
     },
     description: {
-      en: 'A three-part legendary weapon. Where each part drops, the enemies to farm, and how to forge it.',
+      en: 'Farm three parts and forge the legendary Holy Javelin.',
     },
     tip: {
       en: 'Every part is a 1% drop from a specific enemy’s largest variant — farm satyr raids for the shaft, hunt big green satyrs for the pole, and run Cyclops raids for the head.',
@@ -703,7 +703,7 @@ export const GUIDES: Guide[] = [
       en: 'Guardian of Minerva — Boss Fight',
     },
     description: {
-      en: 'The owl boss at spawn. Mark it with a campfire, break the egg, and burn it down with a coal-trap ring.',
+      en: 'The owl boss: trap-ring it and break the egg.',
     },
     tip: {
       en: 'Ring the nest with coal traps and walk in circles — you dodge the dive and lightning while the traps do the work. More traps = faster kill.',
@@ -726,7 +726,7 @@ export const GUIDES: Guide[] = [
       en: 'Pyzifax — Boss Fight',
     },
     description: {
-      en: 'The desert satyr warlord. Shield the bullet-hell, refresh your tent, and circle-strafe through three phases.',
+      en: 'The desert satyr warlord, three bullet-hell phases.',
     },
     tip: {
       en: 'Drop a Camp Tent at the gate before engaging so you respawn right there. Let the catapult smash its own wall while you plink satyrs through it.',
@@ -749,7 +749,7 @@ export const GUIDES: Guide[] = [
       en: 'Cyclops — Boss Fight',
     },
     description: {
-      en: 'The desert boss behind the high-temple. Breach the walls with explosive jars and bomb the eye across five phases.',
+      en: 'Bomb the Cyclops eye across five phases.',
     },
     tip: {
       en: 'Clay golems self-detonate near you, but killing one resets that timer — lure a golem to the wall, then kill it so the blast opens the way.',
@@ -772,7 +772,7 @@ export const GUIDES: Guide[] = [
       en: 'Great Phoenix of Arabia — Boss Fight',
     },
     description: {
-      en: 'The Volcano-phoenix main quest. Stay behind it through both phases and keep the pressure on.',
+      en: 'The Volcano phoenix: stay behind it, keep hitting.',
     },
     tip: {
       en: 'Always position behind the phoenix — its fire breath and the Phase-2 falling rocks are front-facing. Behind it, you’re safe to free-hit.',
@@ -795,7 +795,7 @@ export const GUIDES: Guide[] = [
       en: 'Talos Prototype — Boss Fight',
     },
     description: {
-      en: 'The mechanical boss. Free Vulcan first, then break the chest plates and hammer the blue-glowing notches.',
+      en: 'Free Vulcan, then hammer the blue-glowing notches.',
     },
     tip: {
       en: 'The one-eyed add heals the boss — kill it the moment it rises. Use a bronze cart (not wooden) to deliver Vulcan’s build materials or it gets smashed en route.',
@@ -821,7 +821,7 @@ export const GUIDES: Guide[] = [
       en: 'Full Walkthrough: Plains to Volcano',
     },
     description: {
-      en: 'A complete chronological run from the tutorial Owl to freeing Vulcan — every biome, boss and automation unlock in order.',
+      en: 'A full run from the Owl to freeing Vulcan.',
     },
     tip: {
       en: 'Two valid opening orders exist. The EA completion route fights the Owl first, then settles. You can also settle first and return later. Either way, the Logistics Tent (automation) now drops from the Owl rather than Pyzifax (patch 0.25.1_7).',
@@ -845,7 +845,7 @@ export const GUIDES: Guide[] = [
       en: 'EA Completion Run: Optimized Route',
     },
     description: {
-      en: 'A tuning-focused speedrun and optimization path — profession, material map, Owl cheese, tech order, efficient town and the automation endgame.',
+      en: 'An optimized speedrun: routes, tech order, automation.',
     },
     tip: {
       en: 'Pick the Shield profession and a Small map for solo play. The shield block-and-attack carries every boss, and a small map cuts the endless resource runs.',
@@ -874,7 +874,7 @@ export const GUIDES: Guide[] = [
       en: 'Resource Map: Where Everything Grows',
     },
     description: {
-      en: 'Every material and where it spawns — Plains, Forest, Desert, Volcano — so your supply runs stay short.',
+      en: 'Where every material spawns across the biomes.',
     },
     cover: 'screens/forest-combat.jpg',
     sections: {
@@ -895,7 +895,7 @@ export const GUIDES: Guide[] = [
       en: 'Food, Buffs & Automation',
     },
     description: {
-      en: 'Why high-tier food matters, the Isicia Marina buff, and the bread, wine and mead production chains.',
+      en: 'Food buffs, the Isicia Marina dish, and production chains.',
     },
     cover: 'screens/town-nice.jpg',
     sections: {
@@ -916,7 +916,7 @@ export const GUIDES: Guide[] = [
       en: 'Bestiary: Enemies & Drops',
     },
     description: {
-      en: 'What hunts you, what it drops, and how to farm it — from the Fallen to satyrs, clay golems and bomb-men.',
+      en: 'Enemies, their drops, and how to farm them.',
     },
     cover: 'screens/owl-1.jpg',
     sections: {
@@ -938,7 +938,7 @@ export const GUIDES: Guide[] = [
       en: 'Walkthrough: Plains & Forest',
     },
     description: {
-      en: 'The opening act — tutorial Owl, your first town, and the Forest leather-and-capture loop.',
+      en: 'Open with the Owl, your first town, and the Forest loop.',
     },
     cover: 'screens/woods-night.jpg',
     sections: {
@@ -957,7 +957,7 @@ export const GUIDES: Guide[] = [
       en: 'Walkthrough: Desert (Cyclops + Pyzifax)',
     },
     description: {
-      en: 'Cross to the Desert, bronze up, then take down the Cyclops and the satyr warlord Pyzifax.',
+      en: 'Bronze up, then drop the Cyclops and Pyzifax.',
     },
     cover: 'screens/desert-town.png',
     sections: {
@@ -976,7 +976,7 @@ export const GUIDES: Guide[] = [
       en: 'Walkthrough: Volcano (Phoenix + Vulcan)',
     },
     description: {
-      en: 'The endgame — volcano base, full automation, and the Phoenix and Vulcan boss fights.',
+      en: 'The endgame: volcano base, automation, Phoenix and Vulcan.',
     },
     cover: 'screens/phoenix-fight.jpg',
     sections: {
@@ -995,7 +995,7 @@ export const GUIDES: Guide[] = [
       en: 'Buildings Codex: Function, Unlock & Upgrades',
     },
     description: {
-      en: 'Every key building in one place — what it does, how to unlock it, and what each upgrade tier costs.',
+      en: 'Every key building: function, unlock and upgrade costs.',
     },
     cover: 'screens/construct-sites.jpg',
     sections: {
@@ -1018,7 +1018,7 @@ export const GUIDES: Guide[] = [
       en: 'FAQ: The Questions Every New Governor Asks',
     },
     description: {
-      en: 'Plain answers to the most common Romestead questions — what it is, where to play, how progression works and why there is no inventory.',
+      en: 'Answers to the questions every new governor asks.',
     },
     cover: 'screens/town-nice.jpg',
     sections: {
@@ -1040,7 +1040,7 @@ export const GUIDES: Guide[] = [
       en: 'Walkthrough: Forest (Leather & Captives)',
     },
     description: {
-      en: 'The Forest biome on its own — your leather engine, the Bee Queen chance, early god quests and freeing caged citizens.',
+      en: 'The Forest: your leather engine and early god quests.',
     },
     cover: 'screens/forest-combat.jpg',
     sections: {
