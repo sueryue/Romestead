@@ -1,7 +1,7 @@
 import type { Locale } from '../i18n/utils';
 import type { L10n } from '../i18n/utils';
 
-export type GuideCategory = 'survival' | 'building' | 'mechanic' | 'walkthrough' | 'gods' | 'boss' | 'coop' | 'resources' | 'food' | 'bestiary' | 'buildings' | 'faq';
+export type GuideCategory = 'survival' | 'building' | 'mechanic' | 'walkthrough' | 'gods' | 'boss' | 'coop' | 'resources' | 'food' | 'bestiary' | 'buildings' | 'faq' | 'biomes' | 'automation';
 
 export interface Guide {
   slug: string;
@@ -1051,6 +1051,51 @@ export const GUIDES: Guide[] = [
         { h: 'Freeing citizens', p: ['Forest dungeons and camps hold caged villagers. Free a build slot, then recruit them — look for the Meticulous trait (+3 expertise) and avoid Gluttonous or Disloyal. Clear dungeons for antidotes, and grab any drum and lyre you find; they are worth carting home.'] },
         { h: 'Forest survival tips', p: ['Build a small forward camp rather than hauling your whole base into the woods — a Camping Tent sets your spawn so you can re-enter quickly. A Leatherworker (5 Lumber / 5 Stone) and a Carpenter let you craft on-site.', 'Carry antidotes for the poison creatures, and send a Meticulous pair to the Blacksmith (grappling hooks for XP) and the Leatherworker (tanning) to accelerate your gear.'] },
         { h: 'What comes next', p: ['With leather gear and a few captured citizens, push on to the Desert for the Cyclops and the satyr warlord Pyzifax. The Forest’s leather plus the Logistics Tent loop (from the Owl) keep your town fed and geared while you climb the tiers.'] },
+      ],
+    },
+  },
+  {
+    slug: 'biomes-guide',
+    category: 'biomes',
+    updated: '2026-07-16',
+    title: {
+      en: 'Biomes & Regions',
+    },
+    description: {
+      en: 'Four biomes, one ringed world — resources, hazards, bosses, order.',
+    },
+    cover: 'screens/desert-town.png',
+    sections: {
+      en: [
+        { h: 'How the world is laid out', p: ['Every world generates from a seed as a central spawn ringed by the key biomes — forest, desert, lake and volcano — with rivers threading through and an ocean at the edge.', 'Because biomes radiate outward from the temperate centre, a central base touching the Plains plus a couple of neighbours keeps every resource within a reasonable haul. Each region adds a new ore, a gear tier, region crops, enemies and at least one boss.'] },
+        { h: 'Plains — start & farming', p: ['Your starting biome and food heartland. Wheat grows only here; mint grows here too. Resources: flint, small game, river water and clay near the banks.', 'Boss: the Guardian of Minerva (the Giant Owl) — the day-one gate. Beating it opens the Carpenter’s Workshop, Blacksmith and Feathered armor. Build your main base here and get the food chain running first.'] },
+        { h: 'Forest — lumber', p: ['The early-game wood economy: heavy lumber and berries, with mint. Lumber is the most-consumed early material, so easy forest access keeps the Carpenter and your build queue fed.', 'Low threat versus the Desert and Volcano — a natural first expansion from your Plains base.'] },
+        { h: 'Desert — Bronze & the Cyclops', p: ['The mid-game wall. Copper veins (orange-tinted) and tin are the inputs for Bronze — your first serious gear tier. Enemies: scorpions (Raw Scorpion Meat) and Satyr territory.', 'Boss: the Cyclops, found in the High Temple of the Satyrs — not “The Eye”, the location most other guides get wrong. It drops the Granite Tooth and Tectonic gear. Come with Bronze gear minimum.'] },
+        { h: 'Volcanic — endgame', p: ['The current endgame and most punishing: enemy density and environmental damage both spike. Bosses: Pyzifax (triggered with a Declaration of War), the mobile Great Phoenix of Arabia, and the Talos Prototype — the ceiling.', 'Hazards: fire/burning, poison/nature, poor visibility. Survival kit: Aloe Salve (fire), Antidote (poison), Ember Orchid Lantern (+3 light), your best armor tier (Tectonic onward) and stocked healing. Treat it as staged expeditions, not a home.'] },
+        { h: 'Roadmap: Swamp & Ruined City', p: ['Early Access ships four biomes; the roadmap adds Swamp and Ruined City for six total. There is no snow/tundra biome. The Swamp is a strong clay + mint source; a sixth boss (“Robot”) exists in game data but isn’t playable yet.'] },
+      ],
+    },
+  },
+  {
+    slug: 'automation-guide',
+    category: 'automation',
+    updated: '2026-07-16',
+    title: {
+      en: 'Automation & Logistics',
+    },
+    description: {
+      en: 'Wooden Carts, the Logistics Tent, and hands-off production chains.',
+    },
+    cover: 'screens/construct-sites.jpg',
+    sections: {
+      en: [
+        { h: 'The honest picture', p: ['Romestead’s “automation” is more limited than the genre implies — set expectations. Citizens are job-zone-mobile but do not roam: they walk between their workshop and storage to fetch inputs, never foraging the wilds.', 'Each workshop caps at 10 queued jobs and there is no global production queue — you visit each one to queue orders. The player stays a big part of the gather-and-haul loop.'] },
+        { h: 'Wooden Carts (day one)', p: ['Crafted from the Infrastructure tab for 3 Lumber each — available from the very first build menu, no Carpenter needed. They hold 4 resources and chain together for bulk transport along a route.', 'A parallel build path exists at the Carpenter’s Workshop for 12 Wood Plank (same item). Use whichever fits your supply.'] },
+        { h: 'Logistics Tent — the real unlock', p: ['As of patch 0.25.1_7 (June 1, 2026) the Logistics Tent drops from the Guardian of Minerva (Giant Owl), not Pyzifax — so full automation is now reachable far earlier.', 'It does two things: pipe connections between buildings (Watermill flour → Bakery, Farmstead wheat → Watermill) and repeatable work orders — every workshop gains a “Repeat” checkbox, so set Bread to Repeat and it runs forever. This is the single biggest economy upgrade.'] },
+        { h: 'What citizens actually do', p: ['A Carpenter with the “Constructing” toggle on walks to Material Storage, grabs materials and delivers them to queued build sites; with it off you haul yourself.', 'Citizens don’t chop trees or gather raw resources on their own, and don’t auto-transfer Lumber Yard logs to storage. Higher Job Levels make workers faster and unlock recipes.'] },
+        { h: 'Manual workarounds', p: ['Place storage right beside producers so citizens walk one tile, not thirty. Assign citizens a single dedicated job so they don’t waste travel time switching roles. Stockpile inputs ahead of time and cluster workshops (Crafting Bench, Blacksmith, Leatherworker, Carpenter) to cut walking.'] },
+        { h: 'Chains to wire first', p: ['Watermill → Bakery → Food Storage (always have bread). Olive Grove → Pottery → Dolium (olive paste → olive oil, a high-tier buff food). Mine → Smelter → Blacksmith (copper + tin → Bronze gear).'] },
+        { h: 'Layout & gotchas', p: ['Place the Tent centrally in your production cluster (it reportedly has a working range) and keep producer → consumer adjacency short.', 'The Lumber Yard auto-produces logs into a 3-log internal buffer — it does NOT cut down trees; nearby trees only speed up the rate, and you must haul the logs to Material Storage. Blacksmith and Bakery also need external fuel (wood/coal) added at the furnace opening or they sit idle.'] },
       ],
     },
   },

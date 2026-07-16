@@ -19,7 +19,7 @@ export function getStaticPaths() {
 const { locale } = Astro.params as { locale: Locale };
 const ui = getUi(locale);
 const path = '/guides';
-const categories = ['survival', 'building', 'mechanic', 'walkthrough', 'resources', 'food', 'bestiary', 'buildings', 'gods', 'boss', 'coop', 'faq'] as const;
+const categories = ['survival', 'building', 'mechanic', 'walkthrough', 'resources', 'food', 'bestiary', 'buildings', 'gods', 'boss', 'coop', 'faq', 'biomes', 'automation'] as const;
 const featured = getGuide('survive-night')!;
 const topTips = GUIDES
   .filter((g) => ['survive-night', 'build-town', 'haul-throw'].includes(g.slug))
