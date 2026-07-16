@@ -1,7 +1,7 @@
 import type { Locale } from '../i18n/utils';
 import type { L10n } from '../i18n/utils';
 
-export type GuideCategory = 'survival' | 'building' | 'mechanic' | 'gods' | 'boss' | 'coop';
+export type GuideCategory = 'survival' | 'building' | 'mechanic' | 'walkthrough' | 'gods' | 'boss' | 'coop' | 'resources' | 'food' | 'bestiary' | 'buildings' | 'faq';
 
 export interface Guide {
   slug: string;
@@ -473,7 +473,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'bosses',
     category: 'boss',
-    updated: '2026-07-11',
+    updated: '2026-07-16',
     title: {
       en: 'Bosses: How to Find & Defeat Them',
       fr: 'Boss : comment les trouver et les vaincre',
@@ -496,35 +496,35 @@ export const GUIDES: Guide[] = [
       en: [
         { h: 'The five bosses', p: ['Romestead currently features five bosses, each found in a specific way — some roam the world, others must be summoned by destroying an object in a set location.', 'Defeating them grants random rewards (armor, accessories, weapons, materials); you usually fight the same boss several times to get everything.'] },
         { h: 'Guardian of Minerva', p: ['Minerva’s owl, the first hard gate. It lurks in a ruin in a random direction from the map center (Plains). With its defeat Minerva returns part of her memory and aids you further.'] },
-        { h: 'Cyclops — The Eye', p: ['Found in the Desert. Defeating it drops the Logistics Tent, which automates your production lines — a pivotal mid-game unlock.'] },
+        { h: 'Cyclops — The Eye', p: ['Found in the Desert. Defeating it drops the Granite Fang, needed to unlock the Brick Kiln (via Virgil’s Poem) — a pivotal mid-game gate.'] },
         { h: 'Pyzifax', p: ['The desert satyr warlord who has taken up arms against Rome. Track down his base in the Desert to draw him out.'] },
         { h: 'Great Phoenix of Arabia & Talos Prototype', p: ['Both dwell in the Volcano endgame. The Phoenix is reborn in its crater; the Talos Prototype is Vulcan’s unfinished metal colossus. Come heavily prepared.'] },
       ],
       fr: [
         { h: 'Les cinq boss', p: ['Romestead compte actuellement cinq boss, chacun trouvé d’une manière spécifique — certains errent dans le monde, d’autres doivent être invoqués en détruisant un objet à un endroit précis.', 'Les vaincre accorde des récompenses aléatoires (armure, accessoires, armes, matériaux) ; vous combattrez généralement le même boss plusieurs fois pour tout obtenir.'] },
         { h: 'Gardien de Minerva', p: ["La chouette de Minerva, la première porte dure. Elle rôde dans une ruine dans une direction aléatoire depuis le centre de la carte (Plaines). En la vainquant, Minerva retrouve une partie de sa mémoire et vous aide davantage."] },
-        { h: 'Cyclope — L’Œil', p: ["Trouvé dans le Désert. Le vaincre lâche la Tente de Logistique, qui automatise vos chaînes de production — un déblocage crucial du milieu de jeu."] },
+        { h: 'Cyclope — L’Œil', p: ["Trouvé dans le Désert. Le vaincre lâche la Canine de Granit, nécessaire pour débloquer le Four à Briques (via le Poème de Virgile) — une étape charnière du milieu de jeu."] },
         { h: 'Pyzifax', p: ['Le satyre du désert, chef de guerre qui a pris les armes contre Rome. Traquez sa base dans le Désert pour le faire sortir.'] },
         { h: 'Grande Phénix d’Arabie et Talos Prototype', p: ['Tous deux habitent le Volcan, en fin de partie. La Phénix renaît dans son cratère ; le Talos Prototype est le colosse de métal inachevé de Vulcan. Venez lourdement préparés.'] },
       ],
       de: [
         { h: 'Die fünf Bosse', p: ['Romestead hat aktuell fünf Bosse, die jeweils auf eine bestimmte Weise zu finden sind — einige streifen durch die Welt, andere müssen durch Zerstörung eines Objekts an einem bestimmten Ort beschworen werden.', 'Ihr Sieg bringt zufällige Belohnungen (Rüstung, Accessoires, Waffen, Materialien); normalerweise müsst ihr denselben Boss mehrfach bekämpfen, um alles zu bekommen.'] },
         { h: 'Wächter der Minerva', p: ['Minervas Eule, das erste harte Tor. Sie lauert in einer Ruine in einer zufälligen Richtung von der Kartenmitte (Ebenen). Durch ihre Niederlage erhält Minerva Teile ihres Gedächtnisses zurück und hilft euch weiter.'] },
-        { h: 'Zyklop — Das Auge', p: ['In der Wüste zu finden. Sein Sieg fällt das Logistik-Zelt, das eure Produktionsketten automatisiert — ein entscheidender Midgame-Freischalt.'] },
+        { h: 'Zyklop — Das Auge', p: ['In der Wüste zu finden. Sein Sieg fällt den Granit-Zahn, der zum Freischalten des Ziegelbrenners (über Virgils Gedicht) nötig ist — ein entscheidender Midgame-Meilenstein.'] },
         { h: 'Pyzifax', p: ['Der Wüsten-Satyr, ein Kriegsherr, der die Waffen gegen Rom erhoben hat. Spürt seine Basis in der Wüste auf, um ihn hervorzulocken.'] },
         { h: 'Großer Phönix von Arabien & Talos-Prototyp', p: ['Beide wohnen im Vulkan-Endgame. Der Phönix wird in seinem Krater wiedergeboren; der Talos-Prototyp ist Vulcans unvollendeter Metallkoloss. Kommt schwer vorbereitet.'] },
       ],
       es: [
         { h: 'Los cinco jefes', p: ['Romestead tiene actualmente cinco jefes, cada uno encontrado de forma específica — algunos deambulan por el mundo, otros deben invocarse destruyendo un objeto en un lugar concreto.', 'Vencerlos otorga recompensas aleatorias (armadura, accesorios, armas, materiales); normalmente tendrás que luchar contra el mismo jefe varias veces para conseguir todo.'] },
         { h: 'Guardián de Minerva', p: ['El búho de Minerva, la primera puerta dura. Se oculta en una ruina en una dirección aleatoria desde el centro del mapa (Llanuras). Al derrotarlo, Minerva recupera parte de su memoria y te ayuda más.'] },
-        { h: 'Cíclope — El Ojo', p: ['Encontrado en el Desierto. Vencerlo suelta la Tienda de Logística, que automatiza tus líneas de producción — un desbloqueo clave de mitad de partida.'] },
+        { h: 'Cíclope — El Ojo', p: ['Encontrado en el Desierto. Vencerlo suelta el Colmillo de Granito, necesario para desbloquear el Horno de Ladrillos (vía el Poema de Virgilio) — un hito clave a mitad de partida.'] },
         { h: 'Pyzifax', p: ['El sátiro del desierto, señor de la guerra que ha tomado las armas contra Roma. Rastrea su base en el Desierto para sacarlo.'] },
         { h: 'Gran Fénix de Arabia y Talos Prototype', p: ['Ambos habitan el Volcán, el final del juego. La Fénix renace en su cráter; el Talos Prototype es el coloso de metal inacabado de Vulcano. Ven muy preparado.'] },
       ],
       it: [
         { h: 'I cinque boss', p: ['Romestead ha attualmente cinque boss, ciascuno trovato in modo specifico — alcuni vagano per il mondo, altri devono essere evocati distruggendo un oggetto in un luogo preciso.', 'Sconfiggerli dà ricompense casuali (armatura, accessori, armi, materiali); di solito dovrai combattere lo stesso boss più volte per ottenere tutto.'] },
         { h: 'Guardiano di Minerva', p: ['Il gufo di Minerva, la prima porta dura. Si nasconde in una rovina in una direzione casuale dal centro della mappa (Pianure). Sconfiggendolo, Minerva recupera parte della memoria e ti aiuta ulteriormente.'] },
-        { h: 'Ciclope — L’Occhio', p: ['Trovato nel Deserto. Sconfiggerlo fa cadere la Tendola Logistica, che automatizza le tue catene di produzione — uno sblocco chiave di metà partita.'] },
+        { h: 'Ciclope — L’Occhio', p: ['Trovato nel Deserto. Sconfiggerlo fa cadere il Dente di Granito, necessario per sbloccare la Fornace di Mattoni (via il Poema di Virgilio) — una tappa chiave a metà partita.'] },
         { h: 'Pyzifax', p: ['Il satiro del deserto, signore della guerra che ha preso le armi contro Roma. Rintraccia la sua base nel Deserto per stanarlo.'] },
         { h: 'Grande Fenice d’Arabia e Talos Prototype', p: ['Entrambi abitano il Vulcano, la fase finale. La Fenice rinasce nel suo cratere; il Talos Prototype è il colosso di metallo incompiuto di Vulcano. Vieni pesantemente preparato.'] },
       ],
@@ -713,14 +713,15 @@ export const GUIDES: Guide[] = [
       en: [
         { h: 'Before the fight', p: ['Accept the quest at your spawn. Lighting a campfire beneath Minerva’s statue marks the owl’s location on the map; you can also just follow its shadow to find it.', 'A bird call warns you when it’s about to appear.'] },
         { h: 'Start the fight', p: ['Break the egg to begin the boss fight.', 'Ring the nest with coal traps, then walk in circles — the traps burn it down. Keep moving and don’t get too close, so you dodge both the dive and the lightning it drops.', 'The more traps you lay, the faster it dies. Auto-scorpion crossbows also work, but they need repairing.'] },
-        { h: 'Reward', p: ['Drops the quest material Guardian’s Eye. Beating the Guardian of Minerva also yields the Logistics Tent blueprint.'] },
+        { h: 'What it unlocks', p: ['A two-phase fight — a storm/lightning phase kicks in during the second half, so keep moving.', 'Offering the Guardian’s Eye on your altar unlocks the Carpenter’s Workshop, Blacksmith, Altar L2, Empty House L2, Material Storage L2 and the Logistics Tent, plus Feathered armor recipes (Hood, Armor, Boots). This is the day-one progression gate that opens the rest of the early game.'] },
+        { h: 'Reward', p: ['Drops the quest material Guardian’s Eye, plus Guardian’s Talon and Feathers (used for Feathered-tier gear). Beating the Guardian of Minerva also yields the Logistics Tent blueprint.'] },
       ],
     },
   },
   {
     slug: 'pyzifax',
     category: 'boss',
-    updated: '2026-07-15',
+    updated: '2026-07-16',
     title: {
       en: 'Pyzifax — Boss Fight',
     },
@@ -736,7 +737,7 @@ export const GUIDES: Guide[] = [
         { h: 'Prep', p: ['Bring ranged options (scrolls etc.), a shield to block the bullet-hell, and an antidote.', 'Drop a Camp Tent at the door beforehand to refresh your respawn point.'] },
         { h: 'The approach', p: ['Stand at the wall’s edge then run off, letting the catapult smash the wall itself.', 'The satyrs by the catapult can be ignored once killed; your scorpion crossbows and tent still clear them through the wall at range.', 'Three captured villagers spawn in the city — take any with traits you want.'] },
         { h: 'Phases', p: ['Phase 1: circle-strafe to dodge, clear the adds, and strike after the boss jumps down.', 'Phase 2: dodge the bullet-hell at the edge; for the long-line dashes, dodge one, face-tank two, or just block with your shield.', 'Phase 3: an upgraded Phase 1 with higher damage — same plan, hit it after it lands.'] },
-        { h: 'Reward', p: ['Drops the Logistics Tent blueprint, which unlocks automation.'] },
+        { h: 'Reward', p: ['Drops random gear and materials — armor, weapons, accessories, and crafting components.', 'The Logistics Tent no longer drops here: since patch 0.25.1_7 it is a reward for the Guardian of Minerva instead.'] },
       ],
     },
   },
@@ -766,7 +767,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'phoenix-arabia',
     category: 'boss',
-    updated: '2026-07-15',
+    updated: '2026-07-16',
     title: {
       en: 'Great Phoenix of Arabia — Boss Fight',
     },
@@ -781,6 +782,7 @@ export const GUIDES: Guide[] = [
       en: [
         { h: 'How to start', p: ['After you’ve built in the Volcano, an NPC arrives with the Desert Phoenix quest. Accepting it marks the burned shrines on your map.'] },
         { h: 'Phases', p: ['Phase 1: it breathes fire — stay behind it and keep hitting.', 'Below half health it enters Phase 2 with falling rocks; still, stay behind it and strike.'] },
+        { h: 'Stats', p: ['Health: ~1,200 HP.', 'Two phases, both front-facing — position behind the phoenix and you are safe to free-hit.'] },
         { h: 'Reward', p: ['Drops the Phoenix Ash Sample.'] },
       ],
     },
@@ -788,7 +790,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'talos-prototype',
     category: 'boss',
-    updated: '2026-07-15',
+    updated: '2026-07-16',
     title: {
       en: 'Talos Prototype — Boss Fight',
     },
@@ -806,7 +808,249 @@ export const GUIDES: Guide[] = [
         { h: 'Phase 2', p: ['A few adds rise first, then four lasers fire from each side. Walk only between the beams, hide behind stones or pillars, and clear the mechanisms at range. A villager is sent up.'] },
         { h: 'Phase 3', p: ['Pull the lever on one side of the lasers and destroy the rising mechanism-bow on the other; you can heal behind a pillar.'] },
         { h: 'Phase 4', p: ['An upgraded Phase 1 — more lasers and more adds. Same tactic: hammer the blue-glowing notches.'] },
+        { h: 'Stats', p: ['Health: ~1,800 HP.', 'Four phases — break the chest plates, hammer the blue-glowing notches, dodge the lasers, and kill the one-eyed healer add fast (it heals the boss).'] },
         { h: 'Reward', p: ['Drops the Core Container; offering it completes all main quests up to this point.'] },
+      ],
+    },
+  },
+  {
+    slug: 'walkthrough',
+    category: 'walkthrough',
+    updated: '2026-07-15',
+    title: {
+      en: 'Full Walkthrough: Plains to Volcano',
+    },
+    description: {
+      en: 'A complete chronological run from the tutorial Owl to freeing Vulcan — every biome, boss and automation unlock in order.',
+    },
+    tip: {
+      en: 'Two valid opening orders exist. The EA completion route fights the Owl first, then settles. You can also settle first and return later. Either way, the Logistics Tent (automation) now drops from the Owl rather than Pyzifax (patch 0.25.1_7).',
+    },
+    cover: 'screens/forest-combat.jpg',
+    sections: {
+      en: [
+        { h: 'Tutorial and the first boss (Owl)', p: ['Follow the white starter road out of the tutorial. Craft a flint spear and equip shield plus spear (hold right-click to block while attacking). Reach the Plains.', 'Before settling, loop the Owl (Guardian of Minerva). Explore for a concave U-shaped mountain ridge, or a regular rectangular one. For the concave shape, ring the notch and both sides with coal traps, break the egg with a charged spear and circle the boss — at the notch you can bait one hit, then slip to the trap-free opposite side so it pathfinds into the wall and eats the traps. For a rectangular mountain, ring it fully. At half health it enters phase 2 — dodge the close-range blast.', 'No mountain nearby? Build 4 auto-scorpion crossbows spread to the screen edges with coal traps around them, fill each with 50 flint arrows, and leave one blueprint one hammer from done off-screen to hold aggro in phase 2.', 'The kill drops a boss armor piece (equip it) and the Logistics Tent blueprint. In current builds the Tent comes from the Owl; early EA guides credited Pyzifax, but patch 0.25.1_7 moved it. Turn in the quest to unlock the tier-2 Altar, then demolish and pick your real town spot.'] },
+        { h: 'Settle your town (Plains)', p: ['Find a Plains spot with clay (orange tiles slow you) plus a lake that has a 4-tile straight edge, 2 tiles wide, unobstructed. Use the road blueprint as your wall (drag limit is 25 at once); keep clay outside the walls but orient the lake so the future Water Mill sits inside. Solo town size: 80 wide by 40 tall.', 'Reserve a 5-by-6 empty lot at the center, ring it with road and drop your flag — that is where the Logistics Tent goes later. Leave a ring of space around the Blacksmith, Leatherworker and Materials Warehouse (the first two need decorations behind them for appeal; the warehouse belongs on the upper road half). Build the Carpenter first and assign villagers.', 'Tech order: Mercury (road speed, then more goods, then altar teleport) to Ceres (crop yield, beehive, well irrigation, bakery 2) to Diana (portable bedroll) to Vulcan (stone wall, forge XP, burn time, 10 percent armor blessing). Spend the rest as you like.', 'Fight the Owl each day until a full armor set drops. A hut with a leather bedroll skips the night, or rush a fresh map to farm faster.'] },
+        { h: 'Forest: leather, captures and gods', p: ['Enter the Forest for leather (wolf packs) and tanned leather (bears), and to run the god quests. Killing satyrs drops the Declaration of War against Pyzifax.', 'In forest camps, knock over fallen logs (chance at a Bee Queen), grab a drum and a lyre if present (the desert has them too), and clear dungeons for antidotes and the occasional caged villager. Goal: 5 antidotes, 2 Bee Queens, and 2 Meticulous villagers (plus 3 expertise each).', 'Assign the two Meticulous villagers to the Blacksmith (grappling hooks for XP) and the Leatherworker (tan leather). Overflow recruits with only bad traits get dropped or altar-sacrificed. Do not bother feeding captives yet — they strike, they do not die.'] },
+        { h: 'Desert: passage, Cyclops and Pyzifax', p: ['Follow the road to the Desert. At the satyr pass, drop a Camp Tent for respawn, use cover plus corpse-piles and tent heals to clear it, and prioritize the ballista towers. Build a crude camp (warehouse, carpenter, blacksmith, granary, tier-2 altar); haul 3 buckets of clay from the Plains side by cart.', 'Make a Desert base at a clay plus 4-by-2 water border and upgrade the Altar to teleport. Build a Forge and craft the Bronze axe, pick and set (a tier-2 smith smelts copper plus tin; tin also comes from the quarry). Bronze (green rarity) beats the blue plumed set.', 'Cyclops: a campfire under its marble statue marks the satyr high-temple. Breach the walls with explosive jars or clay-golem blasts across five phases — bomb the eye, then the hands, then the eyeball, then the eye again, then empty one hand before the clap. It drops the Granite Fang; offer it and finish Virgil’s Poem to unlock the Brick Kiln.', 'Pyzifax invasion: offer the Deformed Satyr Horn (drops during the invasion) to mark his camp. Lure the catapult to smash its own gate, commandeer it to wreck the ballistas, then circle-strafe the boss through three phases. Early EA guides credit Pyzifax with the Logistics Tent; in current builds that blueprint comes from the Owl instead, so Pyzifax now drops gear and blueprints.'] },
+        { h: 'Volcano: base, automation and the endgame', p: ['Follow any black road to the Volcano, opposite the Desert. Base at a clay plus 4-by-2 water plus volcanic-ash border. Uncheck camera auto-zoom and lower the zoom value to plan safely. Wall before moving villagers; build tight, pave roads, and leave no open patches, since enemies spawn inside walls too. Unlock Vulcan’s Volcano Furnace; the fuel-needing Bakery, Forge, Pottery and Brick Kiln belong here.', 'With the Logistics Tent (from the Owl) on the reserved 5-by-6 lot, automate: chain farm to water mill to bakery (repeat bread) to granary so the camp never starves. The Tent also links Lumberyard, Quarry and Clay Pit to the Materials Warehouse; the Quarry (volcano level 5) yields coal, copper, tin and iron ingots plus rare items. Brick chain: warehouse to Brick Kiln (clay) back to warehouse. Concrete mixer (University): warehouse clay plus ash-clay-pit to mixer to warehouse; water is still bucketed by hand. Grapes make wine, honey makes mead the same way.', 'Phoenix: after you build, an NPC gives the Desert Phoenix quest; smash the shrine statue to summon it. Dodge the dive, then after it lands stand behind its hind legs and free-hit; phase 2 adds falling rocks but the same plan holds. About four breaths wins. It drops the Phoenix cloak.', 'Vulcan: a campfire under the statue marks his temple. Find 4 steles, insert iron rods, pull the 4 levers and smash the jar, then talk to Vulcan at home — he names the building-material offering. Cart clay, wood and stone to the temple platform, pull the lever, place a bedroll and enter. Four phases: break the iron plates and hit the blue-glowing notches (damage scales with your pickaxe), kill the one-eyed healer add fast, and dodge the lasers between the beams. It drops the Core Container — offer it to complete all main quests.'] },
+      ],
+    },
+  },
+  {
+    slug: 'completion-run',
+    category: 'walkthrough',
+    updated: '2026-07-15',
+    title: {
+      en: 'EA Completion Run: Optimized Route',
+    },
+    description: {
+      en: 'A tuning-focused speedrun and optimization path — profession, material map, Owl cheese, tech order, efficient town and the automation endgame.',
+    },
+    tip: {
+      en: 'Pick the Shield profession and a Small map for solo play. The shield block-and-attack carries every boss, and a small map cuts the endless resource runs.',
+    },
+    cover: 'screens/woods-night.jpg',
+    sections: {
+      en: [
+        { h: 'Profession and map size', p: ['At creation each profession gives plus 5 to its skill plus a tool or weapon (the scroll is the caster, the thrower gets an accessory, unarmed has none). Weapon skills grant plus 0.3 percent damage per level, axe and pick grant plus 0.1 percent per level. The recommended pick is Shield.', 'Map size: solo and under four players take Small; four or more take Standard; only a post-game building save should take Large.'] },
+        { h: 'Material map', p: ['Plains: olives, pine nuts, wheat, bay, cabbage and mint (forest edge), cheese, wool (goats), leather (boars), tanned leather (fawns), copper and coal.', 'Forest: apples, heavy leather (wolf packs) and tanned leather (bears).', 'Desert: grapes (in camps), apricots, aloe, cilantro, flax and tin.', 'Volcano: ember orchids, gems (oval stones crack open into geodes) and research papers (chests).'] },
+        { h: 'Owl cheese (two reliable setups)', p: ['Concave-mountain: coal traps at the notch and both sides; break the egg, circle the boss, bait one hit at the notch, then slip to the trap-free opposite side so it pathfinds into the wall and eats the traps. At half health (phase 2) dodge the close blast.', 'No mountain: 4 auto-scorpion crossbows spread to the screen edges with coal traps around them, 50 flint arrows each, plus one blueprint left one hammer from done off-screen. Phase 2 lightning kills the live crossbows, so finish the near-done blueprint to pull aggro and repair the rest. Keep one half-built crossbow as a taunt.'] },
+        { h: 'Tech-tree order', p: ['Mercury: road speed (casters take the scroll), then more goods, then altar teleport.', 'Ceres: crop yield, then beehive, then well auto-irrigation, then bakery 2.', 'Diana: portable bedroll.', 'Vulcan: stone wall, then forge XP, then burn time, then the 10 percent armor blessing.', 'Spend spare points as you like.'] },
+        { h: 'Efficient town', p: ['A Plains spot with clay plus a 4-tile straight, 2-wide lake (future mill inside the walls). The road blueprint is your wall (25-tile drag limit). Solo size: 80 by 40.', 'Reserve a 5-by-6 center lot for the Logistics Tent. Ring the Blacksmith, Leatherworker and Warehouse with space (the first two need decorations behind them; the warehouse goes on the upper road half). Build the Carpenter first and assign villagers through its workbench.'] },
+        { h: 'Forest leather and citizen capture', p: ['Knock fallen logs (Bee Queen chance), grab a drum and a lyre, and clear dungeons for antidotes and caged villagers. Collect 5 antidotes, 2 Bee Queens and 2 Meticulous villagers (plus 3 expertise each).', 'Blacksmith makes grappling hooks for XP; Leatherworker tans leather. Do not feed captives — they strike, they do not die. Early Favor: take sleep-heal plus the armor and health nodes on both sides.'] },
+        { h: 'Desert passage and Pyzifax invasion', p: ['White road to the satyr pass: drop a Camp Tent for respawn, use cover and prioritize the ballista towers. Build a clay-hauled camp (warehouse, carpenter, blacksmith, granary, tier-2 altar). Explore for grapes, aloe, cilantro, flax, apricots and scorpion meat (scorpion meat and cilantro times five, grapes, aloe and apricots times fifteen). Vultures dive — block with the shield to stun them. Mark tin; a Cyclops statue campfire points to the temple.', 'Pyzifax: offer the Deformed Satyr Horn to mark his camp. Lure the catapult to break its own gate, commandeer it on the ballistas, then circle-strafe three phases. The Logistics Tent now drops from the Owl, not Pyzifax.'] },
+        { h: 'Cyclops phases', p: ['Temple right side: kill bomb-men and throw bombs at the stone wall (a bomb-man death resets its fuse, so use it to blast both key-room walls and skip the left puzzle). Grab the key.', 'Boss: phase 1 dodge bullets in the safe notch and bomb the eye; phase 2 circle between the hands and dodge laser plus rocks; phase 3 hit the eye (stop hitting to slow its charge); phase 4 is bullet-hell with no dash i-frames; phase 5 empty one hand before the clap. Drops the Granite Fang (unlocks the Brick Kiln). Respawns about 5 days later.'] },
+        { h: 'Volcano to Phoenix to Vulcan', p: ['Apply the Aloe Gel buff before exploring. Casters and archers gather 20 ember orchids (casters also crack oval stones for geodes); open one or two ash-covered chests for research papers. A small circular lava pool is the Phoenix shrine; a large irregular lava lake is the Vulcan temple. Spined-skull dungeons always have 1 to 2 iron at the door — grab 6, then cart clay and wood from the Plains and build a tier-2 warehouse camp.', 'Offer a paper to get the University, then the Trade Station; mine about 30 iron, smelt it, and craft full iron armor plus an iron great-hammer plus 4 iron rods.', 'Phoenix: smash the shrine statue, dodge the dive, stand behind the hind legs, about four breaths. Equip the dropped cloak.', 'Vulcan: 4 steles plus iron rods plus 4 levers plus the jar; talk at home to learn the building-material offering; cart it to the temple platform, pull the lever, place a bedroll and enter. Four phases, hit the blue notches, kill the healer add, dodge the lasers. The Core Container completes the main quest.'] },
+        { h: 'Automation wrap-up', p: ['With the Logistics Tent (from the Owl) on the 5-by-6 lot, chain farm to water mill to bakery (repeat bread) to granary so the camp never starves. A tier-2 Quarry auto-ships copper ingots to the Blacksmith; the brick chain and concrete mixer follow. The Trade Station ferries the Blacksmith-2 upgrade mats to the volcano camp. The game runs itself — go hunt bosses.'] },
+      ],
+    },
+  },
+  {
+    slug: 'resource-map',
+    category: 'resources',
+    updated: '2026-07-15',
+    title: {
+      en: 'Resource Map: Where Everything Grows',
+    },
+    description: {
+      en: 'Every material and where it spawns — Plains, Forest, Desert, Volcano — so your supply runs stay short.',
+    },
+    cover: 'screens/forest-combat.jpg',
+    sections: {
+      en: [
+        { h: 'Plains', p: ['Olives, pine nuts (fruit trees), wheat (ground), bay leaves, cabbage and mint (ground near the forest edge), cheese, wool (from goats).', 'Leather from boars, tanned leather from fawns.', 'Copper ore and coal — your first metals.'] },
+        { h: 'Forest', p: ['Apples (fruit trees).', 'Heavy leather from wolf packs; tanned leather from bears. The Forest is your leather engine.'] },
+        { h: 'Desert', p: ['Grapes (scattered through camps), apricots (fruit trees).', 'Aloe, cilantro and flax grow on the ground.', 'Tin ore — pair it with copper for bronze.'] },
+        { h: 'Volcano', p: ['Ember orchids grow on the ground (gather about 20 with casters or archers; casters also crack oval stones into geodes for gems).', 'Research papers sit in chests, often under volcanic ash.', 'Iron ore appears at the entrance of spined-skull dungeons (1 to 2 per door) and is mined in the Quarry at volcano level 5.'] },
+        { h: 'Settle smart', p: ['Pick a spot spanning several biome borders at once so one town reaches Plains, Desert and Volcano resources without long hauls. Trade outposts extend reach later, but that is late tech.'] },
+      ],
+    },
+  },
+  {
+    slug: 'food-buffs',
+    category: 'food',
+    updated: '2026-07-15',
+    title: {
+      en: 'Food, Buffs & Automation',
+    },
+    description: {
+      en: 'Why high-tier food matters, the Isicia Marina buff, and the bread, wine and mead production chains.',
+    },
+    cover: 'screens/town-nice.jpg',
+    sections: {
+      en: [
+        { h: 'Food buffs are real', p: ['Romestead’s food system grants combat buffs, not just healing. Eating dead-rat berries keeps you weak; a proper meal can decide a boss fight.', 'Plan one hero food and build its farm line early — the chain is complex but pays off.'] },
+        { h: 'Isicia Marina', p: ['A standout dish: it restores health and grants Nature and Poison resistance for 15 minutes.', 'Its recipe needs date palm, honey, fish sauce and exotic crab meat — so you want a date-palm farm, beehives and a pottery Dolium for fish sauce.'] },
+        { h: 'Bread (automated)', p: ['Chain a wheat farm to the Water Mill (flour), the mill to the Bakery (repeat bread), and the bakery to the Food Storage.', 'You need a 4-by-2 water source for the mill and a tier-2 Bakery to unlock repeat baking. The Logistics Tent wires the whole loop hands-free.'] },
+        { h: 'Wine and mead', p: ['Wine: grape farm to mill (grind grapes) to wine jar; the Materials Warehouse feeds clay to the Pottery workshop (repeat empty vials) which feeds the wine jar.', 'Mead: honey farm to bakery (make honey) to mead jar, again via the pottery for vials. The mead jar unlocks through University research and needs a level-5 villager to collect honey; hives come from Ceres and are built at the Carpenter.'] },
+        { h: 'Why bother', p: ['High-tier food buffs stack with god Blessings and armor suffixes. A fed, buffed solo player can clear the Volcano that would otherwise wall them.'] },
+      ],
+    },
+  },
+  {
+    slug: 'bestiary',
+    category: 'bestiary',
+    updated: '2026-07-15',
+    title: {
+      en: 'Bestiary: Enemies & Drops',
+    },
+    description: {
+      en: 'What hunts you, what it drops, and how to farm it — from the Fallen to satyrs, clay golems and bomb-men.',
+    },
+    cover: 'screens/owl-1.jpg',
+    sections: {
+      en: [
+        { h: 'The Fallen (night)', p: ['Rome’s reanimated citizens leave their husks and hunt by sound and movement after dark. Torches and braziers push them back.', 'Slow and kiteable — let your wall and ranged weapons finish them. They are the core survival threat, not a loot source.'] },
+        { h: 'Satyrs', p: ['The desert satyr warlord Pyzifax has taken up arms against Rome. Killing satyrs drops the Declaration of War — Pyzifax, which triggers his invasion event.', 'The catapult-goblin at his camp can be commandeered; the camp always hides a drum and a lyre worth grabbing.'] },
+        { h: 'Wolves and bears (Forest)', p: ['Wolf packs are your heavy-leather source; bears drop tanned leather. Knock fallen logs in forest camps for a chance at a Bee Queen.', 'Leather feeds the Leatherworker for armor and the sleeping bag that skips the night.'] },
+        { h: 'Clay golems and bomb-men (Cyclops temple)', p: ['Clay golems self-detonate after lingering near you; killing one resets that fuse, so lure one to a wall and kill it to blast the wall open.', 'Bomb-men drop bombs you throw at stone walls; their death also resets the fuse, letting you chain-breaches through the temple.'] },
+        { h: 'Vultures (Desert)', p: ['Desert vultures dive at you; block the dive with your shield to stun them. They are a nuisance, not a real threat.'] },
+        { h: 'Captured citizens', p: ['Not enemies, but dungeons and camps hold caged villagers. Free a build slot, then recruit them — look for Meticulous (+3 expertise) and avoid Gluttonous or Disloyal traits.'] },
+      ],
+    },
+  },
+  {
+    slug: 'walkthrough-plains',
+    category: 'walkthrough',
+    updated: '2026-07-15',
+    title: {
+      en: 'Walkthrough: Plains & Forest',
+    },
+    description: {
+      en: 'The opening act — tutorial Owl, your first town, and the Forest leather-and-capture loop.',
+    },
+    cover: 'screens/woods-night.jpg',
+    sections: {
+      en: [
+        { h: 'Tutorial Owl', p: ['Follow the white starter road. Craft a flint spear, equip shield plus spear (hold right-click to block while attacking).', 'Loop the Owl (Guardian of Minerva). For a concave U-shaped mountain, ring the notch and both sides with coal traps, break the egg and circle; bait one hit at the notch then slip to the trap-free side so it pathfinds into the wall. For a rectangular mountain, ring it fully. At half health dodge the close-range blast.', 'No mountain? Four auto-scorpion crossbows at the screen edges with coal traps, 50 flint arrows each, plus one half-built blueprint off-screen to hold aggro in phase 2.', 'The kill drops a boss armor piece (equip it) and the Logistics Tent blueprint (from the Owl in current builds). Turn in the quest, unlock the tier-2 Altar, then demolish and settle for real.'] },
+        { h: 'Settle the Plains', p: ['Find clay (orange tiles slow you) plus a lake with a 4-tile straight, 2-wide edge, unobstructed. Road blueprint equals your wall (25-tile drag limit); keep clay outside but orient the lake so the future Water Mill sits inside. Solo size: 80 by 40.', 'Reserve a 5-by-6 center lot for the Logistics Tent. Ring the Blacksmith, Leatherworker and Warehouse with space; build the Carpenter first and assign villagers.', 'Tech order: Mercury (road speed, more goods, altar teleport) to Ceres (crop yield, beehive, well irrigation, bakery 2) to Diana (portable bedroll) to Vulcan (stone wall, forge XP, burn time, 10 percent armor).', 'Fight the Owl daily until a full armor set drops.'] },
+        { h: 'Forest loop', p: ['Enter the Forest for leather (wolves) and tanned leather (bears), and the god quests. Killing satyrs drops the Declaration of War — Pyzifax.', 'Knock fallen logs (Bee Queen chance), grab a drum and lyre, clear dungeons for antidotes and caged villagers. Collect 5 antidotes, 2 Bee Queens, 2 Meticulous villagers (plus 3 expertise each).', 'Assign the Meticulous pair to Blacksmith (grappling hooks for XP) and Leatherworker (tan leather). Do not feed captives — they strike, they do not die. Early Favor: sleep-heal plus armor and health nodes.'] },
+      ],
+    },
+  },
+  {
+    slug: 'walkthrough-desert',
+    category: 'walkthrough',
+    updated: '2026-07-15',
+    title: {
+      en: 'Walkthrough: Desert (Cyclops + Pyzifax)',
+    },
+    description: {
+      en: 'Cross to the Desert, bronze up, then take down the Cyclops and the satyr warlord Pyzifax.',
+    },
+    cover: 'screens/desert-town.png',
+    sections: {
+      en: [
+        { h: 'Reach the Desert', p: ['Follow the road to the Desert. At the satyr pass, drop a Camp Tent for respawn, use cover and corpse-piles plus tent heals to clear it, and prioritize ballista towers. Build a crude camp (warehouse, carpenter, blacksmith, granary, tier-2 altar); haul 3 buckets of clay from the Plains by cart.', 'Desert base at a clay plus 4-by-2 water border; upgrade the Altar to teleport. Build a Forge and craft the Bronze axe, pick and set (tier-2 smith smelts copper plus tin; tin also from the quarry). Bronze beats the blue plumed set.'] },
+        { h: 'Cyclops', p: ['A campfire under its marble statue marks the satyr high-temple. Breach walls with explosive jars or clay-golem blasts. Five phases: bomb the eye, then the hands, then the eyeball, then the eye again, then empty one hand before the clap.', 'Drops the Granite Fang — offer it and finish Virgil’s Poem to unlock the Brick Kiln. Respawns about 5 days later; farm it for gear.'] },
+        { h: 'Pyzifax invasion', p: ['Offer the Deformed Satyr Horn (drops during the invasion) to mark his camp. Lure the catapult to smash its own gate, commandeer it on the ballistas, then circle-strafe three phases.', 'Bring ranged (scrolls), a shield to block bullets, and an antidote. Drop a Camp Tent at the gate to refresh respawn. Three caged villagers spawn — take the ones with good traits.', 'Early EA guides credit Pyzifax with the Logistics Tent; in current builds that blueprint comes from the Owl, so Pyzifax now drops gear and blueprints.'] },
+      ],
+    },
+  },
+  {
+    slug: 'walkthrough-volcano',
+    category: 'walkthrough',
+    updated: '2026-07-15',
+    title: {
+      en: 'Walkthrough: Volcano (Phoenix + Vulcan)',
+    },
+    description: {
+      en: 'The endgame — volcano base, full automation, and the Phoenix and Vulcan boss fights.',
+    },
+    cover: 'screens/phoenix-fight.jpg',
+    sections: {
+      en: [
+        { h: 'Volcano base and automation', p: ['Follow any black road to the Volcano, opposite the Desert. Base at clay plus 4-by-2 water plus volcanic ash. Uncheck camera auto-zoom and lower zoom to plan safely; wall before moving villagers and build tight with paved roads (enemies spawn inside walls too).', 'Unlock Vulcan’s Volcano Furnace; fuel-needing Bakery, Forge, Pottery and Brick Kiln belong here. With the Logistics Tent on the 5-by-6 lot, chain farm to mill to bakery (repeat bread) to granary. The Tent also links Lumberyard, Quarry and Clay Pit to the Warehouse; the Quarry (volcano 5) yields coal, copper, tin and iron ingots.', 'Brick chain: warehouse to Brick Kiln (clay) back to warehouse. Concrete mixer (University): warehouse clay plus ash-clay-pit to mixer to warehouse; water is still bucketed by hand. Grapes make wine, honey makes mead.'] },
+        { h: 'Phoenix', p: ['After you build, an NPC gives the Desert Phoenix quest; smash the shrine statue to summon it. Dodge the dive, then after it lands stand behind its hind legs and free-hit; phase 2 adds falling rocks but the plan holds. About four breaths wins. It drops the Phoenix cloak.'] },
+        { h: 'Vulcan', p: ['A campfire under the statue marks his temple. Find 4 steles, insert iron rods, pull 4 levers, smash the jar, then talk to Vulcan at home — he names the building-material offering.', 'Cart clay, wood and stone to the temple platform, pull the lever, place a bedroll, enter. Four phases: break the iron plates and hit the blue-glowing notches (damage scales with your pickaxe), kill the one-eyed healer add fast, dodge lasers between beams.', 'Apply the Aloe Gel buff before exploring; mine about 30 iron for full iron armor plus an iron great-hammer plus 4 iron rods. The Core Container completes the main quest.'] },
+      ],
+    },
+  },
+  {
+    slug: 'buildings-guide',
+    category: 'buildings',
+    updated: '2026-07-15',
+    title: {
+      en: 'Buildings Codex: Function, Unlock & Upgrades',
+    },
+    description: {
+      en: 'Every key building in one place — what it does, how to unlock it, and what each upgrade tier costs.',
+    },
+    cover: 'screens/construct-sites.jpg',
+    sections: {
+      en: [
+        { h: 'Why a building codex', p: ['Romestead is a town-builder at heart: most of your power comes from assigning citizens to the right buildings and upgrading them. This codex lists the central buildings, their unlock quests, build costs and upgrade tiers so you can plan your town layout.', 'Costs below are the Workbench build recipe unless noted; upgrade tiers list the resource cost plus the requirement (a quest or a god worship node).'] },
+        { h: 'Altar — the progression core', p: ['Built from the Workbench for 3 Stone. Click a god’s portrait to offer items for Worship Points and Blessings; only one Blessing is active at a time.', 'Level 2 costs 5 Stone (quest The Giant Owl) and unlocks more worship options plus teleportation between level-2 altars. Level 3 costs 3 Stone + 2 Clay + 6 Brick (quest Virgil’s Poem) for even more unlocks.'] },
+        { h: 'Metals & gear', p: ['Blacksmith — unlocked after The Giant Owl; build 5 Lumber / 5 Stone / 2 Clay. Its furnace smelts ores (fuel: Lumber burns 100s, Coal 200s; an idle furnace burns 20x slower). Level 2 costs 6 Lumber / 6 Stone / 10 Brick (quest Proving Your Worth) and raises max rank to 7 with a stronger furnace that smelts Iron; Level 3 comes from Vulcan (not in the demo).', 'Leatherworker — build 5 Lumber / 5 Stone; crafts leather gear. Level 2 costs 3 Lumber / 4 Stone / 2 Clay / 5 Brick (quest Hunting Armaments), raising max rank to 7.'] },
+        { h: 'Carpenter & resource yards', p: ['Carpenter’s Workshop — unlocked by The Giant Owl; build 7 Lumber / 2 Stone / 2 Clay. It upgrades other buildings and crafts furniture, road upgrades, Beehives and the Wooden Cart. Its carpenter can also construct plans, farm plots, walls and roads within 90 tiles.', 'Lumber Yard — build 6 Lumber / 3 Stone; auto-gathers lumber, +10 percent per nearby tree up to 15 trees (150 percent). Level 2 and 3 come from Diana (max rank 6 then 8); Level 4 is not in the demo.', 'Quarry — unlocked by The Copper Consistency; build 8 Lumber / 6 Stone / 3 Clay. Mines biome-specific ores: Plains and Forest yield Stone, Flint, Coal and Copper (level-2 miner); Desert adds Tin; Volcano adds Coal (Lv2) and Iron (Lv5). Levels 2-4 come from Vulcan.', 'Clay Pit — unlocked by Sanguis Celeste; build 6 Lumber / 10 Stone / 3 Clay. Auto-digs clay, +5 percent per nearby clay tile (cap 15 tiles / 75 percent); in the Volcano it harvests ash instead. Levels 2-4 come from Vulcan (not in the demo).', 'Brick Oven — unlocked by Virgil’s Poem; build 8 Stone / 6 Clay. Turns Clay plus any fuel into Brick; automates with a Logistics Tent.'] },
+        { h: 'Farming, food & water', p: ['Farm Land is prepared ground you plant seeds on (the seed list varies by biome); watering cuts grow time — throw a filled Bucket, or let a Farmstead auto-water if a Well is within 16 tiles.', 'Farmstead — unlocked by Honoring the Soil; build 7 Lumber / 5 Stone. Auto-farms crops and Beehives and auto-waters with a nearby Well. Level 2 (Ceres) raises max rank to 7; Level 3 (Ceres) to 10.', 'Beehive — 10 Wood Plank / 5 Wheat / 1 Queen Bee (Carpenter Job Lv.1); produces 1 Honey Comb every 100 seconds.', 'Watermill — unlocked by Honoring the Craft; build 8 Lumber / 6 Stone. Must sit in water (a 2x3 footprint); grinds Flour, Grape Paste and Olive Paste and links via the Logistics Tent.', 'Bakery — unlocked by Fruits of the Harvest; build 5 Lumber / 2 Stone / 3 Clay. Makes complex dishes and Honey; Level 2 (Ceres) raises max rank to 7 for repeat baking. Recipes span Job Lv.1-7, including Isicia Marina at Lv.3.', 'Pottery — unlocked by Declaration of War; build 3 Lumber / 3 Stone / 4 Clay. Makes pots and the Empty Pot used for potions. Level 2 comes from Mars (not in the demo).', 'Well — 4 Stone. A reusable water source; a nearby Farmstead worker uses it to water fields.'] },
+        { h: 'Research, trade & logistics', p: ['University — unlocked by Significant Pursuit; build 4 Lumber / 6 Stone / 8 Brick. A philosopher researches technologies and produces Research Papers, and unlocks the Mead Dolium, Trading Post, Concrete Mixer, Sculptor, Concrete Roads, Material Storage (Lv3) and Concrete Walls.', 'Market — unlocked by Art of Trade; build 8 Lumber / 6 Stone / 2 Clay. A merchant buys and sells, with a biome-specific stock. Level 2 (Mercury) raises max rank to 7; Level 3 is not in the current version.', 'Logistics Tent — unlocked by defeating the Guardian of Minerva; build 6 Lumber / 4 Stone. The automation hub: drag a building’s output into another’s input to auto-transfer goods and enable repeatable work orders. (It originally dropped from Pyzifax but was moved to the Owl by popular demand.)'] },
+        { h: 'Field & survival', p: ['Campfire — 2 Coal / 3 Wood Stick (6 coins). Crafts Torch, Bread and cooked meats.', 'Camping Tent — 10 Leather / 10 Wood Stick (Leatherworker Lv.1). A portable, less sturdy home that sets your spawn point when you sleep.'] },
+      ],
+    },
+  },
+  {
+    slug: 'faq-guide',
+    category: 'faq',
+    updated: '2026-07-15',
+    title: {
+      en: 'FAQ: The Questions Every New Governor Asks',
+    },
+    description: {
+      en: 'Plain answers to the most common Romestead questions — what it is, where to play, how progression works and why there is no inventory.',
+    },
+    cover: 'screens/town-nice.jpg',
+    sections: {
+      en: [
+        { h: 'What is Romestead?', p: ['A 2D survival town-builder from Beartwigs and Three Friends. Rome has fallen to a zombie plague and you rebuild it from the ground up — fight the husks, raise towns and earn the favor of the Roman gods. It supports 1-8 players in co-op.'] },
+        { h: 'What platforms is it on?', p: ['PC via Steam Early Access, launched May 26, 2026 at $13.99. There is no console or Mac build yet.'] },
+        { h: 'How does progression work?', p: ['Your Altar is the main progression gate. Offer items to the gods to earn Worship Points and permanent buffs. The first hard gate is the Guardian of Minerva — a giant owl; defeat it to unlock new crafting.'] },
+        { h: 'Can I play solo?', p: ['Yes. Solo is punishing if your gear falls behind, so work through the armor tiers (Leather to Copper to Bronze/Iron) and aim for legendary gear, which is close to mandatory for the Volcano biome. In co-op, SaveSync lets any player take over as host when the original host is offline.'] },
+        { h: 'What are the biomes?', p: ['Every world has the same five biomes in roughly rising difficulty: Plains (your start), Forest, Desert, Volcano (the current Early Access endgame) and the Swamp, which arrives after Early Access.'] },
+        { h: 'Why is there no inventory?', p: ['Romestead’s signature twist is physicalized resources: you pick up rocks and lumber by hand and even throw them at enemies. It feels awkward for the first hour, then becomes second nature — and doubles as a combat tool.'] },
+      ],
+    },
+  },
+  {
+    slug: 'walkthrough-forest',
+    category: 'walkthrough',
+    updated: '2026-07-15',
+    title: {
+      en: 'Walkthrough: Forest (Leather & Captives)',
+    },
+    description: {
+      en: 'The Forest biome on its own — your leather engine, the Bee Queen chance, early god quests and freeing caged citizens.',
+    },
+    cover: 'screens/forest-combat.jpg',
+    sections: {
+      en: [
+        { h: 'Entering the Forest', p: ['Forest biomes spread across the map and usually border the Plains, with plains tiles on either side. The creatures here are tougher than in the starter biome, and the woods are claustrophobic — hard to build inside — though some buildings get bonuses or behave differently on forest tiles.', 'Think of the Forest as your leather engine and the site of several early god quests, not a place to found your main town.'] },
+        { h: 'Leather: wolves, bears & Bee Queens', p: ['Wolf packs are your heavy-leather source; bears drop tanned leather for the Leatherworker. Knock fallen logs in forest camps for a chance at a Bee Queen, which you need to build Beehives.', 'Leather feeds the Leatherworker for armor and the sleeping bag that skips the night, so keep a steady forest run going.'] },
+        { h: 'God quests & offerings', p: ['Several early god quests begin in or around the Forest. Offer items at your Altar for Worship Points and Blessings — only one Blessing is active at a time. Ceres’ branch (crop yield, beehive, well irrigation) and Diana’s (lumber, portable bedroll) are the ones you will want first.'] },
+        { h: 'Freeing citizens', p: ['Forest dungeons and camps hold caged villagers. Free a build slot, then recruit them — look for the Meticulous trait (+3 expertise) and avoid Gluttonous or Disloyal. Clear dungeons for antidotes, and grab any drum and lyre you find; they are worth carting home.'] },
+        { h: 'Forest survival tips', p: ['Build a small forward camp rather than hauling your whole base into the woods — a Camping Tent sets your spawn so you can re-enter quickly. A Leatherworker (5 Lumber / 5 Stone) and a Carpenter let you craft on-site.', 'Carry antidotes for the poison creatures, and send a Meticulous pair to the Blacksmith (grappling hooks for XP) and the Leatherworker (tanning) to accelerate your gear.'] },
+        { h: 'What comes next', p: ['With leather gear and a few captured citizens, push on to the Desert for the Cyclops and the satyr warlord Pyzifax. The Forest’s leather plus the Logistics Tent loop (from the Owl) keep your town fed and geared while you climb the tiers.'] },
       ],
     },
   },

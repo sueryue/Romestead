@@ -16,9 +16,15 @@ const guideGroups = ([
   ['survival', 'cat.survival'],
   ['building', 'cat.building'],
   ['mechanic', 'cat.mechanic'],
+  ['walkthrough', 'cat.walkthrough'],
+  ['resources', 'cat.resources'],
+  ['food', 'cat.food'],
+  ['bestiary', 'cat.bestiary'],
+  ['buildings', 'cat.buildings'],
   ['gods', 'cat.gods'],
   ['boss', 'cat.boss'],
   ['coop', 'cat.coop'],
+  ['faq', 'cat.faq'],
 ] as const).map(([cat, labelKey]) => ({
   label: ui[labelKey],
   items: GUIDES.filter((g) => g.category === cat).map((g) => ({
