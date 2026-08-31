@@ -29,7 +29,6 @@ const regions = [
   { key: 'forest',  x: 40,  y: 70,  w: 260, h: 200, label: { en: 'Forest',  fr: 'Forêts',  de: 'Wald',     es: 'Bosques', it: 'Foreste' } },
   { key: 'volcano', x: 680, y: 70,  w: 280, h: 200, label: { en: 'Volcano', fr: 'Volcan',  de: 'Vulkan',   es: 'Volcán',  it: 'Vulcano' } },
   { key: 'plains',  x: 40,  y: 330, w: 280, h: 210, label: { en: 'Plains',  fr: 'Plaines', de: 'Ebenen',   es: 'Llanuras', it: 'Pianure' } },
-  { key: 'swamp',   x: 350, y: 190, w: 300, h: 180, label: { en: 'Swamp',   fr: 'Marécage', de: 'Sumpf',    es: 'Pantano', it: 'Palude' } },
   { key: 'desert',  x: 680, y: 330, w: 280, h: 210, label: { en: 'Desert',  fr: 'Désert',  de: 'Wüste',    es: 'Desierto', it: 'Deserto' } },
 ];
 
@@ -90,15 +89,11 @@ const STAR = 'M0,-15 L4.4,-5.2 L14.3,-4.6 L6.8,2.8 L8.8,13.2 L0,7.5 L-8.8,13.2 L
             <button type="button" class="map-layer map-layer--god is-active" data-layer="god">
               <span class="dot"></span>{ui['map.layer.gods']}
             </button>
-            <button type="button" class="map-layer map-layer--fast is-active" data-layer="fast">
-              <span class="dot"></span>{ui['map.layer.fast']}
-            </button>
             <button type="button" class="map-layer-all" id="map-all">{ui['map.layer.all']}</button>
           </div>
           <div class="map-legend" aria-hidden="true">
             <span><i class="lg-boss"></i>{ui['map.boss']}</span>
             <span><i class="lg-god"></i>{ui['map.god']}</span>
-            <span><i class="lg-fast"></i>{ui['map.fast']}</span>
           </div>
         </div>
 
@@ -169,10 +164,6 @@ const STAR = 'M0,-15 L4.4,-5.2 L14.3,-4.6 L6.8,2.8 L8.8,13.2 L0,7.5 L-8.8,13.2 L
             </svg>
 
             <p class="map-note">{ui['map.note']}</p>
-
-            <div class="map-fast-empty" id="map-fast-empty" hidden>
-              {ui['map.fast.none']}
-            </div>
           </div>
 
           <!-- Details panel -->
@@ -190,9 +181,8 @@ const STAR = 'M0,-15 L4.4,-5.2 L14.3,-4.6 L6.8,2.8 L8.8,13.2 L0,7.5 L-8.8,13.2 L
       var svg = document.getElementById('map-svg');
       if (!svg) return;
       var info = document.getElementById('map-info');
-      var fastEmpty = document.getElementById('map-fast-empty');
       var LS_KEY = 'romestead-map-layers';
-      var layers = { boss: true, god: true, fast: true };
+      var layers = { boss: true, god: true };
       try {
         var saved = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
         if (saved && typeof saved === 'object') layers = saved;
@@ -213,7 +203,6 @@ const STAR = 'M0,-15 L4.4,-5.2 L14.3,-4.6 L6.8,2.8 L8.8,13.2 L0,7.5 L-8.8,13.2 L
           var l = b.getAttribute('data-layer');
           b.classList.toggle('is-active', !!layers[l]);
         });
-        if (fastEmpty) fastEmpty.hidden = !layers.fast;
       }
 
       document.querySelectorAll('.map-layer').forEach(function (b) {
@@ -227,7 +216,7 @@ const STAR = 'M0,-15 L4.4,-5.2 L14.3,-4.6 L6.8,2.8 L8.8,13.2 L0,7.5 L-8.8,13.2 L
 
       var allBtn = document.getElementById('map-all');
       if (allBtn) allBtn.addEventListener('click', function () {
-        layers = { boss: true, god: true, fast: true };
+        layers = { boss: true, god: true };
         try { localStorage.setItem(LS_KEY, JSON.stringify(layers)); } catch (e) {}
         applyLayers();
       });

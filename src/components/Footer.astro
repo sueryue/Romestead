@@ -2,6 +2,7 @@
 import { getUi } from '../i18n/ui';
 import { link, type Locale } from '../i18n/utils';
 import { SITE, STORE } from '../consts';
+import Icon from './Icon.astro';
 
 interface Props {
   locale: Locale;
@@ -15,7 +16,7 @@ const year = new Date().getFullYear();
   <div class="mx-auto max-w-6xl px-4 py-10">
     <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
       <div>
-        <p class="font-display text-2xl font-bold text-gold-400">⚜ Romestead</p>
+        <p class="flex items-center gap-2 font-display text-2xl font-bold text-gold-400"><Icon name="landmark" class="h-6 w-6" /> Romestead</p>
         <p class="mt-2 max-w-sm text-sm text-parchment-200" data-i18n="footer.tagline">
           {ui['footer.tagline']}
         </p>
@@ -29,12 +30,12 @@ const year = new Date().getFullYear();
 
     <div class="footer__community">
       <div class="footer__community-text">
-        <p class="footer__community-title">⚔ {ui['footer.community.title']}</p>
+        <p class="footer__community-title flex items-center gap-2"><Icon name="swords" class="h-4 w-4" /> {ui['footer.community.title']}</p>
         <p class="footer__community-desc">{ui['footer.community.desc']}</p>
         <p class="footer__community-note">{ui['footer.community.note']}</p>
       </div>
       <a href={STORE.discord} class="footer__community-cta" target="_blank" rel="noopener noreferrer">
-        💬 {ui['footer.community.cta']} ↗
+        <Icon name="chat" class="h-4 w-4" /> {ui['footer.community.cta']} ↗
       </a>
     </div>
 

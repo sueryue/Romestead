@@ -22,7 +22,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'survive-night',
     category: 'survival',
-    updated: '2026-07-10',
+    updated: '2026-05-28',
     tip: {
       en: 'Scout toward the map center before you settle — a spot near coal, water and several biome borders saves hundreds of trips later.',
       fr: 'Explorez vers le centre de la carte avant de vous installer — un point près du charbon, de l’eau et de plusieurs biomes évite des centaines de trajets.',
@@ -38,11 +38,11 @@ export const GUIDES: Guide[] = [
       it: 'Sopravvivi alla Caduta: la tua prima notte',
     },
     description: {
-      en: 'Survive night one: torches, a wall, and dawn.',
-      fr: 'Survis la première nuit : torches, un mur, l’aube.',
-      de: 'Überlebe Nacht eins: Fackeln, eine Mauer, der Morgen.',
-      es: 'Sobrevive la primera noche: antorchas, un muro, el alba.',
-      it: 'Sopravvivi la prima notte: torce, un muro, l’alba.',
+      en: 'How to get through your first night without losing everything.',
+      fr: 'Comment passer votre première nuit sans tout perdre.',
+      de: 'Wie du deine erste Nacht überstehst, ohne alles zu verlieren.',
+      es: 'Cómo pasar tu primera noche sin perderlo todo.',
+      it: 'Come superare la tua prima notte senza perdere tutto.',
     },
     cover: 'screens/woods-night.jpg',
     video: {
@@ -82,7 +82,7 @@ export const GUIDES: Guide[] = [
     slug: 'build-town',
     category: 'building',
     mustRead: true,
-    updated: '2026-07-10',
+    updated: '2026-05-30',
     tip: {
       en: 'Two citizen perks are quietly dangerous: Gluttonous (more food) and Disloyal (50% slower expertise). Avoid them when recruiting.',
       fr: 'Deux perks de citoyens sont sournoisement dangereux : Glouton (plus de nourriture) et Déloyal (expertise 50% plus lente). À éviter au recrutement.',
@@ -98,11 +98,11 @@ export const GUIDES: Guide[] = [
       it: 'Ricostruisci la civiltà: il tuo primo insediamento',
     },
     description: {
-      en: 'Build your first colony: buildings, citizens, logistics.',
-      fr: 'Bâtis ta colonie : bâtiments, citoyens, logistique.',
-      de: 'Baue deine Kolonie: Gebäude, Bürger, Logistik.',
-      es: 'Construye tu colonia: edificios, ciudadanos, logística.',
-      it: 'Costruisci la colonia: edifici, cittadini, logistica.',
+      en: 'How to stand up your first colony — what to build, who to recruit, and how supplies get around.',
+      fr: 'Comment monter votre première colonie — quoi construire, qui recruter et comment circulent les ressources.',
+      de: 'Wie du deine erste Kolonie aufbaust — was bauen, wen rekrutieren und wie Vorräte kreisen.',
+      es: 'Cómo levantar tu primera colonia — qué construir, a quién reclutar y cómo circulan los suministros.',
+      it: 'Come tirare su la tua prima colonia — cosa costruire, chi reclutare e come girano le scorte.',
     },
     cover: 'screens/community.jpg',
     video: {
@@ -142,7 +142,7 @@ export const GUIDES: Guide[] = [
     slug: 'haul-throw',
     category: 'mechanic',
     mustRead: true,
-    updated: '2026-07-09',
+    updated: '2026-06-02',
     tip: {
       en: 'Always carry a Tent — drop it outside a dungeon or boss and you respawn right at the entrance instead of trekking back.',
       fr: 'Emportez toujours une Tente — posez-la devant un donjon ou boss et vous réapparaissez à l’entrée au lieu de revenir.',
@@ -158,11 +158,11 @@ export const GUIDES: Guide[] = [
       it: 'Nessin inventario: raccogli, trasporta, lancia',
     },
     description: {
-      en: 'No inventory. Carry resources by hand and throw them.',
-      fr: 'Pas d’inventaire. Porte les ressources à la main et lance-les.',
-      de: 'Romesteads Markenzeichen — es gibt kein Inventar. Greift Steine und Holz von Hand, und ja, werft sie auf Feinde.',
-      es: 'Sin inventario. Lleva recursos a mano y lánzalos.',
-      it: 'Nessun inventario. Trasporta risorse a mano e lanciarle.',
+      en: 'There is no inventory — you grab resources by hand and can even throw them at enemies.',
+      fr: 'Pas d’inventaire — on attrape les ressources à la main et on peut même les lancer sur les ennemis.',
+      de: 'Kein Inventar — du greifst Ressourcen von Hand und kannst sie sogar auf Feinde werfen.',
+      es: 'No hay inventario — coges los recursos a mano y puedes lanzarlos a los enemigos.',
+      it: 'Nessun inventario — prendi le risorse a mano e puoi persino lanciarle contro i nemici.',
     },
     cover: 'screens/ui.jpg',
     video: {
@@ -201,7 +201,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'gods-favors',
     category: 'gods',
-    updated: '2026-07-08',
+    updated: '2026-06-04',
     tip: {
       en: 'Favors can be reset later by drinking the Canteen of Youth from a level-2 merchant, so experiment early without fear.',
       fr: 'Les faveurs peuvent être réinitialisées en buvant la Gourde de Jouvence d’un marchand niveau 2 — expérimentez tôt sans crainte.',
@@ -260,7 +260,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'dungeons-bosses',
     category: 'boss',
-    updated: '2026-07-07',
+    updated: '2026-06-05',
     tip: {
       en: 'Gear up steadily: Leather → Copper → Bronze/Iron, then legendary. The Volcano biome is close to mandatory in solo play.',
       fr: 'Montez en armure régulièrement : Cuir → Cuivre → Bronze/Fer, puis légendaire. Le Volcan est quasi obligatoire en solo.',
@@ -276,11 +276,11 @@ export const GUIDES: Guide[] = [
       it: 'Dungeon e Boss: razzia i covi nascosti',
     },
     description: {
-      en: 'Raid hidden lairs for loot, puzzles, and bosses.',
-      fr: 'Exploite les repaires cachés: butin, énigmes et boss.',
-      de: 'Überfalle versteckte Lair: Beute, Rätsel und Bosse.',
-      es: 'Asalta las guaridas ocultas: botín, acertijos y jefes.',
-      it: 'Razzia i covi nascosti: bottino, enigmi e boss.',
+      en: 'Hidden lairs hold loot and puzzles, and each one is guarded by a boss.',
+      fr: 'Les repaires cachés renferment butin et énigmes, et chacun est gardé par un boss.',
+      de: 'Versteckte Lair bergen Beute und Rätsel, und jedes wird von einem Boss bewacht.',
+      es: 'Las guaridas ocultas guardan botín y acertijos, y cada una la protege un jefe.',
+      it: 'I covi nascosti nascondono bottino ed enigmi, e ciascuno è sorvegliato da un boss.',
     },
     cover: 'screens/dungeon.jpg',
     video: {
@@ -319,7 +319,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'co-op',
     category: 'coop',
-    updated: '2026-07-06',
+    updated: '2026-06-01',
     tip: {
       en: 'Use SaveSync: the host can share the world save so anyone can take over as admin when the original host is offline.',
       fr: 'Utilisez SaveSync : l’hôte peut partager la sauvegarde pour qu’un autre devienne admin quand il est hors ligne.',
@@ -378,7 +378,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'professions',
     category: 'mechanic',
-    updated: '2026-07-11',
+    updated: '2026-06-08',
     title: {
       en: 'Choose Your Path: Professions & Citizens',
       fr: 'Choisissez votre voie : professions et citoyens',
@@ -428,7 +428,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'armor-gear',
     category: 'building',
-    updated: '2026-07-11',
+    updated: '2026-06-12',
     title: {
       en: 'Gear Up: Armor Tiers & Suffixes',
       fr: 'Équipez-vous : niveaux d’armure et suffixes',
@@ -473,7 +473,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'bosses',
     category: 'boss',
-    updated: '2026-07-16',
+    updated: '2026-06-19',
     title: {
       en: 'Bosses: How to Find & Defeat Them',
       fr: 'Boss : comment les trouver et les vaincre',
@@ -496,7 +496,7 @@ export const GUIDES: Guide[] = [
       en: [
         { h: 'The five bosses', p: ['Romestead currently features five bosses, each found in a specific way — some roam the world, others must be summoned by destroying an object in a set location.', 'Defeating them grants random rewards (armor, accessories, weapons, materials); you usually fight the same boss several times to get everything.'] },
         { h: 'Guardian of Minerva', p: ['Minerva’s owl, the first hard gate. It lurks in a ruin in a random direction from the map center (Plains). With its defeat Minerva returns part of her memory and aids you further.'] },
-        { h: 'Cyclops — The Eye', p: ['Found in the Desert. Defeating it drops the Granite Fang, needed to unlock the Brick Kiln (via Virgil’s Poem) — a pivotal mid-game gate.'] },
+        { h: 'Cyclops — The Eye', p: ['Found in the Desert. Defeating it drops the Granite Tooth, needed to unlock the Brick Kiln (via Virgil’s Poem) — a pivotal mid-game gate.'] },
         { h: 'Pyzifax', p: ['The desert satyr warlord who has taken up arms against Rome. Track down his base in the Desert to draw him out.'] },
         { h: 'Great Phoenix of Arabia & Talos Prototype', p: ['Both dwell in the Volcano endgame. The Phoenix is reborn in its crater; the Talos Prototype is Vulcan’s unfinished metal colossus. Come heavily prepared.'] },
       ],
@@ -533,7 +533,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'gods',
     category: 'gods',
-    updated: '2026-07-11',
+    updated: '2026-06-11',
     title: {
       en: 'The Seven Gods: Worship & Blessings',
       fr: 'Les sept dieux : culte et bénédictions',
@@ -583,12 +583,12 @@ export const GUIDES: Guide[] = [
   {
     slug: 'city-tips',
     category: 'building',
-    updated: '2026-07-15',
+    updated: '2026-06-14',
     title: {
       en: '10 City-Building Tips for a Strong Start',
     },
     description: {
-      en: 'Veteran tips: settle smart, avoid bad traits, automate.',
+      en: 'Veteran advice on picking a good spot to settle, steering clear of bad traits, and automating early.',
     },
     tip: {
       en: 'The Canteen of Youth (bought from a tier-2 merchant) resets every spent Favor point — experiment with god builds early, then respec for free.',
@@ -612,7 +612,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'base-locations',
     category: 'building',
-    updated: '2026-07-15',
+    updated: '2026-06-21',
     title: {
       en: 'Where to Build: Base Locations by Biome',
     },
@@ -634,7 +634,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'world-seeds',
     category: 'survival',
-    updated: '2026-07-15',
+    updated: '2026-06-27',
     title: {
       en: 'Recommended World Seeds',
     },
@@ -655,7 +655,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'fortifications',
     category: 'building',
-    updated: '2026-07-15',
+    updated: '2026-06-24',
     title: {
       en: 'Fortify Your Town: Walls That Hold',
     },
@@ -677,7 +677,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'holy-javelin',
     category: 'mechanic',
-    updated: '2026-07-15',
+    updated: '2026-07-02',
     title: {
       en: 'How to Get the Holy Javelin',
     },
@@ -698,7 +698,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'guardian-minerva',
     category: 'boss',
-    updated: '2026-07-15',
+    updated: '2026-06-16',
     title: {
       en: 'Guardian of Minerva — Boss Fight',
     },
@@ -721,7 +721,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'pyzifax',
     category: 'boss',
-    updated: '2026-07-16',
+    updated: '2026-07-09',
     title: {
       en: 'Pyzifax — Boss Fight',
     },
@@ -744,7 +744,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'cyclops',
     category: 'boss',
-    updated: '2026-07-15',
+    updated: '2026-07-06',
     title: {
       en: 'Cyclops — Boss Fight',
     },
@@ -760,14 +760,14 @@ export const GUIDES: Guide[] = [
         { h: 'Find the temple', p: ['A campfire under the Cyclops statue marks the satyr high-temple on the map.', 'Left key: keep running to dodge the laser and falling rocks; use explosive jars to blow the stone wall. Right key: dash through the bullet-hell and kill clay golems for explosive jars to breach the wall.'] },
         { h: 'Clay golem trick', p: ['Clay golems self-detonate after lingering near you; killing one resets that timer. Lure a golem close to the wall, then kill it so the blast opens the way.'] },
         { h: 'Phases', p: ['Phase 1: dodge the bullet-hell, clear adds, bomb the eye with explosive jars.', 'Phase 2: dodge the laser and the raised hand; hit the other hand.', 'Phase 3: pound the eyeball — a good moment to top up your buffs.', 'Phase 4: same as Phase 1, keep bombing the eye.', 'Phase 5: you must empty one hand’s HP before the two hands clap shut. Early damage is low; it ramps up the longer the fight lasts.'] },
-        { h: 'Reward', p: ['Drops the quest material Granite Fang.'] },
+        { h: 'Reward', p: ['Drops the Granite Tooth — the quest material for Virgil’s Poem.'] },
       ],
     },
   },
   {
     slug: 'phoenix-arabia',
     category: 'boss',
-    updated: '2026-07-16',
+    updated: '2026-07-14',
     title: {
       en: 'Great Phoenix of Arabia — Boss Fight',
     },
@@ -790,7 +790,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'talos-prototype',
     category: 'boss',
-    updated: '2026-07-16',
+    updated: '2026-07-21',
     title: {
       en: 'Talos Prototype — Boss Fight',
     },
@@ -816,7 +816,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'walkthrough',
     category: 'walkthrough',
-    updated: '2026-07-15',
+    updated: '2026-07-08',
     title: {
       en: 'Full Walkthrough: Plains to Volcano',
     },
@@ -832,7 +832,7 @@ export const GUIDES: Guide[] = [
         { h: 'Tutorial and the first boss (Owl)', p: ['Follow the white starter road out of the tutorial. Craft a flint spear and equip shield plus spear (hold right-click to block while attacking). Reach the Plains.', 'Before settling, loop the Owl (Guardian of Minerva). Explore for a concave U-shaped mountain ridge, or a regular rectangular one. For the concave shape, ring the notch and both sides with coal traps, break the egg with a charged spear and circle the boss — at the notch you can bait one hit, then slip to the trap-free opposite side so it pathfinds into the wall and eats the traps. For a rectangular mountain, ring it fully. At half health it enters phase 2 — dodge the close-range blast.', 'No mountain nearby? Build 4 auto-scorpion crossbows spread to the screen edges with coal traps around them, fill each with 50 flint arrows, and leave one blueprint one hammer from done off-screen to hold aggro in phase 2.', 'The kill drops a boss armor piece (equip it) and the Logistics Tent blueprint. In current builds the Tent comes from the Owl; early EA guides credited Pyzifax, but patch 0.25.1_7 moved it. Turn in the quest to unlock the tier-2 Altar, then demolish and pick your real town spot.'] },
         { h: 'Settle your town (Plains)', p: ['Find a Plains spot with clay (orange tiles slow you) plus a lake that has a 4-tile straight edge, 2 tiles wide, unobstructed. Use the road blueprint as your wall (drag limit is 25 at once); keep clay outside the walls but orient the lake so the future Water Mill sits inside. Solo town size: 80 wide by 40 tall.', 'Reserve a 5-by-6 empty lot at the center, ring it with road and drop your flag — that is where the Logistics Tent goes later. Leave a ring of space around the Blacksmith, Leatherworker and Materials Warehouse (the first two need decorations behind them for appeal; the warehouse belongs on the upper road half). Build the Carpenter first and assign villagers.', 'Tech order: Mercury (road speed, then more goods, then altar teleport) to Ceres (crop yield, beehive, well irrigation, bakery 2) to Diana (portable bedroll) to Vulcan (stone wall, forge XP, burn time, 10 percent armor blessing). Spend the rest as you like.', 'Fight the Owl each day until a full armor set drops. A hut with a leather bedroll skips the night, or rush a fresh map to farm faster.'] },
         { h: 'Forest: leather, captures and gods', p: ['Enter the Forest for leather (wolf packs) and tanned leather (bears), and to run the god quests. Killing satyrs drops the Declaration of War against Pyzifax.', 'In forest camps, knock over fallen logs (chance at a Bee Queen), grab a drum and a lyre if present (the desert has them too), and clear dungeons for antidotes and the occasional caged villager. Goal: 5 antidotes, 2 Bee Queens, and 2 Meticulous villagers (plus 3 expertise each).', 'Assign the two Meticulous villagers to the Blacksmith (grappling hooks for XP) and the Leatherworker (tan leather). Overflow recruits with only bad traits get dropped or altar-sacrificed. Do not bother feeding captives yet — they strike, they do not die.'] },
-        { h: 'Desert: passage, Cyclops and Pyzifax', p: ['Follow the road to the Desert. At the satyr pass, drop a Camp Tent for respawn, use cover plus corpse-piles and tent heals to clear it, and prioritize the ballista towers. Build a crude camp (warehouse, carpenter, blacksmith, granary, tier-2 altar); haul 3 buckets of clay from the Plains side by cart.', 'Make a Desert base at a clay plus 4-by-2 water border and upgrade the Altar to teleport. Build a Forge and craft the Bronze axe, pick and set (a tier-2 smith smelts copper plus tin; tin also comes from the quarry). Bronze (green rarity) beats the blue plumed set.', 'Cyclops: a campfire under its marble statue marks the satyr high-temple. Breach the walls with explosive jars or clay-golem blasts across five phases — bomb the eye, then the hands, then the eyeball, then the eye again, then empty one hand before the clap. It drops the Granite Fang; offer it and finish Virgil’s Poem to unlock the Brick Kiln.', 'Pyzifax invasion: offer the Deformed Satyr Horn (drops during the invasion) to mark his camp. Lure the catapult to smash its own gate, commandeer it to wreck the ballistas, then circle-strafe the boss through three phases. Early EA guides credit Pyzifax with the Logistics Tent; in current builds that blueprint comes from the Owl instead, so Pyzifax now drops gear and blueprints.'] },
+        { h: 'Desert: passage, Cyclops and Pyzifax', p: ['Follow the road to the Desert. At the satyr pass, drop a Camp Tent for respawn, use cover plus corpse-piles and tent heals to clear it, and prioritize the ballista towers. Build a crude camp (warehouse, carpenter, blacksmith, granary, tier-2 altar); haul 3 buckets of clay from the Plains side by cart.', 'Make a Desert base at a clay plus 4-by-2 water border and upgrade the Altar to teleport. Build a Forge and craft the Bronze axe, pick and set (a tier-2 smith smelts copper plus tin; tin also comes from the quarry). Bronze (green rarity) beats the blue plumed set.', 'Cyclops: a campfire under its marble statue marks the satyr high-temple. Breach the walls with explosive jars or clay-golem blasts across five phases — bomb the eye, then the hands, then the eyeball, then the eye again, then empty one hand before the clap. It drops the Granite Tooth; offer it and finish Virgil’s Poem to unlock the Brick Kiln.', 'Pyzifax invasion: offer the Deformed Satyr Horn (drops during the invasion) to mark his camp. Lure the catapult to smash its own gate, commandeer it to wreck the ballistas, then circle-strafe the boss through three phases. Early EA guides credit Pyzifax with the Logistics Tent; in current builds that blueprint comes from the Owl instead, so Pyzifax now drops gear and blueprints.'] },
         { h: 'Volcano: base, automation and the endgame', p: ['Follow any black road to the Volcano, opposite the Desert. Base at a clay plus 4-by-2 water plus volcanic-ash border. Uncheck camera auto-zoom and lower the zoom value to plan safely. Wall before moving villagers; build tight, pave roads, and leave no open patches, since enemies spawn inside walls too. Unlock Vulcan’s Volcano Furnace; the fuel-needing Bakery, Forge, Pottery and Brick Kiln belong here.', 'With the Logistics Tent (from the Owl) on the reserved 5-by-6 lot, automate: chain farm to water mill to bakery (repeat bread) to granary so the camp never starves. The Tent also links Lumberyard, Quarry and Clay Pit to the Materials Warehouse; the Quarry (volcano level 5) yields coal, copper, tin and iron ingots plus rare items. Brick chain: warehouse to Brick Kiln (clay) back to warehouse. Concrete mixer (University): warehouse clay plus ash-clay-pit to mixer to warehouse; water is still bucketed by hand. Grapes make wine, honey makes mead the same way.', 'Phoenix: after you build, an NPC gives the Desert Phoenix quest; smash the shrine statue to summon it. Dodge the dive, then after it lands stand behind its hind legs and free-hit; phase 2 adds falling rocks but the same plan holds. About four breaths wins. It drops the Phoenix cloak.', 'Vulcan: a campfire under the statue marks his temple. Find 4 steles, insert iron rods, pull the 4 levers and smash the jar, then talk to Vulcan at home — he names the building-material offering. Cart clay, wood and stone to the temple platform, pull the lever, place a bedroll and enter. Four phases: break the iron plates and hit the blue-glowing notches (damage scales with your pickaxe), kill the one-eyed healer add fast, and dodge the lasers between the beams. It drops the Core Container — offer it to complete all main quests.'] },
       ],
     },
@@ -840,7 +840,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'completion-run',
     category: 'walkthrough',
-    updated: '2026-07-15',
+    updated: '2026-07-26',
     title: {
       en: 'EA Completion Run: Optimized Route',
     },
@@ -860,7 +860,7 @@ export const GUIDES: Guide[] = [
         { h: 'Efficient town', p: ['A Plains spot with clay plus a 4-tile straight, 2-wide lake (future mill inside the walls). The road blueprint is your wall (25-tile drag limit). Solo size: 80 by 40.', 'Reserve a 5-by-6 center lot for the Logistics Tent. Ring the Blacksmith, Leatherworker and Warehouse with space (the first two need decorations behind them; the warehouse goes on the upper road half). Build the Carpenter first and assign villagers through its workbench.'] },
         { h: 'Forest leather and citizen capture', p: ['Knock fallen logs (Bee Queen chance), grab a drum and a lyre, and clear dungeons for antidotes and caged villagers. Collect 5 antidotes, 2 Bee Queens and 2 Meticulous villagers (plus 3 expertise each).', 'Blacksmith makes grappling hooks for XP; Leatherworker tans leather. Do not feed captives — they strike, they do not die. Early Favor: take sleep-heal plus the armor and health nodes on both sides.'] },
         { h: 'Desert passage and Pyzifax invasion', p: ['White road to the satyr pass: drop a Camp Tent for respawn, use cover and prioritize the ballista towers. Build a clay-hauled camp (warehouse, carpenter, blacksmith, granary, tier-2 altar). Explore for grapes, aloe, cilantro, flax, apricots and scorpion meat (scorpion meat and cilantro times five, grapes, aloe and apricots times fifteen). Vultures dive — block with the shield to stun them. Mark tin; a Cyclops statue campfire points to the temple.', 'Pyzifax: offer the Deformed Satyr Horn to mark his camp. Lure the catapult to break its own gate, commandeer it on the ballistas, then circle-strafe three phases. The Logistics Tent now drops from the Owl, not Pyzifax.'] },
-        { h: 'Cyclops phases', p: ['Temple right side: kill bomb-men and throw bombs at the stone wall (a bomb-man death resets its fuse, so use it to blast both key-room walls and skip the left puzzle). Grab the key.', 'Boss: phase 1 dodge bullets in the safe notch and bomb the eye; phase 2 circle between the hands and dodge laser plus rocks; phase 3 hit the eye (stop hitting to slow its charge); phase 4 is bullet-hell with no dash i-frames; phase 5 empty one hand before the clap. Drops the Granite Fang (unlocks the Brick Kiln). Respawns about 5 days later.'] },
+        { h: 'Cyclops phases', p: ['Temple right side: kill bomb-men and throw bombs at the stone wall (a bomb-man death resets its fuse, so use it to blast both key-room walls and skip the left puzzle). Grab the key.', 'Boss: phase 1 dodge bullets in the safe notch and bomb the eye; phase 2 circle between the hands and dodge laser plus rocks; phase 3 hit the eye (stop hitting to slow its charge); phase 4 is bullet-hell with no dash i-frames; phase 5 empty one hand before the clap. Drops the Granite Tooth (unlocks the Brick Kiln). Respawns about 5 days later.'] },
         { h: 'Volcano to Phoenix to Vulcan', p: ['Apply the Aloe Gel buff before exploring. Casters and archers gather 20 ember orchids (casters also crack oval stones for geodes); open one or two ash-covered chests for research papers. A small circular lava pool is the Phoenix shrine; a large irregular lava lake is the Vulcan temple. Spined-skull dungeons always have 1 to 2 iron at the door — grab 6, then cart clay and wood from the Plains and build a tier-2 warehouse camp.', 'Offer a paper to get the University, then the Trade Station; mine about 30 iron, smelt it, and craft full iron armor plus an iron great-hammer plus 4 iron rods.', 'Phoenix: smash the shrine statue, dodge the dive, stand behind the hind legs, about four breaths. Equip the dropped cloak.', 'Vulcan: 4 steles plus iron rods plus 4 levers plus the jar; talk at home to learn the building-material offering; cart it to the temple platform, pull the lever, place a bedroll and enter. Four phases, hit the blue notches, kill the healer add, dodge the lasers. The Core Container completes the main quest.'] },
         { h: 'Automation wrap-up', p: ['With the Logistics Tent (from the Owl) on the 5-by-6 lot, chain farm to water mill to bakery (repeat bread) to granary so the camp never starves. A tier-2 Quarry auto-ships copper ingots to the Blacksmith; the brick chain and concrete mixer follow. The Trade Station ferries the Blacksmith-2 upgrade mats to the volcano camp. The game runs itself — go hunt bosses.'] },
       ],
@@ -869,7 +869,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'resource-map',
     category: 'resources',
-    updated: '2026-07-15',
+    updated: '2026-07-12',
     title: {
       en: 'Resource Map: Where Everything Grows',
     },
@@ -890,7 +890,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'food-buffs',
     category: 'food',
-    updated: '2026-07-15',
+    updated: '2026-07-05',
     title: {
       en: 'Food, Buffs & Automation',
     },
@@ -911,7 +911,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'bestiary',
     category: 'bestiary',
-    updated: '2026-07-15',
+    updated: '2026-07-18',
     title: {
       en: 'Bestiary: Enemies & Drops',
     },
@@ -933,12 +933,12 @@ export const GUIDES: Guide[] = [
   {
     slug: 'walkthrough-plains',
     category: 'walkthrough',
-    updated: '2026-07-15',
+    updated: '2026-06-22',
     title: {
       en: 'Walkthrough: Plains & Forest',
     },
     description: {
-      en: 'Open with the Owl, your first town, and the Forest loop.',
+      en: 'Your opening move is the Owl, then a first town, then the Forest production loop.',
     },
     cover: 'screens/woods-night.jpg',
     sections: {
@@ -952,7 +952,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'walkthrough-desert',
     category: 'walkthrough',
-    updated: '2026-07-15',
+    updated: '2026-07-11',
     title: {
       en: 'Walkthrough: Desert (Cyclops + Pyzifax)',
     },
@@ -963,7 +963,7 @@ export const GUIDES: Guide[] = [
     sections: {
       en: [
         { h: 'Reach the Desert', p: ['Follow the road to the Desert. At the satyr pass, drop a Camp Tent for respawn, use cover and corpse-piles plus tent heals to clear it, and prioritize ballista towers. Build a crude camp (warehouse, carpenter, blacksmith, granary, tier-2 altar); haul 3 buckets of clay from the Plains by cart.', 'Desert base at a clay plus 4-by-2 water border; upgrade the Altar to teleport. Build a Forge and craft the Bronze axe, pick and set (tier-2 smith smelts copper plus tin; tin also from the quarry). Bronze beats the blue plumed set.'] },
-        { h: 'Cyclops', p: ['A campfire under its marble statue marks the satyr high-temple. Breach walls with explosive jars or clay-golem blasts. Five phases: bomb the eye, then the hands, then the eyeball, then the eye again, then empty one hand before the clap.', 'Drops the Granite Fang — offer it and finish Virgil’s Poem to unlock the Brick Kiln. Respawns about 5 days later; farm it for gear.'] },
+        { h: 'Cyclops', p: ['A campfire under its marble statue marks the satyr high-temple. Breach walls with explosive jars or clay-golem blasts. Five phases: bomb the eye, then the hands, then the eyeball, then the eye again, then empty one hand before the clap.', 'Drops the Granite Tooth — offer it and finish Virgil’s Poem to unlock the Brick Kiln. Respawns about 5 days later; farm it for gear.'] },
         { h: 'Pyzifax invasion', p: ['Offer the Deformed Satyr Horn (drops during the invasion) to mark his camp. Lure the catapult to smash its own gate, commandeer it on the ballistas, then circle-strafe three phases.', 'Bring ranged (scrolls), a shield to block bullets, and an antidote. Drop a Camp Tent at the gate to refresh respawn. Three caged villagers spawn — take the ones with good traits.', 'Early EA guides credit Pyzifax with the Logistics Tent; in current builds that blueprint comes from the Owl, so Pyzifax now drops gear and blueprints.'] },
       ],
     },
@@ -971,7 +971,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'walkthrough-volcano',
     category: 'walkthrough',
-    updated: '2026-07-15',
+    updated: '2026-07-24',
     title: {
       en: 'Walkthrough: Volcano (Phoenix + Vulcan)',
     },
@@ -990,7 +990,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'buildings-guide',
     category: 'buildings',
-    updated: '2026-07-15',
+    updated: '2026-08-02',
     title: {
       en: 'Buildings Codex: Function, Unlock & Upgrades',
     },
@@ -1013,7 +1013,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'faq-guide',
     category: 'faq',
-    updated: '2026-07-15',
+    updated: '2026-08-09',
     title: {
       en: 'FAQ: The Questions Every New Governor Asks',
     },
@@ -1023,11 +1023,11 @@ export const GUIDES: Guide[] = [
     cover: 'screens/town-nice.jpg',
     sections: {
       en: [
-        { h: 'What is Romestead?', p: ['A 2D survival town-builder from Beartwigs and Three Friends. Rome has fallen to a zombie plague and you rebuild it from the ground up — fight the husks, raise towns and earn the favor of the Roman gods. It supports 1-8 players in co-op.'] },
+        { h: 'What is Romestead?', p: ['A 2D survival town-builder from Beartwigs and Three Friends. Rome has fallen to a zombie plague and you rebuild it — fight the husks, raise towns and earn the favor of the Roman gods. It supports 1-8 players in co-op.'] },
         { h: 'What platforms is it on?', p: ['PC via Steam Early Access, launched May 26, 2026 at $13.99. There is no console or Mac build yet.'] },
         { h: 'How does progression work?', p: ['Your Altar is the main progression gate. Offer items to the gods to earn Worship Points and permanent buffs. The first hard gate is the Guardian of Minerva — a giant owl; defeat it to unlock new crafting.'] },
         { h: 'Can I play solo?', p: ['Yes. Solo is punishing if your gear falls behind, so work through the armor tiers (Leather to Copper to Bronze/Iron) and aim for legendary gear, which is close to mandatory for the Volcano biome. In co-op, SaveSync lets any player take over as host when the original host is offline.'] },
-        { h: 'What are the biomes?', p: ['Every world has the same five biomes in roughly rising difficulty: Plains (your start), Forest, Desert, Volcano (the current Early Access endgame) and the Swamp, which arrives after Early Access.'] },
+        { h: 'What are the biomes?', p: ['Early Access has four biomes in roughly rising difficulty: Plains (your start), Forest, Desert, and Volcano (the current endgame). More biomes — including the Swamp — are on Beartwigs’ roadmap but not playable yet.'] },
         { h: 'Why is there no inventory?', p: ['Romestead’s signature twist is physicalized resources: you pick up rocks and lumber by hand and even throw them at enemies. It feels awkward for the first hour, then becomes second nature — and doubles as a combat tool.'] },
       ],
     },
@@ -1035,7 +1035,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'walkthrough-forest',
     category: 'walkthrough',
-    updated: '2026-07-15',
+    updated: '2026-06-29',
     title: {
       en: 'Walkthrough: Forest (Leather & Captives)',
     },
@@ -1057,7 +1057,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'biomes-guide',
     category: 'biomes',
-    updated: '2026-07-16',
+    updated: '2026-08-16',
     title: {
       en: 'Biomes & Regions',
     },
@@ -1079,7 +1079,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'automation-guide',
     category: 'automation',
-    updated: '2026-07-16',
+    updated: '2026-08-23',
     title: {
       en: 'Automation & Logistics',
     },

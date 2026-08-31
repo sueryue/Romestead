@@ -17,7 +17,7 @@ export const FAQ: FaqItem[] = [
       it: 'Cos’è Romestead?',
     },
     a: {
-      en: 'A 2D survival town-builder from Beartwigs and Three Friends. Rome has fallen to a zombie plague and you rebuild it from the ground up — fight the husks, raise towns and earn the favor of the Roman gods. Supports 1–8 players in co-op.',
+      en: 'A 2D survival town-builder from Beartwigs and Three Friends. Rome has fallen to a zombie plague and you rebuild it — fight the husks, raise towns and earn the favor of the Roman gods. Supports 1–8 players in co-op.',
       fr: 'Un city-builder de survie 2D de Beartwigs et Three Friends. Rome est tombée sous une peste zombie et vous la rebâtissez — combattez les Déchus, élevez des villes et gagnez la faveur des dieux romains. De 1 à 8 joueurs en co-op.',
       de: 'Ein 2D-Überlebens-Stadtbauer von Beartwigs und Three Friends. Rom fiel einer Zombie-Seuche zum Opfer und du baust es neu auf — bekämpfe die Hüllen, errichte Städte und erringe die Gunst der römischen Götter. 1–8 Spieler im Ko-op.',
       es: 'Un city-builder de supervivencia 2D de Beartwigs y Three Friends. Roma cayó por una plaga zombie y la reconstruyes — combate los Caídos, levanta pueblos y gana el favor de los dioses romanos. De 1 a 8 jugadores en co-op.',
@@ -85,11 +85,11 @@ export const FAQ: FaqItem[] = [
       it: 'Quali sono i biomi?',
     },
     a: {
-      en: 'Every world has the same five biomes in roughly rising difficulty: Plains (your start), Forest, Desert, Volcano (the current Early Access endgame) and the Swamp, which arrives after Early Access.',
-      fr: 'Chaque monde a les mêmes cinq biomes, difficulté croissante : Plaines (départ), Forêts, Désert, Volcan (fin de l’EA) et le Marécage, prévu après l’EA.',
-      de: 'Jede Welt hat dieselben fünf Biome, steigende Schwierigkeit: Ebenen (Start), Wald, Wüste, Vulkan (EA-Endgame) und den Sumpf nach dem EA.',
-      es: 'Cada mundo tiene los mismos cinco biomas en dificultad creciente: Llanuras (inicio), Bosques, Desierto, Volcán (final del EA) y el Pantano, tras el EA.',
-      it: 'Ogni mondo ha gli stessi cinque biomi in difficoltà crescente: Pianure (inizio), Foreste, Deserto, Vulcano (endgame dell’EA) e la Palude, prevista dopo l’EA.',
+      en: 'Early Access has four biomes in roughly rising difficulty: Plains (your start), Forest, Desert, and Volcano (the current endgame). More biomes — including the Swamp — are on Beartwigs’ roadmap but not playable yet.',
+      fr: 'L’Early Access compte quatre biomes en difficulté croissante : Plaines (départ), Forêts, Désert et Volcan (l’endgame actuel). D’autres biomes — dont le Marécage — sont au programme de Beartwigs mais pas encore jouables.',
+      de: 'Das Early Access hat vier Biome in steigender Schwierigkeit: Ebenen (Start), Wald, Wüste und Vulkan (das aktuelle Endgame). Weitere Biome — darunter der Sumpf — stehen im Roadmap von Beartwigs, sind aber noch nicht spielbar.',
+      es: 'El Early Access tiene cuatro biomas en dificultad creciente: Llanuras (inicio), Bosques, Desierto y Volcán (el endgame actual). Más biomas — incluido el Pantano — están en la hoja de ruta de Beartwigs pero aún no son jugables.',
+      it: 'L’Early Access ha quattro biomi in difficoltà crescente: Pianure (inizio), Foreste, Deserto e Vulcano (l’endgame attuale). Altri biomi — fra cui la Palude — sono nella roadmap di Beartwigs ma non ancora giocabili.',
     },
   },
   {

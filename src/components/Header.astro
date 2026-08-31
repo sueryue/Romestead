@@ -5,6 +5,7 @@ import { STORE } from '../consts';
 import { ENTRIES } from '../content/heroes';
 import { WORLD } from '../content/world';
 import { GUIDES } from '../content/guides';
+import Icon from './Icon.astro';
 
 interface Props {
   locale: Locale;
@@ -89,7 +90,7 @@ const globeIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
 <header class="site-header sticky top-0 z-50 relative border-b border-gold-600/30 bg-parchment-100/90 pt-[env(safe-area-inset-top)] backdrop-blur">
   <nav class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-4">
     <a href={link(locale, '/')} class="font-display text-base font-bold text-roman-600 sm:text-xl">
-      ⚜ Romestead
+      <Icon name="landmark" class="inline h-4 w-4 align-baseline text-gold-600" /> Romestead
     </a>
 
     <!-- Desktop nav: Home · Guides dropdown · World · Map · Heroes · FAQ -->

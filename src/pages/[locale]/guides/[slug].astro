@@ -13,6 +13,7 @@ import { getUi } from '../../../i18n/ui';
 import { LOCALES, link, pick, media, type Locale } from '../../../i18n/utils';
 import { ogPath } from '../../../lib/og';
 import { GUIDES, getGuide } from '../../../content/guides';
+import { CAPTIONS } from '../../../i18n/captions';
 import { SITE } from '../../../consts';
 
 export function getStaticPaths() {
@@ -50,7 +51,7 @@ const related = GUIDES.filter((g) => g.slug !== slug).slice(0, 3).map((g) => ({
 const galleryItems = (guide.gallery ?? []).map((src) => ({
   src,
   alt: guide.title,
-  caption: undefined as never,
+  caption: CAPTIONS[src],
 }));
 ---
 

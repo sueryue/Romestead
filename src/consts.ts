@@ -6,11 +6,11 @@ import type { L10n } from './i18n/utils';
 export const SITE = {
   name: 'Romestead',
   tagline: {
-    en: 'Rome has fallen. Rebuild it together.',
-    fr: 'Rome est tombée. Rebâtissez-la ensemble.',
-    de: 'Rom ist gefallen. Baut es gemeinsam wieder auf.',
-    es: 'Roma ha caído. Reconstruye junto a otros.',
-    it: 'Roma è caduta. Ricostruiscila insieme.',
+    en: 'Guides and tips for Romestead, the co-op survival town-builder',
+    fr: 'Guides et astuces pour Romestead, le city-builder de survie coop',
+    de: 'Guides und Tipps für Romestead, den Ko-op-Überlebens-Stadtbauer',
+    es: 'Guías y trucos para Romestead, el city-builder de supervivencia coop',
+    it: 'Guide e consigli per Romestead, il city-builder di sopravvivenza coop',
   } as L10n<string>,
   // Canonical production domain (used for absolute URLs, canonical, OG, sitemap)
   url: 'https://sueryue.github.io/Romestead',

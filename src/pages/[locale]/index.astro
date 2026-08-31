@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import LiveStats from '../../components/LiveStats.astro';
 import YouTube from '../../components/YouTube.astro';
+import Icon from '../../components/Icon.astro';
 import { getUi } from '../../i18n/ui';
 import { LOCALES, link, pick, media, type Locale } from '../../i18n/utils';
 import { ogPath } from '../../lib/og';
@@ -24,6 +25,11 @@ const gods = entriesByKind('god');
 const bosses = entriesByKind('boss');
 const featured = getGuide('survive-night')!;
 const topTips = GUIDES.filter((g) => ['survive-night', 'build-town', 'haul-throw'].includes(g.slug));
+// Spotlight picks cover distinct stages (settle → worship → bosses) and skip the
+// already-featured survive-night, so the grid reads editorial instead of templated.
+const spotlightSlugs = ['build-town', 'gods-favors', 'bosses'];
+const spotlight = spotlightSlugs.map((s) => getGuide(s)!).filter(Boolean);
+const restGuides = GUIDES.filter((g) => !spotlightSlugs.includes(g.slug) && g.slug !== featured.slug);
 const featuredVideos = [
   { id: 'JAnaIQkwYOo', title: { en: 'Official Launch Trailer', fr: 'Bande-annonce de lancement', de: 'Launch-Trailer', es: 'Tráiler de lanzamiento', it: 'Trailer di lancio ufficiale' } },
   { id: 'ALzGWccYmt0', title: { en: 'Community Town Showcase', fr: 'Showcase communautaire', de: 'Community-Showcase', es: 'Showcase comunitario', it: 'Showcase della community' } },
@@ -118,22 +124,22 @@ const featuredVideos = [
     <section class="py-8">
       <div class="category-grid">
         <a class="category-card" href={link(locale, '/guides')}>
-          <div class="category-card__icon">📜</div>
+          <div class="category-card__icon"><Icon name="scroll" class="h-8 w-8" /></div>
           <h3>{ui['nav.guides']}</h3>
           <p>{ui['playerGuides']}</p>
         </a>
         <a class="category-card" href={link(locale, '/heroes')}>
-          <div class="category-card__icon">⚜</div>
+          <div class="category-card__icon"><Icon name="landmark" class="h-8 w-8" /></div>
           <h3>{ui['nav.heroes']}</h3>
           <p>{ui['heroes.gods']} · {ui['heroes.bosses']}</p>
         </a>
         <a class="category-card" href={link(locale, '/world')}>
-          <div class="category-card__icon">🌍</div>
+          <div class="category-card__icon"><Icon name="globe" class="h-8 w-8" /></div>
           <h3>{ui['nav.world']}</h3>
           <p>{ui['world.biomes']}</p>
         </a>
         <a class="category-card" href={link(locale, '/faq')}>
-          <div class="category-card__icon">❓</div>
+          <div class="category-card__icon"><Icon name="question" class="h-8 w-8" /></div>
           <h3>{ui['nav.faq']}</h3>
           <p>{ui['faq.intro']}</p>
         </a>
@@ -194,30 +200,46 @@ const featuredVideos = [
       </div>
     </section>
 
-    <!-- GUIDES GRID -->
+    <!-- GUIDES: 3 editorial spotlights + a compact index of the rest -->
     <section class="py-8">
       <div class="flex items-end justify-between">
         <h2 class="font-display text-2xl font-bold text-roman-700">{ui['nav.guides']}</h2>
         <a href={link(locale, '/guides')} class="text-sm text-roman-600 hover:underline">{ui['allGuides']} →</a>
       </div>
-      <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {GUIDES.map((g) => (
+      <div class="mt-6 grid gap-5 md:grid-cols-3">
+        {spotlight.map((g) => (
           <a
             href={link(locale, `/guides/${g.slug}`)}
-            class="reveal-ready group overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm transition-transform hover:-translate-y-1 hover:border-gold-500"
+            class="reveal-ready group flex flex-col overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm transition-transform hover:-translate-y-1 hover:border-gold-500"
           >
             {g.cover && (
-              <img src={media(g.cover)} alt={pick(g.title, locale)} loading="lazy" class="h-40 w-full object-cover" />
+              <img src={media(g.cover)} alt={pick(g.title, locale)} loading="lazy" class="h-44 w-full object-cover" />
             )}
-            <div class="p-5">
-              <div class="mb-3 inline-block rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">
+            <div class="flex flex-1 flex-col p-5">
+              <div class="mb-3 inline-block w-fit rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">
                 {ui['cat.' + g.category]}
               </div>
               <h3 class="font-display text-lg font-bold text-ink-800 group-hover:text-roman-600">
                 {pick(g.title, locale)}
               </h3>
-              <p class="mt-2 text-sm text-ink-700/80">{pick(g.description, locale)}</p>
+              <p class="mt-2 flex-1 text-sm text-ink-700/80">{pick(g.description, locale)}</p>
+              <span class="mt-4 text-sm font-semibold text-roman-600">{ui['cta.read']} →</span>
             </div>
+          </a>
+        ))}
+      </div>
+      <div class="mt-8 columns-1 gap-8 sm:columns-2 lg:columns-3">
+        {restGuides.map((g) => (
+          <a
+            href={link(locale, `/guides/${g.slug}`)}
+            class="group mb-3 block break-inside-avoid border-b border-gold-600/20 pb-3"
+          >
+            <span class="mb-1 inline-block rounded bg-gold-400/15 px-2 py-0.5 text-[11px] font-semibold text-roman-600">
+              {ui['cat.' + g.category]}
+            </span>
+            <h3 class="font-display text-base font-bold text-ink-800 group-hover:text-roman-600">
+              {pick(g.title, locale)}
+            </h3>
           </a>
         ))}
       </div>
@@ -226,7 +248,7 @@ const featuredVideos = [
     <!-- COMMON FIRST-RUN MISTAKES — INTERACTIVE TIMELINE -->
     <section class="py-8">
       <div class="flex items-end justify-between gap-4">
-        <h2 class="font-display text-2xl font-bold text-roman-700">💡 {ui['mistakes']}</h2>
+        <h2 class="font-display text-2xl font-bold text-roman-700">{ui['mistakes']}</h2>
         <span class="text-sm text-ink-600">{ui['mistakes.hint']}</span>
       </div>
       <ol class="pitfall-timeline mt-6">
@@ -270,7 +292,7 @@ const featuredVideos = [
         <a href={link(locale, '/heroes')} class="text-sm text-roman-600 hover:underline">{ui['cta.read']} →</a>
       </div>
       <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {[...gods, ...bosses].slice(0, 6).map((e) => (
+        {[...gods, ...bosses].map((e) => (
           <a
             href={link(locale, `/heroes/${e.slug}`)}
             class="reveal-ready group overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm transition-transform hover:-translate-y-1"
@@ -278,7 +300,7 @@ const featuredVideos = [
             {e.image ? (
               <img src={media(e.image)} alt={e.name} loading="lazy" class="h-36 w-full object-cover" />
             ) : (
-              <div class="flex h-36 items-center justify-center bg-ink-800 font-display text-3xl text-gold-400">⚜</div>
+              <div class="flex h-36 items-center justify-center bg-ink-800 text-gold-400"><Icon name="landmark" class="h-10 w-10" /></div>
             )}
             <div class="p-4">
               <h3 class="font-display text-lg font-bold text-ink-800 group-hover:text-roman-600">{e.name}</h3>
@@ -311,9 +333,9 @@ const featuredVideos = [
     <!-- EXTERNAL -->
     <section class="py-8">
       <div class="grid gap-4 sm:grid-cols-3">
-        <a href="https://romestead.wiki.gg/" target="_blank" rel="noopener" class="rounded-lg border border-gold-600/30 bg-parchment-50 p-5 text-center font-semibold text-roman-600 transition-colors hover:bg-gold-400/10">📖 Romestead Wiki ↗</a>
-        <a href={STORE.discord} target="_blank" rel="noopener" class="rounded-lg border border-gold-600/30 bg-parchment-50 p-5 text-center font-semibold text-roman-600 transition-colors hover:bg-gold-400/10">💬 Discord ↗</a>
-        <a href={STORE.steam} target="_blank" rel="noopener" class="rounded-lg border border-gold-600/30 bg-parchment-50 p-5 text-center font-semibold text-roman-600 transition-colors hover:bg-gold-400/10">🎮 Steam ↗</a>
+        <a href="https://romestead.wiki.gg/" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 rounded-lg border border-gold-600/30 bg-parchment-50 p-5 text-center font-semibold text-roman-600 transition-colors hover:bg-gold-400/10"><Icon name="book" class="h-5 w-5" /> Romestead Wiki ↗</a>
+        <a href={STORE.discord} target="_blank" rel="noopener" class="flex items-center justify-center gap-2 rounded-lg border border-gold-600/30 bg-parchment-50 p-5 text-center font-semibold text-roman-600 transition-colors hover:bg-gold-400/10"><Icon name="chat" class="h-5 w-5" /> Discord ↗</a>
+        <a href={STORE.steam} target="_blank" rel="noopener" class="flex items-center justify-center gap-2 rounded-lg border border-gold-600/30 bg-parchment-50 p-5 text-center font-semibold text-roman-600 transition-colors hover:bg-gold-400/10"><Icon name="gamepad" class="h-5 w-5" /> Steam ↗</a>
       </div>
     </section>
   </main>

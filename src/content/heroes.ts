@@ -31,11 +31,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Dea della Natura, della Caccia e della Luna',
     },
     lead: {
-      en: 'The wild answers those who listen.',
-      fr: 'La nature répond à qui sait l’écouter.',
-      de: 'Die Wildnis antwortet denen, die zuhören.',
-      es: 'La naturaleza responde a quien sabe escuchar.',
-      it: 'La natura risponde a chi sa ascoltare.',
+      en: 'For ranged builds — her blessing sharpens every arrow you loose.',
+      fr: 'Pour les builds à distance — sa bénédiction aiguise chaque flèche.',
+      de: 'Für Fernkampf-Builds — ihr Segen schärft jeden Pfeil.',
+      es: 'Para builds a distancia — su bendición afila cada flecha.',
+      it: 'Per i build a distanza — la sua benedizione affila ogni freccia.',
     },
     bio: {
       en: "Diana is the goddess of nature, hunters, wildlife and the Moon. Her worship unlocks buildings and feats centred on ranged weaponry, gathering and hunting — ideal for a settlement that lives off the land. Offer foraged goods and hunted game at her altar to earn her favor, and her blessing sharpens every arrow you loose.",
@@ -69,11 +69,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Dea della Sapienza',
     },
     lead: {
-      en: 'Strategy before strength.',
-      fr: 'La stratégie avant la force.',
-      de: 'Strategie vor Stärke.',
-      es: 'Estrategia antes que fuerza.',
-      it: 'Strategia prima della forza.',
+      en: 'She doesn’t fight for you — she hands you the quests that rebuild Rome.',
+      fr: 'Elle ne se bat pas pour toi — elle te confie les quêtes qui reconstruisent Rome.',
+      de: 'Sie kämpft nicht für dich — sie gibt dir die Quests, die Rom wiederaufbauen.',
+      es: 'No pelea por ti — te da las misiones que reconstruyen Roma.',
+      it: 'Non combatte per te — ti affida le quest che ricostruiscono Roma.',
     },
     bio: {
       en: "Minerva is the goddess of wisdom, justice and law. She grants no combat blessing of her own — instead she guides you, offering counsel and a steady stream of tasks that push Rome's restoration forward. Her owl, the Guardian of Minerva, is the first gate you must overcome; its defeat returns part of her memory and unlocks deeper crafting.",
@@ -107,11 +107,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Dea dell’Agricoltura e dei Raccolti',
     },
     lead: {
-      en: 'Bread before banners.',
-      fr: 'Le pain avant les bannières.',
-      de: 'Brot vor Bannern.',
-      es: 'Pan antes que banderas.',
-      it: 'Pane prima delle bandiere.',
+      en: 'Keeps your town fed — her blessing is the biggest health boost in the pantheon.',
+      fr: 'Garde votre ville nourrie — sa bénédiction est la plus grosse hausse de vie du panthéon.',
+      de: 'Hält deine Stadt satt — ihr Segen ist der größte Lebens-Bonus im Pantheon.',
+      es: 'Mantiene tu pueblo alimentado — su bendición es el mayor aumento de vida del panteón.',
+      it: 'Tiene il tuo popolo nutrito — la sua benedizione è il maggior aumento di vita del pantheon.',
     },
     bio: {
       en: "Ceres is the goddess of agriculture and fertility. Her worship unlocks buildings and feats centred on feeding your citizens — farms, granaries and the routines that keep a town from starving. Her blessing is the single largest health boost in the pantheon, making your people sturdier against the night.",
@@ -128,7 +128,7 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Assicurati Cerere presto se la tua città resta spesso senza cibo.',
     },
     meta: [
-      { label: 'Blessing', value: '+25% Overall Health' },
+      { label: 'Blessing', value: '+10% Crop Harvest' },
       { label: 'Focus', value: 'Food, farms & citizen sustenance' },
     ],
     flavor: "Flourish with my blessings, child.",
@@ -145,11 +145,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Dio della Guerra',
     },
     lead: {
-      en: 'The blade that never dulls.',
-      fr: 'La lame qui ne s’émousse jamais.',
-      de: 'Das Schwert, das nie stumpf wird.',
-      es: 'La hoja que nunca se embota.',
-      it: 'La lama che non si ottunde mai.',
+      en: 'For the front line — his blessing hardens every blade you swing.',
+      fr: 'Pour la première ligne — sa bénédiction endurcit chaque lame.',
+      de: 'Für die Front — sein Segen härtet jede Klinge, die du schwingst.',
+      es: 'Para la primera línea — su bendición endurece cada hoja que blandes.',
+      it: 'Per il fronte — la sua benedizione indurisce ogni lama che impugni.',
     },
     bio: {
       en: "Mars is the god of war and soldiers. His worship unlocks buildings and feats built for the front line — town defenses and the melee weaponry that holds the line when the dead come calling. His blessing hardens every blade you swing.",
@@ -183,11 +183,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Dio della Velocità, dell’Innovazione e del Commercio',
     },
     lead: {
-      en: 'Swift feet, fuller coffers.',
-      fr: 'Pieds légers, coffres pleins.',
-      de: 'Schnelle Füße, volle Kassen.',
-      es: 'Pies ligeros, arcas llenas.',
-      it: 'Piedi veloci, forzieri pieni.',
+      en: 'For trade and travel — his favor speeds up carts and unlocks fast travel.',
+      fr: 'Pour le commerce et les voyages — sa faveur accélère les chariots et débloque le voyage rapide.',
+      de: 'Für Handel und Reisen — sein Segen beschleunigt Karren und schaltet schnelles Reisen frei.',
+      es: 'Para el comercio y los viajes — su favor acelera los carros y desbloquea el viaje rápido.',
+      it: 'Per commercio e viaggi — la sua benedizione accelera i carri e sblocca il viaggio rapido.',
     },
     bio: {
       en: "Mercury is the god of commerce, travellers and merchants. His worship unlocks buildings and feats around transportation, trade and magic — from faster carts to the spells that tip a fight. As Rome's roads once were its veins, his favor keeps your economy moving.",
@@ -204,8 +204,8 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Appoggiati a Mercurio quando la base si espande e i trasporti si allungano — sblocca il viaggio rapido.',
     },
     meta: [
-      { label: 'Blessing', value: '+10% Magic Attack Power' },
-      { label: 'Focus', value: 'Transportation, trade & magic' },
+      { label: 'Blessing', value: '+1 Cart Capacity' },
+      { label: 'Focus', value: 'Trade, transport & economy' },
     ],
     flavor: "An empire's veins are roads and the blood is trade and coin. Rome died, no heart beat. We've got to get that heart started again or Rome will stay dead.",
   },
@@ -221,11 +221,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Dea dell’Amore e della Bellezza',
     },
     lead: {
-      en: 'A happy camp is a strong camp.',
-      fr: 'Un camp heureux est un camp fort.',
-      de: 'Ein glückliches Lager ist ein starkes Lager.',
-      es: 'Un campamento feliz es un campamento fuerte.',
-      it: 'Un accampamento felice è un accampamento forte.',
+      en: 'Happier citizens work harder — her blessing lifts health and energy.',
+      fr: 'Des citoyens heureux travaillent plus — sa bénédiction hausse santé et énergie.',
+      de: 'Zufriedene Bürger arbeiten härter — ihr Segen hebt Gesundheit und Energie.',
+      es: 'Ciudadanos felices trabajan más — su bendición sube salud y energía.',
+      it: 'Cittadini felici lavorano di più — la sua benedizione alza salute ed energia.',
     },
     bio: {
       en: "Venus is the goddess of love, beauty and prosperity. Her worship unlocks buildings and feats around town decoration and the happiness of your citizens — a contented people work harder, breed faster and stay. Her blessing lifts both health and energy across the settlement.",
@@ -242,7 +242,7 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Costruisci il suo altare presto — la felicità costante si compile in più forza lavoro.',
     },
     meta: [
-      { label: 'Blessing', value: '+10% Health, +10 Energy' },
+      { label: 'Blessing', value: '+1 Prosperity & +1 Expertise (all)' },
       { label: 'Focus', value: 'Town decoration & citizen happiness' },
     ],
     flavor: "Save people from loneliness and they will thank you for it. Give them a life where they can desire more than a full belly and live rather than survive, they will love you for it.",
@@ -259,11 +259,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Dio del Fuoco e della Fucina',
     },
     lead: {
-      en: 'What the fire shapes, the enemy fears.',
-      fr: 'Ce que le feu façonne, l’ennemi le craint.',
-      de: 'Was das Feuer formt, fürchtet der Feind.',
-      es: 'Lo que el fuego forja, el enemigo lo teme.',
-      it: 'Ciò che il fuoco plasma, il nemico lo teme.',
+      en: 'Forges your gear — his worship arms a growing Rome.',
+      fr: 'Forge votre équipement — son culte arme une Rome qui grandit.',
+      de: 'Schmiedet deine Ausrüstung — sein Kult bewaffnet ein wachsendes Rom.',
+      es: 'Forja tu equipo — su culto arma una Roma en crecimiento.',
+      it: 'Forgia il tuo equipaggiamento — il suo culto arma una Roma che cresce.',
     },
     bio: {
       en: "Vulcan is the god of blacksmiths, volcanoes and fire. His worship unlocks buildings and feats around fuel use, town defenses and resource gathering — the forge-work that arms a growing Rome. Long ago his priests tried to build a metal colossus, the Talos Prototype, to save the city; the attempt failed and the unfinished machine now guards the volcano's endgame.",
@@ -306,11 +306,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Ali silenti, artigli letali.',
     },
     bio: {
-      en: 'A colossal owl and the first hard gate of the campaign — the physical manifestation of Minerva’s wisdom, acting without purpose until defeated. The divine flame reveals its ruin on your map. No base-building bypasses it: defeat it to restore Minerva’s memory and unlock new crafting recipes.',
-      fr: 'Une chouette colossale et la première porte difficile de la campagne — la manifestation physique de la sagesse de Minerve, agissant sans but tant qu’elle n’est pas vaincue. La flamme divine révèle sa ruine sur la carte. Aucune construction ne contourne ça : vainquez-la pour restaurer la mémoire de Minerve et débloquer de nouvelles recettes.',
-      de: 'Eine kolossale Eule und das erste harte Tor der Kampagne — die physische Manifestation von Minervas Weisheit, die zwecklos handelt, bis sie besiegt wird. Die göttliche Flamme enthüllt ihre Ruine auf der Karte. Kein Basenbau umgeht es: Besiege sie, um Minervas Gedächtnis wiederherzustellen und neue Rezepte freizuschalten.',
-      es: 'Una lechuza colosal y la primera puerta dura de la campaña — la manifestación física de la sabiduría de Minerva, que actúa sin propósito hasta ser vencida. La llama divina revela su ruina en el mapa. Ninguna construcción la esquiva: véncela para restaurar la memoria de Minerva y desbloquear recetas.',
-      it: 'Un gufo colossale e la prima porta dura della campagna — la manifestazione fisica della saggezza di Minerva, che agisce senza scopo finché non viene sconfitta. La fiamma divina rivela la sua rovina sulla mappa. Nessuna costruzione la aggira: sconfiggila per ripristinare la memoria di Minerva e sbloccare nuove ricette.',
+      en: 'A colossal owl and the first hard gate of the campaign — the physical manifestation of Minerva’s wisdom, acting without purpose until defeated. The divine flame reveals its ruin on your map. No base-building bypasses it: defeat it to restore Minerva’s memory and unlock new crafting recipes — including the Logistics Tent that automates your production lines.',
+      fr: 'Une chouette colossale et la première porte difficile de la campagne — la manifestation physique de la sagesse de Minerve, agissant sans but tant qu’elle n’est pas vaincue. La flamme divine révèle sa ruine sur la carte. Aucune construction ne contourne ça : vainquez-la pour restaurer la mémoire de Minerve et débloquer de nouvelles recettes — dont la Tente de Logistique qui automatise vos chaînes de production.',
+      de: 'Eine kolossale Eule und das erste harte Tor der Kampagne — die physische Manifestation von Minervas Weisheit, die zwecklos handelt, bis sie besiegt wird. Die göttliche Flamme enthüllt ihre Ruine auf der Karte. Kein Basenbau umgeht es: Besiege sie, um Minervas Gedächtnis wiederherzustellen und neue Rezepte freizuschalten — darunter die Logistik-Zelt, die deine Produktionsketten automatisiert.',
+      es: 'Una lechuza colosal y la primera puerta dura de la campaña — la manifestación física de la sabiduría de Minerva, que actúa sin propósito hasta ser vencida. La llama divina revela su ruina en el mapa. Ninguna construcción la esquiva: véncela para restaurar la memoria de Minerva y desbloquear recetas — incluida la Tienda de Logística que automatiza tus líneas de producción.',
+      it: 'Un gufo colossale e la prima porta dura della campagna — la manifestazione fisica della saggezza di Minerva, che agisce senza scopo finché non viene sconfitta. La fiamma divina rivela la sua rovina sulla mappa. Nessuna costruzione la aggira: sconfiggila per ripristinare la memoria di Minerva e sbloccare nuove ricette — fra cui la Tendola Logistica che automatizza le tue catene di produzione.',
     },
     tip: {
       en: 'Do not attempt it in starter gear. Upgrade to at least Copper armor and stock health potions from the merchant first.',
@@ -322,7 +322,7 @@ export const ENTRIES: LoreEntry[] = [
     meta: [
       { label: 'Biome', value: 'Plains' },
       { label: 'Health', value: '225 HP' },
-      { label: 'Reward', value: 'Unlocks crafting recipes' },
+      { label: 'Reward', value: 'Logistics Tent, Carpenter & Blacksmith' },
     ],
   },
   {
@@ -345,11 +345,11 @@ export const ENTRIES: LoreEntry[] = [
       it: 'Un occhio, rabbia infinita.',
     },
     bio: {
-      en: 'A mountain of a brute that guards the desert. Slow but devastating — its club shake can flatten a careless party. Defeating it drops the Logistics Tent, which automates production lines between your buildings.',
-      fr: 'Une montagne de brute qui garde le désert. Lent mais dévastateur — sa secousse de massue aplatit une équipe imprudente. Le vaincre donne la Tente de Logistique, qui automatise les chaînes de production.',
-      de: 'Ein berggleicher Brutalo, der die Wüste bewacht. Langsam, doch verheerend — sein Keulenschlag kann eine unvorsichtige Gruppe plattmachen. Sein Sieg fällt die Logistik-Zelt, die Produktionsketten automatisiert.',
-      es: 'Una mole de bruto que guarda el desierto. Lento pero devastador — su golpe de maza aplasta a un grupo descuidado. Vencerlo suelta la Tienda de Logística, que automatiza las líneas de producción.',
-      it: 'Una mole di bruto che custodisce il deserto. Lento ma devastante — la sua mazzata può schiacciare un gruppo distratto. Sconfiggerlo fa cadere la Tendola Logistica, che automatizza le catene di produzione.',
+      en: 'A mountain of a brute that guards the desert. Slow but devastating — its club shake can flatten a careless party. Defeating it drops the Granite Tooth, Tectonic Armor and Traveler’s Coin; the Tooth advances Minerva’s Virgil’s Poem quest.',
+      fr: 'Une montagne de brute qui garde le désert. Lent mais dévastateur — sa secousse de massue aplatit une équipe imprudente. Le vaincre donne la Dent de Granit, l’Armure Tectonique et la Pièce du Voyageur ; la Dent fait avancer la quête Le Poème de Virgile de Minerve.',
+      de: 'Ein berggleicher Brutalo, der die Wüste bewacht. Langsam, doch verheerend — sein Keulenschlag kann eine unvorsichtige Gruppe plattmachen. Sein Sieg fällt Granit-Zahn, Tektomische Rüstung und Reisenden-Münze; der Zahn treibt Minervas Quest Virgils Gedicht voran.',
+      es: 'Una mole de bruto que guarda el desierto. Lento pero devastador — su golpe de maza aplasta a un grupo descuidado. Vencerlo suelta el Diente de Granito, la Armadura Tectónica y la Moneda de Viajero; el Diente avanza la misión El poema de Virgilio de Minerva.',
+      it: 'Una mole di bruto che custodisce il deserto. Lento ma devastante — la sua mazzata può schiacciare un gruppo distratto. Sconfiggerlo fa cadere il Dente di Granito, l’Armatura Tettonica e la Moneta del Viaggiatore; il Dente fa avanzare la quest Il poema di Virgilio di Minerva.',
     },
     tip: {
       en: 'Aim for the eye when it rears back; dodge the overhead slam, then unload.',
@@ -360,7 +360,7 @@ export const ENTRIES: LoreEntry[] = [
     },
     meta: [
       { label: 'Biome', value: 'Desert' },
-      { label: 'Drops', value: 'Logistics Tent' },
+      { label: 'Drops', value: 'Granite Tooth, Tectonic Armor, Traveler’s Coin' },
     ],
   },
   {
@@ -396,7 +396,10 @@ export const ENTRIES: LoreEntry[] = [
       es: 'Hazle burst durante su fase vulnerable antes de que resucite.',
       it: 'Scaricale un burst nella fase vulnerabile prima che risorga.',
     },
-    meta: [{ label: 'Biome', value: 'Volcano' }],
+    meta: [
+      { label: 'Biome', value: 'Volcano' },
+      { label: 'Health', value: '~1,200 HP' },
+    ],
   },
   {
     slug: 'talos-prototype',
@@ -433,6 +436,7 @@ export const ENTRIES: LoreEntry[] = [
     },
     meta: [
       { label: 'Biome', value: 'Volcano' },
+      { label: 'Health', value: '~1,800 HP' },
       { label: 'Location', value: 'Temple of Vulcan' },
     ],
   },
@@ -469,7 +473,10 @@ export const ENTRIES: LoreEntry[] = [
       es: 'Provoca su embestida, luego flanquea el costado expuesto mientras recupera.',
       it: 'Provoca la sua carica, poi attaccane il fianco esposto mentre recupera.',
     },
-    meta: [{ label: 'Biome', value: 'Desert' }],
+    meta: [
+      { label: 'Biome', value: 'Desert' },
+      { label: 'Drops', value: 'Random gear & materials' },
+    ],
   },
 ];
 

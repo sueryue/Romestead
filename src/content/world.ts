@@ -2,11 +2,11 @@ import type { L10n } from '../i18n/utils';
 
 export const WORLD = {
   intro: {
-    en: 'Rome fell to a zombie plague. Now it’s your job to rebuild it from the ground up in this 2D survival town-builder for 1–8 players. Physicalized resources, nightly undead raids, Roman gods and brutal bosses — with minimal hand-holding.',
-    fr: 'Rome est tombée sous une peste zombie. Votre tâche : la rebâtir de zéro dans ce jeu de construction de survie 2D pour 1 à 8 joueurs. Ressources physiques, raids de morts-vivants, dieux romains et boss brutaux — avec un minimum de aide.',
-    de: 'Rom fiel einer Zombie-Seuche zum Opfer. Nun musst du es in diesem 2D-Überlebens-Stadtbauer für 1–8 Spieler neu aufbauen. Physische Ressourcen, nächtliche Untote, römische Götter und brute Bossgegner — bei minimaler Anleitung.',
-    es: 'Roma cayó ante una plaga zombi. Ahora debes reconstruirla desde cero en este builder de supervivencia 2D para 1 a 8 jugadores. Recursos físicos, incursiones de no-muertos, dioses romanos y jefes brutales — con mínimas ayudas.',
-    it: 'Roma è caduta per una piaga zombie. Ora devi ricostruirla da zero in questo city-builder di sopravvivenza 2D per 1–8 giocatori. Risorse fisiche, raid di non-morti, dèi romani e boss brutali — con minime istruzioni.',
+    en: 'Rome fell to a zombie plague. You rebuild it in this 2D survival town-builder for 1–8 players — hauling physical resources by hand, surviving nightly undead raids, and earning the favor of the Roman gods and their bosses. The game leaves you to work most of it out yourself.',
+    fr: 'Rome est tombée sous une peste zombie. Vous la rebâtissez dans ce city-builder de survie 2D pour 1 à 8 joueurs — en transportant des ressources physiques à la main, en survivant aux raids de morts-vivants et en gagnant la faveur des dieux romains et de leurs boss. Le jeu vous laisse découvrir la plupart des choses par vous-même.',
+    de: 'Rom fiel einer Zombie-Seuche zum Opfer. Du baust es in diesem 2D-Überlebens-Stadtbauer für 1–8 Spieler wieder auf — physische Ressourcen von Hand schleppen, nächtliche Untote überleben und die Gunst der römischen Götter und ihrer Bosse gewinnen. Das Spiel lässt dich die meisten Dinge selbst herausfinden.',
+    es: 'Roma cayó ante una plaga zombi. La reconstruyes en este city-builder de supervivencia 2D para 1 a 8 jugadores — arrastrando recursos físicos a mano, sobreviviendo a las incursiones de no-muertos y ganando el favor de los dioses romanos y sus jefes. El juego te deja descubrir la mayoría de las cosas por tu cuenta.',
+    it: 'Roma è caduta per una piaga zombie. La ricostruisci in questo city-builder di sopravvivenza 2D per 1–8 giocatori — trasportando risorse fisiche a mano, sopravvivendo ai raid dei non-morti e guadagnando il favore degli dèi romani e dei loro boss. Il gioco ti lascia capire la maggior parte delle cose da solo.',
   },
   biomes: [
     {
@@ -71,11 +71,11 @@ export const WORLD = {
       difficulty: 'hard',
       image: 'screens/desert.jpg',
       desc: {
-        en: 'A noticeable difficulty spike. Resources thin out and most enemies are aggressive on sight. Home of the Cyclops — defeating it drops the Logistics Tent that automates your production lines.',
-        fr: 'Un saut de difficulté net. Les ressources se raréfient et la plupart des ennemis attaquent à vue. Repaire du Cyclope — le vaincre donne la Tente de Logistique qui automatise vos chaînes.',
-        de: 'Ein deutlicher Schwierigkeitssprung. Ressourcen werden knapp und die meisten Feinde greifen bei Sicht an. Heimat des Zyklopen — sein Sieg fällt die Logistik-Zelt.',
-        es: 'Un salto de dificultad claro. Los recursos escasean y la mayoría ataca al verte. Hogar del Cíclope — vencerlo suelta la Tienda de Logística.',
-        it: 'Un netto salto di difficoltà. Le risorse si diradano e molti nemici attaccano a vista. Casa del Ciclope — sconfiggerlo fa cadere la Tendola Logistica.',
+        en: 'A noticeable difficulty spike. Resources thin out and most enemies are aggressive on sight. Home of the Cyclops — its drops (Granite Tooth, Tectonic Armor, Traveler’s Coin) gate the next tier. The Logistics Tent that automates production comes from the Guardian of Minerva, not here.',
+        fr: 'Un saut de difficulté net. Les ressources se raréfient et la plupart des ennemis attaquent à vue. Repaire du Cyclope — ses drops (Dent de Granit, Armure Tectonique, Pièce du Voyageur) débloquent le palier suivant. La Tente de Logistique vient du Gardien de Minerve, pas d’ici.',
+        de: 'Ein deutlicher Schwierigkeitssprung. Ressourcen werden knapp und die meisten Feinde greifen bei Sicht an. Heimat des Zyklopen — seine Drops (Granit-Zahn, Tektomische Rüstung, Reisenden-Münze) schalten das nächste Tier frei. Die Logistik-Zelt kommt vom Wächter der Minerva, nicht von hier.',
+        es: 'Un salto de dificultad claro. Los recursos escasean y la mayoría ataca al verte. Hogar del Cíclope — sus drops (Diente de Granito, Armadura Tectónica, Moneda de Viajero) desbloquean el siguiente nivel. La Tienda de Logística viene del Guardián de Minerva, no de aquí.',
+        it: 'Un netto salto di difficoltà. Le risorse si diradano e molti nemici attaccano a vista. Casa del Ciclope — i suoi drop (Dente di Granito, Armatura Tettonica, Moneta del Viaggiatore) sbloccano il tier successivo. La Tendola Logistica arriva dal Guardiano di Minerva, non da qui.',
       },
       threats: {
         en: 'Heat, sandstorms and aggressive raiders.',
@@ -118,34 +118,6 @@ export const WORLD = {
         en: [
           'Extremely hostile: new hazards and construction challenges at a much higher level.',
           'Do not approach unprepared — bring serious gear, food buffs and Worship bonuses.',
-        ],
-      },
-    },
-    {
-      name: { en: 'Swamp', fr: 'Marécage', de: 'Sumpf', es: 'Pantano', it: 'Palude' },
-      stage: { en: 'Coming post-EA', fr: 'Après l’EA', de: 'Nach dem EA', es: 'Tras el EA', it: 'Dopo l’EA' },
-      difficulty: 'medium',
-      image: 'screens/owl-1.jpg',
-      desc: {
-        en: 'Divided into two areas connected by a river. Resources and enemies overlap with other biomes, making it a transitional, unpredictable region rich in hidden loot.',
-        fr: 'Divisé en deux zones reliées par une rivière. Ressources et ennemis chevauchent d’autres biomes, région de transition imprévisible riche en butin caché.',
-        de: 'In zwei Gebiete geteilt, verbunden durch einen Fluss. Ressourcen und Feinde überschneiden sich mit anderen Biomen — eine unvorhersehbare Übergangsregion voller verborgener Beute.',
-        es: 'Dividido en dos zonas unidas por un río. Recursos y enemigos se solapan con otros biomas, región de transición impredecible rica en botín oculto.',
-        it: 'Diviso in due aree collegate da un fiume. Risorse e nemici si sovrappongono ad altri biomi, regione di transizione imprevedibile ricca di bottino nascosto.',
-      },
-      threats: {
-        en: 'Mixed dangers from every other biome.',
-        fr: 'Dangers mêlés de tous les autres biomes.',
-        de: 'Gemischte Gefahren aus allen anderen Biomen.',
-        es: 'Peligros mezclados de todos los demás biomas.',
-        it: 'Pericoli misti da tutti gli altri biomi.',
-      },
-      resources: ['Clay', 'Water', 'Reeds', 'Mushrooms', 'Bones'],
-      creatures: ['Wraiths', 'Bog wildlife'],
-      notes: {
-        en: [
-          'Still unfinished: two areas joined by a river, mixing resources and creatures from other biomes.',
-          'High Wraith spawn rate makes it dangerous despite the familiar loot.',
         ],
       },
     },

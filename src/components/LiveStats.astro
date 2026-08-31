@@ -1,51 +1,32 @@
 ---
 import { getUi } from '../i18n/ui';
 import type { Locale } from '../i18n/utils';
+import { GUIDES } from '../content/guides';
 
 interface Props {
   locale: Locale;
 }
 const { locale } = Astro.props;
 const ui = getUi(locale);
+
+// Real, verifiable figures computed once at build time — no fake live counters.
+const guideCount = GUIDES.length;
+const latest = GUIDES.reduce(
+  (max, g) => (g.updated > max ? g.updated : max),
+  GUIDES[0]?.updated ?? '',
+);
+const latestLabel = latest
+  ? new Date(`${latest}T00:00:00`).toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' })
+  : '';
 ---
 
-<!--
-  "Key data via JavaScript" pattern:
-  The SEO-critical guide/tier content is static HTML (crawlable).
-  These live counters are a *progressive enhancement* rendered by JS,
-  so they never affect what search engines index.
--->
 <div class="rounded border border-gold-600/30 bg-parchment-50 px-4 py-3 text-sm shadow-sm">
-  <div class="flex items-center gap-2">
-    <span class="h-2 w-2 animate-pulse rounded-full bg-roman-500"></span>
+  <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-ink-700">
+    <span><strong class="text-roman-600">{guideCount}</strong> {ui['live.guides']}</span>
+    <span aria-hidden="true" class="text-gold-600">·</span>
     <span>
-      <span data-i18n="live.online">{ui['live.online']}</span>:
-      <span id="ls-online">12,480</span>
+      <span data-i18n="live.latest">{ui['live.latest']}</span>
+      <time datetime={latest}>{latestLabel}</time>
     </span>
   </div>
-  <div class="mt-1 text-xs text-ink-700/70">
-    <span data-i18n="live.updated">{ui['live.updated']}</span>:
-    <span id="ls-updated">—</span>
-  </div>
-  <noscript>
-    <span class="text-xs"><span data-i18n="live.online">{ui['live.online']}</span>: 12,480</span>
-  </noscript>
 </div>
-
-<script>
-  function fmt(n: number): string {
-    return n.toLocaleString('en-US');
-  }
-  function tick(): void {
-    const base =
-      12000 +
-      Math.floor(Math.sin(Date.now() / 60000) * 800) +
-      Math.floor(Math.random() * 200);
-    const on = document.getElementById('ls-online');
-    if (on) on.textContent = fmt(base);
-    const up = document.getElementById('ls-updated');
-    if (up) up.textContent = new Date().toLocaleString();
-  }
-  tick();
-  setInterval(tick, 5000);
-</script>

@@ -4,6 +4,7 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Sidebar from '../../../components/Sidebar.astro';
+import Icon from '../../../components/Icon.astro';
 import { getUi } from '../../../i18n/ui';
 import { LOCALES, link, pick, media, type Locale } from '../../../i18n/utils';
 import { ogPath } from '../../../lib/og';
@@ -72,7 +73,7 @@ const bosses = entriesByKind('boss');
               <div class="hero-card reveal-ready">
                 <a href={link(locale, `/heroes/${g.slug}`)} class="hero-card__link">
                   <div class="flex items-center gap-3">
-                    <div class="flex h-11 w-11 items-center justify-center rounded-full bg-roman-600 font-display text-gold-400">⚜</div>
+                    <div class="flex h-11 w-11 items-center justify-center rounded-full bg-roman-600 text-gold-400"><Icon name="landmark" class="h-5 w-5" /></div>
                     <div>
                       <h3 class="font-display text-lg font-bold">{g.name}</h3>
                       <p class="text-xs text-ink-700/70">{pick(g.role, locale)}</p>
