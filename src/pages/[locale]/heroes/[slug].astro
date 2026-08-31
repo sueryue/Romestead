@@ -11,6 +11,7 @@ import { getUi } from '../../../i18n/ui';
 import { LOCALES, link, pick, media, type Locale } from '../../../i18n/utils';
 import { ogPath } from '../../../lib/og';
 import { ENTRIES, getEntry } from '../../../content/heroes';
+import { WORSHIP_TREES, MINERVA_QUESTS } from '../../../content/worship';
 import { SITE } from '../../../consts';
 
 export function getStaticPaths() {
@@ -24,6 +25,9 @@ const entry = getEntry(slug)!;
 const ui = getUi(locale);
 const path = `/heroes/${slug}`;
 const isBoss = entry.kind === 'boss';
+const worshipNodes = !isBoss ? WORSHIP_TREES[slug] ?? [] : [];
+const worshipTiers = [...new Set(worshipNodes.map((n) => n.tier))];
+const minervaQuests = slug === 'minerva' ? MINERVA_QUESTS : [];
 const related = ENTRIES.filter((e) => e.slug !== slug).slice(0, 4).map((e) => ({
   href: link(locale, `/heroes/${e.slug}`),
   title: e.name,
@@ -90,6 +94,66 @@ const related = ENTRIES.filter((e) => e.slug !== slug).slice(0, 4).map((e) => ({
         <Callout variant="tip" title={ui['hero.tip']} class="mt-4 clear-both">{pick(entry.tip, locale)}</Callout>
       </div>
     </article>
+
+    {worshipNodes.length > 0 && (
+      <section class="mt-10">
+        <h2 class="font-display text-2xl font-bold text-roman-700">{ui['worship.title']}</h2>
+        <p class="mt-2 text-ink-700">{ui['worship.intro']}</p>
+        <div class="mt-4 overflow-x-auto rounded-lg border border-gold-600/30 bg-parchment-50">
+          <table class="w-full min-w-[640px] text-left text-sm">
+            <thead>
+              <tr class="border-b border-gold-600/30 bg-parchment-100/60 text-xs uppercase tracking-wide text-ink-500">
+                <th class="px-4 py-3">{ui['worship.tier']}</th>
+                <th class="px-4 py-3">{ui['worship.node']}</th>
+                <th class="px-4 py-3">{ui['worship.effect']}</th>
+                <th class="px-4 py-3">{ui['worship.cost']}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {worshipTiers.map((tier) =>
+                worshipNodes
+                  .filter((n) => n.tier === tier)
+                  .map((n) => (
+                    <tr class="border-b border-gold-600/15 last:border-0">
+                      <td class="px-4 py-2.5 font-display font-bold text-roman-600">{tier}</td>
+                      <td class="px-4 py-2.5 font-semibold text-ink-800">{n.name}</td>
+                      <td class="px-4 py-2.5 text-ink-700">
+                        {n.effect}
+                        {n.prereq && (
+                          <span class="mt-1 block text-xs text-ink-500">{ui['worship.prereq']}: {n.prereq}</span>
+                        )}
+                      </td>
+                      <td class="px-4 py-2.5 text-ink-700">{n.cost} {ui['worship.wp']}</td>
+                    </tr>
+                  ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+    {minervaQuests.length > 0 && (
+      <section class="mt-10">
+        <h2 class="font-display text-2xl font-bold text-roman-700">{ui['minerva.quests.title']}</h2>
+        <p class="mt-2 text-ink-700">{ui['minerva.quests.intro']}</p>
+        <ol class="mt-4 space-y-4">
+          {minervaQuests.map((q, i) => (
+            <li class="rounded-lg border border-gold-600/30 bg-parchment-50 p-5">
+              <p class="font-display text-base font-bold text-roman-700">{i + 1}. {q.title}</p>
+              {q.offer && (
+                <p class="mt-2 text-sm text-ink-700">
+                  <span class="font-semibold text-ink-800">{ui['minerva.quests.offer']}:</span> {q.offer}
+                </p>
+              )}
+              <p class="mt-2 text-sm text-ink-700">
+                <span class="font-semibold text-ink-800">{ui['minerva.quests.reward']}:</span> {q.reward}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
 
     <RelatedCards items={related} title={ui['nav.heroes']} class="mt-12" />
   </main>

@@ -322,6 +322,8 @@ export const ENTRIES: LoreEntry[] = [
     meta: [
       { label: 'Biome', value: 'Plains' },
       { label: 'Health', value: '225 HP' },
+      { label: 'Element', value: 'Nature' },
+      { label: 'Attacks', value: 'Dive Bomb, Charged Jump, Shockwave, Lightning' },
       { label: 'Reward', value: 'Logistics Tent, Carpenter & Blacksmith' },
     ],
   },
@@ -360,6 +362,8 @@ export const ENTRIES: LoreEntry[] = [
     },
     meta: [
       { label: 'Biome', value: 'Desert' },
+      { label: 'Health', value: '10,000 HP' },
+      { label: 'Location', value: 'The Eye dungeon' },
       { label: 'Drops', value: 'Granite Tooth, Tectonic Armor, Traveler’s Coin' },
     ],
   },
@@ -399,6 +403,7 @@ export const ENTRIES: LoreEntry[] = [
     meta: [
       { label: 'Biome', value: 'Volcano' },
       { label: 'Health', value: '~1,200 HP' },
+      { label: 'Element', value: 'Fire' },
     ],
   },
   {
@@ -437,6 +442,7 @@ export const ENTRIES: LoreEntry[] = [
     meta: [
       { label: 'Biome', value: 'Volcano' },
       { label: 'Health', value: '~1,800 HP' },
+      { label: 'Element', value: 'Fire' },
       { label: 'Location', value: 'Temple of Vulcan' },
     ],
   },
@@ -475,6 +481,8 @@ export const ENTRIES: LoreEntry[] = [
     },
     meta: [
       { label: 'Biome', value: 'Desert' },
+      { label: 'Health', value: '500 HP' },
+      { label: 'Location', value: 'Desert Satyr’s Base' },
       { label: 'Drops', value: 'Random gear & materials' },
     ],
   },

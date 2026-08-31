@@ -1,6 +1,8 @@
 # build output
 dist/
 build_out.txt
+# one-off collection dumps
+wiki-dump/
 # astro
 .astro/
 # dependencies

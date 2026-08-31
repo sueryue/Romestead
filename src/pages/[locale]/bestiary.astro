@@ -1,0 +1,88 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import Icon from '../../components/Icon.astro';
+import { getUi } from '../../i18n/ui';
+import { LOCALES, link, pick, type Locale } from '../../i18n/utils';
+import { BESTIARY, SPAWN_RULE } from '../../content/bestiary';
+import { SITE } from '../../consts';
+
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const ui = getUi(locale);
+const path = '/bestiary';
+const totalCreatures = BESTIARY.reduce((n, g) => n + g.creatures.length, 0);
+---
+
+<Base
+  locale={locale}
+  title={`${ui['bestiary.title']} — ${SITE.name}`}
+  description={ui['bestiary.intro']}
+  path={path}
+  breadcrumbs={[{ label: SITE.name, href: link(locale, '/') }, { label: ui['nav.bestiary'] }]}
+>
+  <Header locale={locale} path={path} />
+  <main class="mx-auto max-w-7xl px-4 py-12">
+    <Breadcrumbs items={[{ label: SITE.name, href: link(locale, '/') }, { label: ui['nav.bestiary'] }]} />
+    <div class="mt-6 lg:grid lg:grid-cols-[220px_1fr] lg:gap-8">
+      <aside class="hidden lg:block">
+        <Sidebar locale={locale} path={path} />
+      </aside>
+      <div class="min-w-0">
+        <h1 class="font-display text-3xl font-black text-roman-700">{ui['bestiary.title']}</h1>
+        <p class="mt-3 text-lg text-ink-700">{ui['bestiary.intro']}</p>
+        <p class="mt-3 flex items-start gap-2 rounded border border-gold-600/30 bg-parchment-50 px-4 py-3 text-sm text-ink-700">
+          <Icon name="question" class="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
+          <span>{pick(SPAWN_RULE, locale)}</span>
+        </p>
+        <p class="mt-2 text-xs text-ink-600">{totalCreatures} · romestead.wiki.gg</p>
+
+        {BESTIARY.map((group) => (
+          <section class="mt-10">
+            <h2 class="font-display text-xl font-bold text-roman-700">{ui['bestiary.group.' + group.key]}</h2>
+            <div class="mt-4 overflow-x-auto rounded-lg border border-gold-600/30 bg-parchment-50">
+              <table class="w-full min-w-[640px] text-left text-sm">
+                <thead>
+                  <tr class="border-b border-gold-600/30 bg-parchment-100/60 text-xs uppercase tracking-wide text-ink-500">
+                    <th class="px-4 py-3">{ui['bestiary.name']}</th>
+                    <th class="px-4 py-3">{ui['bestiary.kind']}</th>
+                    <th class="px-4 py-3">{ui['bestiary.hp']}</th>
+                    <th class="px-4 py-3">{ui['bestiary.drops']}</th>
+                    <th class="px-4 py-3">{ui['bestiary.notes']}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {group.creatures.map((c) => (
+                    <tr class="border-b border-gold-600/15 last:border-0">
+                      <td class="px-4 py-2.5 font-semibold text-ink-800">{c.name}</td>
+                      <td class="px-4 py-2.5">
+                        <span class={`rounded px-2 py-0.5 text-xs font-semibold ${c.kind === 'hostile' ? 'bg-roman-600/10 text-roman-600' : 'bg-gold-400/20 text-ink-600'}`}>
+                          {c.kind === 'hostile' ? ui['bestiary.hostile'] : ui['bestiary.passive']}
+                        </span>
+                      </td>
+                      <td class="px-4 py-2.5 text-ink-700">{c.hp ?? '—'}</td>
+                      <td class="px-4 py-2.5 text-ink-700">{c.drops ?? '—'}</td>
+                      <td class="px-4 py-2.5 text-xs text-ink-600">{c.note ?? ''}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        ))}
+
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href={link(locale, '/world')} class="rounded border border-gold-600/50 px-4 py-2 text-sm font-semibold text-roman-600 transition-colors hover:bg-gold-400/10">{ui['nav.world']} →</a>
+          <a href={link(locale, '/guides/bestiary')} class="rounded border border-gold-600/50 px-4 py-2 text-sm font-semibold text-roman-600 transition-colors hover:bg-gold-400/10">{ui['nav.guides']} →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer locale={locale} />
+</Base>

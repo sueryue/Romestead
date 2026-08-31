@@ -22,6 +22,7 @@ export const GET: APIRoute = () => {
     ...GUIDES.map((g) => `/guides/${g.slug}`),
     '/heroes',
     ...ENTRIES.map((e) => `/heroes/${e.slug}`),
+    '/bestiary',
     '/world',
   ];
 
