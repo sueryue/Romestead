@@ -3,12 +3,30 @@ import type { L10n } from '../i18n/utils';
 
 export type GuideCategory = 'survival' | 'building' | 'mechanic' | 'walkthrough' | 'gods' | 'boss' | 'coop' | 'resources' | 'food' | 'bestiary' | 'buildings' | 'faq' | 'biomes' | 'automation';
 
+export interface GuideFact {
+  level?: string;       // recommended level, e.g. "20+"
+  location?: string;    // location / biome
+  prereq?: string;      // prerequisite to unlock or attempt
+  rewards?: string;     // main drops / rewards, one line
+  gameVersion?: string; // game version this guide targets, e.g. "0.25.1"
+}
+
+export interface GuideDrop {
+  name: string;         // drop name
+  qty?: string;         // quantity, qualitative
+  rarity?: string;      // qualitative tier: common / uncommon / rare / epic / legendary
+  note?: string;        // source / condition
+}
+
 export interface Guide {
   slug: string;
   category: GuideCategory;
   updated: string;
   title: L10n<string>;
   description: L10n<string>;
+  answer?: L10n<string>;        // one-line takeaway, shown above the fold
+  quickFacts?: L10n<GuideFact>; // at-a-glance stats card
+  drops?: L10n<GuideDrop[]>;    // structured drop table
   tip?: L10n<string>;
   mustRead?: boolean; // flag a guide as a critical "must-read" pitfall on the homepage
   cover?: string; // path inside public/media, e.g. 'screens/woods-night.jpg'
@@ -49,7 +67,7 @@ export const GUIDES: Guide[] = [
       id: 'JAnaIQkwYOo',
       title: { en: 'Romestead — Official Launch Trailer', fr: 'Romestead — Bande-annonce de lancement', de: 'Romestead — Launch-Trailer', es: 'Romestead — Tráiler de lanzamiento', it: 'Romestead — Trailer di lancio ufficiale' },
     },
-    gallery: ['screens/woods-night.jpg', 'screens/forest-combat.jpg', 'screens/town-start.png'],
+    gallery: ['screens/woods-night.jpg', 'screens/forest-combat.jpg', 'screens/town-start.webp'],
     sections: {
       en: [
         { h: 'Light the dark', p: ['When night falls the reanimated citizens of Rome — the Fallen — leave their husks and hunt by sound and movement.', 'Torches and braziers push them back; keep a ring of fire around your camp and craft a torch before dusk.'] },
@@ -109,7 +127,7 @@ export const GUIDES: Guide[] = [
       id: 'ALzGWccYmt0',
       title: { en: 'Community Town Showcase #1 — a 160-hour player city', fr: 'Community Town Showcase #1 — une ville de 160 h', de: 'Community Town Showcase #1 — eine 160-Stunden-Stadt', es: 'Community Town Showcase #1 — una ciudad de 160 h', it: 'Community Town Showcase #1 — una città di 160 ore' },
     },
-    gallery: ['screens/town-nice.jpg', 'screens/construct-sites.jpg', 'screens/desert-town.png'],
+    gallery: ['screens/town-nice.jpg', 'screens/construct-sites.jpg', 'screens/desert-town.webp'],
     sections: {
       en: [
         { h: 'Core buildings', p: ['Establish a Blacksmith, Leatherworker and Farmstead to unlock the basics of crafting, gear and food.', 'Each artisan you recruit opens new recipes — gather folks from all walks of life.'] },
@@ -164,12 +182,12 @@ export const GUIDES: Guide[] = [
       es: 'No hay inventario — coges los recursos a mano y puedes lanzarlos a los enemigos.',
       it: 'Nessun inventario — prendi le risorse a mano e puoi persino lanciarle contro i nemici.',
     },
-    cover: 'screens/ui.jpg',
+    cover: 'screens/ui.webp',
     video: {
       id: 'i3mv0HHyHIg',
       title: { en: 'Romestead — Official Demo Trailer', fr: 'Romestead — Bande-annonce de la démo', de: 'Romestead — Demo-Trailer', es: 'Romestead — Tráiler de la demo', it: 'Romestead — Trailer della demo ufficiale' },
     },
-    gallery: ['screens/ui.jpg', 'screens/shot3.jpg', 'screens/construct-sites.jpg'],
+    gallery: ['screens/ui.webp', 'screens/shot3.jpg', 'screens/construct-sites.jpg'],
     sections: {
       en: [
         { h: 'Hands, not menus', p: ['Forget inventory management. Walk up to a rock or log, pick it up, and carry it where it is needed.', 'Every resource stays a physical object in the world, keeping you in the action.'] },
@@ -228,7 +246,7 @@ export const GUIDES: Guide[] = [
       id: '2nO5gRyMz68',
       title: { en: 'Romestead Dev Update: Controller, Steam Deck & new biome', fr: 'Romestead Dev Update', de: 'Romestead Dev-Update', es: 'Romestead Dev Update', it: 'Romestead Dev Update' },
     },
-    gallery: ['screens/altar.jpg', 'screens/volcano-poi.png', 'screens/phoenix-fight.jpg'],
+    gallery: ['screens/altar.jpg', 'screens/volcano-poi.webp', 'screens/phoenix-fight.jpg'],
     sections: {
       en: [
         { h: 'The fallen pantheon', p: ['After Rome fell, the gods faded with their followers. Restoring them is the heart of your progression.', 'Each god grants a distinct set of buffs once honored.'] },
@@ -287,7 +305,7 @@ export const GUIDES: Guide[] = [
       id: 'qH0l3VLKIIA',
       title: { en: 'Romestead — Official Announcement Trailer', fr: 'Romestead — Bande-annonce de présentation', de: 'Romestead — Ankündigungs-Trailer', es: 'Romestead — Tráiler de presentación', it: 'Romestead — Trailer di annuncio ufficiale' },
     },
-    gallery: ['screens/dungeon.jpg', 'screens/fight-cyclops.png', 'screens/owl-fight.jpg', 'screens/phoenix-fight.jpg', 'screens/volcano-poi.png', 'screens/fight-pyzifax.png'],
+    gallery: ['screens/dungeon.jpg', 'screens/fight-cyclops.webp', 'screens/owl-fight.jpg', 'screens/phoenix-fight.jpg', 'screens/volcano-poi.webp', 'screens/fight-pyzifax.webp'],
     sections: {
       en: [
         { h: 'Find the hidden locations', p: ['Challenging bosses lurk in dungeons filled with tough enemies and trap-laden puzzles.', 'Explore the wilds and unique biomes to uncover their lairs.'] },
@@ -346,7 +364,7 @@ export const GUIDES: Guide[] = [
       id: 'ALzGWccYmt0',
       title: { en: 'Community Town Showcase #1 — a 160-hour player city', fr: 'Community Town Showcase #1 — une ville de 160 h', de: 'Community Town Showcase #1 — eine 160-Stunden-Stadt', es: 'Community Town Showcase #1 — una ciudad de 160 h', it: 'Community Town Showcase #1 — una città di 160 ore' },
     },
-    gallery: ['screens/community.jpg', 'screens/town-nice.jpg', 'screens/forest-raid.png'],
+    gallery: ['screens/community.jpg', 'screens/town-nice.jpg', 'screens/forest-raid.webp'],
     sections: {
       en: [
         { h: 'Play with friends', p: ['Drop into a friend’s world or host your own — progress, build and survive as a crew.', 'Shared towns mean shared logistics; divide the labor and thrive.'] },
@@ -446,7 +464,7 @@ export const GUIDES: Guide[] = [
     tip: {
       en: 'Suffixes are rolled when the Blacksmith or Leatherworker finishes a piece — a "Legendary" roll adds +2% Energy Regen and resistances.',
     },
-    cover: 'screens/desert-town.png',
+    cover: 'screens/desert-town.webp',
     sections: {
       en: [
         { h: 'Tier progression', p: ['Armor is made by the Blacksmith or Leatherworker; some pieces need recipe scrolls found in the world.', 'Tiers run Civilian (starter) → Leather (+3 Armor, Leatherworker Lv.1) → Copper → Bronze → Iron → Legendary (expertise 20+). Higher tiers mean more Armor and better survival.'] },
@@ -687,7 +705,7 @@ export const GUIDES: Guide[] = [
     tip: {
       en: 'Every part is a 1% drop from a specific enemy’s largest variant — farm satyr raids for the shaft, hunt big green satyrs for the pole, and run Cyclops raids for the head.',
     },
-    cover: 'screens/fight-cyclops.png',
+    cover: 'screens/fight-cyclops.webp',
     sections: {
       en: [
         { h: 'The three parts', p: ['The Holy Javelin is a very strong weapon, but its parts come from specific enemies.', 'Shaft — drops (1%) from the largest yellow satyr. These appear in satyr raids; a few rounds usually drops one, ten raids almost guarantees it.', 'Pole — drops (1%) from the largest green satyr. Green satyrs spawn in Plains and Forest, not in raids (raids bring yellow ones) — roam the Plains and Forest for the biggest green satyrs. Slightly tougher.', 'Head — the hardest, drops (1%) from the fire elemental: the gear-shaped, fire-breathing enemy in the Volcano that drops an Element Core. Farm Cyclops raids; each raid has only a few (sometimes none). If it won’t drop, buy a raid map and try a fresh map.'] },
@@ -731,7 +749,7 @@ export const GUIDES: Guide[] = [
     tip: {
       en: 'Drop a Camp Tent at the gate before engaging so you respawn right there. Let the catapult smash its own wall while you plink satyrs through it.',
     },
-    cover: 'screens/desert-town.png',
+    cover: 'screens/desert-town.webp',
     sections: {
       en: [
         { h: 'Prep', p: ['Bring ranged options (scrolls etc.), a shield to block the bullet-hell, and an antidote.', 'Drop a Camp Tent at the door beforehand to refresh your respawn point.'] },
@@ -754,7 +772,7 @@ export const GUIDES: Guide[] = [
     tip: {
       en: 'Clay golems self-detonate near you, but killing one resets that timer — lure a golem to the wall, then kill it so the blast opens the way.',
     },
-    cover: 'screens/fight-cyclops.png',
+    cover: 'screens/fight-cyclops.webp',
     sections: {
       en: [
         { h: 'Find the temple', p: ['A campfire under the Cyclops statue marks the satyr high-temple on the map.', 'Left key: keep running to dodge the laser and falling rocks; use explosive jars to blow the stone wall. Right key: dash through the bullet-hell and kill clay golems for explosive jars to breach the wall.'] },
@@ -959,7 +977,7 @@ export const GUIDES: Guide[] = [
     description: {
       en: 'Bronze up, then drop the Cyclops and Pyzifax.',
     },
-    cover: 'screens/desert-town.png',
+    cover: 'screens/desert-town.webp',
     sections: {
       en: [
         { h: 'Reach the Desert', p: ['Follow the road to the Desert. At the satyr pass, drop a Camp Tent for respawn, use cover and corpse-piles plus tent heals to clear it, and prioritize ballista towers. Build a crude camp (warehouse, carpenter, blacksmith, granary, tier-2 altar); haul 3 buckets of clay from the Plains by cart.', 'Desert base at a clay plus 4-by-2 water border; upgrade the Altar to teleport. Build a Forge and craft the Bronze axe, pick and set (tier-2 smith smelts copper plus tin; tin also from the quarry). Bronze beats the blue plumed set.'] },
@@ -1064,7 +1082,7 @@ export const GUIDES: Guide[] = [
     description: {
       en: 'Four biomes, one ringed world — resources, hazards, bosses, order.',
     },
-    cover: 'screens/desert-town.png',
+    cover: 'screens/desert-town.webp',
     sections: {
       en: [
         { h: 'How the world is laid out', p: ['Every world generates from a seed as a central spawn ringed by the key biomes — forest, desert, lake and volcano — with rivers threading through and an ocean at the edge.', 'Because biomes radiate outward from the temperate centre, a central base touching the Plains plus a couple of neighbours keeps every resource within a reasonable haul. Each region adds a new ore, a gear tier, region crops, enemies and at least one boss.'] },

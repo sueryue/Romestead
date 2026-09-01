@@ -338,7 +338,7 @@ export const ENTRIES: LoreEntry[] = [
       es: 'Jefe del Desierto',
       it: 'Boss del Deserto',
     },
-    image: 'screens/fight-cyclops.png',
+    image: 'screens/fight-cyclops.webp',
     lead: {
       en: 'One eye, endless rage.',
       fr: 'Un œil, une rage sans fin.',
@@ -457,7 +457,7 @@ export const ENTRIES: LoreEntry[] = [
       es: 'Jefe de Mazmorra',
       it: 'Boss di Dungeon',
     },
-    image: 'screens/fight-pyzifax.png',
+    image: 'screens/fight-pyzifax.webp',
     lead: {
       en: 'Ancient and ravenous.',
       fr: 'Ancien et ravageur.',

@@ -5,6 +5,7 @@ import { GUIDES } from '../content/guides';
 import { entriesByKind } from '../content/heroes';
 import { WORLD } from '../content/world';
 import { FAQ } from '../content/faq';
+import { BESTIARY, SPAWN_RULE } from '../content/bestiary';
 
 export const prerender = true;
 
@@ -33,6 +34,14 @@ export const GET: APIRoute = () => {
   const biomeLines = WORLD.biomes
     .map((b) => `- [${b.name}](${abs('/world')}): ${en(b.stage)} — ${en(b.desc).slice(0, 140)}`)
     .join('\n');
+
+  const bestiaryUrl = abs('/bestiary');
+  const bestiaryLines = BESTIARY.map((group) => {
+    const creatures = group.creatures
+      .map((c) => `${c.name} (${c.kind}${c.hp ? `, ${c.hp} HP` : ''}${c.drops ? `, drops: ${c.drops}` : ''}${c.note ? `; ${en(c.note)}` : ''})`)
+      .join('; ');
+    return `- ${group.key}: ${creatures}`;
+  }).join('\n');
 
   const faqLines = FAQ.map((f) => `### ${en(f.q)}\n${en(f.a)}`).join('\n\n');
 
@@ -63,6 +72,10 @@ ${bossLines}
 
 ## World — biomes in progression order
 ${biomeLines}
+
+## Bestiary — creatures, HP and drops ([full table](${bestiaryUrl}))
+Spawn rule: ${en(SPAWN_RULE)}
+${bestiaryLines}
 
 ## FAQ
 ${faqLines}

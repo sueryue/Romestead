@@ -13,7 +13,7 @@ export const WORLD = {
       name: { en: 'Plains', fr: 'Plaines', de: 'Ebenen', es: 'Llanuras', it: 'Pianure' },
       stage: { en: 'Starting area', fr: 'Zone de départ', de: 'Startgebiet', es: 'Zona inicial', it: 'Area iniziale' },
       difficulty: 'easy',
-      image: 'screens/town-start.png',
+      image: 'screens/town-start.webp',
       desc: {
         en: 'Your starting biome. Essential resources, tutorial content and the first villagers are all here. Scout toward the center of the map before you settle — a central spot near coal, water and several biome borders saves hundreds of trips later.',
         fr: 'Votre biome de départ. Ressources essentielles, tutoriel et premiers villageois s’y trouvent. Explorez vers le centre de la carte avant de vous installer — un point central près du charbon, de l’eau et de plusieurs biomes évite des centaines de trajets.',
@@ -97,7 +97,7 @@ export const WORLD = {
       name: { en: 'Volcano', fr: 'Volcan', de: 'Vulkan', es: 'Volcán', it: 'Vulcano' },
       stage: { en: 'Endgame (Early Access)', fr: 'Fin de partie (Accès Anticipé)', de: 'Endgame (Early Access)', es: 'Final (Acceso Anticipado)', it: 'Endgame (Early Access)' },
       difficulty: 'hard',
-      image: 'screens/volcano-poi.png',
+      image: 'screens/volcano-poi.webp',
       desc: {
         en: 'The current endgame of Early Access. Extremely hostile NPCs that demand serious preparation — especially solo. The Great Phoenix of Arabia is reborn in its crater, and the Talos Prototype guards the Temple of Vulcan.',
         fr: 'Le bout de l’Accès Anticipé. Des PNJ extrêmement hostiles exigeant une vraie préparation — surtout en solo. La Grande Phénix d’Arabie renaît dans son cratère et le Talos Prototype garde le Temple de Vulcain.',

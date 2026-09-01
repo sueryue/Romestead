@@ -1,4 +1,5 @@
 ---
+import { mediaProps } from '../../../content/image-dims';
 import Base from '../../../layouts/Base.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
@@ -172,7 +173,7 @@ const toc = [
           <div class="beginner-path overflow-hidden rounded-xl border border-gold-600/30 bg-parchment-50 shadow-sm">
             <div class="grid md:grid-cols-2">
               {featured.cover && (
-                <img src={media(featured.cover)} alt={pick(featured.title, locale)} class="h-56 w-full object-cover md:h-full" />
+                <img {...mediaProps(featured.cover)} alt={pick(featured.title, locale)} class="h-56 w-full object-cover md:h-full" />
               )}
               <div class="flex flex-col justify-center p-8">
                 <div class="mb-3 inline-block w-fit rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">
@@ -515,7 +516,7 @@ const toc = [
                       <span class="pitfall__chev" aria-hidden="true">▾</span>
                     </summary>
                     <div class="pitfall__body">
-                      <img src={media(img)} alt={pick(g.title, locale)} class="pitfall__media" loading="lazy" />
+                      <img {...mediaProps(img)} alt={pick(g.title, locale)} class="pitfall__media" loading="lazy" />
                       <div class="pitfall__text">
                         {sec && (
                           <>
@@ -551,7 +552,7 @@ const toc = [
                 class="guide-card reveal-ready group overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm transition-transform hover:-translate-y-1 hover:border-gold-500"
               >
                 {g.cover && (
-                  <img src={media(g.cover)} alt={pick(g.title, locale)} loading="lazy" class="h-40 w-full object-cover" />
+                  <img {...mediaProps(g.cover)} alt={pick(g.title, locale)} loading="lazy" class="h-40 w-full object-cover" />
                 )}
                 <div class="p-5">
                   <div class="mb-3 inline-block rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">

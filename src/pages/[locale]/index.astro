@@ -1,4 +1,5 @@
 ---
+import { mediaProps } from '../../content/image-dims';
 import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -86,6 +87,16 @@ const featuredVideos = [
 
       <div class="reveal-ready">
         <YouTube id="JAnaIQkwYOo" title={pick(SITE.description, locale)} class="shadow-xl" />
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          <figure class="overflow-hidden rounded-lg border border-gold-600/20 shadow-sm">
+            <img {...mediaProps('screens/town-nice.jpg')} alt={ui['hero.shot.town']} loading="lazy" class="h-28 w-full object-cover sm:h-32" />
+            <figcaption class="bg-parchment-50 px-2.5 py-1.5 text-[11px] text-ink-600">{ui['hero.shot.town']}</figcaption>
+          </figure>
+          <figure class="overflow-hidden rounded-lg border border-gold-600/20 shadow-sm">
+            <img {...mediaProps('screens/fight-cyclops.webp')} alt={ui['hero.shot.fight']} loading="lazy" class="h-28 w-full object-cover sm:h-32" />
+            <figcaption class="bg-parchment-50 px-2.5 py-1.5 text-[11px] text-ink-600">{ui['hero.shot.fight']}</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -151,7 +162,7 @@ const featuredVideos = [
       <div class="beginner-path overflow-hidden rounded-xl border border-gold-600/30 bg-parchment-50 shadow-sm">
         <div class="grid md:grid-cols-2">
           {featured.cover && (
-            <img src={media(featured.cover)} alt={pick(featured.title, locale)} class="h-56 w-full object-cover md:h-full" />
+            <img {...mediaProps(featured.cover)} alt={pick(featured.title, locale)} class="h-56 w-full object-cover md:h-full" />
           )}
           <div class="flex flex-col justify-center p-8">
             <div class="mb-3 inline-block w-fit rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">
@@ -213,7 +224,7 @@ const featuredVideos = [
             class="reveal-ready group flex flex-col overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm transition-transform hover:-translate-y-1 hover:border-gold-500"
           >
             {g.cover && (
-              <img src={media(g.cover)} alt={pick(g.title, locale)} loading="lazy" class="h-44 w-full object-cover" />
+              <img {...mediaProps(g.cover)} alt={pick(g.title, locale)} loading="lazy" class="h-44 w-full object-cover" />
             )}
             <div class="flex flex-1 flex-col p-5">
               <div class="mb-3 inline-block w-fit rounded bg-gold-400/20 px-2 py-0.5 text-xs font-semibold text-roman-600">
@@ -267,7 +278,7 @@ const featuredVideos = [
                 <span class="pitfall__chev" aria-hidden="true">▾</span>
               </summary>
               <div class="pitfall__body">
-                <img src={media(img)} alt={pick(g.title, locale)} class="pitfall__media" loading="lazy" />
+                <img {...mediaProps(img)} alt={pick(g.title, locale)} class="pitfall__media" loading="lazy" />
                 <div class="pitfall__text">
                   {sec && (
                     <>
@@ -298,7 +309,7 @@ const featuredVideos = [
             class="reveal-ready group overflow-hidden rounded-lg border border-gold-600/30 bg-parchment-50 shadow-sm transition-transform hover:-translate-y-1"
           >
             {e.image ? (
-              <img src={media(e.image)} alt={e.name} loading="lazy" class="h-36 w-full object-cover" />
+              <img {...mediaProps(e.image)} alt={e.name} loading="lazy" class="h-36 w-full object-cover" />
             ) : (
               <div class="flex h-36 items-center justify-center bg-ink-800 text-gold-400"><Icon name="landmark" class="h-10 w-10" /></div>
             )}
@@ -318,7 +329,7 @@ const featuredVideos = [
         <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {WORLD.biomes.map((b) => (
             <div class="overflow-hidden rounded-lg border border-gold-600/20">
-              {b.image && <img src={media(b.image)} alt={pick(b.name, locale)} loading="lazy" class="h-32 w-full object-cover" />}
+              {b.image && <img {...mediaProps(b.image)} alt={pick(b.name, locale)} loading="lazy" class="h-32 w-full object-cover" />}
               <div class="p-4">
                 <h3 class="font-display text-lg font-bold text-parchment-50">{pick(b.name, locale)}</h3>
                 <p class="mt-1 text-sm text-parchment-200/80">{pick(b.desc, locale)}</p>

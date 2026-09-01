@@ -10,7 +10,7 @@ export const CAPTIONS: Record<string, L10n<string>> = {
     es: 'Una ciudad asentada al anochecer — granjas, caminos empedrados y muros que aguantan.',
     it: 'Una città stabile al tramonto — fattorie, strade lastricate e mura che reggono.',
   },
-  'screens/volcano-poi.png': {
+  'screens/volcano-poi.webp': {
     en: 'The Volcano crater — home of the Great Phoenix of Arabia.',
     fr: 'Le cratère du Volcan — repaire de la Grande Phénix d’Arabie.',
     de: 'Der Vulkankrater — Heimat des Großen Phönix von Arabien.',
@@ -38,21 +38,21 @@ export const CAPTIONS: Record<string, L10n<string>> = {
     es: 'La entrada de un guarida oculta — botín, puzles y un jefe detrás.',
     it: 'L’ingresso di un covo nascosto — dietro, bottino, enigmi e un boss.',
   },
-  'screens/forest-raid.png': {
+  'screens/forest-raid.webp': {
     en: 'A night raid on the forest foothold — the Lumberyard is worth defending.',
     fr: 'Un raid nocturne sur le bastion forestier — la Scierie mérite d’être défendue.',
     de: 'Ein nächtlicher Überfall auf den Wald-Außenposten — das Sägewerk ist es wert, verteidigt zu werden.',
     es: 'Una incursión nocturna contra el enclave forestal — el Aserradero merece defensa.',
     it: 'Un raid notturno sull’avamposto boschivo — la Segheria va difesa.',
   },
-  'screens/fight-cyclops.png': {
+  'screens/fight-cyclops.webp': {
     en: 'Bombing the Cyclops’ eye — phase three of five.',
     fr: 'Bombarder l’œil du Cyclope — phase trois sur cinq.',
     de: 'Das Auge des Zyklopen bombardieren — Phase drei von fünf.',
     es: 'Bombardeando el ojo del Cíclope — fase tres de cinco.',
     it: 'Bombardare l’occhio del Ciclope — fase tre di cinque.',
   },
-  'screens/fight-pyzifax.png': {
+  'screens/fight-pyzifax.webp': {
     en: 'Pyzifax’s bullet-hell arena in the Desert.',
     fr: 'L’arène bullet-hell de Pyzifax dans le Désert.',
     de: 'Pyzifax’ Bullet-Hell-Arena in der Wüste.',
@@ -73,7 +73,7 @@ export const CAPTIONS: Record<string, L10n<string>> = {
     es: 'El Guardián de Minerva — primero rompe el huevo, luego la lechuza.',
     it: 'La Guardiana di Minerva — prima rompi l’uovo, poi pensa al gufo.',
   },
-  'screens/town-start.png': {
+  'screens/town-start.webp': {
     en: 'First hours on the Plains — the tutorial village before you strike out.',
     fr: 'Premières heures dans les Plaines — le village tutoriel avant de partir.',
     de: 'Erste Stunden in den Ebenen — das Tutorial-Dorf, bevor du losziehst.',
@@ -94,7 +94,7 @@ export const CAPTIONS: Record<string, L10n<string>> = {
     es: 'Cae la noche en el Bosque — los Caídos cazan por sonido y movimiento.',
     it: 'Cala la notte nella Foresta — i Caduti cacciano per suono e movimento.',
   },
-  'screens/desert-town.png': {
+  'screens/desert-town.webp': {
     en: 'A desert outpost built around scarce water and clay.',
     fr: 'Un avant-poste désertique bâti autour d’eau et d’argile rares.',
     de: 'Ein Wüsten-Außenposten, gebaut um knappes Wasser und Ton.',
@@ -115,7 +115,7 @@ export const CAPTIONS: Record<string, L10n<string>> = {
     es: 'Un asentamiento temprano tomando forma junto a carbón y agua.',
     it: 'Un insediamento iniziale che prende forma vicino a carbone e acqua.',
   },
-  'screens/ui.jpg': {
+  'screens/ui.webp': {
     en: 'The profession and citizen screens — assign jobs, then level them by use.',
     fr: 'Les écrans de métier et de citoyens — assignez des tâches, puis montez-les en les utilisant.',
     de: 'Die Beruf- und Bürger-Bildschirme — Jobs zuweisen und durch Nutzung leveln.',
