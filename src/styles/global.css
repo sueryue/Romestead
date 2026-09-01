@@ -1462,3 +1462,78 @@ body {
   .footer__community-cta { transition: none; }
 }
 
+/* --- Answer box (above-the-fold takeaway) --- */
+.answerbox {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid oklch(0.55 0.12 230);
+  border-left: 4px solid oklch(0.55 0.12 230);
+  border-radius: 0 0.6rem 0.6rem 0;
+  background: oklch(0.96 0.03 230);
+}
+.answerbox__label {
+  margin: 0 0 0.35rem !important;
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: oklch(0.45 0.11 230);
+}
+.answerbox__text {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* --- Drop table (structured drops) --- */
+.droptable {
+  margin: 1.5rem 0;
+  border: 1px solid color-mix(in oklch, var(--gold) 35%, transparent);
+  border-radius: 0.6rem;
+  overflow: hidden;
+  background: color-mix(in oklch, var(--parchment-200) 60%, white);
+}
+.droptable__title {
+  margin: 0 !important;
+  padding: 0.6rem 1rem;
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.droptable__head,
+.droptable__row {
+  display: grid;
+  grid-template-columns: 2fr 0.8fr 1fr 1.4fr;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+}
+.droptable__head {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--roman);
+  border-bottom: 1px solid color-mix(in oklch, var(--gold) 25%, transparent);
+}
+.droptable__row {
+  font-size: 0.9rem;
+  color: var(--ink);
+  border-bottom: 1px dashed color-mix(in oklch, var(--gold) 20%, transparent);
+}
+.droptable__row:last-child { border-bottom: none; }
+.droptable__name { font-weight: 600; color: var(--ink); }
+
+@media (max-width: 640px) {
+  .droptable__head,
+  .droptable__row {
+    grid-template-columns: 1.6fr 0.7fr 1fr;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+  }
+  .droptable__head span:last-child,
+  .droptable__row span:last-child { display: none; }
+}
+

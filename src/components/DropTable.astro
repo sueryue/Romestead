@@ -1,0 +1,38 @@
+---
+interface Drop {
+  name: string;
+  qty?: string;
+  rarity?: string;
+  note?: string;
+}
+interface Props {
+  drops: Drop[];   // localized, already pick()ed
+  labels: {
+    item: string;
+    qty: string;
+    rarity: string;
+    note: string;
+  };
+  title?: string;  // localized "Drops"
+  class?: string;
+}
+const { drops, labels, title, class: cls = '' } = Astro.props;
+---
+
+<div class={`droptable ${cls}`}>
+  {title && <p class="droptable__title">{title}</p>}
+  <div class="droptable__head">
+    <span>{labels.item}</span>
+    <span>{labels.qty}</span>
+    <span>{labels.rarity}</span>
+    <span>{labels.note}</span>
+  </div>
+  {drops.map((d) => (
+    <div class="droptable__row">
+      <span class="droptable__name">{d.name}</span>
+      <span>{d.qty ?? '—'}</span>
+      <span>{d.rarity ?? '—'}</span>
+      <span>{d.note ?? '—'}</span>
+    </div>
+  ))}
+</div>

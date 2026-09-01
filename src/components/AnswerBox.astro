@@ -1,0 +1,13 @@
+---
+interface Props {
+  text: string;   // localized one-line takeaway (already pick()ed)
+  label: string;  // localized "The short answer" label
+  class?: string;
+}
+const { text, label, class: cls = '' } = Astro.props;
+---
+
+<aside class={`answerbox ${cls}`}>
+  <p class="answerbox__label">{label}</p>
+  <p class="answerbox__text">{text}</p>
+</aside>

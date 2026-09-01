@@ -1,0 +1,36 @@
+---
+import Infobox from './Infobox.astro';
+
+interface Facts {
+  level?: string;
+  location?: string;
+  prereq?: string;
+  rewards?: string;
+  gameVersion?: string;
+}
+interface Props {
+  title: string;  // localized "At a glance"
+  facts: Facts;   // localized, already pick()ed
+  labels: {
+    level: string;
+    location: string;
+    prereq: string;
+    rewards: string;
+    gameVersion: string;
+    updated: string;
+  };
+  updated: string;
+  class?: string;
+}
+const { title, facts, labels, updated, class: cls = '' } = Astro.props;
+
+const rows: { label: string; value: string }[] = [];
+if (facts.level) rows.push({ label: labels.level, value: facts.level });
+if (facts.location) rows.push({ label: labels.location, value: facts.location });
+if (facts.prereq) rows.push({ label: labels.prereq, value: facts.prereq });
+if (facts.rewards) rows.push({ label: labels.rewards, value: facts.rewards });
+if (facts.gameVersion) rows.push({ label: labels.gameVersion, value: facts.gameVersion });
+rows.push({ label: labels.updated, value: updated });
+---
+
+<Infobox title={title} rows={rows} class={cls} />
