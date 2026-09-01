@@ -1,0 +1,55 @@
+---
+// Status panel — modeled on scrapmechanic.org's "Live release confirmed" card.
+// Every figure is real: launch date/price from the FAQ page, patch from
+// GAME_FACTS, guide-check date computed from the newest guide's updated field.
+import { getUi } from '../i18n/ui';
+import { GAME_FACTS, STORE } from '../consts';
+import type { Locale } from '../i18n/utils';
+import { GUIDES } from '../content/guides';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const ui = getUi(locale);
+
+const launchLabel = new Date(`${GAME_FACTS.launchDate}T00:00:00`).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
+const patchLabel = new Date(`${GAME_FACTS.checkedPatchDate}T00:00:00`).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
+
+const latest = GUIDES.reduce(
+  (max, g) => (g.updated > max ? g.updated : max),
+  GUIDES[0]?.updated ?? '',
+);
+const checkedLabel = latest
+  ? new Date(`${latest}T00:00:00`).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })
+  : '';
+---
+
+<aside class="status-panel">
+  <div class="status-panel__head">
+    <span class="status-panel__dot" aria-hidden="true"></span>
+    <p class="status-panel__live">{ui['status.live']}</p>
+    <span class="status-panel__version">{GAME_FACTS.checkedPatch}</span>
+  </div>
+
+  <dl class="status-panel__grid">
+    <div>
+      <dt>{ui['status.launch']}</dt>
+      <dd><time datetime={GAME_FACTS.launchDate}>{launchLabel}</time> · {GAME_FACTS.launchPrice}</dd>
+    </div>
+    <div>
+      <dt>{ui['status.checked']}</dt>
+      <dd><time datetime={GAME_FACTS.checkedPatchDate}>{patchLabel}</time></dd>
+    </div>
+    <div>
+      <dt>{ui['ops.checked']}</dt>
+      <dd><time datetime={latest}>{checkedLabel}</time></dd>
+    </div>
+  </dl>
+
+  <p class="status-panel__note">{ui['status.note']}</p>
+
+  <a href={STORE.steam} target="_blank" rel="noopener" class="status-panel__link">
+    {ui['status.official']} ↗
+  </a>
+</aside>

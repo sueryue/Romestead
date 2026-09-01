@@ -1,0 +1,56 @@
+---
+// Start path — the five decisions that unlock the rest of Rome, modeled on
+// scrapmechanic.org's "Start path". Each step deep-links to a real guide.
+import { getUi } from '../i18n/ui';
+import { link, pick, type Locale } from '../i18n/utils';
+import { getGuide } from '../content/guides';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const ui = getUi(locale);
+
+// Each step points at a real guide slug; the step copy is the guide's own
+// first-section headline so nothing is invented.
+const steps = [
+  { slug: 'survive-night', n: 1 },
+  { slug: 'build-town', n: 2 },
+  { slug: 'gods-favors', n: 3 },
+  { slug: 'bosses', n: 4 },
+  { slug: 'automation-guide', n: 5 },
+]
+  .map((s) => {
+    const g = getGuide(s.slug);
+    if (!g) return null;
+    const secs = pick(g.sections, locale);
+    return {
+      n: s.n,
+      href: link(locale, `/guides/${g.slug}`),
+      title: secs[0]?.h ?? pick(g.title, locale),
+      body: secs[0]?.p?.[0] ?? pick(g.description, locale),
+    };
+  })
+  .filter(Boolean);
+---
+
+<section class="startpath">
+  <div class="startpath__head">
+    <h2 class="startpath__title">{ui['startpath.title']}</h2>
+    <p class="startpath__subtitle">{ui['startpath.subtitle']}</p>
+    <a href={link(locale, '/guides/survive-night')} class="startpath__cta">{ui['startpath.cta']} →</a>
+  </div>
+  <ol class="startpath__list">
+    {steps.map((s) => (
+      <li>
+        <a href={s.href} class="startpath__step">
+          <span class="startpath__num">{s.n}</span>
+          <span class="startpath__text">
+            <span class="startpath__step-title">{s.title}</span>
+            <span class="startpath__step-body">{s.body}</span>
+          </span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</section>

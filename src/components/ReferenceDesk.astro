@@ -1,0 +1,45 @@
+---
+// Reference desk — task indexes with real entry counts, modeled on
+// scrapmechanic.org's "Reference desk". Counts computed from the data files.
+import { getUi } from '../i18n/ui';
+import { link, type Locale } from '../i18n/utils';
+import { GUIDES } from '../content/guides';
+import { entriesByKind } from '../content/heroes';
+import { WORLD } from '../content/world';
+import { BESTIARY } from '../content/bestiary';
+import { WORSHIP_TREES } from '../content/worship';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const ui = getUi(locale);
+
+const creatureCount = BESTIARY.reduce((n, g) => n + g.creatures.length, 0);
+const worshipCount = Object.values(WORSHIP_TREES).reduce((n, t) => n + t.length, 0);
+
+const desks = [
+  { n: '01', label: ui['refdesk.guides'], unit: ui['refdesk.guides.unit'], count: GUIDES.length, href: '/guides' },
+  { n: '02', label: ui['refdesk.gods'], unit: ui['refdesk.gods.unit'], count: entriesByKind('god').length, href: '/heroes' },
+  { n: '03', label: ui['refdesk.bosses'], unit: ui['refdesk.bosses.unit'], count: entriesByKind('boss').length, href: '/heroes' },
+  { n: '04', label: ui['refdesk.bestiary'], unit: ui['refdesk.bestiary.unit'], count: creatureCount, href: '/bestiary' },
+  { n: '05', label: ui['refdesk.biomes'], unit: ui['refdesk.biomes.unit'], count: WORLD.biomes.length, href: '/world' },
+  { n: '06', label: ui['refdesk.worship'], unit: ui['refdesk.worship.unit'], count: worshipCount, href: '/heroes' },
+];
+---
+
+<section class="refdesk">
+  <div class="refdesk__head">
+    <h2 class="refdesk__title">{ui['refdesk.title']}</h2>
+    <p class="refdesk__subtitle">{ui['refdesk.subtitle']}</p>
+  </div>
+  <div class="refdesk__grid">
+    {desks.map((d) => (
+      <a href={link(locale, d.href)} class="refdesk__cell">
+        <span class="refdesk__num">{d.n}</span>
+        <span class="refdesk__name">{d.label}</span>
+        <span class="refdesk__count"><strong>{d.count}</strong> {d.unit}</span>
+      </a>
+    ))}
+  </div>
+</section>

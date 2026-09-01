@@ -1,0 +1,53 @@
+---
+// Ops brief — live counts strip, modeled on scrapmechanic.org's "Ops brief".
+// Every number is computed at build time from the site's own data files.
+import { getUi } from '../i18n/ui';
+import { GAME_FACTS } from '../consts';
+import { link, type Locale } from '../i18n/utils';
+import { GUIDES } from '../content/guides';
+import { entriesByKind } from '../content/heroes';
+import { WORLD } from '../content/world';
+import { BESTIARY } from '../content/bestiary';
+import { WORSHIP_TREES } from '../content/worship';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const ui = getUi(locale);
+
+const godCount = entriesByKind('god').length;
+const bossCount = entriesByKind('boss').length;
+const creatureCount = BESTIARY.reduce((n, g) => n + g.creatures.length, 0);
+const biomeCount = WORLD.biomes.length;
+const worshipCount = Object.values(WORSHIP_TREES).reduce((n, t) => n + t.length, 0);
+
+const stats = [
+  { label: ui['ops.guides'], value: GUIDES.length, href: '/guides' },
+  { label: ui['ops.gods'], value: godCount, href: '/heroes' },
+  { label: ui['ops.bosses'], value: bossCount, href: '/heroes' },
+  { label: ui['ops.creatures'], value: creatureCount, href: '/bestiary' },
+  { label: ui['ops.biomes'], value: biomeCount, href: '/world' },
+  { label: ui['ops.worship'], value: worshipCount, href: '/heroes' },
+];
+
+const checkedLabel = new Date(`${GAME_FACTS.checkedPatchDate}T00:00:00`).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<section class="ops-brief">
+  <div class="ops-brief__head">
+    <h2 class="ops-brief__title">{ui['ops.title']}</h2>
+    <p class="ops-brief__subtitle">{ui['ops.subtitle']}</p>
+  </div>
+  <div class="ops-brief__grid">
+    {stats.map((s) => (
+      <a href={link(locale, s.href)} class="ops-brief__cell">
+        <span class="ops-brief__label">{s.label}</span>
+        <span class="ops-brief__value">{s.value}</span>
+      </a>
+    ))}
+  </div>
+  <p class="ops-brief__checked">
+    {ui['ops.checked']} {checkedLabel} · <strong>patch {GAME_FACTS.checkedPatch}</strong>
+  </p>
+</section>

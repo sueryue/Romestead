@@ -1,0 +1,33 @@
+---
+// Situation report — verified facts from the current EA build, modeled on
+// scrapmechanic.org's "Situation report". All copy lives in content/news.ts.
+import { getUi } from '../i18n/ui';
+import { link, pick, type Locale } from '../i18n/utils';
+import { NEWS } from '../content/news';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const ui = getUi(locale);
+---
+
+<section class="news">
+  <div class="news__head">
+    <h2 class="news__title">{ui['news.title']}</h2>
+    <p class="news__subtitle">{ui['news.subtitle']}</p>
+    <a href={link(locale, '/guides')} class="news__all">{ui['news.more']} →</a>
+  </div>
+  <div class="news__list">
+    {NEWS.map((item) => (
+      <article class="news__item">
+        <p class="news__tag">
+          {item.date && <time datetime={item.date} class="news__date">{item.date}</time>}
+          <span class="news__label">{pick(item.tag, locale)}</span>
+        </p>
+        <h3 class="news__item-title">{pick(item.title, locale)}</h3>
+        <p class="news__item-body">{pick(item.body, locale)}</p>
+      </article>
+    ))}
+  </div>
+</section>

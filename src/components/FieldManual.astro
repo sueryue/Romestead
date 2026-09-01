@@ -1,0 +1,83 @@
+---
+// Field manual — guide cards with computed read times, modeled on
+// scrapmechanic.org's "Field manual". Read time is estimated from the word
+// count of each guide's sections (~200 wpm), never hand-written.
+import { getUi } from '../i18n/ui';
+import { link, pick, type Locale } from '../i18n/utils';
+import { GUIDES } from '../content/guides';
+import { mediaProps } from '../content/image-dims';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const ui = getUi(locale);
+
+function readMinutes(words: number): number {
+  return Math.max(1, Math.round(words / 200));
+}
+
+function wordCount(slug: string): number {
+  const g = GUIDES.find((x) => x.slug === slug);
+  if (!g) return 0;
+  let words = 0;
+  for (const sec of pick(g.sections, locale)) {
+    words += sec.p.join(' ').split(/\s+/).length;
+  }
+  return words;
+}
+
+// Two "doorway" guides up top, then the route indexes — mirrors the
+// scrapmechanic layout (two big cards + a grid of numbered routes).
+const doorway = ['survive-night', 'completion-run']
+  .map((slug) => {
+    const g = GUIDES.find((x) => x.slug === slug);
+    if (!g) return null;
+    return { g, mins: readMinutes(wordCount(slug)) };
+  })
+  .filter(Boolean);
+
+const routes = ['walkthrough-plains', 'walkthrough-forest', 'walkthrough-desert', 'walkthrough-volcano', 'base-locations', 'fortifications']
+  .map((slug) => {
+    const g = GUIDES.find((x) => x.slug === slug);
+    if (!g) return null;
+    return { g, mins: readMinutes(wordCount(slug)) };
+  })
+  .filter(Boolean);
+---
+
+<section class="manual">
+  <div class="manual__head">
+    <h2 class="manual__title">{ui['manual.title']}</h2>
+    <p class="manual__subtitle">{ui['manual.subtitle']}</p>
+    <a href={link(locale, '/guides')} class="manual__all">{ui['allGuides']} →</a>
+  </div>
+
+  <div class="manual__doorways">
+    {doorway.map(({ g, mins }) => (
+      <a href={link(locale, `/guides/${g.slug}`)} class="manual__door">
+        {g.cover && (
+          <img {...mediaProps(g.cover)} alt={pick(g.title, locale)} loading="lazy" class="manual__door-img" />
+        )}
+        <div class="manual__door-body">
+          <span class="manual__meta">{ui['cat.' + g.category]} · {mins} {ui['read.minute']}</span>
+          <h3 class="manual__door-title">{pick(g.title, locale)}</h3>
+          <p class="manual__door-desc">{pick(g.description, locale)}</p>
+          <span class="manual__open">{ui['manual.open']} →</span>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <ol class="manual__routes">
+    {routes.map(({ g, mins }, i) => (
+      <li>
+        <a href={link(locale, `/guides/${g.slug}`)} class="manual__route">
+          <span class="manual__route-num">{String(i + 1).padStart(2, '0')}</span>
+          <span class="manual__route-meta">{mins} {ui['read.minute']} · {ui['cat.' + g.category]}</span>
+          <span class="manual__route-title">{pick(g.title, locale)}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</section>

@@ -39,3 +39,17 @@ export const STORE = {
   youtube: 'https://www.youtube.com/@BeartwigsOfficial',
   discord: 'https://discord.gg/BDgRY2WFDS',
 } as const;
+
+// Verified game facts — sourced from the FAQ page and patch notes referenced
+// in the guides. Do NOT add unverified numbers here.
+export const GAME_FACTS = {
+  launchDate: '2026-05-26',
+  launchPrice: '$13.99',
+  developer: 'Beartwigs',
+  publisher: 'Three Friends',
+  appId: '1805320',
+  // Patch the guide data was checked against (Logistics Tent moved from
+  // Pyzifax to the Owl in patch 0.25.1_7, June 1, 2026).
+  checkedPatch: '0.25.1_7',
+  checkedPatchDate: '2026-06-01',
+} as const;
