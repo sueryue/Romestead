@@ -1,16 +1,17 @@
 // Bestiary — sourced from romestead.wiki.gg "Creatures" page (verified 2026-08).
-// Creature/drop names stay in English (game-data strings); labels around the
-// table are i18n in ui.ts.
-// Spawning rule: creatures can spawn anywhere more than 15 tiles from a
-// player-built structure (workbench tab buildings, wells, doliums, manual
-// mill, food storage, beehives).
+// Creature/drop names stay in English (game-data strings); notes and labels
+// are localized. Spawning rule: creatures can spawn anywhere more than 15
+// tiles from a player-built structure (workbench tab buildings, wells,
+// doliums, manual mill, food storage, beehives).
+
+import type { L10n } from '../i18n/utils';
 
 export interface Creature {
   name: string;
   kind: 'hostile' | 'passive';
   hp?: number;
   drops?: string;
-  note?: string;
+  note?: L10n<string>;
 }
 
 export interface BestiaryGroup {
@@ -26,18 +27,69 @@ export const SPAWN_RULE = {
   it: 'Le creature appaiono ovunque a più di 15 caselle dai tuoi edifici — valgono costruzioni del banco, pozzi, dolia, mulino manuale, deposito cibo e arnie.',
 };
 
+// Reusable localized notes
+const NOTE_ANYWHERE: L10n<string> = {
+  en: 'All biomes, dungeons or raids.',
+  fr: 'Tous les biomes, donjons ou raids.',
+  de: 'Alle Biome, Dungeons oder Raids.',
+  es: 'Todos los biomas, mazmorras o incursiones.',
+  it: 'Tutti i biomi, dungeon o raid.',
+};
+const NOTE_ANYWHERE_NIGHT: L10n<string> = {
+  en: 'All biomes at night, dungeons or raids.',
+  fr: 'Tous les biomes la nuit, donjons ou raids.',
+  de: 'Alle Biome bei Nacht, Dungeons oder Raids.',
+  es: 'Todos los biomas de noche, mazmorras o incursiones.',
+  it: 'Tutti i biomi di notte, dungeon o raid.',
+};
+const NOTE_GREY_ROBES: L10n<string> = {
+  en: 'Wears grey robes.',
+  fr: 'Porte une robe grise.',
+  de: 'Trägt graue Roben.',
+  es: 'Lleva túnicas grises.',
+  it: 'Indossa vesti grigie.',
+};
+const NOTE_RED_ROBES: L10n<string> = {
+  en: 'Wears red robes.',
+  fr: 'Porte une robe rouge.',
+  de: 'Trägt rote Roben.',
+  es: 'Lleva túnicas rojas.',
+  it: 'Indossa vesti rosse.',
+};
+const NOTE_BLACK_ROBES: L10n<string> = {
+  en: 'Wears black robes.',
+  fr: 'Porte une robe noire.',
+  de: 'Trägt schwarze Roben.',
+  es: 'Lleva túnicas negras.',
+  it: 'Indossa vesti nere.',
+};
+const NOTE_SCORPIO: L10n<string> = {
+  en: 'Builds an Automatic Scorpio that attacks you.',
+  fr: 'Construit un Scorpion automatique qui vous attaque.',
+  de: 'Baut einen automatischen Skorpio, der dich angreift.',
+  es: 'Construye un Escorpión automático que te ataca.',
+  it: 'Costruisce uno Scorpione automatico che ti attacca.',
+};
+const NOTE_ASHEN_SKULL: L10n<string> = {
+  en: 'Spawns an Ashen Jumping Skull on death.',
+  fr: 'Fait apparaître un Crâne sauteur cendreux à sa mort.',
+  de: 'Erzeugt bei Tod einen aschgrauen Springenden Schädel.',
+  es: 'Genera un Cráneo saltarín ceniciento al morir.',
+  it: 'Genera un Teschio saltante cinereo alla morte.',
+};
+
 export const BESTIARY: BestiaryGroup[] = [
   {
     key: 'anywhere',
     creatures: [
-      { name: 'Potmen', kind: 'hostile', hp: 10, note: 'All biomes, dungeons or raids.' },
-      { name: 'Fallen Crawler', kind: 'hostile', hp: 10, drops: 'Bone', note: 'All biomes at night, dungeons or raids.' },
-      { name: 'Fallen', kind: 'hostile', hp: 10, drops: 'Bone', note: 'All biomes at night, dungeons or raids.' },
-      { name: 'Walker', kind: 'hostile', hp: 10, drops: 'Bone', note: 'All biomes at night, dungeons or raids.' },
-      { name: 'Fallen Sword', kind: 'hostile', hp: 10, drops: 'Bone, Fallen Sword', note: 'All biomes at night, dungeons or raids.' },
-      { name: 'Fallen Spear', kind: 'hostile', hp: 10, drops: 'Bone, Fallen Pilum', note: 'All biomes at night, dungeons or raids.' },
-      { name: 'Fallen Bloat', kind: 'hostile', hp: 20, drops: 'Bone', note: 'All biomes at night, dungeons or raids.' },
-      { name: 'Fallen Centurion', kind: 'hostile', hp: 20, drops: 'Coal', note: 'All biomes at night, dungeons or raids.' },
+      { name: 'Potmen', kind: 'hostile', hp: 10, note: NOTE_ANYWHERE },
+      { name: 'Fallen Crawler', kind: 'hostile', hp: 10, drops: 'Bone', note: NOTE_ANYWHERE_NIGHT },
+      { name: 'Fallen', kind: 'hostile', hp: 10, drops: 'Bone', note: NOTE_ANYWHERE_NIGHT },
+      { name: 'Walker', kind: 'hostile', hp: 10, drops: 'Bone', note: NOTE_ANYWHERE_NIGHT },
+      { name: 'Fallen Sword', kind: 'hostile', hp: 10, drops: 'Bone, Fallen Sword', note: NOTE_ANYWHERE_NIGHT },
+      { name: 'Fallen Spear', kind: 'hostile', hp: 10, drops: 'Bone, Fallen Pilum', note: NOTE_ANYWHERE_NIGHT },
+      { name: 'Fallen Bloat', kind: 'hostile', hp: 20, drops: 'Bone', note: NOTE_ANYWHERE_NIGHT },
+      { name: 'Fallen Centurion', kind: 'hostile', hp: 20, drops: 'Coal', note: NOTE_ANYWHERE_NIGHT },
     ],
   },
   {
@@ -82,7 +134,7 @@ export const BESTIARY: BestiaryGroup[] = [
       { name: 'Large Scorpion', kind: 'hostile', hp: 45, drops: 'Chitin, Poison Gland, Raw Scorpion Meat, Scorpion Stinger' },
       { name: 'Skeleton', kind: 'hostile', hp: 50, drops: 'Skeleton Sword' },
       { name: 'Skeleton Archer', kind: 'hostile', hp: 50, drops: 'Skeleton Bow' },
-      { name: 'Magus Mercury', kind: 'hostile', hp: 55, drops: 'Linen', note: 'Wears grey robes.' },
+      { name: 'Magus Mercury', kind: 'hostile', hp: 55, drops: 'Linen', note: NOTE_GREY_ROBES },
       { name: 'Vulture', kind: 'hostile', hp: 80, drops: 'Egg' },
       { name: 'Gorgon', kind: 'hostile', hp: 110, drops: 'Quadrans, Medusa’s Head' },
       { name: 'Satyr Tiny', kind: 'hostile', drops: 'Grapes, Quadrans, Wine, Cooked Meat Cut' },
@@ -97,7 +149,7 @@ export const BESTIARY: BestiaryGroup[] = [
       { name: 'Salamander', kind: 'passive', hp: 5, drops: 'Raw Salamander Meat' },
       { name: 'Volcanic Turtle', kind: 'passive', hp: 50 },
       { name: 'Engineer', kind: 'hostile', hp: 45, drops: 'Quadrans, Salamander Jerky, Cyclopelli Hammer' },
-      { name: 'Master Engineer', kind: 'hostile', hp: 45, drops: 'Quadrans, Salamander Jerky, Cyclopelli Hammer', note: 'Builds an Automatic Scorpio that attacks you.' },
+      { name: 'Master Engineer', kind: 'hostile', hp: 45, drops: 'Quadrans, Salamander Jerky, Cyclopelli Hammer', note: NOTE_SCORPIO },
       { name: 'Lava Snake', kind: 'hostile', hp: 60, drops: 'Firescale' },
       { name: 'Burning Crawler', kind: 'hostile', hp: 60, drops: 'Coal, Bone' },
       { name: 'Burning Fallen', kind: 'hostile', hp: 60, drops: 'Burning Fallen Cape, Coal, Bone' },
@@ -105,12 +157,12 @@ export const BESTIARY: BestiaryGroup[] = [
       { name: 'Phoenix', kind: 'hostile', hp: 70, drops: 'Raw Phoenix Wing, Old Phoenix Feather' },
       { name: 'Bone Crab', kind: 'hostile', hp: 70, drops: 'Strange Crab Meat, Bone' },
       { name: 'Ashen Jumping Skull', kind: 'hostile', hp: 70 },
-      { name: 'Magus Vulcan', kind: 'hostile', hp: 80, drops: 'Denarius, Ember Cloth, Magus Vulcan Cape', note: 'Wears red robes.' },
+      { name: 'Magus Vulcan', kind: 'hostile', hp: 80, drops: 'Denarius, Ember Cloth, Magus Vulcan Cape', note: NOTE_RED_ROBES },
       { name: 'Burning Centurion', kind: 'hostile', hp: 80, drops: 'Coal' },
-      { name: 'Ashen Skeleton Warrior', kind: 'hostile', hp: 100, drops: 'Coal, Ashen Sword', note: 'Spawns an Ashen Jumping Skull on death.' },
-      { name: 'Ashen Skeleton Archer', kind: 'hostile', hp: 100, drops: 'Coal, Ashen Bow, Flaming Bowstring, Iron Arrow', note: 'Spawns an Ashen Jumping Skull on death.' },
+      { name: 'Ashen Skeleton Warrior', kind: 'hostile', hp: 100, drops: 'Coal, Ashen Sword', note: NOTE_ASHEN_SKULL },
+      { name: 'Ashen Skeleton Archer', kind: 'hostile', hp: 100, drops: 'Coal, Ashen Bow, Flaming Bowstring, Iron Arrow', note: NOTE_ASHEN_SKULL },
       { name: 'Fire Elemental', kind: 'hostile', hp: 100, drops: 'Elemental Core, Radiant Pilum Tip' },
-      { name: 'Magus (Black)', kind: 'hostile', hp: 100, drops: 'Denarius, Magus Ceres Scroll, Mystic Potion', note: 'Wears black robes.' },
+      { name: 'Magus (Black)', kind: 'hostile', hp: 100, drops: 'Denarius, Magus Ceres Scroll, Mystic Potion', note: NOTE_BLACK_ROBES },
       { name: 'Lava Construct', kind: 'hostile', hp: 200, drops: 'Bronze Bar, Construct Shield' },
       { name: 'Burning Bloat', kind: 'hostile', drops: 'Coal, Bone' },
     ],

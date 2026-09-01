@@ -1,0 +1,36 @@
+---
+// Root 404: GitHub Pages serves this for any missing URL under the site.
+// Renders the English not-found page; localized variants live at /<locale>/404/.
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { getUi } from '../i18n/ui';
+import { link } from '../i18n/utils';
+import { SITE } from '../consts';
+
+const locale = 'en';
+const ui = getUi(locale);
+---
+
+<Base
+  locale={locale}
+  title={`404 — ${ui['notfound.title']} — ${SITE.name}`}
+  description={ui['notfound.title']}
+  path="/404"
+>
+  <Header locale={locale} path="/404" />
+  <main class="mx-auto max-w-3xl px-4 py-24 text-center">
+    <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-roman-600 text-gold-400">
+      <Icon name="question" class="h-8 w-8" />
+    </div>
+    <h1 class="mt-6 font-display text-4xl font-black text-roman-700">404</h1>
+    <p class="mt-3 text-lg text-ink-700">{ui['notfound.desc']}</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href={link(locale, '/')} class="rounded bg-roman-600 px-5 py-2.5 font-semibold text-parchment-50 transition-colors hover:bg-roman-500">{ui['nav.home']} →</a>
+      <a href={link(locale, '/guides')} class="rounded border border-gold-600/50 px-5 py-2.5 font-semibold text-roman-600 transition-colors hover:bg-gold-400/10">{ui['nav.guides']} →</a>
+      <a href={link(locale, '/bestiary')} class="rounded border border-gold-600/50 px-5 py-2.5 font-semibold text-roman-600 transition-colors hover:bg-gold-400/10">{ui['nav.bestiary']} →</a>
+    </div>
+  </main>
+  <Footer locale={locale} />
+</Base>
